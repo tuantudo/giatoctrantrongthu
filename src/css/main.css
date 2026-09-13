@@ -1,3 +1,7 @@
+/* BRAND SYSTEM — Generated from brand/manifest.json. DO NOT EDIT brand/generated/brand.css MANUALLY. */
+@import url('../../brand/generated/brand.css');
+
+
 :root {
     /* ART DIRECTION COLORS */
     --bg-page: #F6F4F0;         /* Giấy ngà cổ */
@@ -8,8 +12,7 @@
     --border-hairline: #E3E0D8; /* Đường kẻ sổ sách */
     --border-dark: #D1CEC6;
     /* ART DIRECTION TYPOGRAPHY */
-    --font-serif: "Times New Roman", Times, serif;
-    --font-sans: "Times New Roman", Times, serif;
+    /* --font-serif and --font-sans are now defined in brand/generated/brand.css */
     --text-display: clamp(2.5rem, 5vw, 4.5rem);  /* Cực lớn cho Hero */
     --text-h1: clamp(2rem, 3vw, 2.75rem);
     --text-h2: clamp(1.25rem, 1.5vw, 1.5rem);
@@ -98,8 +101,7 @@
     --cat-event-border: #BBF7D0;
 
     /* --- 2. TYPOGRAPHY SYSTEM (BRAND FONT: TIMES NEW ROMAN) --- */
-    --font-serif: "Times New Roman", Times, serif;
-    --font-sans: "Times New Roman", Times, serif;
+    /* --font-serif and --font-sans are now defined in brand/generated/brand.css */
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
     /* Font Scales (Fluid Responsive) */
@@ -4620,5 +4622,113 @@ button, .btn, .btn-primary, .btn-secondary {
         bottom: 0;
         right: 0;
         border-radius: 0;
+    }
+}
+/* ============================================
+   EDITORIAL MASTHEAD
+   Design: docs/architecture/EDITORIAL_MASTHEAD_DESIGN_BRIEF.md
+   ============================================ */
+
+.editorial-header {
+    background: var(--bg-page);
+    border-bottom: 1px solid var(--border-hairline);
+}
+
+/* Layer 1: Utility */
+.header-utility {
+    background: transparent;
+    border-bottom: 1px solid var(--border-hairline);
+    padding: 4px 0;
+}
+.header-utility-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header-utility .font-size-controls {
+    margin-left: 0;
+}
+
+/* Layer 2: Masthead / Nameplate */
+.header-nameplate {
+    text-align: center;
+    padding: 2.5rem 24px 2rem;
+}
+.nameplate-link {
+    display: inline-block;
+    text-decoration: none;
+}
+.editorial-logo {
+    height: 56px;
+    width: auto;
+    display: block;
+}
+
+/* Layer 3: Editorial Navigation */
+.header-nav-layer {
+    border-top: 1px solid var(--border-hairline);
+    padding: 0;
+}
+.editorial-nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+.editorial-nav-links > li > a.nav-item-btn {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 2px solid transparent;
+}
+.editorial-nav-links > li > a.nav-item-btn:hover {
+    background: transparent;
+    border-bottom-color: var(--border-dark);
+}
+.editorial-nav-links > li > a.nav-item-btn.active {
+    border-bottom-color: var(--lacquer-red);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .header-nameplate {
+        padding: 1.5rem 16px 1.25rem;
+    }
+    .editorial-logo {
+        height: 44px;
+    }
+    .editorial-nav-links {
+        flex-direction: column;
+        gap: 0;
+    }
+    .editorial-nav-links > li {
+        width: 100%;
+        text-align: center;
+    }
+    .editorial-nav-links > li > a.nav-item-btn {
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid var(--border-hairline);
+    }
+    .nav-dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid var(--border-hairline);
+    }
+}
+
+@media (max-width: 480px) {
+    .header-utility-inner {
+        padding: 0 12px;
+    }
+    .header-nameplate {
+        padding: 1.25rem 12px 1rem;
+    }
+    .editorial-logo {
+        height: 38px;
     }
 }
