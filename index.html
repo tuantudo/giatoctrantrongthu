@@ -26,7 +26,14 @@
         <!-- Layer 2: Masthead / Nameplate -->
         <div class="header-nameplate">
             <a href="#/" class="nameplate-link">
-                <img src="assets/images/logoGiaToc_ngang.svg" class="editorial-logo" alt="Gia Tộc Trần Trọng Thu">
+                <picture class="editorial-logo-picture">
+                    <!-- WIDE DESKTOP -->
+                    <source media="(min-width: 1024px)" srcset="assets/images/logoGiaToc_original.svg">
+                    <!-- TABLET / NARROW DESKTOP -->
+                    <source media="(min-width: 640px)" srcset="assets/images/logoGiaToc_ngang.svg">
+                    <!-- MOBILE / VERY NARROW -->
+                    <img src="assets/images/logoGiaToc.svg" class="editorial-logo" alt="Gia Tộc Trần Trọng Thu">
+                </picture>
             </a>
         </div>
 

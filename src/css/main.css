@@ -4662,9 +4662,47 @@ button, .btn, .btn-primary, .btn-secondary {
     text-decoration: none;
 }
 .editorial-logo {
-    height: 56px;
+    /* Base height for mobile (icon-only) */
+    height: 64px;
+    max-width: 90vw;
     width: auto;
     display: block;
+    margin: 0 auto;
+}
+
+/* WIDE DESKTOP */
+@media (min-width: 1024px) {
+    .editorial-logo {
+        height: 160px;
+    }
+    .header-nameplate {
+        padding: 3rem 24px 2rem;
+    }
+}
+
+/* NARROW DESKTOP / TABLET */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .editorial-logo {
+        height: 80px;
+    }
+    .header-nameplate {
+        padding: 2.5rem 24px 2rem;
+    }
+}
+
+/* No separate tagline element — artwork is the nameplate.
+   If User hasn't updated SVG to include text yet, this
+   CSS tagline serves as temporary identity text.
+   DO NOT duplicate if SVG contains text. */
+.editorial-header .tagline {
+    display: block;
+    text-align: center;
+    font-family: var(--font-brand);
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    margin-top: 0.75rem;
+    font-weight: 400;
 }
 
 /* Layer 3: Editorial Navigation */
@@ -4698,9 +4736,6 @@ button, .btn, .btn-primary, .btn-secondary {
     .header-nameplate {
         padding: 1.5rem 16px 1.25rem;
     }
-    .editorial-logo {
-        height: 44px;
-    }
     .editorial-nav-links {
         flex-direction: column;
         gap: 0;
@@ -4728,7 +4763,11 @@ button, .btn, .btn-primary, .btn-secondary {
     .header-nameplate {
         padding: 1.25rem 12px 1rem;
     }
-    .editorial-logo {
-        height: 38px;
-    }
+}
+
+/* Fix for white frame on Masthead Logo */
+img.editorial-logo {
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
 }
