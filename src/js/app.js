@@ -484,6 +484,13 @@ const ROUTE_CONTEXTS = {
         title: "Typography Specimen",
         navId: "",
         secId: "view_typography_specimen"
+    },
+    "/cai-dat": {
+        type: "SETTINGS",
+        territory: "member",
+        title: "Cài đặt & Tài khoản",
+        navId: "nav_cai_dat",
+        secId: "view_cai_dat"
     }
 };
 
@@ -2002,8 +2009,7 @@ function renderHomePublicationLanding() {
     if (featureCard && machData && (machData.articles || machData.stories)) {
         const allArticles = machData.articles || machData.stories;
         // Priority: clara-001 (human/epistolary voice) or 06-gio-va-ky-uc-gia-dinh
-        let featured = allArticles.find(a => a.slug === 'clara-001')
-                    || allArticles.find(a => a.slug === '06-gio-va-ky-uc-gia-dinh') 
+        let featured = allArticles.find(a => a.articleType === 'essay' || a.presentationVariant === 'essay')
                     || allArticles[0];
 
         if (featured) {
@@ -2099,7 +2105,10 @@ function renderMachModule() {
     const featContainer = document.getElementById("machFeaturedContainer");
     if (featContainer && machData.series) {
         const issue01 = machData.series["issue-01"];
-        const clara = machData.series["thu-gui-clara"];
+        let clara = null;
+        if (machData.series) {
+            clara = Object.values(machData.series).find(s => s.seriesType === 'epistolary');
+        }
         
         let featHtml = `<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin-bottom:24px;">`;
 
@@ -2897,3 +2906,11 @@ try {
         applyArticleFontSize();
     }
 } catch (e) {}
+
+// CHATBOT WIDGET TOGGLE
+function toggleChatbotDrawer() {
+    const drawer = document.getElementById('chatbotDrawer');
+    if (drawer) {
+        drawer.classList.toggle('active');
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Demo</title>
+    <style>
+        body { font-family: "Times New Roman", Times, serif; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; background: #fff; color: #1a1a1a; }
+        .chat-container { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 8px; font-size: 15px; line-height: 1.5; }
+        .message.user { align-self: flex-end; background: #f0f0eb; border: 1px solid #d1d0c8; }
+        .message.ai { align-self: flex-start; background: #fff; border: 1px solid #d1d0c8; border-left: 3px solid #8A2D23; }
+        .input-area { padding: 16px; border-top: 1px solid #e3e0d8; display: flex; gap: 8px; background: #f9f9f7; }
+        input { flex: 1; padding: 12px; border: 1px solid #d1d0c8; border-radius: 4px; font-family: inherit; font-size: 15px; outline: none; }
+        input:focus { border-color: #8A2D23; }
+        button { padding: 0 20px; background: #8A2D23; color: white; border: none; border-radius: 4px; font-family: inherit; font-size: 15px; cursor: pointer; }
+        button:hover { background: #701A2B; }
+        .typing { font-style: italic; color: #666; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chatContainer">
+        <div class="message ai">Xin chào! Tôi là trợ lý AI của Gia Tộc Trần Trọng Thu. Tôi có thể giúp bạn tìm kiếm thông tin về phả hệ, ngày giỗ, hoặc các sự kiện gia đình.</div>
+    </div>
+    <div class="input-area">
+        <input type="text" id="chatInput" placeholder="Nhập câu hỏi của bạn..." onkeypress="if(event.key === 'Enter') sendMessage()">
+        <button onclick="sendMessage()">Gửi</button>
+    </div>
+
+    <script>
+        const input = document.getElementById('chatInput');
+        const container = document.getElementById('chatContainer');
+        const demoText = "Chào bạn! Đây là câu trả lời demo từ AI cho website giatoctrantrongthu.com. Hệ thống tri thức và tư liệu sẽ sớm được tích hợp ở các giai đoạn sau.";
+
+        async function sendMessage() {
+            const text = input.value.trim();
+            if (!text) return;
+
+            // Add User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.textContent = text;
+            container.appendChild(userMsg);
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            // Add typing indicator
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'typing';
+            typingMsg.textContent = 'AI đang phản hồi...';
+            container.appendChild(typingMsg);
+            container.scrollTop = container.scrollHeight;
+
+            // Simulate network delay
+            setTimeout(async () => {
+                container.removeChild(typingMsg);
+
+                // Add AI message shell
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'message ai';
+                container.appendChild(aiMsg);
+
+                // Simulate streaming
+                for (let i = 0; i < demoText.length; i++) {
+                    aiMsg.textContent += demoText[i];
+                    container.scrollTop = container.scrollHeight;
+                    await new Promise(r => setTimeout(r, 25));
+                }
+            }, 600);
+        }
+    </script>
+</body>
+</html>
