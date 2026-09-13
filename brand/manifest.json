@@ -21,9 +21,9 @@
       }
     },
     "favicon": {
-      "current": "Inline SVG emoji tree (🌳)",
-      "status": "UNRESOLVED",
-      "note": "Not brand-compliant. Owner to decide replacement."
+      "path": "assets/images/logoGiaToc_favicon.svg",
+      "status": "CONFIRMED",
+      "evidence": "Owner explicitly requested replacement with specific SVG asset"
     }
   },
   "typography": {
