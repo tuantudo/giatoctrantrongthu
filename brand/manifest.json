@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "purpose": "Canonical Brand System source of truth for giatoctrantrongthu.com",
+    "status": "CONFIRMED = Owner decision | OBSERVED = current usage | UNRESOLVED = needs Owner decision",
+    "generated_css": "brand/generated/brand.css — DO NOT EDIT MANUALLY",
+    "generator": "scripts/generate-brand-css.mjs"
+  },
+  "identity": {
+    "name": "GIA TỘC TRẦN TRỌNG THU",
+    "motto": "TỪ 1872 ĐẾN CHÚNG TA",
+    "logo": {
+      "primary": {
+        "path": "assets/images/logoGiaToc_ngang.svg",
+        "status": "CONFIRMED",
+        "evidence": "Rendered in navbar (index.html:17) and homepage (index.html:108)"
+      },
+      "secondary": {
+        "path": "assets/images/logoGiaToc.jpg",
+        "status": "OBSERVED",
+        "evidence": "Rendered in homepage only (index.html:112)"
+      }
+    },
+    "favicon": {
+      "current": "Inline SVG emoji tree (🌳)",
+      "status": "UNRESOLVED",
+      "note": "Not brand-compliant. Owner to decide replacement."
+    }
+  },
+  "typography": {
+    "family": {
+      "value": "Times New Roman",
+      "fallback": "Times, serif",
+      "status": "CONFIRMED",
+      "evidence": "Owner confirmed as brand font"
+    },
+    "roles": {
+      "serif": {
+        "value": "var(--font-brand)",
+        "status": "CONFIRMED",
+        "note": "Brand font applies to all text per Owner decision"
+      },
+      "sans": {
+        "value": "var(--font-brand)",
+        "status": "CONFIRMED",
+        "note": "Same as serif — Times New Roman for all contexts"
+      }
+    }
+  },
+  "colors": {
+    "brand": {
+      "primary": {
+        "value": "#881337",
+        "name": "Sơn Mài Bắc Bộ (Lacquer Red)",
+        "status": "OBSERVED",
+        "evidence": "Used as --lacquer-red, --primary in main.css. NOT confirmed as official brand color."
+      },
+      "accent": {
+        "value": "#B45309",
+        "name": "Hoàng Kim / Đồng Cổ (Imperial Gold)",
+        "status": "OBSERVED",
+        "evidence": "Used as --imperial-gold, --accent in main.css. NOT confirmed as official brand color."
+      },
+      "ink": {
+        "value": "#1A1A1A",
+        "name": "Mực than (Ink Black)",
+        "status": "OBSERVED",
+        "evidence": "Used as --ink-black, --text-main. ARCHITECTURE.md says 'never use #000'."
+      }
+    },
+    "semantic": {
+      "note": "Derived tokens in brand/generated/brand.css. Map to OBSERVED values but can be remapped when Owner confirms brand colors."
+    },
+    "data": {
+      "note": "Generation colors (F0-F4) and category colors are domain-specific, NOT brand. Kept in CSS layer."
+    },
+    "legacy": {
+      "note": "Hardcoded hex in subscribe-feed-badge, btn-plat-primary.google classes — technical debt, not brand."
+    }
+  },
+  "shape": {
+    "radius": {
+      "value": 0,
+      "status": "OBSERVED",
+      "evidence": "Flat 2D throughout CSS. D06 mentions 'Flat & Sharp' but doesn't explicitly confirm as brand invariant."
+    }
+  }
+}

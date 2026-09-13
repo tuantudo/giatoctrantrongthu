@@ -1,0 +1,31 @@
+/* ============================================
+   BRAND SYSTEM — GENERATED FROM MANIFEST
+   DO NOT EDIT MANUALLY
+   Source: brand/manifest.json
+   ============================================ */
+
+:root {
+  /* === BRAND TYPOGRAPHY (Owner confirmed) === */
+  --font-brand: "Times New Roman", Times, serif;
+
+  /* Semantic aliases — derive from brand */
+  --font-serif: var(--font-brand);
+  --font-sans: var(--font-brand);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* === BRAND COLORS (Observed values — Owner to confirm) === */
+  --brand-primary: #881337; /* Sơn Mài Bắc Bộ (Lacquer Red) — OBSERVED */
+  --brand-accent: #B45309;  /* Hoàng Kim / Đồng Cổ (Imperial Gold) — OBSERVED */
+  --brand-ink: #1A1A1A;        /* Mực than (Ink Black) — OBSERVED */
+
+  /* === SEMANTIC COLORS (Derived from brand) === */
+  --color-primary: var(--brand-primary);
+  --color-primary-hover: #701A2B;
+  --color-accent: var(--brand-accent);
+  --color-accent-hover: #92400E;
+  --color-ink: var(--brand-ink);
+  --color-ink-muted: #5C5B5A;
+
+  /* === SHAPE (Observed — Owner to confirm as brand invariant) === */
+  --radius: 0;
+}
