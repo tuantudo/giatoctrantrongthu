@@ -1,6 +1,6 @@
 # BÁO CÁO TYPOGRAPHY_02 — GLOBAL TYPOGRAPHY & MOBILE READABILITY
 
-**Workspace:** `/Users/tuantq/Projects/Personal/family-calendar`  
+**Workspace:** `/Users/tuantq/Projects/Personal/giatoctrantrongthu`  
 **Target Identity:** `https://gionghotrantrongthu.vercel.app/`  
 **Git Branch:** `design/typography-02` → merged into `main`  
 **Thời gian hoàn thành:** 05/09/2026  

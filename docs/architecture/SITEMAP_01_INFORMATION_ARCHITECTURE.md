@@ -1,9 +1,9 @@
 # KIẾN TRÚC THÔNG TIN & SITEMAP: CÂY GIA PHẢ
-## HỆ THỐNG TRI THỨC DÒNG HỌ TRẦN TRỌNG THU (`family-calendar`)
+## HỆ THỐNG TRI THỨC DÒNG HỌ TRẦN TRỌNG THU (`giatoctrantrongthu`)
 ### STATUS: PROPOSED INFORMATION ARCHITECTURE (v2.0) — ALIGNED WITH FOUNDATIONAL ARCHITECTURE
 *Tài liệu Đặc tả Kiến trúc Thông tin & Sitemap Chuẩn hóa*  
 *Ngày cập nhật: 05/09/2026*  
-*Workspace: `/Users/tuantq/Projects/Personal/family-calendar`*  
+*Workspace: `/Users/tuantq/Projects/Personal/giatoctrantrongthu`*  
 
 ---
 

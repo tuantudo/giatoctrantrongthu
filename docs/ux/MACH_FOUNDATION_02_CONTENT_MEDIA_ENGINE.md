@@ -13,7 +13,7 @@
 
 ## 1. KHẢO SÁT & AUDIT HIỆN TRẠNG KỸ THUẬT (CURRENT IMPLEMENTATION AUDIT)
 
-Khảo sát thực tế mã nguồn và dữ liệu đang vận hành tại repo `family-calendar`:
+Khảo sát thực tế mã nguồn và dữ liệu đang vận hành tại repo `giatoctrantrongthu`:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐

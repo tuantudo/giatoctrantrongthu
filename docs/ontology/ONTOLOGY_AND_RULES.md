@@ -1,5 +1,5 @@
 # CÂY GIA PHẢ — BẢN THỂ LUẬN & QUY TẮC TRI THỨC (ONTOLOGY & KNOWLEDGE RULES)
-## Hệ Thống Tri Thức Dòng Họ Trần Trọng Thu (`family-calendar`)
+## Hệ Thống Tri Thức Dòng Họ Trần Trọng Thu (`giatoctrantrongthu`)
 ### STATUS: WORKING ONTOLOGY SPECIFICATION (v1.0)
 *Tài liệu Đặc tả Bản thể luận & Quy tắc Tri thức*  
 *Ngày cập nhật: 05/09/2026*  

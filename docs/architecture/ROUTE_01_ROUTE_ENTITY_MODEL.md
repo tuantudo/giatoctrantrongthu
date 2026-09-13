@@ -1,11 +1,11 @@
 # ĐẶC TẢ TUYẾN ĐƯỜNG & MÔ HÌNH THỰC THỂ: CÂY GIA PHẢ (ROUTE_01B)
-## HỆ THỐNG TRI THỨC DÒNG HỌ TRẦN TRỌNG THU (`family-calendar`)
+## HỆ THỐNG TRI THỨC DÒNG HỌ TRẦN TRỌNG THU (`giatoctrantrongthu`)
 ### STATUS: PROPOSED ROUTE & ENTITY SPECIFICATION — PENDING REVIEW
 *Tài liệu Đặc tả Kỹ thuật Tuyến đường & Mô hình Thực thể (Forensic Correction)*  
 *Ngày cập nhật: 05/09/2026*  
-*Workspace: `/Users/tuantq/Projects/Personal/family-calendar`*  
+*Workspace: `/Users/tuantq/Projects/Personal/giatoctrantrongthu`*  
 *Vercel Production Identity: `giatoctrantrongthu.vercel.app`*  
-*GitHub: `tuantudo/family-calendar`*  
+*GitHub: `tuantudo/giatoctrantrongthu`*  
 
 ---
 
@@ -194,7 +194,7 @@ Tài liệu này là bản hiệu chỉnh pháp y (forensic correction) cho `doc
 
 * **Quyết Định Tương Thích Hiện Tại (Current Implementation Decision)**: Tiếp tục duy trì **Client-side Hash Routing (`#/`)**.
 * **Đánh Giá Kỹ Thuật**:
-  * Đảm bảo tính khả chuyển 100% trên cả Vercel (`giatoctrantrongthu.vercel.app`) và GitHub Pages fallback (`tuantudo.github.io/family-calendar`).
+  * Đảm bảo tính khả chuyển 100% trên cả Vercel (`giatoctrantrongthu.vercel.app`) và GitHub Pages fallback (`tuantudo.github.io/giatoctrantrongthu`).
   * Không gây lỗi 404 khi người dùng tải lại trang (reload) hoặc bookmark trên GitHub Pages tĩnh (vốn không có server rewrites).
   * **Lưu ý**: Hash Routing là quyết định tương thích kỹ thuật trong giai đoạn hiện tại, không phải là kiến trúc URL bị khóa vĩnh viễn. Khi toàn bộ ứng dụng chuyển hẳn sang Vercel độc lập, có thể cấu hình rewrites để nâng cấp lên Clean URLs.
 

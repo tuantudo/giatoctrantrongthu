@@ -7,9 +7,9 @@
 
 ```text
 OFFICIAL LOCAL WORKSPACE
-/Users/tuantq/Projects/Personal/family-calendar
+/Users/tuantq/Projects/Personal/giatoctrantrongthu
         ↓ (git push)
-GITHUB REPOSITORY (tuantudo/family-calendar) [SOURCE OF TRUTH]
+GITHUB REPOSITORY (tuantudo/giatoctrantrongthu) [SOURCE OF TRUTH]
         ↓                                           ↓
 GITHUB ACTIONS                                VERCEL PLATFORM
 (Integrity & Invariant Gates)                 (Primary Public Web Delivery)
@@ -17,8 +17,8 @@ GITHUB ACTIONS                                VERCEL PLATFORM
 GITHUB PAGES (Fallback Mirror)                https://giatoctrantrongthu.vercel.app
 ```
 
-* **Local Workspace**: `/Users/tuantq/Projects/Personal/family-calendar` là môi trường phát triển chính thức duy nhất.
-* **GitHub Repository (`tuantudo/family-calendar`)**: Là **Canonical Remote & Source of Truth** duy nhất của toàn bộ dự án. Vercel tuyệt đối không thay thế vai trò lưu trữ phả hệ của GitHub.
+* **Local Workspace**: `/Users/tuantq/Projects/Personal/giatoctrantrongthu` là môi trường phát triển chính thức duy nhất.
+* **GitHub Repository (`tuantudo/giatoctrantrongthu`)**: Là **Canonical Remote & Source of Truth** duy nhất của toàn bộ dự án. Vercel tuyệt đối không thay thế vai trò lưu trữ phả hệ của GitHub.
 * **GitHub Actions**: Chịu trách nhiệm kiểm soát chất lượng (Data Integrity & Invariant Gate: 223 cá nhân, 68 gia đình, 4 ICS feeds).
 * **Vercel Platform**: Đóng vai trò là **Primary Web Application Delivery Platform**, cung cấp hạ tầng CDN toàn cầu, chứng chỉ SSL tự động, preview deployments theo branch, và zero-config static hosting.
 * **GitHub Pages**: Được duy trì song song làm **Fallback / Legacy Deployment** dự phòng.
@@ -79,7 +79,7 @@ Tệp cấu hình `vercel.json` định nghĩa chuẩn URL và chính sách bả
    ```bash
    vercel --yes
    ```
-4. Vercel cấp URL xem trước độc lập (ví dụ: `https://family-calendar-lawsvvj6o-tuantqs-projects-74ccf90b.vercel.app`).
+4. Vercel cấp URL xem trước độc lập (ví dụ: `https://giatoctrantrongthu-lawsvvj6o-tuantqs-projects-74ccf90b.vercel.app`).
 5. Tiến hành Visual QA trên Desktop và Mobile.
 
 ### 3.2. Nhánh Chính (`main`) $\rightarrow$ Production Deployment
@@ -116,7 +116,7 @@ Tệp cấu hình `vercel.json` định nghĩa chuẩn URL và chính sách bả
 
 ### 5.1. Domain Strategy
 * **Primary Production URL**: `https://giatoctrantrongthu.vercel.app`
-* **Fallback Mirror**: `https://tuantudo.github.io/family-calendar`
+* **Fallback Mirror**: `https://tuantudo.github.io/giatoctrantrongthu`
 * **Tương lai**: Dễ dàng gán Custom Domain riêng mà không cần thay đổi cấu trúc URL hay logic routing của ứng dụng.
 
 ### 5.2. Rollback Strategy

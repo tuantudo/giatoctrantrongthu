@@ -13,7 +13,7 @@
 
 ## 1. AUDIT HIỆN TRẠNG KỸ THUẬT (CURRENT ARCHITECTURE AUDIT)
 
-Khảo sát đối chiếu toàn bộ mã nguồn và dữ liệu thực tế tại `/Users/tuantq/Projects/Personal/family-calendar`:
+Khảo sát đối chiếu toàn bộ mã nguồn và dữ liệu thực tế tại `/Users/tuantq/Projects/Personal/giatoctrantrongthu`:
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────┐

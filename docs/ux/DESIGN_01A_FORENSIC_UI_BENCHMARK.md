@@ -1,9 +1,9 @@
 # BÁO CÁO FORENSIC UI BENCHMARK & VISUAL DIRECTION: CÂY GIA PHẢ (DESIGN_01A)
 
 *Tài liệu Khảo sát Thực nghiệm Visual Reference & Định hướng Thiết kế Web App*
-*Dự án: Hệ Thống Tri Thức DÒNG HỌ TRẦN TRỌNG THU (`family-calendar`)*
+*Dự án: Hệ Thống Tri Thức DÒNG HỌ TRẦN TRỌNG THU (`giatoctrantrongthu`)*
 *Ngày thực hiện: 05/09/2026*
-*Workspace: `/Users/tuantq/Projects/Personal/family-calendar`*
+*Workspace: `/Users/tuantq/Projects/Personal/giatoctrantrongthu`*
 
 ---
 

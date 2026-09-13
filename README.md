@@ -41,7 +41,7 @@ Mở trình duyệt tại: `http://localhost:8080`
 
 ## Cấu Trúc Thư Mục Repository
 ```
-family-calendar/
+giatoctrantrongthu/
 ├── .github/workflows/          # CI/CD Workflows (Validation & Instant Sync)
 ├── src/
 │   ├── css/main.css            # Stylesheet phân tách module

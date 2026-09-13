@@ -160,7 +160,7 @@ def main():
 
     genealogy_path = "data/genealogy.json"
     if not os.path.exists(genealogy_path):
-        genealogy_path = os.path.expanduser("~/Projects/Personal/family-calendar/data/genealogy.json")
+        genealogy_path = os.path.expanduser("~/Projects/Personal/giatoctrantrongthu/data/genealogy.json")
 
     with open(genealogy_path, "r", encoding="utf-8") as f:
         genealogy = json.load(f)

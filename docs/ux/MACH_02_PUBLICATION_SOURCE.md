@@ -1,6 +1,6 @@
 # BÁO CÁO MACH_02 — FIX PUBLICATION SOURCE & REBUILD MẠCH FROM ISSUE_01
 
-**Workspace:** `/Users/tuantq/Projects/Personal/family-calendar`  
+**Workspace:** `/Users/tuantq/Projects/Personal/giatoctrantrongthu`  
 **Production Identity:** `https://gionghotrantrongthu.vercel.app/`  
 **Git Branch:** `design/mach-02-publication` → `main`  
 **Thời gian hoàn thành:** 05/09/2026  

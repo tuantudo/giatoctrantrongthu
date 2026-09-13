@@ -6,7 +6,7 @@ import shutil
 
 OBSIDIAN_PROJECTS = "/Users/tuantq/Obsidian/20_PROJECTS/Mach/PROJECTS"
 ISSUE_01_DIR = os.path.join(OBSIDIAN_PROJECTS, "ISSUE_01", "CANONICAL")
-REPO_ROOT = "/Users/tuantq/Projects/Personal/family-calendar"
+REPO_ROOT = "/Users/tuantq/Projects/Personal/giatoctrantrongthu"
 CONTENT_DIR = os.path.join(REPO_ROOT, "content", "mach")
 DATA_FILE = os.path.join(REPO_ROOT, "data", "mach.json")
 

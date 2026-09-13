@@ -1,9 +1,9 @@
 # DÒNG HỌ TRẦN TRỌNG THU — KIẾN TRÚC NỀN TẢNG (FOUNDATIONAL ARCHITECTURE)
-## Hệ Thống Tri Thức, Ký Ức & Di Sản Dòng Họ (`family-calendar`)
+## Hệ Thống Tri Thức, Ký Ức & Di Sản Dòng Họ (`giatoctrantrongthu`)
 ### STATUS: FOUNDATIONAL ARCHITECTURE DOCUMENT — WORKING BASELINE (v1.0)
 *Tài liệu Kiến trúc Nền tảng — Chuyển dịch từ Research sang Architecture*  
 *Ngày cập nhật: 05/09/2026*  
-*Workspace: `/Users/tuantq/Projects/Personal/family-calendar`*  
+*Workspace: `/Users/tuantq/Projects/Personal/giatoctrantrongthu`*  
 
 ---
 

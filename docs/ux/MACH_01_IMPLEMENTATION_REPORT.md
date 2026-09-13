@@ -1,11 +1,11 @@
 # BÁO CÁO TRIỂN KHAI & ĐƯA LÊN ONLINE: KHÔNG GIAN MẠCH (MACH_01)
-## HỆ THỐNG TRI THỨC DÒNG HỌ TRẦN TRỌNG THU (`family-calendar`)
+## HỆ THỐNG TRI THỨC DÒNG HỌ TRẦN TRỌNG THU (`giatoctrantrongthu`)
 ### STATUS: PRODUCTION DEPLOYED — READY FOR USER EXPERIENCE
 *Tài liệu Báo cáo Triển khai Không Gian Tự Sự & Kỷ Yếu Dòng Họ (MACH_01)*  
 *Ngày triển khai: 05/09/2026*  
-*Workspace: `/Users/tuantq/Projects/Personal/family-calendar`*  
+*Workspace: `/Users/tuantq/Projects/Personal/giatoctrantrongthu`*  
 *Production Identity: `gionghotrantrongthu.vercel.app`*  
-*GitHub: `tuantudo/family-calendar` (Branch: `main`)*  
+*GitHub: `tuantudo/giatoctrantrongthu` (Branch: `main`)*  
 
 ---
 
@@ -115,7 +115,7 @@ KIỂM TOÁN HỆ THỐNG TOÀN DIỆN:
 
 * **Production URL Chính Thức**: [https://gionghotrantrongthu.vercel.app/#/mach](https://gionghotrantrongthu.vercel.app/#/mach)
 * **Vercel Project**: `gionghotrantrongthu` (Deployment ID: `dpl_9KF4ooUWTWxq8M5xgLkf4aHh6dfA`)
-* **GitHub Repository**: `tuantudo/family-calendar` (Commit: `3cf3f57` trên nhánh `main`)
+* **GitHub Repository**: `tuantudo/giatoctrantrongthu` (Commit: `3cf3f57` trên nhánh `main`)
 
 ---
 

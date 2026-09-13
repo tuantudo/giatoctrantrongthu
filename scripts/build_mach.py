@@ -68,7 +68,7 @@ OBSIDIAN_PROJECTS = os.path.join(OBSIDIAN_ROOT, "PROJECTS")
 ISSUE_01_DIR = os.path.join(OBSIDIAN_PROJECTS, "ISSUE_01", "CANONICAL")
 CLARA_DIR = os.path.join(OBSIDIAN_ROOT, "Thư gửi Clara")
 
-REPO_ROOT = "/Users/tuantq/Projects/Personal/family-calendar"
+REPO_ROOT = "/Users/tuantq/Projects/Personal/giatoctrantrongthu"
 CONTENT_DIR = os.path.join(REPO_ROOT, "content", "mach")
 DATA_FILE = os.path.join(REPO_ROOT, "data", "mach.json")
 ASSETS_DIR = os.path.join(REPO_ROOT, "assets", "images", "mach")

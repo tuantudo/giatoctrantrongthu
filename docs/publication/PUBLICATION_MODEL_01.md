@@ -1,9 +1,9 @@
 # CÂY GIA PHẢ — PUBLICATION MODEL v1
-## Kiến Trúc Xuất Bản & Mô Hình Trang Toàn Diện (`family-calendar`)
+## Kiến Trúc Xuất Bản & Mô Hình Trang Toàn Diện (`giatoctrantrongthu`)
 ### STATUS: CANONICAL PUBLICATION ARCHITECTURE BASELINE (v1.0)
 *Cầu nối: Architecture → Ontology → Publication → Page Model → Content Model → UX/UI*  
 *Ngày cập nhật: 05/09/2026*  
-*Workspace: `/Users/tuantq/Projects/Personal/family-calendar`*  
+*Workspace: `/Users/tuantq/Projects/Personal/giatoctrantrongthu`*  
 
 ---
 
