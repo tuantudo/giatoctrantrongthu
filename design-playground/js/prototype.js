@@ -3,24 +3,6 @@
 (function () {
   "use strict";
 
-  var SNAPSHOT_STORIES = [
-    { slug: "01-gioi-thieu", title: "Giới Thiệu: MẠCH được bắt đầu như thế nào?",
-      deck: "Dòng họ trong đời sống đương đại đang đứng trước một sự chuyển dịch âm thầm nhưng sâu sắc.",
-      date: "03/07/2026", series: "Tập san MẠCH (Số 01)" },
-    { slug: "02-cay-gia-pha-va-mach", title: "Cây Gia Phả & Mạch",
-      deck: "Cây gia phả lưu lại cấu trúc và vị trí. MẠCH lưu lại những gì xảy ra giữa những vị trí ấy.",
-      date: "03/07/2026", series: "Tập san MẠCH (Số 01)" },
-    { slug: "03-khi-su-gan-gui-khong-con-tu-nhien", title: "Khi Sự Gần Gũi Không Còn TỰ NHIÊN",
-      deck: "Có những người lớn lên trong việc đi vài căn nhà là tới nhà họ hàng.",
-      date: "03/07/2026", series: "Tập san MẠCH (Số 01)" },
-    { slug: "04-tu-he-tu-tuong-den-dao-ly-doi-song", title: "Từ Hệ Tư Tưởng Đến Đạo Lý Đời SỐNG",
-      deck: "Những triết lý lớn khi đi vào nếp nhà thường co lại thành vài câu giản dị.",
-      date: "03/07/2026", series: "Tập san MẠCH (Số 01)" },
-    { slug: "05-nhung-khe-uoc-vo-hinh-cua-dong-ho", title: "Những Khế Ước Vô Hình Của Dòng Họ",
-      deck: "Có những trách nhiệm trong họ không bao giờ được viết thành văn.",
-      date: "03/07/2026", series: "Tập san MẠCH (Số 01)" }
-  ];
-
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -46,7 +28,7 @@
           date: fmtD(s.date || s.publishedAt), series: s.series || "MẠCH" };
       });
     } else {
-      src = SNAPSHOT_STORIES;
+      src = [];
     }
     return src;
   }
