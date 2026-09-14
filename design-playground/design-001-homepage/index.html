@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gia Tộc Trần Trọng Thu — DESIGN-001 Prototype</title>
+<!--
+  DESIGN-001 — Independent editorial homepage prototype.
+  Open directly in Dreamweaver (File > Open) or any browser.
+  Single masthead asset hypothesis: assets/logoGiaToc_ngang.svg
+  No production app.js, no routing, no backend writes, no deploy.
+  Data: REAL snapshots in js/prototype-data.js, rendered by js/prototype.js.
+-->
+<link rel="stylesheet" href="css/prototype.css">
+</head>
+<body>
+
+<!-- A. UTILITY / META STRIP -->
+<div class="util-strip">
+  <div class="util-strip-inner">
+    <span class="util-left" id="utilDate">Chủ nhật, 14/09/2026 · Ấn phẩm của dòng họ</span>
+    <span class="util-right">
+      <a href="#tim-kiem" title="Prototype link — production route is #/tim-kiem">Tìm kiếm</a>
+      <a href="#cai-dat" title="Prototype link only">Cài đặt</a>
+    </span>
+  </div>
+</div>
+
+<!-- B. MASTHEAD — single ngang asset, scales by CSS only -->
+<header class="masthead">
+  <img class="masthead-logo" src="assets/logoGiaToc_ngang.svg" alt="Gia Tộc Trần Trọng Thu">
+  <!-- Tagline: PROPOSAL only (Masthead Brief s6 — not brand truth).
+       SVG artwork is vector paths (no <text>); this HTML line is the
+       testable tagline Owner approves/rejects in visual review. -->
+  <p class="masthead-tagline" data-proposal="tagline">Từ 1872 đến chúng ta</p>
+</header>
+
+<!-- C. PUBLICATION NAVIGATION -->
+<nav class="pub-nav" aria-label="Mục lục ấn phẩm">
+  <ul>
+    <li><a href="#/" aria-current="page">Trang chủ</a></li>
+    <li><a href="#/gia-pha">Gia Phả</a></li>
+    <li><a href="#/mach">MẠCH</a></li>
+    <li><a href="#/tu-lieu">Tư Liệu</a></li>
+    <li><a href="#/lich">Lịch</a></li>
+    <li><a href="#/tim-kiem">Tìm kiếm</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- D+E. LEAD (featured MẠCH) + SIDEBAR (Lịch) -->
+  <section class="lead" aria-label="Tin tiêu điểm">
+    <article class="lead-main">
+      <p class="lead-kicker">MẠCH · So 01</p>
+      <h1 class="lead-title" id="leadTitle">…</h1>
+      <p class="lead-dek" id="leadDek">…</p>
+      <p class="lead-meta" id="leadMeta">…</p>
+      <figure class="lead-figure">
+        <img class="lead-img" id="leadImg"
+             src="https://api.giatoctrantrongthu.com/assets/images/mach/issue-01/mach_01.jpg"
+             alt="Anh bia MẠCH So 01">
+        <figcaption id="leadCaption">Ảnh bìa Số 01 — coverImage thật từ mach.json.</figcaption>
+      </figure>
+    </article>
+    <aside class="sidebar" aria-label="Lịch gia dinh">
+      <h3>Lịch gia dinh</h3>
+      <p class="side-sub">Ngày giỗ · snapshot thật từ CAL_03_MEMORIALS.ics</p>
+      <div id="sideList"></div>
+      <a class="side-link" href="#/lich">Xem lịch đầy đủ →</a>
+    </aside>
+  </section>
+
+  <!-- F. MẠCH SECTION -->
+  <section class="ed-section" aria-label="MẠCH">
+    <div class="ed-section-head">
+      <h2>MẠCH</h2>
+      <p>Tập san di sản — những bài tiếp theo trong Số 01. Tiêu đề &amp; trích dẫn thật từ mach.json.</p>
+    </div>
+    <div class="mach-list" id="machList"></div>
+    <div class="ed-more"><a href="#/mach">Xem tất cả bài viết →</a></div>
+  </section>
+
+  <!-- I. KY UC & GHI CHEP (real shape from genealogy.json) -->
+  <section class="ed-section" aria-label="Ký ức và ghi chép">
+    <div class="ed-section-head">
+      <h2>Ký ức &amp; Ghi chép</h2>
+      <p>Lời kể được lưu trong genealogy.json → appData.memories. Trích nguyên văn, không biên tập.</p>
+    </div>
+    <article class="memory">
+      <h3 class="memory-title" id="memTitle">…</h3>
+      <p class="memory-byline" id="memByline">…</p>
+      <p class="memory-text" id="memText">…</p>
+      <div class="ed-more"><a href="#/gia-pha/ky-uc">Đọc tiếp →</a></div>
+    </article>
+  </section>
+
+  <!-- G. TU LIEU — honest placeholder, module ready for real archive -->
+  <section class="ed-section" aria-label="Tư liệu gốc">
+    <div class="ed-section-head">
+      <h2>Tư liệu gốc</h2>
+      <p>Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
+    </div>
+    <div class="archive-note">
+      <p><strong>Kho tư liệu đang được xây dựng &amp; số hóa</strong></p>
+      <p>media.json hiện chỉ có assetId / sha256 / mimeType / file — chưa đủ
+         semantic metadata (tên, mô tả, ngày tháng, bối cảnh) để dựng gallery thật.
+         Module này giữ đúng trạng thái trung thực và sẵn sàng đón nội dung thật.</p>
+      <div class="ed-more"><a href="#/tu-lieu">Khám phá kho tư liệu →</a></div>
+    </div>
+  </section>
+
+  <!-- H. GIA PHA — publication section, real stats -->
+  <section class="ed-section" aria-label="Gia phả">
+    <div class="ed-section-head">
+      <h2>Gia phả</h2>
+      <p>Cấu trúc huyết thống, danh bạ thành viên và bản đồ thế hệ. Số liệu thật từ genealogy.json → stats.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="statInd">228</b><span>Thành viên</span></div>
+      <div class="stat"><b id="statFam">68</b><span>Gia đình</span></div>
+      <div class="stat"><b id="statMem">2</b><span>Ghi chép ký ức</span></div>
+    </div>
+    <div class="ed-more"><a href="#/gia-pha">Khám phá cây phả đồ →</a></div>
+  </section>
+
+  <!-- J. FOOTER / COLOPHON -->
+  <footer class="colophon">
+    <div class="c-name">Gia Tộc Trần Trọng Thu</div>
+    <p>Ấn phẩm số / kho lưu trữ sống của dòng họ — DESIGN-001 prototype, không phải production.</p>
+    <small>Prototype: design-playground/design-001-homepage/index.html · Mở trực tiếp bằng Dreamweaver · Không deploy</small>
+  </footer>
+
+</div><!-- /.page -->
+
+<!-- Floating text-size utility (prototype-scoped, mirrors production behavior) -->
+<div class="font-float" role="group" aria-label="Cỡ chữ">
+  <button type="button" id="fontMinus" title="Giảm cỡ chữ">A−</button>
+  <button type="button" id="fontPlus" title="Tăng cỡ chữ">A+</button>
+</div>
+
+<script src="js/data-c.js"></script>
+<script src="js/data-d.js"></script>
+<script src="js/part-a.js"></script>
+<script src="js/part-b.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "source": "REAL https://api.giatoctrantrongthu.com/api/genealogy.json",
+  "note": "stats + first memory record only; story truncated",
+  "stats": {
+    "individuals": 228,
+    "families": 68,
+    "memories": 2
+  },
+  "firstMemory": {
+    "id": "G5X4-ZNG",
+    "title": "📖 KÝ ỨC VỀ ÔNG AN-TÔN TRẦN TRỌNG THƯ",
+    "personName": "An-tôn Trần Trọng Thư",
+    "story": "Ông được biết đến như một người đạo đức, hiền lành, chất phác. Là người giúp việc cho giáo xứ Phong Ý từ đời trước của cha Quỳnh, đến cha Quỳnh, và truyền lại việc này cho con trai cả của ông là Trần Đức Hạnh tiếp tục công việc trong giáo xứ, sau đó đến cha Vinh, rồi đến cha Nhân. (Các linh mục quản xứ có lẽ sẽ được thể hiện tại kho lưu trữ tại giáo xứ Phong Ý. Sau cha Quỳnh thì ông Hạnh không làm"
+  }
+}

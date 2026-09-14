@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gia Tộc Trần Trọng Thu — DESIGN-001 Prototype</title>
+<!--
+  DESIGN-001 — Independent editorial homepage prototype.
+  Open this file directly in Adobe Dreamweaver (File > Open) or any browser.
+  - Single masthead asset hypothesis: assets/logoGiaToc_ngang.svg
+  - No production app.js, no routing, no backend writes.
+  - Data below is a REAL snapshot (mach.json / genealogy.json / CAL ICS),
+    rendered by prototype.js. See data-source notes in each section.
+-->
+<link rel="stylesheet" href="css/prototype.css">
+</head>
+<body>
+
+<!-- A. Utility / meta strip -->
+<div class="util-strip">
+  <div class="util-strip-inner">
+    <span id="utilDate">Chủ nhật, 14/09/2026 · Sài Gòn</span>
+    <span class="util-right">
+      <a href="#tim-kiem" title="Prototype only — production route is #/tim-kiem">Tìm kiếm</a>
+      <a href="#cai-dat" title="Prototype only">Cài đặt</a>
+    </span>
+  </div>
+</div>
+
+<!-- B. Masthead: SINGLE ngang asset, scales by CSS only.
+     The SVG artwork contains the tagline as vector paths (<text> count = 0),
+     so no HTML tagline is rendered (Owner invariant: no duplicate tagline). -->
+<header class="masthead">
+  <img class="masthead-logo"
+       src="assets/logoGiaToc_ngang.svg"
+       alt="Gia Tộc Trần Trọng Thu">
+</header>
+
+<!-- C. Publication navigation -->
+<nav class="pub-nav" aria-label="Mục lục ấn phẩm">
+  <ul>
+    <li><a href="#/" data-route="/" aria-current="page">Trang chủ</a></li>
+    <li><a href="#/gia-pha" data-route="/gia-pha">Gia Phả</a></li>
+    <li><a href="#/mach" data-route="/mach">MẠCH</a></li>
+    <li><a href="#/tu-lieu" data-route="/tu-lieu">Tư Liệu</a></li>
+    <li><a href="#/lich" data-route="/lich">Lịch</a></li>
+    <li><a href="#/tim-kiem" data-route="/tim-kiem">Tìm kiếm</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HOME VIEW -->
+  <div data-view="home">
+
+  <!-- D + E. Lead (featured MẠCH) + Sidebar (Lịch) -->
+  <section class="lead" aria-label="Tin tiêu điểm">
+    <article>
+      <p class="lead-kicker">MẠCH · Số 01</p>
+      <h1 class="lead-title" id="leadTitle">…</h1>
+      <p class="lead-dek" id="leadDek">…</p>
+      <p class="lead-meta" id="leadMeta">…</p>
+      <figure class="lead-figure">
+        <div class="ph" id="leadArt">Ảnh bìa MẠCH — heroMediaId hiện không resolve từ media.json<br>(trạng thái trung thực, chờ backend bổ sung asset)</div>
+        <figcaption>Tư liệu minh họa cho bài tiêu điểm — sẽ đấu nối khi backend có asset hợp lệ.</figcaption>
+      </figure>
+    </article>
+    <aside class="sidebar" aria-label="Lịch gia đình">
+      <h3>Lịch gia đình</h3>
+      <p class="side-sub">Ngày giỗ · Sinh nhật — snapshot thật từ CAL_*.ics</p>
+      <div id="sideList"></div>
+      <a class="side-link" href="#/lich">Xem lịch đầy đủ →</a>
+    </aside>
+  </section>
+
+  <!-- F. MẠCH section -->
+  <section class="ed-section" aria-label="MẠCH">
+    <div class="ed-section-head">
+      <h2>MẠCH</h2>
+      <p>Tập san di sản — những bài tiếp theo trong Số 01. Dữ liệu thật từ mach.json.</p>
+    </div>
+    <div class="mach-list" id="machList"></div>
+    <div class="ed-more"><a href="#/mach">Xem tất cả bài viết →</a></div>
+  </section>
+
+  <!-- I. Ký ức -->
+  <section class="ed-section" aria-label="Ký ức và ghi chép">
+    <div class="ed-section-head">
+      <h2>Ký ức &amp; Ghi chép</h2>
+      <p>Lời kể được lưu trong genealogy.json → appData.memories. Trích nguyên văn, không biên tập.</p>
+    </div>
+    <article class="memory">
+      <h3 class="memory-title" id="memTitle">…</h3>
+      <p class="memory-byline" id="memByline">…</p>
+      <p class="memory-text" id="memText">…</p>
+      <div class="ed-more"><a href="#/gia-pha/ky-uc">Đọc tiếp →</a></div>
+    </article>
+  </section>
+
+  <!-- G. Tư liệu: honest placeholder -->
+  <section class="ed-section" aria-label="Tư liệu gốc">
+    <div class="ed-section-head">
+      <h2>Tư liệu gốc</h2>
+      <p>Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
+    </div>
+    <div class="archive-note">
+      <p><strong>Kho tư liệu đang được xây dựng &amp; số hóa</strong></p>
+      <p>media.json hiện chỉ có assetId / sha256 / mimeType / file — chưa đủ
+         semantic metadata (tên, mô tả, ngày tháng, bối cảnh) để dựng gallery thật.
+         Module này giữ đúng trạng thái trung thực và sẵn sàng đón nội dung thật.</p>
+      <div class="ed-more"><a href="#/tu-lieu">Khám phá kho tư liệu →</a></div>
+    </div>
+  </section>
+
+  <!-- H. Gia phả -->
+  <section class="ed-section" aria-label="Gia phả">
+    <div class="ed-section-head">
+      <h2>Gia phả</h2>
+      <p>Cấu trúc huyết thống, danh bạ thành viên và bản đồ thế hệ. Số liệu thật từ genealogy.json → stats.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="statInd">228</b><span>Thành viên</span></div>
+      <div class="stat"><b id="statFam">68</b><span>Gia đình</span></div>
+      <div class="stat"><b id="statMem">2</b><span>Ghi chép ký ức</span></div>
+    </div>
+    <div class="ed-more"><a href="#/gia-pha" data-route="/gia-pha">Khám phá cây phả đồ →</a></div>
+  </section>
+
+  </div><!-- /HOME VIEW -->
+
+  <!-- GIA PHA VIEW (prototype) -->
+  <div data-view="gia-pha" hidden>
+    <section class="ed-section" aria-label="Gia phả">
+      <div class="ed-section-head">
+        <h2>Gia phả</h2>
+        <p>Hướng khám phá huyết thống — prototype, chưa phải ứng dụng phả đồ đầy đủ.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>228</b><span>Thành viên</span></div>
+        <div class="stat"><b>68</b><span>Gia đình</span></div>
+        <div class="stat"><b>2</b><span>Ghi chép ký ức</span></div>
+      </div>
+      <div class="archive-note">
+        <p><strong>ĐỊNH HƯỚNG KHÁM PHÁ</strong></p>
+        <p>Nhân vật → Gia đình → Thế hệ → Quan hệ. Số liệu thật từ genealogy.json → stats.
+           Ứng dụng phả đồ đầy đủ vẫn nằm ở production (#/gia-pha).</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MACH VIEW (prototype listing) -->
+  <div data-view="mach" hidden>
+    <section class="ed-section" aria-label="MẠCH">
+      <div class="ed-section-head">
+        <h2>MẠCH</h2>
+        <p>Tập san di sản — toàn bộ 5 bài Số 01 từ mach.json (snapshot thật).</p>
+      </div>
+      <div class="mach-list" id="machFullList"></div>
+      <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+    </section>
+  </div>
+
+  <!-- MACH STORY DETAIL (prototype) -->
+  <div data-view="story" hidden>
+    <section class="ed-section" aria-label="Bài viết">
+      <p class="lead-kicker" id="storyKicker">MẠCH · Số 01</p>
+      <h1 class="lead-title" id="storyTitle">…</h1>
+      <p class="lead-meta" id="storyMeta">…</p>
+      <article class="memory">
+        <p class="memory-text" id="storyBody">…</p>
+        <div class="ed-more">
+          <a href="#/mach" data-route="/mach">← Tất cả bài viết</a>
+          &nbsp;·&nbsp;
+          <a href="#/" data-route="/">Trang nhất</a>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <!-- TU LIEU VIEW (honest archive prototype) -->
+  <div data-view="tu-lieu" hidden>
+    <section class="ed-section" aria-label="Tư liệu gốc">
+      <div class="ed-section-head">
+        <h2>Tư liệu gốc</h2>
+        <p>Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
+      </div>
+      <div class="archive-note">
+        <p><strong>KHO TƯ LIỆU ĐANG ĐƯỢC XÂY DỰNG &amp; SỐ HÓA</strong></p>
+        <p>media.json hiện chỉ có assetId / sha256 / mimeType / file — chưa đủ
+           semantic metadata (tên, mô tả, ngày tháng, bối cảnh) để dựng gallery thật.
+           Cấu trúc tương lai: Tài liệu → Ảnh → Hiện vật → Ghi âm, mỗi mục có
+           tiêu đề, mô tả, ngày tháng và bối cảnh rõ ràng.</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- LICH VIEW (prototype) -->
+  <div data-view="lich" hidden>
+    <section class="ed-section" aria-label="Lịch gia đình">
+      <div class="ed-section-head">
+        <h2>Lịch gia đình</h2>
+        <p>Ngày giỗ · Sinh nhật — snapshot thật từ CAL_*.ics.</p>
+      </div>
+      <div id="calFullList"></div>
+      <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+    </section>
+  </div>
+
+  <!-- TIM KIEM VIEW (prototype) -->
+  <div data-view="tim-kiem" hidden>
+    <section class="ed-section" aria-label="Tìm kiếm">
+      <div class="ed-section-head">
+        <h2>Tìm kiếm</h2>
+        <p>Tra cứu prototype trên snapshot MẠCH + Ký ức (không gọi backend).</p>
+      </div>
+      <div class="archive-note">
+        <form id="protoSearch" action="#/tim-kiem" onsubmit="return false;">
+          <input id="protoQ" type="search" placeholder="Nhập tên bài viết hoặc ký ức…"
+                 aria-label="Từ khóa tìm kiếm"
+                 style="width:min(420px,90%);padding:10px 12px;font-size:16px;">
+          <button type="submit" style="padding:10px 18px;font-size:15px;cursor:pointer;">Tìm</button>
+        </form>
+        <div id="protoResults" style="margin-top:18px;text-align:left;"></div>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- J. Footer / colophon -->
+  <footer class="colophon">
+    <div class="c-name">Gia Tộc Trần Trọng Thu</div>
+    <p>Ấn phẩm số / kho lưu trữ sống của dòng họ — DESIGN-001 prototype, không phải production.</p>
+    <small>Prototype: design-playground/index.html · Mở trực tiếp bằng Dreamweaver · Không deploy</small>
+  </footer>
+
+</div><!-- /.page -->
+
+<script src="js/prototype-data.js"></script>
+<script src="js/prototype.js"></script>
+<script src="js/router.js"></script>
+</body>
+</html>
