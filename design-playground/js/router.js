@@ -1,5 +1,6 @@
-/* DESIGN-001 prototype router (vanilla, file:// safe).
-   Views: home / gia-pha / mach / story / tu-lieu / lich / tim-kiem.
+/* DESIGN-001 REVISION router (vanilla, file:// safe).
+   Views: home / gia-pha / mach / story / tu-lieu / lich / tim-kiem /
+          tu-cach-thanh-vien / thanh-vien / cai-dat.
    No production code, no backend writes. */
 (function () {
   "use strict";
@@ -16,7 +17,9 @@
     if (name === "mach" && parts[1] === "bai-viet") { showStory(slug); return; }
     if (name === "mach" && parts[1] && parts[1] !== "bai-viet") { showStory(parts[1]); return; }
     var known = { "": "home", "gia-pha": "gia-pha", "mach": "mach",
-      "tu-lieu": "tu-lieu", "lich": "lich", "tim-kiem": "tim-kiem" };
+      "tu-lieu": "tu-lieu", "lich": "lich", "tim-kiem": "tim-kiem",
+      "tu-cach-thanh-vien": "tu-cach-thanh-vien", "thanh-vien": "thanh-vien",
+      "cai-dat": "cai-dat" };
     show(known[name] || "home");
   }
   function show(name) {
@@ -35,10 +38,7 @@
   function stories() {
     var D = window.__D001_DATA;
     if (D && D.stories) return D.stories;
-    var R = window.__d001;
-    if (R && R.stories) return R.stories.map(function (s) {
-      return { slug: s.slug, title: s.title, dek: s.deck, deck: s.deck, date: s.date, series: s.series };
-    });
+    if (window.__d001 && window.__d001.mapStories) return window.__d001.mapStories();
     return [];
   }
   function storyLink(s) {

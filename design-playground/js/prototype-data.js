@@ -46,5 +46,10 @@ window.__D001_DATA={
   "individuals": 228,
   "families": 68,
   "memories": 2
- }
+ },
+ "sidebar": [
+  { "d": "15 / 08", "t": "Ngày giỗ — Giuse Trần Trọng Thu" },
+  { "d": "01 / 01", "t": "Ngày giỗ — Trương Công Trạng" },
+  { "d": "01 / 01", "t": "Ngày giỗ — Trần Thị An - Cam Giang" }
+ ]
 };

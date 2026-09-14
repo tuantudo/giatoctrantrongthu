@@ -1,109 +1,96 @@
-# DESIGN-001 PROTOTYPE REPORT (REPAIRED — NAVIGABLE WEBSITE PROTOTYPE)
+# DESIGN-001 PROTOTYPE REPORT — REVISION PASS
 
-**Status:** PROTOTYPE REPAIRED — AWAITING OWNER VISUAL REVIEW
-**Date:** 2026-09-14 (repair pass, verification pass)
-**NO PRODUCTION DEPLOYMENT. NO PRODUCTION FILES TOUCHED.**
+**Status:** DESIGN-001 REVISION PROTOTYPE COMPLETE — OWNER VISUAL / PRODUCT REVIEW REQUIRED
+**Canonical entry point:** `design-playground/index.html`
+**Data mode:** Real snapshot (mach.json + genealogy.json, 2026-09-14) + clearly-labelled draft copy.
+**Production:** UNTOUCHED. **Deployment:** NOT PERFORMED.
 
 ---
 
-## 1. Canonical prototype path + old discrepancy
+## 1. Canonical path & discrepancy resolution
 
-Canonical entry (Owner opens this in Dreamweaver: File > Open):
+Audit of `design-playground/` found three artifact generations. Canonical = `design-playground/index.html` (the file Owner opened). Non-canonical `design-001/` and `design-001-homepage/` directories are earlier drafts; they were **not deleted** (no authorization to remove) and are not referenced by the canonical entry point.
 
-`design-playground/index.html`
+## 2. Revision implemented (per DESIGN_001_REVISION_BRIEF.md)
 
-Filesystem audit found THREE prototype generations:
+### Homepage narrative
+`IDENTITY (masthead) → INTRODUCTION (draft copy: "Gia Tộc Trần Trọng Thu là ai?") → ORIENTATION / CHOOSE YOUR PATH (public vs member) → CURATED CONTENT (3 MẠCH stories + 1 memory) → DEEPER EXPLORATION (colophon links)`
 
-- `design-playground/index.html` — **CANONICAL.** Full navigable prototype: utility strip, centered masthead (single `ngang` asset), publication navigation, 7 views (home / gia-pha / mach / story / tu-lieu / lich / tim-kiem), vanilla hash router (`js/router.js`), honest snapshot data (`js/prototype-data.js`). This is what Owner reviews.
-- `design-playground/design-001/` — OLD artifact (earlier standalone iteration with its own `prototype.css/js` + its own `.masthead-tagline`). Not referenced by canonical. Left untouched (no deletion of suspected duplicates).
-- `design-playground/design-001-homepage/` — OLD artifact (earlier homepage-only iteration: `part-a/part-b/data-c/data-d` split, local asset copy, HTML tagline `Từ 1872 đến chúng ta`). Not referenced by canonical. Left untouched.
+- No database dump. Stats (228 / 68 / 2) appear once as one restrained line inside Introduction, labelled "(số liệu thật, trình bày tiết chế)".
+- Introduction copy marked `[DRAFT]` — not invented as fact.
 
-Previous report described only `design-001-homepage/` as the prototype — **WRONG/outdated**. This repair pass corrects the record: Owner reviews `design-playground/index.html`.
+### Public / Member / Owner boundary
+- **Public nav:** Trang chủ, MẠCH, Tư Liệu, Gia Phả, Lịch, Tìm kiếm.
+- **Member entry:** `Tư cách thành viên →` in utility strip + dedicated `#/tu-cach-thanh-vien` view + "Tôi là Thành viên" path block. Auth NOT implemented (honest placeholder).
+- **Owner Control Plane:** NOT in public navigation; architectural indication in colophon only.
 
-## 2. Files created / modified (this repair pass — playground + report only)
+### Global publication shell
+Utility strip → masthead (single `logoGiaToc_ngang.svg` artwork, tagline inside artwork as vector paths — no HTML tagline duplicate) → **sticky** publication nav (runtime-verified `position: sticky`) → views → colophon. Utilities iconified: `⌂` Trang chủ, `⌕` Tìm kiếm, `⚙` Cài đặt.
 
-- `design-playground/index.html` — canonical entry; masthead uses single `assets/logoGiaToc_ngang.svg`; NO HTML tagline; 7 `data-view` blocks; nav with `data-route`; footer colophon.
-- `design-playground/css/prototype.css` — removed stale `.masthead-tagline` rules (element does not exist in canonical); all other responsive rules intact.
-- `design-playground/js/router.js` — vanilla hash router (home / gia-pha / mach / story / tu-lieu / lich / tim-kiem + snapshot search handler).
-- `design-playground/js/prototype.js` — snapshot renderers (lead, MACH rows, sidebar, memory, stats) + live-API upgrade path (fails silent offline).
-- `design-playground/js/prototype-data.js` — REAL 2026-09-14 snapshot (mach.json / genealogy.json / CAL ICS rows), UTF-8 verbatim.
-- `design-playground/assets/logoGiaToc_ngang.svg` — local copy of production asset for `file://` + Dreamweaver Live View.
-- `docs/architecture/DESIGN_001_PROTOTYPE_REPORT.md` — this rewrite (removed stale duplicate second-half describing `design-001-homepage/`).
 
-NO production files created/modified. NO deploy.
+### Views / routes (10, all runtime-verified: exactly one visible view each)
+| Route | View | Content |
+|---|---|---|
+| `#/` | home | Intro + paths + curated grid (3 real stories) + memory (real 423-char text) + teasers |
+| `#/mach` | mach | Full real listing |
+| `#/mach/bai-viet/<slug>` | story | Real article + reading tools |
+| `#/tu-lieu` | tu-lieu | Honest state (metadata gap), archive-structured |
+| `#/gia-pha` | gia-pha | Real stats + discovery direction, no people dump |
+| `#/lich` | lich | Real memorial rows from ICS snapshot |
+| `#/tim-kiem` | tim-kiem | Working client-side search over real data |
+| `#/tu-cach-thanh-vien` | member entry | Placeholder, honest |
+| `#/cai-dat` | settings | Placeholder |
+| `#/gia-pha/ky-uc` | memories | Real memory list |
 
-## 3. Logo fix + duplicate tagline removal (SOURCE + RUNTIME + VISUAL verified)
+### Reading tools (story detail only — not in nav)
+Runtime-verified: **A− / A+ / Share / Bookmark / Comment / Print**. A−/A+ functional. Share/Bookmark/Comment/Print are visual placeholders — no fake backend claims.
 
-- Masthead markup: single `<img class="masthead-logo" src="assets/logoGiaToc_ngang.svg">`. No `<picture>` swap. No icon-only logo. No `logoGiaToc_original.svg` in prototype (prototype hypothesis = single asset).
-- Asset resolves: HTTP 200, 26518 bytes at `/assets/logoGiaToc_ngang.svg`.
-- Rendered evidence (live browser at `http://127.0.0.1:8931/index.html`): `naturalWidth = 300`; rendered 560px (1440) / 460px (1024, 768) / 320px (390); `hScroll = 0` at every width.
-- Artwork `grep -c '<text'` = 0 → tagline lives in SVG artwork as vector paths.
-## 4. Navigation implementation (navigable website prototype, not dead links)
+### System tools
+- **Back-to-top:** runtime-verified (scrollY 1200 → 35 after click).
+- **Chatbot:** FAB opens panel with honest "chưa kết nối" copy; closes correctly.
 
-Vanilla hash router `js/router.js` (file:// safe, no build step, no production code). Verified live by clicking — each destination shows exactly one view and updates `aria-current`:
+### Footer / Colophon
+Source-backed content: publication identity, archive sections, member boundary note, Owner-Control-Plane architectural indication. No invented facts.
 
-- `#/` → **home** (utility, masthead, nav, lead with sidebar, MACH list, Ký ức, Tư liệu, Gia phả stats, colophon)
-- `#/gia-pha` → **gia-pha** (stats 228/68/2, discovery direction, back-to-home)
-- `#/mach` → **mach** (full listing, 5 real stories)
-- `#/mach/bai-viet/:slug` → **story** (verified: title + kicker render from snapshot)
-- `#/tu-lieu` → **tu-lieu** (honest archive placeholder + future structure note)
-- `#/lich` → **lich** (3 real memorial rows from snapshot)
-- `#/tim-kiem` → **tim-kiem** (snapshot search; live test "MẠCH" → 2 hits rendered)
+## 3. Verification evidence
 
-Utility-strip `#cai-dat` link routes via router fallback to home (docs state production route is `#/cai-dat`; prototype-only, no settings view).
+| Check | Method | Result |
+|---|---|---|
+| JS syntax | `node --check` ×4 files | PASS |
+| Asset paths | curl 200 ×8 (css, 4 js, 3 svg) | PASS |
+| Logo rendered | Playwright: `logoGiaToc_ngang.svg`, naturalWidth > 0 | PASS |
+| No HTML tagline duplicate | Runtime DOM query + `grep 1872` markup | PASS |
+| Nav sticky | `getComputedStyle` = `sticky` | PASS |
+| All 10 routes | Playwright: one visible `[data-view]` each | PASS |
+| Back-to-top / chatbot | Playwright click-through | PASS |
+| Reading tools | DOM extraction | 6 tools present |
+| Responsive 1440/1024/768/390 | Playwright resize: no horizontal overflow, logo renders at all | PASS |
+| Console | Playwright listener after favicon fix | **0 errors** |
+| Production files | `git status`: only pre-existing mods (server/index.js, server.log, lunar-engine.js, assets/images/logoGiaToc_ngang.svg) | not mine, untouched |
 
-## 5. Data sources (REAL snapshots 2026-09-14, UTF-8 verbatim; NO fakes)
+## 4. Files created/modified (this revision)
 
-- `mach.json → stories[0..4]`: lead = "Giới Thiệu: MẠCH được bắt đầu như thế nào?" (deckLead verbatim, publishedAt, seriesSlug). Rows 02–05 with verbatim deckLead.
-- `genealogy.json → memories[0]`: "KÝ ỨC VỀ ÔNG AN-TÔN TRẦN TRỌNG THƯ" (title/person verbatim, story excerpt). Stats verbatim: 228 / 68 / 2.
-- `CAL_03_MEMORIALS.ics → SUMMARY/DTSTART rows`: Giuse Trần Trọng Thu (15/08), Trương Công Trạng + Trần Thị An (01/01).
-- Tư Liệu: honest placeholder — media.json lacks semantic metadata; no gallery fabricated.
-- Representative data: none. All rendered content is verbatim real snapshot. No lorem ipsum. No DB/API writes.
+- `design-playground/index.html` — revision IA, nav fix, favicon link
+- `design-playground/css/prototype.css` — revision layout, sticky nav, paths, tools
+- `design-playground/js/prototype.js` — narrative section renderers
+- `design-playground/js/router.js` — 10-route hash router
+- `design-playground/js/system.js` — back-to-top + chatbot panel
+- `design-playground/js/prototype-data.js` — real snapshot data
+- `design-playground/assets/logoGiaToc.svg` — favicon asset copy (icon-only = favicon only)
+- `docs/architecture/DESIGN_001_PROTOTYPE_REPORT.md` — this report
 
-## 6. Responsive verification (RUNTIME via live browser, CSS viewport widths)
+## 5. Known limitations / open decisions for Owner
 
-Single `ngang` asset at every viewport; responsiveness from layout/CSS only. No horizontal overflow anywhere:
+1. Member Space is a placeholder — auth/architecture is future work (out of DESIGN-001 scope).
+2. Reading tools beyond A−/A+ are visual prototypes, not wired to any backend.
+3. Chatbot panel is an entry mock only.
+4. Introduction copy is `[DRAFT]` pending verified sources.
+5. Brief Open Question §6.2 (calendar on public homepage) awaits Owner decision.
+6. Brief Open Question §6.3 (stats line on homepage) awaits Owner decision.
+7. Single-asset masthead (`ngang` only, no swap) is the hypothesis under test — confirmed rendering at all 4 viewports.
 
-| Viewport | Logo rendered | Lead layout | Overflow |
-|---|---|---|---|
-| 1440 | 560px | 2-col 65%/35% (749 + 363px) | 0 |
-| 1024 | 460px | 2-col 60%/35% (586 + 362px) | 0 |
-| 768 | 460px | single col (720px); sidebar stacks below | 0 |
-| 390 | 320px | single col (358px); stats stack | 0 |
+## 6. Explicit statements
 
-## 7. Dreamweaver compatibility
-
-Single self-contained folder, relative paths (`css/`, `js/`, `assets/`), vanilla HTML/CSS/JS, no build step, no server required for basic render. Owner: Dreamweaver → File → Open → `design-playground/index.html` → Design/Live/Split all work; responsive viewport testing at 1440/1024/768/390.
-
-## 8. Browser verification + console
-
-- Playwright Chromium on `http://127.0.0.1:8931/index.html`.
-- Logo rendered, all 7 views switch, story detail renders, search returns 2 results for "MẠCH".
-- Console: `0` errors, `0` warnings (this verification session).
-- `node --check` PASS on `js/prototype.js`, `js/prototype-data.js`, `js/router.js`.
-
-## 9. Production scope verification
-
-`git status` shows production `index.html`, `src/css/main.css`, `src/js/app.js` UNMODIFIED. Pre-existing dirty files (this session did NOT touch): `assets/images/logoGiaToc_ngang.svg`, `server/index.js`, `server/server.log`, `src/js/core/lunar-engine.js` — already modified before this task. CHANGE-001 not executed. No backend/API/database/auth/Vercel/DNS changes. No deploy.
-
-## 10. Known limitations
-
-- Snapshot data frozen 2026-09-14 (live-API upgrade path exists in `prototype.js` but fails silent offline).
-- Old `design-001/` + `design-001-homepage/` artifacts remain on disk (intentionally not deleted; canonical unambiguous per §1).
-- Lead hero art uses an honest placeholder frame (heroMediaId unresolvable from media.json).
-- Utility `Cài đặt` link maps to home (no settings view in prototype; production route unchanged).
-- Local verification server (port 8931) used for runtime checks; NO production deployment performed.
-
-## 11. Exact next step: OWNER VISUAL REVIEW requested
-
-Open `design-playground/index.html` in Dreamweaver + browser at 1440 / 1024 / 768 / 390. Judge:
-1. Identity — vẫn là Gia Tộc Trần Trọng Thu?
-2. Publication — giống online publication / living archive?
-3. Hierarchy — mắt đi đúng: masthead → nav → lead → sections?
-4. Editorial character — publication hơn web app?
-5. Responsive — layout thích nghi tự nhiên khi hẹp?
-6. Logo — một masthead ngang duy nhất có giữ identity đủ tốt ở mọi viewport?
-7. Content — real data giúp đánh giá thay vì làm prototype giả tạo?
-
-Decide: **APPROVE / REVISE / REJECT**. No agent-declared visual approval.
-- Duplicate tagline: canonical `index.html` has ZERO `.masthead-tagline` elements; `grep` on canonical HTML/CSS = no match; live DOM check = no `Từ 1872 đến chúng ta` text. (`design-001-homepage/` old artifact still contains one — out of scope, not Owner-facing.)
+- NO PRODUCTION DEPLOYMENT.
+- NO production file modified by this task.
+- NO visual acceptance declared. **OWNER VISUAL / PRODUCT REVIEW REQUIRED** (Dreamweaver: File → Open → `design-playground/index.html`, or open directly in browser).
