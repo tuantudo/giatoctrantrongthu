@@ -2030,7 +2030,6 @@ function renderHomePublicationLanding() {
             genEl.textContent = '—';
         }
     }
-}
 
     const machMeta = document.getElementById("homeMachMeta");
     if (machMeta && machData) {
@@ -2044,7 +2043,6 @@ function renderHomePublicationLanding() {
         // Honest empty/in-progress state - do not claim unindexed items or display "0 hiện vật"
         archiveMeta.innerText = "Đang sưu tầm & số hóa tư liệu";
     }
-
 }
 
 /**
