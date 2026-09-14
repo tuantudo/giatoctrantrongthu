@@ -1983,14 +1983,53 @@ function renderHomePublicationLanding() {
         }).join('');
     }
 
-    // 3. Sidebar Calendar — reuse calEvents from existing calendar pipeline
+    // 3. Ký Ức & Ghi chép — from appData.memories (real data, no fake content)
+    const kyUcCard = document.getElementById("kyUcCard");
+    if (kyUcCard) {
+        const memories = appData.memories || [];
+        if (memories.length > 0) {
+            const mem = memories[0];
+            // Clean title: remove emoji prefix if present
+            const rawTitle = mem.title || 'Ký ức gia tộc';
+            const title = rawTitle.replace(/^[\u{1F300}-\u{1FAFF}\u2600-\u27BF\u2B00-\u2BFF\uFE0F]+\s*/u, '').trim() || rawTitle;
+            // Truncate story to ~200 chars for homepage excerpt
+            const story = mem.story || '';
+            const excerpt = story.length > 200 ? story.slice(0, 200).trim() + '...' : story;
+            const personName = mem.personName || '';
+
+            kyUcCard.innerHTML = `
+                <h3 class="ky-uc-title">${escapeHtml(title)}</h3>
+                ${personName ? `<div class="ky-uc-meta">— ${escapeHtml(personName)}</div>` : ''}
+                <p class="ky-uc-excerpt">${escapeHtml(excerpt)}</p>
+                <a href="#/gia-pha/ky-uc" class="ky-uc-cta" onclick="navigateRoute('/gia-pha/ky-uc')">Đọc toàn bộ ký ức →</a>
+            `;
+        } else {
+            kyUcCard.innerHTML = '<p class="ky-uc-excerpt">Chưa có ghi chép ký ức nào được số hóa.</p>';
+        }
+    }
+
+    // 4. Sidebar Calendar — reuse calEvents from existing calendar pipeline
     renderSidebarCalendar();
 
-    // 4. Gia Phả Stats — from appData.stats (individuals, families only)
+    // 5. Gia Phả Stats — from appData.stats + derivedGenerations (real data)
     const indEl = document.getElementById("statIndividuals");
     const famEl = document.getElementById("statFamilies");
+    const genEl = document.getElementById("statGenerations");
     if (indEl) indEl.textContent = stats.individuals || Object.keys(people).length || '—';
     if (famEl) famEl.textContent = stats.families || Object.keys(appData.families || {}).length || '—';
+    if (genEl) {
+        // Compute generation count from derivedGenerations (populated by deriveFamilyGraphGenerations)
+        const genLevels = Object.values(derivedGenerations).filter(l => l !== undefined && l !== null);
+        if (genLevels.length > 0) {
+            const maxGen = Math.max(...genLevels);
+            const minGen = Math.min(...genLevels);
+            // Total generations = max - min + 1 (including negative levels for ancestors)
+            const totalGens = maxGen - minGen + 1;
+            genEl.textContent = totalGens > 0 ? totalGens : '—';
+        } else {
+            genEl.textContent = '—';
+        }
+    }
 }
 
     const machMeta = document.getElementById("homeMachMeta");

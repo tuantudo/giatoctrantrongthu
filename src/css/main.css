@@ -5019,6 +5019,41 @@ img.editorial-logo {
     padding-top: 1rem;
 }
 
+/* Ký Ức & Ghi chép Card */
+.ky-uc-card {
+    max-width: 68ch;
+    margin: 0 auto;
+}
+.ky-uc-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-h2);
+    color: var(--ink-black);
+    margin-bottom: 0.5rem;
+    line-height: var(--leading-tight);
+}
+.ky-uc-meta {
+    font-family: var(--font-sans);
+    font-size: var(--text-meta);
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+}
+.ky-uc-excerpt {
+    font-family: var(--font-serif);
+    font-size: var(--text-body);
+    color: var(--ink-black);
+    line-height: var(--leading-relaxed);
+    margin-bottom: 1.25rem;
+}
+.ky-uc-cta {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
+    color: var(--lacquer-red);
+    text-decoration: none;
+}
+.ky-uc-cta:hover {
+    text-decoration: underline;
+}
+
 .section-more:hover,
 .section-cta:hover {
     text-decoration: underline;
