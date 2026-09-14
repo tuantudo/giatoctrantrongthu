@@ -1928,68 +1928,70 @@ function renderHomePublicationLanding() {
 
     const people = appData.people || {};
     const stats = appData.stats || { individuals: Object.keys(people).length, families: Object.keys(appData.families || {}).length, memories: (appData.memories || []).length };
-    const rootId = appData.rootAnchor || Object.keys(people)[0];
-    const rootPerson = people[rootId];
 
-    // 1. BLOCK 01: Dynamic Hero Lede & Subject Anchor
-    const heroAnchorEl = document.getElementById("homeHeroAnchor");
-    if (heroAnchorEl) {
-        if (rootPerson) {
-            const rootName = rootPerson.name || "cụ Giuse Trần Trọng Thu";
-            const bYear = rootPerson.birth && rootPerson.birth.date ? rootPerson.birth.date.replace(/[^0-9]/g, '').slice(0, 4) : "1872";
-            const dYear = rootPerson.death && rootPerson.death.date ? rootPerson.death.date.slice(-4) : "1969";
-            const bPlace = (rootPerson.birth && rootPerson.birth.place) ? rootPerson.birth.place.split(',')[0].trim() : "Thanh Hóa";
-            const genLevels = window.maxDerivedGenLevel ? (window.maxDerivedGenLevel + 1) : 5;
-            
-            heroAnchorEl.innerHTML = `Bắt đầu từ cụ <strong>${escapeHtml(rootName)}</strong> (${bYear}–${dYear}) tại ${escapeHtml(bPlace)}, trải qua hơn 150 năm với ${genLevels} thế hệ tiếp nối.`;
-        } else {
-            heroAnchorEl.innerText = "Bắt đầu từ cụ Giuse Trần Trọng Thu (1872–1969) tại Thanh Hóa, trải qua hơn 150 năm với 5 thế hệ tiếp nối.";
+    // 1. Lead Story — Featured article from MẠCH
+    const leadStory = document.getElementById("homeLeadStory");
+    if (leadStory && machData && (machData.articles || machData.stories)) {
+        const allArticles = machData.articles || machData.stories;
+        const featured = allArticles.find(a => a.featured === true) || allArticles[0];
+
+        if (featured) {
+            const heroMedia = machData.media && machData.media[featured.heroMediaId];
+            const imageUrl = heroMedia ? heroMedia.src : (featured.heroImage || featured.coverImage || featured.hero || '');
+
+            const imgEl = document.getElementById("leadStoryImage");
+            if (imgEl) {
+                imgEl.style.backgroundImage = imageUrl ? `url('${imageUrl}')` : '';
+            }
+
+            const tagEl = document.getElementById("leadStoryTag");
+            if (tagEl) tagEl.textContent = 'MẠCH';
+
+            const titleEl = document.getElementById("leadStoryTitle");
+            if (titleEl) titleEl.textContent = featured.title || '';
+
+            const deckEl = document.getElementById("leadStoryDeck");
+            if (deckEl) deckEl.textContent = featured.deckLead || featured.excerpt || featured.subtitle || '';
+
+            const metaEl = document.getElementById("leadStoryMeta");
+            if (metaEl) {
+                const dateStr = featured.publishedAt ? new Date(featured.publishedAt).toLocaleDateString('vi-VN') : '';
+                metaEl.innerHTML = dateStr ? `<span>${dateStr}</span>` : '';
+            }
+
+            leadStory.onclick = () => navigateRoute(`/mach/bai-viet/${featured.slug}`);
         }
     }
 
-    // 2. BLOCK 02: Dynamic Human Memory Spotlight (Bà Sa / Cụ Thư)
-    const spotlightContent = document.getElementById("homeSpotlightContent");
-    if (spotlightContent) {
-        const memories = appData.memories || [];
-        if (memories.length > 0) {
-            // Default to memory 0 (Bà Sa) as recommended in brief, easily configurable
-            const mem = memories[0];
-            const title = mem.title ? mem.title.replace(/^[📖🕯️]\s*/u, '') : "Ký ức tiền nhân";
-            const personName = mem.personName ? ` — ${mem.personName.split('@')[0].trim()}` : '';
-            const fullTitle = `${title}${personName}`;
-            // Clean passage from memory story without altering facts
-            const passage = mem.story ? (mem.story.length > 290 ? mem.story.slice(0, 290).trim() + '...' : mem.story) : '';
-            
-            spotlightContent.innerHTML = `
-                <h3 class="box-title">${escapeHtml(fullTitle)}</h3>
-                <p class="box-passage">${escapeHtml(passage)}</p>
-                <div class="box-footer">
-                    <span>Ghi chép truyền khẩu · ${memories.length} mẩu ký ức</span>
-                    <a class="box-link" href="#/gia-pha/ky-uc" onclick="navigateRoute('/gia-pha/ky-uc')">Đọc toàn bộ ký ức này →</a>
-                </div>
+    // 2. MẠCH Section Grid — first 3 articles
+    const machGrid = document.getElementById("machSectionGrid");
+    if (machGrid && machData && (machData.articles || machData.stories)) {
+        const articles = (machData.articles || machData.stories || []).slice(0, 3);
+        machGrid.innerHTML = articles.map(a => {
+            const heroMedia = machData.media && machData.media[a.heroMediaId];
+            const imgUrl = heroMedia ? heroMedia.src : (a.heroImage || a.coverImage || a.hero || '');
+            const imgStyle = imgUrl ? `background-image:url('${imgUrl}')` : '';
+            const deck = (a.deckLead || a.excerpt || '').slice(0, 100);
+
+            return `
+                <article class="mach-card" onclick="navigateRoute('/mach/bai-viet/${a.slug}')">
+                    <div class="mach-card-image" style="${imgStyle}"></div>
+                    <h3 class="mach-card-title">${escapeHtml(a.title || '')}</h3>
+                    <p class="mach-card-deck">${escapeHtml(deck)}${deck.length >= 100 ? '...' : ''}</p>
+                </article>
             `;
-        } else {
-            const spotlightSec = document.getElementById("homeHumanSpotlight");
-            if (spotlightSec) spotlightSec.style.display = "none";
-        }
+        }).join('');
     }
 
-    // 3. BLOCK 03: Explore People Count
-    const explorePeopleCount = document.getElementById("explorePeopleCount");
-    if (explorePeopleCount) {
-        const peopleCount = stats.individuals || Object.keys(people).length;
-        const genCount = window.maxDerivedGenLevel ? (window.maxDerivedGenLevel + 1) : 5;
-        explorePeopleCount.innerText = `Tra cứu hồ sơ ${peopleCount} thành viên qua ${genCount} thế hệ`;
-    }
+    // 3. Sidebar Calendar — reuse calEvents from existing calendar pipeline
+    renderSidebarCalendar();
 
-    // 4. BLOCK 04: Dynamic Territory Card Metas
-    const genMeta = document.getElementById("homeGenealogyMeta");
-    if (genMeta) {
-        const peopleCount = stats.individuals || Object.keys(people).length;
-        const famCount = stats.families || Object.keys(appData.families || {}).length;
-        const genCount = window.maxDerivedGenLevel ? (window.maxDerivedGenLevel + 1) : 5;
-        genMeta.innerText = `${peopleCount} thành viên · ${famCount} gia đình · ${genCount} thế hệ`;
-    }
+    // 4. Gia Phả Stats — from appData.stats (individuals, families only)
+    const indEl = document.getElementById("statIndividuals");
+    const famEl = document.getElementById("statFamilies");
+    if (indEl) indEl.textContent = stats.individuals || Object.keys(people).length || '—';
+    if (famEl) famEl.textContent = stats.families || Object.keys(appData.families || {}).length || '—';
+}
 
     const machMeta = document.getElementById("homeMachMeta");
     if (machMeta && machData) {
@@ -2004,58 +2006,67 @@ function renderHomePublicationLanding() {
         archiveMeta.innerText = "Đang sưu tầm & số hóa tư liệu";
     }
 
-    // 5. BLOCK 05: Dynamic Featured Essay from MẠCH (clara-001 default)
-    const featureCard = document.getElementById("homeFeatureCard");
-    if (featureCard && machData && (machData.articles || machData.stories)) {
-        const allArticles = machData.articles || machData.stories;
-        // Priority: clara-001 (human/epistolary voice) or 06-gio-va-ky-uc-gia-dinh
-        let featured = allArticles.find(a => a.articleType === 'essay' || a.presentationVariant === 'essay')
-                    || allArticles[0];
+}
 
-        if (featured) {
-            const seriesId = (featured.seriesIds && featured.seriesIds.length > 0) ? featured.seriesIds[0] : (featured.seriesId || featured.seriesSlug);
-            const ser = (machData.series && seriesId) ? machData.series[seriesId] : null;
-            const authId = (featured.authorIds && featured.authorIds.length > 0) ? featured.authorIds[0] : featured.authorId;
-            const auth = (machData.authors && authId) ? machData.authors[authId] : { name: "Ban Biên Tập MẠCH" };
-            const isLetter = featured.articleType === 'letter' || (ser && ser.seriesType === 'epistolary');
-            const tagLabel = ser ? `${(ser.shortTitle || ser.title).toUpperCase()}${featured.seriesOrder ? ' · ' + (isLetter ? 'SỐ' : 'BÀI') + ' ' + String(featured.seriesOrder).padStart(2, '0') : ''}` : 'MẠCH · NẾP NHÀ';
-            const excerpt = featured.deckLead || featured.excerpt || featured.subtitle || "Khám phá bài viết trong tập san MẠCH.";
+/**
+ * Sidebar calendar widget — reuses the same calEvents[] array
+ * populated by loadCalendarFeeds() from ICS feeds.
+ * No new calendar engine; no duplicated lunar logic.
+ */
+function renderSidebarCalendar() {
+    const container = document.getElementById("sidebarCalendar");
+    if (!container) return;
 
-            featureCard.setAttribute("onclick", `navigateRoute('/mach/bai-viet/${featured.slug}')`);
-            featureCard.className = "comm-substance-box box-essay";
-            featureCard.innerHTML = `
-                <div class="essay-tag">${escapeHtml(tagLabel)}</div>
-                <h3 class="box-title">${escapeHtml(featured.title)}</h3>
-                <p class="box-passage">${escapeHtml(excerpt)}</p>
-                <div class="box-footer">
-                    <span>${escapeHtml(auth.name)} · ${featured.date || (featured.publishedAt ? featured.publishedAt.slice(0, 10) : '2026')}</span>
-                    <span class="box-link">Đọc bài viết →</span>
-                </div>
-            `;
-        }
+    // calEvents is async-populated by loadCalendarFeeds()
+    if (!calEvents || calEvents.length === 0) {
+        container.innerHTML = '<p class="sidebar-empty">Đang tải lịch...</p>';
+        // Retry once after a short delay in case ICS feeds haven't completed
+        setTimeout(() => {
+            if (calEvents && calEvents.length > 0) {
+                renderSidebarCalendar();
+            }
+        }, 1500);
+        return;
     }
 
-    // 6. BLOCK 06: Dynamic Substance Facts (Compact Scale Line - 223 / 68 / 5 thế hệ)
-    const substanceFacts = document.getElementById("homeSubstanceFacts");
-    if (substanceFacts) {
-        const peopleCount = stats.individuals || Object.keys(people).length;
-        const famCount = stats.families || Object.keys(appData.families || {}).length;
-        const genCount = window.maxDerivedGenLevel ? (window.maxDerivedGenLevel + 1) : 5;
-        const startYear = (rootPerson && rootPerson.birth && rootPerson.birth.date) ? rootPerson.birth.date.replace(/[^0-9]/g, '').slice(0, 4) : "1872";
+    const today = new Date();
 
-        substanceFacts.innerHTML = `
-            <div class="fact-row">
-                <span class="fact-label">Quy mô ghi nhận:</span>
-                <span class="fact-val"><strong>${peopleCount}</strong> thành viên</span>
-                <span class="fact-sep">·</span>
-                <span class="fact-val"><strong>${famCount}</strong> gia đình</span>
-                <span class="fact-sep">·</span>
-                <span class="fact-val"><strong>${genCount}</strong> thế hệ</span>
-                <span class="fact-sep">·</span>
-                <span class="fact-val">Khởi nguồn từ năm <strong>${startYear}</strong></span>
-            </div>
-        `;
+    // Filter for memorials + birthdays, compute days until next occurrence
+    const upcoming = calEvents
+        .filter(ev => ev.layer === 'memorials' || ev.layer === 'birthdays')
+        .map(ev => {
+            const evMonth = ev.month || parseInt((ev.mmdd || '').substring(0, 2), 10);
+            const evDay = ev.day || parseInt((ev.mmdd || '').substring(2, 4), 10);
+            if (!evMonth || !evDay) return null;
+
+            let nextDate = new Date(today.getFullYear(), evMonth - 1, evDay);
+            if (nextDate < today) {
+                nextDate.setFullYear(today.getFullYear() + 1);
+            }
+            const daysUntil = Math.ceil((nextDate - today) / (1000 * 60 * 60 * 24));
+
+            return {
+                summary: ev.summary || '',
+                date: `${evDay}/${evMonth}`,
+                daysUntil: daysUntil
+            };
+        })
+        .filter(ev => ev !== null)
+        .sort((a, b) => a.daysUntil - b.daysUntil)
+        .slice(0, 3);
+
+    if (upcoming.length === 0) {
+        container.innerHTML = '<p class="sidebar-empty">Không có sự kiện sắp tới</p>';
+        return;
     }
+
+    container.innerHTML = upcoming.map(ev => `
+        <div class="calendar-event-item">
+            <span class="calendar-event-date">${ev.date}</span>
+            <span class="calendar-event-name">${escapeHtml(ev.summary)}</span>
+            <span class="calendar-event-countdown">${ev.daysUntil} ngày</span>
+        </div>
+    `).join('');
 }
 
 // =======================================================

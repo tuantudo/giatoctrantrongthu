@@ -4662,15 +4662,15 @@ button, .btn, .btn-primary, .btn-secondary {
     text-decoration: none;
 }
 .editorial-logo {
-    /* Base height for mobile (icon-only) */
-    height: 64px;
+    /* Base height for tablet + mobile (full horizontal nameplate) */
+    height: 80px;
     max-width: 90vw;
     width: auto;
     display: block;
     margin: 0 auto;
 }
 
-/* WIDE DESKTOP */
+/* WIDE DESKTOP: full vertical nameplate */
 @media (min-width: 1024px) {
     .editorial-logo {
         height: 160px;
@@ -4680,11 +4680,8 @@ button, .btn, .btn-primary, .btn-secondary {
     }
 }
 
-/* NARROW DESKTOP / TABLET */
+/* NARROW DESKTOP / TABLET: same as base (ngang) */
 @media (min-width: 640px) and (max-width: 1023px) {
-    .editorial-logo {
-        height: 80px;
-    }
     .header-nameplate {
         padding: 2.5rem 24px 2rem;
     }
@@ -4770,4 +4767,359 @@ img.editorial-logo {
     border: none !important;
     padding: 0 !important;
     background: transparent !important;
+}
+
+/* ============================================
+   EDITORIAL PUBLICATION SHELL
+   Design: docs/architecture/EDITORIAL_PUBLICATION_SHELL_DESIGN_BRIEF.md
+   ============================================ */
+
+/* Publication Shell Container */
+.publication-shell {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Lead Layout 65/35 */
+.publication-lead {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    gap: 32px;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-hairline);
+}
+
+/* Lead Story */
+.lead-story {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.lead-story:hover {
+    opacity: 0.92;
+}
+
+.lead-story-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-hairline);
+    margin-bottom: 1rem;
+}
+
+.lead-story-tag {
+    font-family: var(--font-sans);
+    font-size: var(--text-meta);
+    letter-spacing: var(--tracking-meta);
+    text-transform: uppercase;
+    color: var(--lacquer-red);
+    font-weight: 600;
+}
+
+.lead-story-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-h1);
+    line-height: var(--leading-tight);
+    margin: 0.5rem 0 0.75rem;
+    color: var(--ink-black);
+}
+
+.lead-story-deck {
+    font-family: var(--font-serif);
+    font-size: var(--text-body-sm);
+    color: var(--ink-muted);
+    line-height: var(--leading-normal);
+    margin-bottom: 0.75rem;
+}
+
+.lead-story-meta {
+    font-family: var(--font-sans);
+    font-size: var(--text-meta);
+    color: var(--ink-muted);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+}
+
+/* Sidebar Widget */
+.sidebar-widget {
+    border: 1px solid var(--border-hairline);
+    padding: 1.25rem;
+    background: var(--bg-surface);
+}
+
+.sidebar-widget-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--ink-black);
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-calendar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.calendar-event-item {
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: var(--text-body-sm);
+}
+
+.calendar-event-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.calendar-event-date {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--lacquer-red);
+}
+
+.calendar-event-name {
+    font-family: var(--font-sans);
+    color: var(--ink-black);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.calendar-event-countdown {
+    font-family: var(--font-sans);
+    font-size: var(--text-meta);
+    color: var(--ink-muted);
+}
+
+.sidebar-empty {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
+    color: var(--ink-muted);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.sidebar-widget-link {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
+    color: var(--lacquer-red);
+    text-decoration: none;
+    border-top: 1px solid var(--border-hairline);
+    padding-top: 0.75rem;
+    text-align: center;
+}
+
+.sidebar-widget-link:hover {
+    text-decoration: underline;
+.sidebar-widget-link:hover {
+    text-decoration: underline;
+}
+
+/* Publication Sections */
+.publication-section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border-hairline);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-heading {
+    font-family: var(--font-serif);
+    font-size: var(--text-h1);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--ink-black);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
+    color: var(--ink-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--lacquer-red);
+    margin: 0 auto 2rem;
+}
+
+/* Section Grid (MẠCH) */
+.section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 1.5rem;
+}
+
+.mach-card {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.mach-card:hover {
+    opacity: 0.92;
+}
+
+.mach-card-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-hairline);
+    margin-bottom: 0.75rem;
+}
+
+.mach-card-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    line-height: var(--leading-snug);
+    color: var(--ink-black);
+    margin-bottom: 0.25rem;
+}
+
+.mach-card-deck {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
+    color: var(--ink-muted);
+    line-height: var(--leading-normal);
+}
+
+/* Section More / CTA Links */
+.section-more,
+.section-cta {
+    display: block;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
+    color: var(--lacquer-red);
+    text-decoration: none;
+    padding-top: 1rem;
+}
+
+.section-more:hover,
+.section-cta:hover {
+    text-decoration: underline;
+}
+
+/* Tư Liệu Placeholder */
+.tu-lieu-placeholder {
+    text-align: center;
+    padding: 2rem;
+    font-family: var(--font-serif);
+    font-size: var(--text-body-sm);
+    color: var(--ink-muted);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-hairline);
+    margin-bottom: 1rem;
+}
+
+/* Gia Phả Stats */
+.gia-pha-section {
+    border-bottom: none;
+}
+
+.gia-pha-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 2rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--lacquer-red);
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-meta);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-meta);
+    color: var(--ink-muted);
+    margin-top: 0.5rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1023px) {
+    .publication-lead {
+        grid-template-columns: 60% 40%;
+        gap: 24px;
+    }
+    .section-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .publication-shell {
+        padding: 0 16px;
+    }
+    .publication-lead {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 1.5rem 0;
+    }
+    .lead-sidebar {
+        order: 2;
+    }
+    .lead-story-title {
+        font-size: var(--text-h2);
+    }
+    .section-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .gia-pha-stats {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .publication-section {
+        padding: 1.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .publication-shell {
+        padding: 0 12px;
+    }
+    .lead-story-image {
+        aspect-ratio: 4 / 3;
+    }
+    .sidebar-widget {
+        padding: 1rem;
+    }
+    .calendar-event-item {
+        grid-template-columns: 40px 1fr auto;
+        gap: 8px;
+    }
+}
 }

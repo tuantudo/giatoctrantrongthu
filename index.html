@@ -27,12 +27,10 @@
         <div class="header-nameplate">
             <a href="#/" class="nameplate-link">
                 <picture class="editorial-logo-picture">
-                    <!-- WIDE DESKTOP -->
+                    <!-- WIDE DESKTOP: full vertical nameplate -->
                     <source media="(min-width: 1024px)" srcset="assets/images/logoGiaToc_original.svg">
-                    <!-- TABLET / NARROW DESKTOP -->
-                    <source media="(min-width: 640px)" srcset="assets/images/logoGiaToc_ngang.svg">
-                    <!-- MOBILE / VERY NARROW -->
-                    <img src="assets/images/logoGiaToc.svg" class="editorial-logo" alt="Gia Tộc Trần Trọng Thu">
+                    <!-- DEFAULT (tablet + mobile): full horizontal nameplate -->
+                    <img src="assets/images/logoGiaToc_ngang.svg" class="editorial-logo" alt="Gia Tộc Trần Trọng Thu">
                 </picture>
             </a>
         </div>
@@ -63,51 +61,76 @@
     <!-- MAIN VIEWPORT -->
     <main>
 
-        <!-- 1. HOME / PUBLICATION LANDING VIEW (FAMILY FRONT DOOR) -->
+        <!-- 1. HOME / PUBLICATION LANDING VIEW (EDITORIAL FRONT PAGE) -->
         <section id="view_home" class="view-section active">
-            <div class="archival-home-container">
-                <!-- HERO: THE CHRONICLE COVER -->
-                <header class="home-hero">
-                    <div class="home-hero-seal">
-                        <span class="seal-mark"></span> Biên Niên Sử Gia Tộc
-                    </div>
-                    <h1 class="home-hero-title">TRẦN TRỌNG THU</h1>
-                    <p class="home-hero-lede">
-                        Bắt đầu từ cụ Giuse Trần Trọng Thu (1872–1969) tại Thanh Hóa,<br>
-                        trải qua hơn 150 năm với 5 thế hệ tiếp nối.
-                    </p>
-                </header>
+            <div class="publication-shell">
 
-                <!-- THE THREE PILLARS (LEDGER STYLE) -->
-                <nav class="home-pillars">
-                    <a href="#/gia-pha" class="pillar-item" onclick="navigateRoute('/gia-pha')">
-                        <span class="pillar-number">I</span>
-                        <h2 class="pillar-title">Gia Phả & Phả Đồ</h2>
-                        <p class="pillar-desc">Cấu trúc huyết thống, danh bạ thành viên, và bản đồ thế hệ tương tác trực tiếp.</p>
-                        <span class="pillar-meta" id="homeGenealogyMeta">223 Thành viên • 68 Gia đình</span>
-                    </a>
-                    
-                    <a href="#/mach" class="pillar-item" onclick="navigateRoute('/mach')">
-                        <span class="pillar-number">II</span>
-                        <h2 class="pillar-title">Tập San Mạch</h2>
-                        <p class="pillar-desc">Không gian lưu giữ những câu chuyện đời, nếp nhà và bút ký truyền lại mai sau.</p>
-                        <span class="pillar-meta" id="homeMachMeta">Đọc thư từ & tự sự</span>
-                    </a>
-                    
-                    <a href="#/tu-lieu" class="pillar-item" onclick="navigateRoute('/tu-lieu')">
-                        <span class="pillar-number">III</span>
-                        <h2 class="pillar-title">Tư Liệu Gốc</h2>
-                        <p class="pillar-desc">Kho lưu trữ văn bản hộ tịch, sổ gia bạ, ảnh cổ và các hiện vật gia đình.</p>
-                        <span class="pillar-meta" id="homeArchiveMeta">Vật chứng lịch sử</span>
-                    </a>
-                </nav>
-
-                <!-- UTILITY BAR -->
-                <div class="home-utilities">
-                    <a href="#/lich" class="utility-link" onclick="navigateRoute('/lich')">Lịch Gia Đình & Ngày Giỗ</a>
-                    <span class="utility-divider"></span>
-                    <a href="#/tim-kiem" class="utility-link" onclick="navigateRoute('/tim-kiem')">Tra cứu Dữ liệu Tổng hợp</a>
+                <!-- Layer 4: Front Page Lead (65/35) -->
+                <div class="publication-lead">
+                    <main class="lead-main">
+                        <article class="lead-story" id="homeLeadStory">
+                            <div class="lead-story-image" id="leadStoryImage"></div>
+                            <div class="lead-story-content">
+                                <span class="lead-story-tag" id="leadStoryTag">MẠCH</span>
+                                <h2 class="lead-story-title" id="leadStoryTitle"></h2>
+                                <p class="lead-story-deck" id="leadStoryDeck"></p>
+                                <div class="lead-story-meta" id="leadStoryMeta"></div>
+                            </div>
+                        </article>
+                    </main>
+                    <aside class="lead-sidebar">
+                        <div class="sidebar-widget">
+                            <h3 class="sidebar-widget-title">Lịch Gia Đình</h3>
+                            <div class="sidebar-calendar-list" id="sidebarCalendar"></div>
+                            <a href="#/lich" class="sidebar-widget-link">Xem lịch đầy đủ →</a>
+                        </div>
+                    </aside>
                 </div>
+
+                <!-- Layer 5: MẠCH Section -->
+                <section class="publication-section">
+                    <header class="section-header">
+                        <h2 class="section-heading">MẠCH</h2>
+                        <p class="section-subtitle">Tập san di sản — Câu chuyện, nếp nhà và bút ký truyền lại mai sau.</p>
+                    </header>
+                    <div class="section-divider"></div>
+                    <div class="section-grid" id="machSectionGrid"></div>
+                    <a href="#/mach" class="section-more">Xem tất cả bài viết →</a>
+                </section>
+
+                <!-- Layer 6: TƯ LIỆU Section -->
+                <section class="publication-section">
+                    <header class="section-header">
+                        <h2 class="section-heading">TƯ LIỆU GỐC</h2>
+                        <p class="section-subtitle">Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
+                    </header>
+                    <div class="section-divider"></div>
+                    <div class="tu-lieu-placeholder">
+                        <p>Kho tư liệu đang được xây dựng & số hóa. Những gì thực sự còn lại — ảnh cổ, giấy tờ, thư từ — sẽ được bảo tồn và trưng bày tại đây.</p>
+                    </div>
+                    <a href="#/tu-lieu" class="section-more">Khám phá kho tư liệu →</a>
+                </section>
+
+                <!-- Layer 7: GIA PHẢ Section -->
+                <section class="publication-section gia-pha-section">
+                    <header class="section-header">
+                        <h2 class="section-heading">GIA PHẢ</h2>
+                        <p class="section-subtitle">Cấu trúc huyết thống, danh bạ thành viên, và bản đồ thế hệ.</p>
+                    </header>
+                    <div class="section-divider"></div>
+                    <div class="gia-pha-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="statIndividuals">—</span>
+                            <span class="stat-label">Thành viên</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="statFamilies">—</span>
+                            <span class="stat-label">Gia đình</span>
+                        </div>
+                    </div>
+                    <a href="#/gia-pha" class="section-cta">Khám phá cây phả đồ →</a>
+                </section>
+
             </div>
         </section>
 
