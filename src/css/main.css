@@ -3978,38 +3978,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); text-a
 
 
 
-/* Reading Accessibility Controls */
-.font-size-controls {
-    display: flex;
-    align-items: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 0; /* flat */
-    padding: 2px;
-}
-.font-btn {
-    background: transparent;
-    border: none;
-    padding: 4px 12px;
-    font-size: calc(14px * var(--global-text-scale, 1));
-    font-weight: 600;
-    color: var(--text-muted);
-    border-radius: 0; /* flat */
-    cursor: pointer;
-    min-height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s, color 0.15s;
-}
-.font-btn:hover {
-    background: var(--bg-warm);
-    color: var(--primary-dark);
-}
-.font-btn.active {
-    background: var(--primary-dark);
-    color: var(--on-primary);
-}
+/* Reading Accessibility Controls (floating variant) — see .font-floating-control */
 
 /* ==========================================================================
    ARCHIVAL HUB COMPONENT SYSTEM
@@ -4551,6 +4520,45 @@ button, .btn, .btn-primary, .btn-secondary {
     stroke-width: 2px !important;
 }
 
+/* FLOATING FONT CONTROLS (editorial utility, not in nav) */
+.font-floating-control {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    padding: 2px;
+    z-index: 9998;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: opacity 0.2s;
+}
+.font-float-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    min-height: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s;
+}
+.font-float-btn:hover {
+    background: var(--bg-warm);
+    color: var(--primary-dark);
+}
+.font-float-reset {
+    border-left: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+}
+
 /* FLOATING CHATBOT WIDGET */
 .chatbot-floating-btn {
     position: fixed;
@@ -4623,6 +4631,22 @@ button, .btn, .btn-primary, .btn-secondary {
         right: 0;
         border-radius: 0;
     }
+    .font-floating-control {
+        bottom: 80px;
+        right: 16px;
+    }
+}
+@media (max-width: 480px) {
+    .font-floating-control {
+        bottom: 72px;
+        right: 12px;
+    }
+    .font-float-btn {
+        padding: 5px 8px;
+        min-height: 28px;
+        min-width: 28px;
+        font-size: 12px;
+    }
 }
 /* ============================================
    EDITORIAL MASTHEAD
@@ -4634,25 +4658,7 @@ button, .btn, .btn-primary, .btn-secondary {
     border-bottom: 1px solid var(--border-hairline);
 }
 
-/* Layer 1: Utility */
-.header-utility {
-    background: transparent;
-    border-bottom: 1px solid var(--border-hairline);
-    padding: 4px 0;
-}
-.header-utility-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.header-utility .font-size-controls {
-    margin-left: 0;
-}
-
-/* Layer 2: Masthead / Nameplate */
+/* Masthead / Nameplate */
 .header-nameplate {
     text-align: center;
     padding: 2.5rem 24px 2rem;
@@ -4754,9 +4760,6 @@ button, .btn, .btn-primary, .btn-secondary {
 }
 
 @media (max-width: 480px) {
-    .header-utility-inner {
-        padding: 0 12px;
-    }
     .header-nameplate {
         padding: 1.25rem 12px 1rem;
     }

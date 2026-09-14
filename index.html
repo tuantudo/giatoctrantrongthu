@@ -12,18 +12,7 @@
 
 <!-- EDITORIAL MASTHEAD -->
     <header class="editorial-header">
-        <!-- Layer 1: Utility (font controls only) -->
-        <div class="header-utility">
-            <div class="header-utility-inner">
-                <div class="font-size-controls global-font-controls" aria-label="Cộp chữ">
-                    <button class="font-btn" onclick="changeArticleFontSize(-1)" aria-label="Thu nhỏ chữ" title="Thu nhỏ chữ">A−</button>
-                    <button class="font-btn" onclick="resetArticleFontSize()" aria-label="Cộ p chữ mặc định" title="Cộ p chữ mặc định">A</button>
-                    <button class="font-btn" onclick="changeArticleFontSize(1)" aria-label="Phóng to chữ" title="Phóng to chữ">A+</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Layer 2: Masthead / Nameplate -->
+        <!-- Masthead / Nameplate -->
         <div class="header-nameplate">
             <a href="#/" class="nameplate-link">
                 <picture class="editorial-logo-picture">
@@ -1098,6 +1087,14 @@
         <div class="chatbot-drawer-body">
             <iframe src="chatbot-demo.html" frameborder="0" style="width:100%; height:100%;" allow="microphone"></iframe>
         </div>
+    </div>
+
+
+    <!-- FLOATING FONT CONTROLS (utility, not in nav) -->
+    <div class="font-floating-control" aria-label="Điều chỉnh cỡ chữ">
+        <button class="font-float-btn" onclick="changeArticleFontSize(-1)" aria-label="Thu nhỏ chữ" title="Thu nhỏ chữ">A−</button>
+        <button class="font-float-btn font-float-reset" onclick="resetArticleFontSize()" aria-label="Cỡ chữ mặc định" title="Cỡ chữ mặc định">A</button>
+        <button class="font-float-btn" onclick="changeArticleFontSize(1)" aria-label="Phóng to chữ" title="Phóng to chữ">A+</button>
     </div>
 
     <!-- FOOTER -->
