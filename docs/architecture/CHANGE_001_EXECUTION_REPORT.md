@@ -80,5 +80,44 @@ Production `app.js?v=...` observation left to AGY independent runtime verificati
 
 ---
 
-*No PASS / ACCEPTED / CHANGE CLOSED declared. AGY to run independent runtime verification.*
+
+---
+
+## ADDENDUM — LOGO RESPONSIVE REPAIR (2026-09-14)
+
+**Scope:** masthead logo responsive semantics only.
+
+**Finding (browser-verified live production):**
+- Wide (1440px): `currentSrc = logoGiaToc_original.svg`, 528×160, no overflow.
+- Narrow (390px): `currentSrc = logoGiaToc_ngang.svg`, 351×80 — browser
+  already selects per Owner invariant. Icon-only `logoGiaToc.svg` is NOT
+  used as a logo (favicon only).
+- Masthead logo itself causes no horizontal overflow. The only overflow
+  offenders at 390px were `SPAN.calendar-event-countdown` (sidebar widget,
+  unrelated to logo).
+
+**Incident-report conflict resolved:** Section G.3 / §4.2 of
+`CHANGE_001_GATE6_INCIDENT_REPORT.md` (add
+`<source media="(max-width: 639px)" srcset="assets/images/logoGiaToc.svg">`)
+contradicts the Owner invariant locked in `PROJECT_CONTROL_SURFACE.md`
+§K ("KHÔNG tự ép dùng icon-only cho mobile"). The Owner task instruction
+for this repair explicitly forbids adding icon-only mobile. That incident
+recommendation was therefore NOT implemented. AGY/Owner to reconcile the
+incident report text separately.
+
+**Exact changes (this repair):**
+1. `src/css/main.css` — `@media (max-width: 480px)`: `.editorial-logo`
+   gets `height: auto; max-height: 64px;` so the ngang full-identity logo
+   scales into very-narrow mastheads without overflow/distortion.
+   Semantics untouched (no icon-only, no new logo, no SVG edits).
+2. `index.html` — `main.css?v=20260914_0101` → `main.css?v=20260914_0103`
+   (cache-buster for the CSS fix). No favicon change.
+3. This addendum (documentation of the repair + conflict note).
+
+**Validation:**
+- `node --check src/js/app.js` → PASS (untouched by this repair).
+- Live browser `currentSrc` checks: wide → original, narrow → ngang.
+- Console: only pre-existing `X-Frame-Options` iframe error; no new JS errors.
+
+*No PASS / ACCEPTED / CHANGE CLOSED declared. AGY to run independent verification.*
 

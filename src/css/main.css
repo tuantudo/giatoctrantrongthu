@@ -4763,6 +4763,12 @@ button, .btn, .btn-primary, .btn-secondary {
     .header-nameplate {
         padding: 1.25rem 12px 1rem;
     }
+    /* CHANGE-001 logo repair: keep ngang full-identity logo inside
+       narrow masthead without overflow or distortion. */
+    .editorial-logo {
+        height: auto;
+        max-height: 64px;
+    }
 }
 
 /* Fix for white frame on Masthead Logo */
