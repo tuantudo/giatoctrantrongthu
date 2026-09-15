@@ -1,1195 +1,383 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, noarchive, nofollow, nosnippet">
-    <title>GIA TỘC TRẦN TRỌNG THU</title>
-    <link rel="stylesheet" href="src/css/main.css?v=20260914_0103">
-    <link rel="icon" type="image/svg+xml" href="assets/images/logoGiaToc.svg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype</title>
+<!--
+  DESIGN-001 REVISION — Public / Member IA prototype.
+  Open this file directly in Adobe Dreamweaver (File > Open) or any browser.
+  - Single masthead asset: assets/images/logoGiaToc_ngang.svg (tagline inside artwork as vector paths, no HTML tagline).
+  - Global publication shell: utility strip -> masthead -> sticky publication nav -> views -> colophon.
+  - Homepage narrative: IDENTITY -> INTRODUCTION -> CHOOSE YOUR PATH -> CURATED CONTENT -> DEEPER EXPLORATION.
+  - Public / Member boundary modelled; auth NOT implemented (honest placeholders).
+  - Owner Control Plane NOT in public navigation (architectural indication in footer only).
+  - Real snapshot data; no fakes; no production code.
+-->
+<link rel="icon" type="image/svg+xml" href="assets/images/logoGiaToc.svg">
+<link rel="stylesheet" href="src/css/prototype.css">
 </head>
 <body>
 
-<!-- EDITORIAL MASTHEAD -->
-    <header class="editorial-header">
-        <!-- Masthead / Nameplate -->
-        <div class="header-nameplate">
-            <a href="#/" class="nameplate-link">
-                <picture class="editorial-logo-picture">
-                    <!-- WIDE DESKTOP: full vertical nameplate -->
-                    <source media="(min-width: 1024px)" srcset="assets/images/logoGiaToc_original.svg">
-                    <!-- DEFAULT (tablet + mobile): full horizontal nameplate -->
-                    <img src="assets/images/logoGiaToc_ngang.svg" class="editorial-logo" alt="Gia Tộc Trần Trọng Thu">
-                </picture>
-            </a>
+<!-- SYSTEM TOOLS (floating, independent of nav) -->
+<button id="backTop" class="sys-fab" type="button" aria-label="Lên đầu trang" title="Lên đầu trang">↑</button>
+<button id="chatFab" class="sys-fab chat-fab" type="button" aria-label="Trợ lý (prototype)" title="Trợ lý (prototype)">?</button>
+<aside id="chatPanel" class="chat-panel" hidden aria-label="Trợ lý ảo prototype">
+  <p class="chat-title">Trợ lý Gia Tộc</p>
+  <p class="chat-body">Prototype entry — chưa kết nối dịch vụ trợ lý. Giao diện này chỉ mô phỏng điểm vào, backend contract sẽ được xác định ở giai đoạn sau.</p>
+  <button id="chatClose" type="button" class="chat-close">Đóng</button>
+</aside>
+
+<!-- A. UTILITY / META strip -->
+<div class="util-strip">
+  <div class="util-strip-inner">
+    <span id="utilDate">Chủ nhật, 14/09/2026 · Ấn phẩm của dòng họ</span>
+    <span class="util-right">
+      <a href="#/" class="icon-link" title="Trang chủ" aria-label="Trang chủ">⌂</a>
+      <a href="#/tim-kiem" class="icon-link" title="Tìm kiếm" aria-label="Tìm kiếm">⌕</a>
+      <a href="#/cai-dat" class="icon-link" title="Cài đặt" aria-label="Cài đặt">⚙</a>
+      <a href="#/tu-cach-thanh-vien" class="member-entry" title="Tư cách thành viên">Tư cách thành viên →</a>
+    </span>
+  </div>
+</div>
+
+<!-- B. MASTHEAD: SINGLE ngang asset, tagline in artwork (no HTML duplicate) -->
+<header class="masthead">
+  <img class="masthead-logo"
+       src="assets/images/logoGiaToc_ngang.svg"
+       alt="Gia Tộc Trần Trọng Thu">
+</header>
+
+<!-- C. STICKY PUBLICATION NAVIGATION (primary = publication sections; utilities are icons) -->
+<nav class="pub-nav" id="pubNav" aria-label="Mục lục ấn phẩm">
+  <ul>
+    <li><a href="#/" data-route="/" aria-current="page">Trang chủ</a></li>
+    <li><a href="#/mach" data-route="/mach">MẠCH</a></li>
+    <li><a href="#/tu-lieu" data-route="/tu-lieu">Tư Liệu</a></li>
+    <li><a href="#/gia-pha" data-route="/gia-pha">Gia Phả</a></li>
+    <li><a href="#/lich" data-route="/lich">Lịch</a></li>
+    <li><a href="#/tim-kiem" data-route="/tim-kiem">Tìm kiếm</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- ============ HOME VIEW ============ -->
+  <div data-view="home">
+
+    <!-- 2. INTRODUCTION: ai là dòng họ này? (draft copy, không dump database) -->
+    <section class="intro" aria-label="Giới thiệu về gia tộc">
+      <p class="section-label">Giới thiệu · DRAFT COPY</p>
+      <h1 class="intro-title">Gia Tộc Trần Trọng Thu là ai?</h1>
+      <p class="intro-copy">
+        <em>[DRAFT]</em> Một dòng họ giữ nếp nhà, ký ức và câu chuyện qua nhiều thế hệ —
+        từ những năm đầu định hình cho đến hôm nay. Ấn phẩm số này là nơi lưu giữ
+        và kể lại hành trình ấy: từ MẠCH, ký ức tiền nhân, tư liệu còn lại, đến con người
+        và nếp sống của dòng họ. Bản copy cuối sẽ được hoàn thiện khi nguồn tư liệu
+        được xác minh.
+      </p>
+      <p class="intro-meta">
+        Gia phả hiện lưu giữ <span id="statInd">—</span> nhân vật ·
+        <span id="statFam">—</span> gia đình ·
+        <span id="statMem">—</span> ghi chép ký ức.
+        <span class="note-caps">(số liệu thật, trình bày tiết chế — chi tiết nằm trong Gia phả)</span>
+      </p>
+    </section>
+
+    <!-- 3. ORIENTATION / CHOOSE YOUR PATH -->
+    <section class="paths" aria-label="Chọn hướng đi">
+      <article class="path path-public">
+        <p class="section-label">Hướng 1 · Công khai</p>
+        <h2>Khám phá Gia Tộc</h2>
+        <p>Đọc ấn phẩm, bước vào kho lưu trữ sống: MẠCH, ký ức, tư liệu, con người và lịch sử.</p>
+        <div class="path-links">
+          <a href="#/mach" data-route="/mach">MẠCH →</a>
+          <a href="#/tu-lieu" data-route="/tu-lieu">Tư liệu →</a>
+          <a href="#/gia-pha" data-route="/gia-pha">Gia phả →</a>
+          <a href="#/lich" data-route="/lich">Lịch →</a>
         </div>
-
-        <!-- Layer 3: Editorial Navigation -->
-        <nav class="header-nav-layer">
-            <ul class="editorial-nav-links">
-                <li><a href="#/" class="nav-item-btn active" id="nav_home">Trang Chủ</a></li>
-                <li class="nav-dropdown">
-                    <a href="#/gia-pha" class="nav-item-btn" id="nav_gia_pha">Gia Phả</a>
-                    <div class="nav-dropdown-menu">
-                        <a href="#/gia-pha">Cây Phả Đồ</a>
-                        <a href="#/gia-pha/nhan-vat">Thành viên</a>
-                        <a href="#/gia-pha/gia-dinh">Gia đình</a>
-                        <a href="#/gia-pha/dong-thoi-gian">Dòng thời gian</a>
-                        <a href="#/gia-pha/ky-uc">Ký ức</a>
-                    </div>
-                </li>
-                <li><a href="#/mach" class="nav-item-btn" id="nav_mach">Mạch</a></li>
-                <li><a href="#/tu-lieu" class="nav-item-btn" id="nav_tu_lieu">Tư Liệu</a></li>
-                <li><a href="#/lich" class="nav-item-btn" id="nav_lich">Lịch</a></li>
-                <li><a href="#/tim-kiem" class="nav-item-btn" id="nav_tim_kiem">Tìm kiếm</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-    <!-- MAIN VIEWPORT -->
-    <main>
-
-        <!-- 1. HOME / PUBLICATION LANDING VIEW (EDITORIAL FRONT PAGE) -->
-        <section id="view_home" class="view-section active">
-            <div class="publication-shell">
-
-                <!-- Layer 4: Front Page Lead (65/35) -->
-                <div class="publication-lead">
-                    <main class="lead-main">
-                        <article class="lead-story" id="homeLeadStory">
-                            <div class="lead-story-image" id="leadStoryImage"></div>
-                            <div class="lead-story-content">
-                                <span class="lead-story-tag" id="leadStoryTag">MẠCH</span>
-                                <h2 class="lead-story-title" id="leadStoryTitle"></h2>
-                                <p class="lead-story-deck" id="leadStoryDeck"></p>
-                                <div class="lead-story-meta" id="leadStoryMeta"></div>
-                            </div>
-                        </article>
-                    </main>
-                    <aside class="lead-sidebar">
-                        <div class="sidebar-widget">
-                            <h3 class="sidebar-widget-title">Lịch Gia Đình</h3>
-                            <div class="sidebar-calendar-list" id="sidebarCalendar"></div>
-                            <a href="#/lich" class="sidebar-widget-link">Xem lịch đầy đủ →</a>
-                        </div>
-                    </aside>
-                </div>
-
-                <!-- Layer 5: MẠCH Section -->
-                <section class="publication-section">
-                    <header class="section-header">
-                        <h2 class="section-heading">MẠCH</h2>
-                        <p class="section-subtitle">Tập san di sản — Câu chuyện, nếp nhà và bút ký truyền lại mai sau.</p>
-                    </header>
-                    <div class="section-divider"></div>
-                    <div class="section-grid" id="machSectionGrid"></div>
-                    <a href="#/mach" class="section-more">Xem tất cả bài viết →</a>
-                </section>
-
-                <!-- Layer 5b: KÝ ỨC & GHI CHÉP -->
-                <section class="publication-section ky-uc-section">
-                    <header class="section-header">
-                        <h2 class="section-heading">KÝ ỨC & GHI CHÉP</h2>
-                        <p class="section-subtitle">Những ghi chép truyền khẩu và ký ức còn lại của dòng họ.</p>
-                    </header>
-                    <div class="section-divider"></div>
-                    <article class="ky-uc-card" id="kyUcCard">
-                        <!-- Rendered dynamically from appData.memories -->
-                    </article>
-                </section>
-
-                <!-- Layer 6: TƯ LIỆU Section -->
-                <section class="publication-section">
-                    <header class="section-header">
-                        <h2 class="section-heading">TƯ LIỆU GỐC</h2>
-                        <p class="section-subtitle">Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
-                    </header>
-                    <div class="section-divider"></div>
-                    <div class="tu-lieu-placeholder">
-                        <p>Kho tư liệu đang được xây dựng & số hóa. Những gì thực sự còn lại — ảnh cổ, giấy tờ, thư từ — sẽ được bảo tồn và trưng bày tại đây.</p>
-                    </div>
-                    <a href="#/tu-lieu" class="section-more">Khám phá kho tư liệu →</a>
-                </section>
-
-                <!-- Layer 7: GIA PHẢ Section -->
-                <section class="publication-section gia-pha-section">
-                    <header class="section-header">
-                        <h2 class="section-heading">GIA PHẢ</h2>
-                        <p class="section-subtitle">Cấu trúc huyết thống, danh bạ thành viên, và bản đồ thế hệ.</p>
-                    </header>
-                    <div class="section-divider"></div>
-                    <div class="gia-pha-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" id="statIndividuals">—</span>
-                            <span class="stat-label">Thành viên</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="statFamilies">—</span>
-                            <span class="stat-label">Gia đình</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="statGenerations">—</span>
-                            <span class="stat-label">Thế hệ</span>
-                        </div>
-                    </div>
-                    <a href="#/gia-pha" class="section-cta">Khám phá cây phả đồ →</a>
-                </section>
-
-            </div>
-        </section>
-
-
-        <!-- 2. CALENDAR APPLICATION MODULE -->
-        <section id="view_calendar" class="view-section">
-            <div class="section-header cal-section-header">
-                <div>
-                    <h2 class="section-title">Lịch Gia Đình Trực Tuyến</h2>
-                    <p class="section-desc">Đồng bộ tự động từ gia phả • Tra cứu song song Dương lịch & Âm lịch Việt Nam.</p>
-                </div>
-                <button class="btn-cal-subscribe-action" onclick="openCalendarSubscribeModal()">
-                    Đăng ký Lịch Gia Đình
-                </button>
-            </div>
-
-            <div class="cal-app-container">
-                <!-- TOOLBAR -->
-                <div class="cal-app-header">
-                    <div class="cal-nav-group">
-                        <button class="cal-nav-btn" onclick="navigateCalendarMonth(-1)">◀ Trước</button>
-                        <button class="cal-nav-btn today" onclick="goToCalendarToday()">Hôm nay</button>
-                        <button class="cal-nav-btn" onclick="navigateCalendarMonth(1)">Sau ▶</button>
-                    </div>
-
-                    <div class="cal-month-title">
-                        <span id="calSolarLabel">Đang tải lịch...</span>
-                        <span id="calLunarLabel" class="cal-lunar-sub">Đang tính âm lịch...</span>
-                    </div>
-
-                    <div class="cal-view-switch">
-                        <button class="view-tab-btn active" id="btn_view_month" onclick="switchCalendarView('month')">Lưới tháng</button>
-                        <button class="view-tab-btn" id="btn_view_agenda" onclick="switchCalendarView('agenda')">Danh sách</button>
-                    </div>
-                </div>
-
-                <!-- LAYER FILTERS -->
-                <div class="cal-filter-bar">
-                    <span style="font-weight: 700; color: var(--text-muted); font-size: 12px; text-transform: uppercase;">Lọc sự kiện:</span>
-                    <label class="filter-chip active-birth" id="chip_birth" onclick="toggleLayerChip('birthdays')">
-                        <input type="checkbox" id="chk_birth" checked> Sinh nhật (<span id="cnt_birth">-</span>)
-                    </label>
-                    <label class="filter-chip active-patron" id="chip_patron" onclick="toggleLayerChip('patrons')">
-                        <input type="checkbox" id="chk_patron" checked> Bổn mạng (<span id="cnt_patron">-</span>)
-                    </label>
-                    <label class="filter-chip active-mem" id="chip_mem" onclick="toggleLayerChip('memorials')">
-                        <input type="checkbox" id="chk_mem" checked> Ngày giỗ (<span id="cnt_mem">-</span>)
-                    </label>
-                    <label class="filter-chip active-event" id="chip_event" onclick="toggleLayerChip('milestones')">
-                        <input type="checkbox" id="chk_event" checked> Sự kiện (<span id="cnt_event">-</span>)
-                    </label>
-                </div>
-
-                <!-- MONTH GRID VIEW -->
-                <div id="calendarMonthView" class="month-grid-view">
-                    <div class="month-weekdays">
-                        <div>Chủ Nhật</div><div>Thứ Hai</div><div>Thứ Ba</div><div>Thứ Tư</div><div>Thứ Năm</div><div>Thứ Sáu</div><div>Thứ Bảy</div>
-                    </div>
-                    <div id="monthCellsContainer" class="month-cells-grid"></div>
-                </div>
-
-                <!-- AGENDA / SCHEDULE VIEW -->
-                <div id="calendarAgendaView" class="agenda-view">
-                    <div id="agendaListContainer"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. FAMILY TREE VIEW (ARCH_03B DUAL MODE: EXPLORE & FOCUS) -->
-        <section id="view_tree" class="view-section">
-            <div class="section-header">
-                <h2 class="section-title">Cây Gia Phả & Bản Đồ Thế Hệ</h2>
-                <p class="section-desc">Khám phá dòng họ từ Family Anchor (Cố Thu F0) • Phân tầng thế hệ và nhánh gia đình nhất quán.</p>
-            </div>
-
-            <div class="tree-container">
-                <!-- TOP CONTROLS & DUAL MODE SWITCH -->
-                <div class="tree-view-mode-bar">
-                    <div class="tree-legend-bar">
-                        <div class="legend-item"><span class="legend-dot" style="background:#1e3a8a;"></span> F0 (Cố Thu)</div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#047857;"></span> F1 (Đời Con)</div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#b45309;"></span> F2 (Đời Cháu)</div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#4338ca;"></span> F3 (Đời Chắt)</div>
-                        <div class="legend-item"><span class="legend-dot" style="background:#be185d;"></span> F4 (Đời Chút)</div>
-                    </div>
-
-                    <div class="cal-view-switch">
-                        <button class="view-tab-btn active" id="btn_tree_focus" onclick="switchTreeViewMode('focus')">Phả Đồ Tương Tác</button>
-                        <button class="view-tab-btn" id="btn_tree_explore" onclick="switchTreeViewMode('explore')">Toàn Cảnh Thế Hệ</button>
-                    </div>
-                </div>
-
-                <!-- BREADCRUMBS RELATIONSHIP PATH (VISIBLE IN FOCUS MODE) -->
-                <div id="treeRelationPath" class="relation-path-bar"></div>
-
-                <!-- FOCUS SELECTOR & QUICK ACTIONS -->
-                <div id="treeFocusSelectorBar" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px; font-weight: 600; width: 100%;">
-                    <div style="display: flex; align-items: center; gap: 8px; flex-grow: 1; max-width: 540px;">
-                        <span style="white-space: nowrap; color: var(--text-muted); font-size: 13px;">Chọn tiêu điểm:</span>
-                        <select id="treeCenterSelect" onchange="focusGraphPerson(this.value)" style="padding: 7px 12px;  border: 1px solid var(--border); font-size: 13.5px; background: var(--bg); width: 100%;"></select>
-                    </div>
-                    <div style="display: flex; gap: 6px;">
-                        <button class="cal-nav-btn" onclick="graphGoHome()" title="Về mốc Cố Thu">⌂ Cố Thu</button>
-                        <button class="cal-nav-btn" id="btn_graph_back" onclick="graphGoBack()" title="Quay lại nhân vật trước" style="opacity: 0.5; pointer-events: none;">↩ Quay lại</button>
-                    </div>
-                </div>
-
-                <!-- MAIN TREE VIEWPORT (GRAPH CANVAS OR GENERATION BANDS) -->
-                <div id="treeGraphViewport" style="width: 100%;"></div>
-            </div>
-        </section>
-
-        <!-- 4. PEOPLE DIRECTORY -->
-        <section id="view_people" class="view-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span>Danh Sách Thành Viên Gia Tộc</span>
-                    <span class="title-count">(<span id="peopleTotalCount">-</span>)</span>
-                </h2>
-                <p class="section-desc">Tra cứu lý lịch, phân loại thế hệ và ngày kỷ niệm của từng thành viên.</p>
-            </div>
-            <!-- PEOPLE GENERATION FILTER BAR -->
-            <div class="family-filter-bar" id="peopleFilterBar">
-                <button class="filter-pill active" id="filter_ppl_all" onclick="filterPeopleByGen('all')">Tất cả (<span id="cnt_ppl_all">-</span>)</button>
-                <button class="filter-pill pill-f0" id="filter_ppl_0" onclick="filterPeopleByGen(0)">F0 · Cố Thu (<span id="cnt_ppl_f0">-</span>)</button>
-                <button class="filter-pill pill-f1" id="filter_ppl_1" onclick="filterPeopleByGen(1)">F1 · Đời Con (<span id="cnt_ppl_f1">-</span>)</button>
-                <button class="filter-pill pill-f2" id="filter_ppl_2" onclick="filterPeopleByGen(2)">F2 · Đời Cháu (<span id="cnt_ppl_f2">-</span>)</button>
-                <button class="filter-pill pill-f3" id="filter_ppl_3" onclick="filterPeopleByGen(3)">F3 · Đời Chắt (<span id="cnt_ppl_f3">-</span>)</button>
-                <button class="filter-pill pill-f4" id="filter_ppl_4" onclick="filterPeopleByGen(4)">F4 · Đời Chút (<span id="cnt_ppl_f4">-</span>)</button>
-            </div>
-            <div id="peopleGrid" class="directory-grid"></div>
-        </section>
-
-        <!-- 5. FAMILIES DIRECTORY -->
-        <section id="view_families" class="view-section">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span>Danh Sách Gia Đình & Nhánh Hôn Phối</span>
-                    <span class="title-count">(<span id="familiesTotalCount">-</span>)</span>
-                </h2>
-                <p class="section-desc">Phân loại thế hệ và cấu trúc các đơn vị gia đình trong dòng họ Cố Thu.</p>
-            </div>
-            <!-- FAMILY GENERATION FILTER BAR -->
-            <div class="family-filter-bar" id="familyFilterBar">
-                <button class="filter-pill active" id="filter_fam_all" onclick="filterFamiliesByGen('all')">Tất cả (<span id="cnt_fam_all">-</span>)</button>
-                <button class="filter-pill pill-f0" id="filter_fam_0" onclick="filterFamiliesByGen(0)">F0 · Cố Thu (<span id="cnt_fam_f0">-</span>)</button>
-                <button class="filter-pill pill-f1" id="filter_fam_1" onclick="filterFamiliesByGen(1)">F1 · Đời Con (<span id="cnt_fam_f1">-</span>)</button>
-                <button class="filter-pill pill-f2" id="filter_fam_2" onclick="filterFamiliesByGen(2)">F2 · Đời Cháu (<span id="cnt_fam_f2">-</span>)</button>
-                <button class="filter-pill pill-f3" id="filter_fam_3" onclick="filterFamiliesByGen(3)">F3 · Đời Chắt (<span id="cnt_fam_f3">-</span>)</button>
-                <button class="filter-pill pill-f4" id="filter_fam_4" onclick="filterFamiliesByGen(4)">F4 · Đời Chút (<span id="cnt_fam_f4">-</span>)</button>
-            </div>
-            <div id="familiesGrid" class="directory-grid"></div>
-        </section>
-
-        <!-- 6. PERSON PROFILE VIEW -->
-        <section id="view_person" class="view-section">
-            <div class="profile-header-nav">
-                <button class="back-link-btn" onclick="navigateRoute('/tree')">← Cây Phả Hệ</button>
-                <button class="back-link-btn" onclick="navigateRoute('/people')">← Danh bạ</button>
-            </div>
-            
-            <div class="archival-container" id="personProfileContainer">
-                <header class="entity-hero">
-                    <div class="entity-avatar-box">
-                        <div class="entity-avatar" id="p_avatar_container">
-                            <span class="profile-avatar-fallback" id="p_avatar_fallback"></span>
-                        </div>
-                        <div class="entity-provenance" id="p_provenance_badge"></div>
-                    </div>
-                    
-                    <div class="entity-info">
-                        <h1 class="entity-name" id="p_name"></h1>
-                        <div class="entity-badges" id="p_gender_status"></div>
-                        <div class="entity-meta-grid">
-                            <div class="meta-item">
-                                <span class="meta-label">FSID</span>
-                                <span class="meta-value" id="p_fsid"></span>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-
-                <div class="entity-body-grid">
-                    <main class="entity-main">
-                        <h2 class="section-heading">Tiểu Sử & Sự Kiện</h2>
-                        <div class="timeline-content" id="p_facts"></div>
-                        
-                        <div id="p_memory_box" style="display: none; margin-top: 2rem;">
-                            <h2 class="section-heading" id="p_memory_title">Ký Ức</h2>
-                            <div class="timeline-content" id="p_memory_text" style="white-space: pre-line;"></div>
-                        </div>
-                    </main>
-                    
-                    <aside class="entity-sidebar">
-                        <h2 class="section-heading">Gia Đình</h2>
-                        <div id="p_relatives"></div>
-                    </aside>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. FAMILY PROFILE VIEW -->
-        <section id="view_family" class="view-section">
-            <div class="profile-header-nav" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
-                <button class="back-link-btn" onclick="navigateRoute('/families')">← Quay lại Danh Sách Gia Đình</button>
-                <button class="back-link-btn" onclick="navigateRoute('/tree')">← Cây Phả Hệ</button>
-            </div>
-            <div class="profile-container" id="familyProfileContainer">
-                <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                    <div>
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                            <span id="f_gen_badge" class="gen-badge gen-f0">F0 · ĐỜI CỐ THU</span>
-                        </div>
-                        <div style="font-size: 24px; font-weight: 800; color: var(--primary-dark);" id="f_title">Gia Đình</div>
-                        <div style="font-size: 14px; color: var(--text-muted); margin-top: 2px;" id="f_marr_meta"></div>
-                    </div>
-                    <div style="font-family: monospace; font-size: 13px; color: var(--text-muted); background: var(--bg); padding: 4px 8px; " id="f_id_label">FAM ID</div>
-                </div>
-
-                <div class="profile-grid">
-                    <div class="profile-box">
-                        <div style="font-size: 14px; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px;">Cha & Mẹ</div>
-                        <div id="f_parents"></div>
-                    </div>
-
-                    <div class="profile-box">
-                        <div style="font-size: 14px; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px;">Danh Sách Con Cái</div>
-                        <div id="f_children"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. TIMELINE VIEW -->
-        <section id="view_timeline" class="view-section">
-            <div class="section-header">
-                <h2 class="section-title">Dòng Thời Gian Lịch Sử Gia Tộc</h2>
-                <p class="section-desc">Cột mốc sinh tử và biến cố lịch sử qua các thế hệ.</p>
-            </div>
-            <div style="background: var(--surface); border: 1px solid var(--border);  padding: 24px; ">
-                <div id="timelineEventsList" class="timeline-list"></div>
-            </div>
-        </section>
-
-        <!-- 9. MEMORIES VIEW -->
-        <section id="view_memories" class="view-section">
-            <div class="section-header">
-                <h2 class="section-title">Ký Ức & Giai Thoại Gia Đình</h2>
-                <p class="section-desc">Ghi chép truyền khẩu và những mẩu chuyện lưu truyền qua các thế hệ con cháu.</p>
-            </div>
-            <div id="memoriesContainer"></div>
-        </section>
-
-
-        <!-- 10. MẠCH HOME / INDEX VIEW -->
-        <section id="view_mach" class="view-section">
-<div class="mach-hero">
-                    <div class="mach-badge">Không Gian Khảo Cứu & Tự Sự Dòng Họ</div>
-                    <h1 class="mach-hero-title">MẠCH</h1>
-                    <p class="mach-hero-sub">Lưu giữ dòng chảy ký ức, các bài viết chuyên đề và khảo cứu về đời sống dòng họ trong thời hiện đại.</p>
-                    <div class="mach-hero-meta" id="machHeroMeta"></div>
-                </div>
-
-            <!-- MẠCH SUB NAVIGATION -->
-            <div class="mach-nav-tabs">
-                <button class="mach-nav-btn active" id="btn_mach_all" onclick="filterMachTab('all')">Tất cả bài viết</button>
-                <button class="mach-nav-btn" id="btn_mach_series" onclick="filterMachTab('series')">Tuyển tập & Series</button>
-                <button class="mach-nav-btn" id="btn_mach_authors" onclick="filterMachTab('authors')">Tác giả</button>
-            </div>
-
-            <div id="machTabContentAll" class="mach-tab-panel active">
-                <div class="mach-featured-section" id="machFeaturedContainer"></div>
-                <div class="section-divider-title"><span>Tất cả bài viết & ký ức</span></div>
-                <div class="mach-stories-grid" id="machStoriesGrid"></div>
-            </div>
-
-            <div id="machTabContentSeries" class="mach-tab-panel">
-                <div class="mach-series-grid" id="machSeriesGrid"></div>
-            </div>
-
-            <div id="machTabContentAuthors" class="mach-tab-panel">
-                <div class="mach-authors-grid" id="machAuthorsGrid"></div>
-            </div>
-        </section>
-
-        <!-- 11. MẠCH STORY DETAIL VIEW -->
-        <section id="view_story" class="view-section">
-            <div class="story-article-wrapper">
-                <div class="story-header-nav">
-                    <a class="back-link-btn" onclick="navigateRoute('/mach')">← Quay lại MẠCH</a>
-                    <div id="storySeriesBreadcrumb" class="story-breadcrumb-badge"></div>
-                </div>
-
-                <article class="story-article-container">
-                    <header class="story-main-header">
-                        <div class="story-tag-order" id="storyTagOrder"></div>
-                        <h1 class="story-title" id="storyTitle">Tiêu đề bài viết</h1>
-                        <div class="story-meta-row">
-                            <span class="story-meta-item" id="storyAuthorMeta">Tác giả</span>
-                            <span class="story-meta-dot">•</span>
-                            <span class="story-meta-item" id="storyDateMeta">Ngày</span>
-                        </div>
-                    </header>
-
-                    <div id="storyMentionsBar" class="story-mentions-bar" style="display: none;"></div>
-
-                    <div class="story-content-body" id="storyContentBody"></div>
-
-                    <div class="story-article-footer">
-                        <div class="story-author-card" id="storyAuthorCard"></div>
-                        <div class="story-nav-prev-next" id="storyNavPrevNext"></div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- 12. MẠCH SERIES DETAIL VIEW -->
-        <section id="view_series_detail" class="view-section">
-            <div class="series-detail-wrapper">
-                <a class="back-link-btn" onclick="navigateRoute('/mach')">← Quay lại MẠCH</a>
-                <div class="series-header-card" id="seriesHeaderCard"></div>
-                <div class="section-divider-title"><span>Danh sách bài viết trong tuyển tập</span></div>
-                <div class="mach-stories-grid" id="seriesStoriesGrid"></div>
-            </div>
-        </section>
-
-        <!-- 13. MẠCH AUTHOR DETAIL VIEW -->
-        <section id="view_author_detail" class="view-section">
-            <div class="author-detail-wrapper">
-                <a class="back-link-btn" onclick="navigateRoute('/mach')">← Quay lại MẠCH</a>
-                <div class="author-header-card" id="authorHeaderCard"></div>
-                <div class="section-divider-title"><span>Các tác phẩm & bài viết đã đóng góp</span></div>
-                <div class="mach-stories-grid" id="authorStoriesGrid"></div>
-            </div>
-        </section>
-
-        <!-- 14. TƯ LIỆU TERRITORY (STRUCTURAL ENTRY / PLACEHOLDER) -->
-        <section id="view_tu_lieu" class="view-section">
-            <div class="tu-lieu-wrapper">
-                <div class="tu-lieu-hero">
-                    <div class="tu-lieu-badge">Lãnh Thổ Tư Liệu</div>
-                    <h1 class="tu-lieu-title">TƯ LIỆU</h1>
-                    <p class="tu-lieu-sub">Kho bảo tồn những vật chứng còn lại của dòng họ — hình ảnh, giấy tờ, văn bản, âm thanh và kỷ vật đời sống.</p>
-                </div>
-                <div class="tu-lieu-body">
-                    <div class="tu-lieu-note">
-                        <strong>Đang trong giai đoạn số hóa</strong>
-                        <p>Lãnh thổ Tư Liệu đã được xác lập trong kiến trúc xuất bản. Nội dung số hóa hiện vật, quy trình văn khố và mô hình hiện vật sẽ được triển khai trong các giai đoạn tiếp theo. Những gì thực sự còn lại — ảnh cổ, giấy tờ, thư từ — sẽ được bảo tồn và trưng bày tại đây.</p>
-                    </div>
-                    <div class="tu-lieu-guidance">
-                        <div class="tu-lieu-guidance-card">
-                            <div class="tu-lieu-guidance-title">Hình ảnh di sản</div>
-                            <div class="tu-lieu-guidance-desc">Ảnh cổ, chân dung tiền nhân, ảnh sinh hoạt gia đình</div>
-                        </div>
-                        <div class="tu-lieu-guidance-card">
-                            <div class="tu-lieu-guidance-title">Văn bản & Giấy tờ</div>
-                            <div class="tu-lieu-guidance-desc">Trích lục gia phả, giấy hộ tịch, sổ rửa tội, thư tay</div>
-                        </div>
-                        <div class="tu-lieu-guidance-card">
-                            <div class="tu-lieu-guidance-title">Âm thanh & Video</div>
-                            <div class="tu-lieu-guidance-desc">Lời kể của các bậc tiền nhân, thước phim tư liệu</div>
-                        </div>
-                    </div>
-                    <p class="tu-lieu-invite">Trong thời gian chờ đợi, hãy khám phá các vật chứng đang được nhắc tới trong <a onclick="navigateRoute('/mach')" class="inline-link">Mạch</a> và các hồ sơ <a onclick="navigateRoute('/gia-pha/nhan-vat')" class="inline-link">nhân vật</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 15. TÌM KIẾM TOÀN CỤC (CAPABILITY / SEARCH RESULTS PAGE) -->
-        <section id="view_search" class="view-section">
-            <div class="search-page-wrapper">
-                <div class="search-page-header">
-                    <h2 class="section-title">Tìm Kiếm Toàn Cục</h2>
-                    <p class="section-desc">Tra cứu đồng thời nhân vật, bài viết, tuyển tập, tác giả và ký ức trong toàn bộ publication.</p>
-                    <div class="search-page-input-wrap">
-                        <span class="search-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span>
-                        <input type="text" id="searchPageInput" placeholder="Nhập tên người, bài viết, thế hệ F0-F4, ngày âm/dương..." onkeyup="handleSearchPageInput(event)" oninput="handleSearchPageInput(event)">
-                        <button class="btn-cal-subscribe-action" onclick="runSearchPage()">Tìm kiếm</button>
-                    </div>
-                </div>
-                <div id="searchPageResults" class="search-page-results"></div>
-            </div>
-        </section>
-
-        <!-- 16. VỀ DÒNG HỌ (HERITAGE OVERVIEW) -->
-        <section id="view_ve_dong_ho" class="view-section">
-            <div class="ve-dong-ho-wrapper">
-                <div class="section-header">
-                    <h2 class="section-title">Về Dòng Họ</h2>
-                    <p class="section-desc">Giới thiệu lịch sử, nguồn gốc và thông tin dòng họ Trần Trọng Thu.</p>
-                </div>
-                <div class="ve-dong-ho-copy">
-                    <p>Gia tộc Trần Trọng Thu không bắt đầu từ một kho tàng lớn. Nó bắt đầu từ những cái tên, những mối quan hệ, những câu chuyện được nhớ lại, những bức ảnh cũ, những giấy tờ còn sót và những điều có nguy cơ biến mất nếu hôm nay không được ghi lại.</p>
-                    <p>Cội nguồn dòng họ gắn liền với Thọ Vực, Bình Châu, Bình Triệu và hành trình tới Sài Gòn. Mỗi thế hệ F0–F4 đều mang trong mình những ký ức và bài học đời sống được trao truyền qua từng nếp nhà.</p>
-                    <p>Hãy khám phá <a class="inline-link" onclick="navigateRoute('/gia-pha')">cây phả đồ</a>, các <a class="inline-link" onclick="navigateRoute('/gia-pha/nhan-vat')">hồ sơ nhân vật</a> và những bài <a class="inline-link" onclick="navigateRoute('/mach')">tự sự trong Mạch</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 17. VỀ DỰ ÁN (PROJECT & STEWARDSHIP) -->
-        <section id="view_ve_du_an" class="view-section">
-            <div class="ve-du-an-wrapper">
-                <div class="section-header">
-                    <h2 class="section-title">Về Dự Án</h2>
-                    <p class="section-desc">Minh bạch lý do dự án ra đời, phương pháp khảo cứu và nguyên tắc ghi chép.</p>
-                </div>
-                <div class="ve-du-an-copy">
-                    <p>CÂY GIA PHẢ là một không gian lưu giữ và truyền lại lịch sử, con người, ký ức và cấu trúc của Gia tộc Trần Trọng Thu — dựa trên dữ liệu có căn cứ, giữ lại trước khi diễn giải, và đủ bền để thế hệ sau tiếp tục sử dụng.</p>
-                    <p>Mọi thông tin trong hệ thống đều gắn nhãn mức độ xác tín: <span class="certainty-tag">CONFIRMED</span>, <span class="certainty-tag">ORAL_TRADITION</span>, <span class="certainty-tag">MEMORY</span>, <span class="certainty-tag">INTERPRETATION</span>, <span class="certainty-tag">UNVERIFIED</span>, <span class="certainty-tag">DISPUTED</span>, <span class="certainty-tag">UNKNOWN</span>.</p>
-                    <p class="ve-du-an-specimen-link">Công cụ đánh giá typography nội bộ: <a class="inline-link" onclick="navigateRoute('/ve-du-an/typography-specimen')">Bảng so sánh danh tính typography →</a></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 18. TYPOGRAPHY SPECIMEN EVALUATION MODULE (TYPOGRAPHY_03) -->
-        <section id="view_typography_specimen" class="view-section">
-            <div class="specimen-wrapper">
-                
-                <!-- TOP HEADER BANNER -->
-                <div class="specimen-banner">
-                    <span class="specimen-badge">Identity Evaluation Specimen</span>
-                    <h1 class="specimen-title">Bảng So Sánh Danh Tính Typography</h1>
-                    <p class="specimen-desc">
-                        Đánh giá trực quan 3 phương án font chữ cho Hệ thống Tri thức GIA TỘC TRẦN TRỌNG THU.
-                        Tất cả các phương án đều sử dụng cùng một tập nội dung, terminology và dữ liệu thực tế.
-                    </p>
-                </div>
-
-                <!-- JUMP NAVIGATION -->
-                <nav class="specimen-nav-box">
-                    <a href="javascript:void(0)" class="specimen-jump-btn" onclick="document.getElementById('specimen_opt_a').scrollIntoView({behavior:'smooth'})">
-                        🅰️ Phương án A: Noto (Sans + Serif)
-                    </a>
-                    <a href="javascript:void(0)" class="specimen-jump-btn" onclick="document.getElementById('specimen_opt_b').scrollIntoView({behavior:'smooth'})">
-                        🅱️ Phương án B: Be Vietnam Pro (100% Sans)
-                    </a>
-                    <a href="javascript:void(0)" class="specimen-jump-btn" onclick="document.getElementById('specimen_opt_c').scrollIntoView({behavior:'smooth'})">
-                        🅲 Phương án C: Be Vietnam Pro + Source Serif 4
-                    </a>
-                </nav>
-
-                <!-- ==========================================
-                     OPTION A: NOTO SANS + NOTO SERIF
-                     ========================================== -->
-                <article id="specimen_opt_a" class="specimen-card font-specimen-opt-a">
-                    <header class="specimen-opt-header">
-                        <span class="specimen-opt-tag tag-opt-a">Phương Án A • Hệ Thống Noto Toàn Diện</span>
-                        <h2 class="specimen-opt-title sp-sans">Noto Sans + Noto Serif</h2>
-                        <p class="specimen-opt-sub sp-sans">
-                            Hệ thống font chuẩn mực toàn cầu của Google với độ phủ dấu tiếng Việt xuất sắc, kết hợp giữa Noto Sans (UI & Hệ thống dữ liệu) và Noto Serif (Không gian Tự sự & Bài viết MẠCH).
-                        </p>
-                        <div class="specimen-font-stacks sp-sans">
-                            <span class="specimen-stack-pill">UI / Hệ thống: <strong>Noto Sans</strong> (400, 500, 600, 700)</span>
-                            <span class="specimen-stack-pill">Tự sự / MẠCH: <strong>Noto Serif</strong> (400, 400i, 600, 700)</span>
-                        </div>
-                    </header>
-
-                    <!-- 1. Vietnamese Glyph Test -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">1. Thử Nghiệm Bảng Chữ & Dấu Tiếng Việt (Glyph Stress Test)</div>
-                        <div class="specimen-glyph-box">
-                            <div class="specimen-glyph-vowels sp-sans">
-                                ă â ê ô ơ ư đ &nbsp;•&nbsp; á à ả ã ạ &nbsp;•&nbsp; ấ ầ ẩ ẫ ậ &nbsp;•&nbsp; ế ề ể ễ ệ &nbsp;•&nbsp; ố ồ ổ ỗ ộ &nbsp;•&nbsp; ờ ở ỡ ợ &nbsp;•&nbsp; ứ ừ ử ữ ự
-                            </div>
-                            <div class="specimen-glyph-sentences">
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Gia phả & Cội nguồn:</strong> Trải qua bao thăng trầm dâu bể, cội nguồn dòng họ vẫn sừng sững tựa rặng tre già chở che cho đàn con cháu sum vầy.
-                                </div>
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Phụng vụ & Bổn mạng:</strong> Lễ kính Quan thầy bổn mạng, ngày giỗ tưởng niệm phụ mẫu và các bậc tiền nhân ở xứ đạo thân thương.
-                                </div>
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Khảo cứu & Trích lục:</strong> Khảo cứu gia phả, đối chiếu trích lục sổ rửa tội và ghi chép từng nhánh gia đình qua nhiều thế hệ.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Typographic Roles Scale -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">2. Hệ Thống Thứ Bậc Chữ (Typographic Hierarchy & Roles)</div>
-                        <div class="specimen-scale-table sp-sans">
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Display (36px / 800)</span>
-                                <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary-dark); line-height: 1.15;">DÒNG HỌ TRẦN TRỌNG THU</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 1 (28px / 700)</span>
-                                <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-dark); line-height: 1.25;">Trích lục Gia Phả & Di Sản Gia Tộc</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 2 (22px / 700)</span>
-                                <div style="font-size: 1.375rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3;">Cây Gia Phả 5 Thế Hệ & 68 Gia Đình Trực Hệ</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 3 (18px / 600)</span>
-                                <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary-dark); line-height: 1.35;">Lịch Phụng Vụ, Bổn Mạng & Ngày Giỗ Tiền Nhân</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Large (17px / 500)</span>
-                                <div style="font-size: 1.0625rem; font-weight: 500; line-height: 1.6; color: var(--text-main);">Không gian số lưu trữ phả hệ, lịch phụng vụ gia tộc và những trang viết ký ức tiếp nối qua nhiều thế hệ.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Regular (15px / 400)</span>
-                                <div style="font-size: 0.9375rem; font-weight: 400; line-height: 1.65; color: var(--text-main);">Dữ liệu gia phả được đồng bộ trực tiếp từ hồ sơ gốc, hỗ trợ tra cứu song song Dương lịch và Âm lịch Việt Nam chuẩn xác.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Small (13.5px / 400)</span>
-                                <div style="font-size: 0.84375rem; font-weight: 400; line-height: 1.5; color: var(--text-muted);">Thông tin sinh tử, lễ bổn mạng và quan hệ huyết thống được chuẩn hóa theo định dạng quốc tế GEDCOM.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Meta (12.5px / 600 Upper)</span>
-                                <div style="font-size: 0.78125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--lacquer-red);">THẾ HỆ F1 • CHI THỨ HAI • GIUSE TRẦN TRỌNG THU</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Caption (11.5px / Italic)</span>
-                                <div style="font-size: 0.71875rem; font-style: italic; color: var(--text-muted);">Ghi chú: Lễ giỗ được tính theo ngày âm lịch truyền thống hàng năm.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Quote / Trích dẫn (16px)</span>
-                                <div style="font-size: 1rem; font-style: italic; color: var(--text-main); line-height: 1.7; border-left: 3px solid var(--lacquer-red); padding-left: 12px;">«Dòng họ không chỉ là huyết thống sinh học; dòng họ là một không gian văn hóa, một khế ước tình cảm nối liền những người đang sống với tiền nhân.»</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Domain UI Components -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">3. Giao Diện & Dữ Liệu Thực Tế (Domain UI Samples)</div>
-                        <div class="specimen-ui-grid sp-sans">
-                            <!-- Brand & Nav Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">A. Brand & Navigation</div>
-                                <div style="display: flex; align-items: center; justify-content: space-between; background: var(--surface); padding: 10px 14px; border: 1px solid var(--border); ">
-                                    <div style="font-weight: 800; font-size: 14px; color: var(--primary-dark);">DÒNG HỌ TRẦN TRỌNG THU</div>
-                                    <div style="display: flex; gap: 8px; font-size: 12px; font-weight: 600;">
-                                        <span style="color: var(--lacquer-red);">GIA PHẢ</span>
-                                        <span style="color: var(--text-muted);">MẠCH</span>
-                                        <span style="color: var(--text-muted);">LỊCH</span>
-                                        <span style="color: var(--text-muted);">TƯ LIỆU</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Genealogy Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">B. Hồ Sơ Gia Phả & Quan Hệ</div>
-                                <div style="background: var(--surface); padding: 12px; border: 1px solid var(--border); ">
-                                    <div style="font-weight: 700; font-size: 15px; color: var(--primary-dark);">Giuse Trần Trọng Thu</div>
-                                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">F0 • Trưởng tộc (1910 – 1985) • Vợ: Nguyễn Thị Bảy</div>
-                                    <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
-                                        <span class="gen-badge f0">F0 Trực hệ</span>
-                                        <span class="badge-role spouse">Cha: F0</span>
-                                        <span class="badge-role child">Con: F1</span>
-                                    </div>
-                                    <div style="margin-top: 8px; font-size: 12px; color: var(--text-muted); border-top: 1px dashed var(--border); padding-top: 6px;">
-                                        Thống kê: <strong>223 thành viên</strong> • <strong>68 gia đình</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Calendar Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">C. Lịch & Bộ Lọc Đa Luồng</div>
-                                <div style="background: var(--surface); padding: 12px; border: 1px solid var(--border);  display: flex; flex-direction: column; gap: 8px;">
-                                    <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                        <span class="filter-chip active-birth" style="font-size: 11.5px; padding: 4px 8px;">Sinh nhật (118)</span>
-                                        <span class="filter-chip active-patron" style="font-size: 11.5px; padding: 4px 8px;">Bổn mạng (115)</span>
-                                        <span class="filter-chip active-mem" style="font-size: 11.5px; padding: 4px 8px;">Tưởng niệm (28)</span>
-                                        <span class="filter-chip active-event" style="font-size: 11.5px; padding: 4px 8px;">Sự kiện (4)</span>
-                                    </div>
-                                    <div style="display: flex; gap: 6px; margin-top: 4px;">
-                                        <button class="btn-feed-copy" style="flex: 1; font-size: 12px; padding: 6px 10px;">Sao chép URL</button>
-                                        <button class="btn-feed-webcal" style="flex: 1; font-size: 12px; padding: 6px 10px;">Mở Apple Calendar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. Long-form Reading Test -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">4. Thử Nghiệm Đọc Bài Viết Dài (MẠCH Long-Form Reading Test)</div>
-                        <div class="specimen-reading-column">
-                            <h3 class="specimen-reading-title sp-serif">Những điều còn giữ con người ở lại với nhau</h3>
-                            <div class="specimen-reading-meta sp-sans">
-                                Tuyển tập: <strong>Thư gửi Clara</strong> • Tác giả: <strong>Tuấn</strong> • Ngày xuất bản: 04 tháng 09 năm 2026
-                            </div>
-                            <div class="specimen-reading-lead sp-serif">
-                                Có những buổi chiều khi ngồi nhìn lại những dòng tên trong cuốn gia phả cũ, bố chợt tự hỏi: Điều gì thực sự giữ con người ở lại với nhau sau ngần ấy năm tháng chia xa và biến thiên của đời sống?
-                            </div>
-                            <div class="specimen-reading-body sp-serif">
-                                <p>
-                                    Thế hệ của ông bà lớn lên trong một thế giới gắn kết tự nhiên. Mọi người sống chung một xóm đạo, cùng chia sẻ một giếng nước, cùng nghe chung một tiếng chuông nhà thờ ban mai. Không ai cần phải "chứng minh" hay "nỗ lực kết nối", bởi vì sự gần gũi đã là bầu khí quyển họ hít thở mỗi ngày.
-                                </p>
-                                <div class="specimen-reading-quote sp-serif">
-                                    «Giữ một dòng họ không phải là cố chấp bám vào những quy ước cũ kỹ, mà là nuôi dưỡng sự thấu cảm giữa những con người cùng chung một dòng máu.»
-                                </div>
-                                <p>
-                                    Nhưng đến thế hệ của bố và con, cuộc sống hiện đại đã phân tán chúng ta đi khắp các ngả đường. Những gia đình hạt nhân mọc lên giữa lòng đô thị, những chuyến bay dài ngăn cách các lục địa. Ngày giỗ, ngày Tết hay lễ bổn mạng dần trở thành những chiếc cầu nối hiếm hoi để con người nhớ ra mình thuộc về một cội nguồn chung.
-                                </p>
-                                <p>
-                                    Cây gia phả này không chỉ là những cái tên và con số khô khan, mà là một mạch ngầm ký ức sống động được trao truyền qua từng trang viết cho các thế hệ mai sau.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- ==========================================
-                     OPTION B: BE VIETNAM PRO (100% SANS)
-                     ========================================== -->
-                <article id="specimen_opt_b" class="specimen-card font-specimen-opt-b">
-                    <header class="specimen-opt-header">
-                        <span class="specimen-opt-tag tag-opt-b">Phương Án B • Hệ Thống Be Vietnam Pro Thuần Sans-Serif</span>
-                        <h2 class="specimen-opt-title sp-sans">Be Vietnam Pro (Toàn Bộ Hệ Thống)</h2>
-                        <p class="specimen-opt-sub sp-sans">
-                            Font chữ được thiết kế riêng cho tiếng Việt bởi chuyên gia typographic Việt Nam. Sử dụng đồng nhất 100% Sans-serif cho toàn bộ website: từ giao diện, gia phả, lịch đến bài viết MẠCH. Hiện đại, mạch lạc, không dùng serif.
-                        </p>
-                        <div class="specimen-font-stacks sp-sans">
-                            <span class="specimen-stack-pill">UI / Hệ thống / Dữ liệu: <strong>Be Vietnam Pro</strong> (400, 500, 600, 700, 800)</span>
-                            <span class="specimen-stack-pill">Tự sự / Bài viết MẠCH: <strong>Be Vietnam Pro</strong> (400, 400i, 600, 700)</span>
-                        </div>
-                    </header>
-
-                    <!-- 1. Vietnamese Glyph Test -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">1. Thử Nghiệm Bảng Chữ & Dấu Tiếng Việt (Glyph Stress Test)</div>
-                        <div class="specimen-glyph-box">
-                            <div class="specimen-glyph-vowels sp-sans">
-                                ă â ê ô ơ ư đ &nbsp;•&nbsp; á à ả ã ạ &nbsp;•&nbsp; ấ ầ ẩ ẫ ậ &nbsp;•&nbsp; ế ề ể ễ ệ &nbsp;•&nbsp; ố ồ ổ ỗ ộ &nbsp;•&nbsp; ờ ở ỡ ợ &nbsp;•&nbsp; ứ ừ ử ữ ự
-                            </div>
-                            <div class="specimen-glyph-sentences">
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Gia phả & Cội nguồn:</strong> Trải qua bao thăng trầm dâu bể, cội nguồn dòng họ vẫn sừng sững tựa rặng tre già chở che cho đàn con cháu sum vầy.
-                                </div>
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Phụng vụ & Bổn mạng:</strong> Lễ kính Quan thầy bổn mạng, ngày giỗ tưởng niệm phụ mẫu và các bậc tiền nhân ở xứ đạo thân thương.
-                                </div>
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Khảo cứu & Trích lục:</strong> Khảo cứu gia phả, đối chiếu trích lục sổ rửa tội và ghi chép từng nhánh gia đình qua nhiều thế hệ.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Typographic Roles Scale -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">2. Hệ Thống Thứ Bậc Chữ (Typographic Hierarchy & Roles)</div>
-                        <div class="specimen-scale-table sp-sans">
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Display (36px / 800)</span>
-                                <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary-dark); line-height: 1.15;">DÒNG HỌ TRẦN TRỌNG THU</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 1 (28px / 700)</span>
-                                <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-dark); line-height: 1.25;">Trích lục Gia Phả & Di Sản Gia Tộc</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 2 (22px / 700)</span>
-                                <div style="font-size: 1.375rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3;">Cây Gia Phả 5 Thế Hệ & 68 Gia Đình Trực Hệ</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 3 (18px / 600)</span>
-                                <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary-dark); line-height: 1.35;">Lịch Phụng Vụ, Bổn Mạng & Ngày Giỗ Tiền Nhân</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Large (17px / 500)</span>
-                                <div style="font-size: 1.0625rem; font-weight: 500; line-height: 1.6; color: var(--text-main);">Không gian số lưu trữ phả hệ, lịch phụng vụ gia tộc và những trang viết ký ức tiếp nối qua nhiều thế hệ.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Regular (15px / 400)</span>
-                                <div style="font-size: 0.9375rem; font-weight: 400; line-height: 1.65; color: var(--text-main);">Dữ liệu gia phả được đồng bộ trực tiếp từ hồ sơ gốc, hỗ trợ tra cứu song song Dương lịch và Âm lịch Việt Nam chuẩn xác.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Small (13.5px / 400)</span>
-                                <div style="font-size: 0.84375rem; font-weight: 400; line-height: 1.5; color: var(--text-muted);">Thông tin sinh tử, lễ bổn mạng và quan hệ huyết thống được chuẩn hóa theo định dạng quốc tế GEDCOM.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Meta (12.5px / 600 Upper)</span>
-                                <div style="font-size: 0.78125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--lacquer-red);">THẾ HỆ F1 • CHI THỨ HAI • GIUSE TRẦN TRỌNG THU</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Caption (11.5px / Italic)</span>
-                                <div style="font-size: 0.71875rem; font-style: italic; color: var(--text-muted);">Ghi chú: Lễ giỗ được tính theo ngày âm lịch truyền thống hàng năm.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Quote / Trích dẫn (16px)</span>
-                                <div style="font-size: 1rem; font-style: italic; color: var(--text-main); line-height: 1.7; border-left: 3px solid var(--lacquer-red); padding-left: 12px;">«Dòng họ không chỉ là huyết thống sinh học; dòng họ là một không gian văn hóa, một khế ước tình cảm nối liền những người đang sống với tiền nhân.»</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Domain UI Components -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">3. Giao Diện & Dữ Liệu Thực Tế (Domain UI Samples)</div>
-                        <div class="specimen-ui-grid sp-sans">
-                            <!-- Brand & Nav Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">A. Brand & Navigation</div>
-                                <div style="display: flex; align-items: center; justify-content: space-between; background: var(--surface); padding: 10px 14px; border: 1px solid var(--border); ">
-                                    <div style="font-weight: 800; font-size: 14px; color: var(--primary-dark);">DÒNG HỌ TRẦN TRỌNG THU</div>
-                                    <div style="display: flex; gap: 8px; font-size: 12px; font-weight: 600;">
-                                        <span style="color: var(--lacquer-red);">GIA PHẢ</span>
-                                        <span style="color: var(--text-muted);">MẠCH</span>
-                                        <span style="color: var(--text-muted);">LỊCH</span>
-                                        <span style="color: var(--text-muted);">TƯ LIỆU</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Genealogy Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">B. Hồ Sơ Gia Phả & Quan Hệ</div>
-                                <div style="background: var(--surface); padding: 12px; border: 1px solid var(--border); ">
-                                    <div style="font-weight: 700; font-size: 15px; color: var(--primary-dark);">Giuse Trần Trọng Thu</div>
-                                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">F0 • Trưởng tộc (1910 – 1985) • Vợ: Nguyễn Thị Bảy</div>
-                                    <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
-                                        <span class="gen-badge f0">F0 Trực hệ</span>
-                                        <span class="badge-role spouse">Cha: F0</span>
-                                        <span class="badge-role child">Con: F1</span>
-                                    </div>
-                                    <div style="margin-top: 8px; font-size: 12px; color: var(--text-muted); border-top: 1px dashed var(--border); padding-top: 6px;">
-                                        Thống kê: <strong>223 thành viên</strong> • <strong>68 gia đình</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Calendar Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">C. Lịch & Bộ Lọc Đa Luồng</div>
-                                <div style="background: var(--surface); padding: 12px; border: 1px solid var(--border);  display: flex; flex-direction: column; gap: 8px;">
-                                    <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                        <span class="filter-chip active-birth" style="font-size: 11.5px; padding: 4px 8px;">Sinh nhật (118)</span>
-                                        <span class="filter-chip active-patron" style="font-size: 11.5px; padding: 4px 8px;">Bổn mạng (115)</span>
-                                        <span class="filter-chip active-mem" style="font-size: 11.5px; padding: 4px 8px;">Tưởng niệm (28)</span>
-                                        <span class="filter-chip active-event" style="font-size: 11.5px; padding: 4px 8px;">Sự kiện (4)</span>
-                                    </div>
-                                    <div style="display: flex; gap: 6px; margin-top: 4px;">
-                                        <button class="btn-feed-copy" style="flex: 1; font-size: 12px; padding: 6px 10px;">Sao chép URL</button>
-                                        <button class="btn-feed-webcal" style="flex: 1; font-size: 12px; padding: 6px 10px;">Mở Apple Calendar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. Long-form Reading Test -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">4. Thử Nghiệm Đọc Bài Viết Dài (MẠCH Long-Form Reading Test)</div>
-                        <div class="specimen-reading-column">
-                            <h3 class="specimen-reading-title sp-sans">Những điều còn giữ con người ở lại với nhau</h3>
-                            <div class="specimen-reading-meta sp-sans">
-                                Tuyển tập: <strong>Thư gửi Clara</strong> • Tác giả: <strong>Tuấn</strong> • Ngày xuất bản: 04 tháng 09 năm 2026
-                            </div>
-                            <div class="specimen-reading-lead sp-sans">
-                                Có những buổi chiều khi ngồi nhìn lại những dòng tên trong cuốn gia phả cũ, bố chợt tự hỏi: Điều gì thực sự giữ con người ở lại với nhau sau ngần ấy năm tháng chia xa và biến thiên của đời sống?
-                            </div>
-                            <div class="specimen-reading-body sp-sans">
-                                <p>
-                                    Thế hệ của ông bà lớn lên trong một thế giới gắn kết tự nhiên. Mọi người sống chung một xóm đạo, cùng chia sẻ một giếng nước, cùng nghe chung một tiếng chuông nhà thờ ban mai. Không ai cần phải "chứng minh" hay "nỗ lực kết nối", bởi vì sự gần gũi đã là bầu khí quyển họ hít thở mỗi ngày.
-                                </p>
-                                <div class="specimen-reading-quote sp-sans">
-                                    «Giữ một dòng họ không phải là cố chấp bám vào những quy ước cũ kỹ, mà là nuôi dưỡng sự thấu cảm giữa những con người cùng chung một dòng máu.»
-                                </div>
-                                <p>
-                                    Nhưng đến thế hệ của bố và con, cuộc sống hiện đại đã phân tán chúng ta đi khắp các ngả đường. Những gia đình hạt nhân mọc lên giữa lòng đô thị, những chuyến bay dài ngăn cách các lục địa. Ngày giỗ, ngày Tết hay lễ bổn mạng dần trở thành những chiếc cầu nối hiếm hoi để con người nhớ ra mình thuộc về một cội nguồn chung.
-                                </p>
-                                <p>
-                                    Cây gia phả này không chỉ là những cái tên và con số khô khan, mà là một mạch ngầm ký ức sống động được trao truyền qua từng trang viết cho các thế hệ mai sau.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- ==========================================
-                     OPTION C: BE VIETNAM PRO + SOURCE SERIF 4
-                     ========================================== -->
-                <article id="specimen_opt_c" class="specimen-card font-specimen-opt-c">
-                    <header class="specimen-opt-header">
-                        <span class="specimen-opt-tag tag-opt-c">Phương Án C • Kết Hợp Be Vietnam Pro + Source Serif 4</span>
-                        <h2 class="specimen-opt-title sp-sans">Be Vietnam Pro + Source Serif 4</h2>
-                        <p class="specimen-opt-sub sp-sans">
-                            Sự giao thoa tinh tế giữa tính hiện đại, chính xác của Be Vietnam Pro cho hệ thống dữ liệu/UI và chiều sâu văn hóa, nhịp điệu ấm áp của Source Serif 4 (Adobe) cho không gian đọc dài MẠCH.
-                        </p>
-                        <div class="specimen-font-stacks sp-sans">
-                            <span class="specimen-stack-pill">UI / Hệ thống / Dữ liệu: <strong>Be Vietnam Pro</strong> (400, 500, 600, 700, 800)</span>
-                            <span class="specimen-stack-pill">Tự sự / Bài viết MẠCH: <strong>Source Serif 4</strong> (400, 400i, 600, 700)</span>
-                        </div>
-                    </header>
-
-                    <!-- 1. Vietnamese Glyph Test -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">1. Thử Nghiệm Bảng Chữ & Dấu Tiếng Việt (Glyph Stress Test)</div>
-                        <div class="specimen-glyph-box">
-                            <div class="specimen-glyph-vowels sp-sans">
-                                ă â ê ô ơ ư đ &nbsp;•&nbsp; á à ả ã ạ &nbsp;•&nbsp; ấ ầ ẩ ẫ ậ &nbsp;•&nbsp; ế ề ể ễ ệ &nbsp;•&nbsp; ố ồ ổ ỗ ộ &nbsp;•&nbsp; ờ ở ỡ ợ &nbsp;•&nbsp; ứ ừ ử ữ ự
-                            </div>
-                            <div class="specimen-glyph-sentences">
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Gia phả & Cội nguồn:</strong> Trải qua bao thăng trầm dâu bể, cội nguồn dòng họ vẫn sừng sững tựa rặng tre già chở che cho đàn con cháu sum vầy.
-                                </div>
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Phụng vụ & Bổn mạng:</strong> Lễ kính Quan thầy bổn mạng, ngày giỗ tưởng niệm phụ mẫu và các bậc tiền nhân ở xứ đạo thân thương.
-                                </div>
-                                <div class="specimen-glyph-sent sp-sans">
-                                    <strong>Khảo cứu & Trích lục:</strong> Khảo cứu gia phả, đối chiếu trích lục sổ rửa tội và ghi chép từng nhánh gia đình qua nhiều thế hệ.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Typographic Roles Scale -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">2. Hệ Thống Thứ Bậc Chữ (Typographic Hierarchy & Roles)</div>
-                        <div class="specimen-scale-table sp-sans">
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Display (36px / 800)</span>
-                                <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary-dark); line-height: 1.15;">DÒNG HỌ TRẦN TRỌNG THU</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 1 (28px / 700)</span>
-                                <div style="font-size: 1.75rem; font-weight: 700; color: var(--primary-dark); line-height: 1.25;">Trích lục Gia Phả & Di Sản Gia Tộc</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 2 (22px / 700)</span>
-                                <div style="font-size: 1.375rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3;">Cây Gia Phả 5 Thế Hệ & 68 Gia Đình Trực Hệ</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Heading 3 (18px / 600)</span>
-                                <div style="font-size: 1.125rem; font-weight: 600; color: var(--primary-dark); line-height: 1.35;">Lịch Phụng Vụ, Bổn Mạng & Ngày Giỗ Tiền Nhân</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Large (17px / 500)</span>
-                                <div style="font-size: 1.0625rem; font-weight: 500; line-height: 1.6; color: var(--text-main);">Không gian số lưu trữ phả hệ, lịch phụng vụ gia tộc và những trang viết ký ức tiếp nối qua nhiều thế hệ.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Regular (15px / 400)</span>
-                                <div style="font-size: 0.9375rem; font-weight: 400; line-height: 1.65; color: var(--text-main);">Dữ liệu gia phả được đồng bộ trực tiếp từ hồ sơ gốc, hỗ trợ tra cứu song song Dương lịch và Âm lịch Việt Nam chuẩn xác.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Body Small (13.5px / 400)</span>
-                                <div style="font-size: 0.84375rem; font-weight: 400; line-height: 1.5; color: var(--text-muted);">Thông tin sinh tử, lễ bổn mạng và quan hệ huyết thống được chuẩn hóa theo định dạng quốc tế GEDCOM.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Meta (12.5px / 600 Upper)</span>
-                                <div style="font-size: 0.78125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--lacquer-red);">THẾ HỆ F1 • CHI THỨ HAI • GIUSE TRẦN TRỌNG THU</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Caption (11.5px / Italic)</span>
-                                <div style="font-size: 0.71875rem; font-style: italic; color: var(--text-muted);">Ghi chú: Lễ giỗ được tính theo ngày âm lịch truyền thống hàng năm.</div>
-                            </div>
-                            <div class="specimen-scale-row">
-                                <span class="specimen-scale-label">Quote / Trích dẫn (16px)</span>
-                                <div style="font-size: 1rem; font-style: italic; color: var(--text-main); line-height: 1.7; border-left: 3px solid var(--lacquer-red); padding-left: 12px;">«Dòng họ không chỉ là huyết thống sinh học; dòng họ là một không gian văn hóa, một khế ước tình cảm nối liền những người đang sống với tiền nhân.»</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Domain UI Components -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">3. Giao Diện & Dữ Liệu Thực Tế (Domain UI Samples)</div>
-                        <div class="specimen-ui-grid sp-sans">
-                            <!-- Brand & Nav Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">A. Brand & Navigation</div>
-                                <div style="display: flex; align-items: center; justify-content: space-between; background: var(--surface); padding: 10px 14px; border: 1px solid var(--border); ">
-                                    <div style="font-weight: 800; font-size: 14px; color: var(--primary-dark);">DÒNG HỌ TRẦN TRỌNG THU</div>
-                                    <div style="display: flex; gap: 8px; font-size: 12px; font-weight: 600;">
-                                        <span style="color: var(--lacquer-red);">GIA PHẢ</span>
-                                        <span style="color: var(--text-muted);">MẠCH</span>
-                                        <span style="color: var(--text-muted);">LỊCH</span>
-                                        <span style="color: var(--text-muted);">TƯ LIỆU</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Genealogy Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">B. Hồ Sơ Gia Phả & Quan Hệ</div>
-                                <div style="background: var(--surface); padding: 12px; border: 1px solid var(--border); ">
-                                    <div style="font-weight: 700; font-size: 15px; color: var(--primary-dark);">Giuse Trần Trọng Thu</div>
-                                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 2px;">F0 • Trưởng tộc (1910 – 1985) • Vợ: Nguyễn Thị Bảy</div>
-                                    <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
-                                        <span class="gen-badge f0">F0 Trực hệ</span>
-                                        <span class="badge-role spouse">Cha: F0</span>
-                                        <span class="badge-role child">Con: F1</span>
-                                    </div>
-                                    <div style="margin-top: 8px; font-size: 12px; color: var(--text-muted); border-top: 1px dashed var(--border); padding-top: 6px;">
-                                        Thống kê: <strong>223 thành viên</strong> • <strong>68 gia đình</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Calendar Sample -->
-                            <div class="specimen-ui-card">
-                                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">C. Lịch & Bộ Lọc Đa Luồng</div>
-                                <div style="background: var(--surface); padding: 12px; border: 1px solid var(--border);  display: flex; flex-direction: column; gap: 8px;">
-                                    <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                                        <span class="filter-chip active-birth" style="font-size: 11.5px; padding: 4px 8px;">Sinh nhật (118)</span>
-                                        <span class="filter-chip active-patron" style="font-size: 11.5px; padding: 4px 8px;">Bổn mạng (115)</span>
-                                        <span class="filter-chip active-mem" style="font-size: 11.5px; padding: 4px 8px;">Tưởng niệm (28)</span>
-                                        <span class="filter-chip active-event" style="font-size: 11.5px; padding: 4px 8px;">Sự kiện (4)</span>
-                                    </div>
-                                    <div style="display: flex; gap: 6px; margin-top: 4px;">
-                                        <button class="btn-feed-copy" style="flex: 1; font-size: 12px; padding: 6px 10px;">Sao chép URL</button>
-                                        <button class="btn-feed-webcal" style="flex: 1; font-size: 12px; padding: 6px 10px;">Mở Apple Calendar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. Long-form Reading Test -->
-                    <div class="specimen-block">
-                        <div class="specimen-block-title sp-sans">4. Thử Nghiệm Đọc Bài Viết Dài (MẠCH Long-Form Reading Test)</div>
-                        <div class="specimen-reading-column">
-                            <h3 class="specimen-reading-title sp-serif">Những điều còn giữ con người ở lại với nhau</h3>
-                            <div class="specimen-reading-meta sp-sans">
-                                Tuyển tập: <strong>Thư gửi Clara</strong> • Tác giả: <strong>Tuấn</strong> • Ngày xuất bản: 04 tháng 09 năm 2026
-                            </div>
-                            <div class="specimen-reading-lead sp-serif">
-                                Có những buổi chiều khi ngồi nhìn lại những dòng tên trong cuốn gia phả cũ, bố chợt tự hỏi: Điều gì thực sự giữ con người ở lại với nhau sau ngần ấy năm tháng chia xa và biến thiên của đời sống?
-                            </div>
-                            <div class="specimen-reading-body sp-serif">
-                                <p>
-                                    Thế hệ của ông bà lớn lên trong một thế giới gắn kết tự nhiên. Mọi người sống chung một xóm đạo, cùng chia sẻ một giếng nước, cùng nghe chung một tiếng chuông nhà thờ ban mai. Không ai cần phải "chứng minh" hay "nỗ lực kết nối", bởi vì sự gần gũi đã là bầu khí quyển họ hít thở mỗi ngày.
-                                </p>
-                                <div class="specimen-reading-quote sp-serif">
-                                    «Giữ một dòng họ không phải là cố chấp bám vào những quy ước cũ kỹ, mà là nuôi dưỡng sự thấu cảm giữa những con người cùng chung một dòng máu.»
-                                </div>
-                                <p>
-                                    Nhưng đến thế hệ của bố và con, cuộc sống hiện đại đã phân tán chúng ta đi khắp các ngả đường. Những gia đình hạt nhân mọc lên giữa lòng đô thị, những chuyến bay dài ngăn cách các lục địa. Ngày giỗ, ngày Tết hay lễ bổn mạng dần trở thành những chiếc cầu nối hiếm hoi để con người nhớ ra mình thuộc về một cội nguồn chung.
-                                </p>
-                                <p>
-                                    Cây gia phả này không chỉ là những cái tên và con số khô khan, mà là một mạch ngầm ký ức sống động được trao truyền qua từng trang viết cho các thế hệ mai sau.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        <!-- 5. ACCOUNT / SETTINGS VIEW (MEMBER FRONT DOOR) -->
-        <section id="view_cai_dat" class="view-section">
-            <div class="article-container" style="max-width: 600px; padding: 40px 20px;">
-                <h2 style="font-size: 1.5rem; margin-bottom: 24px; color: var(--primary-dark); font-family: var(--font-serif); font-weight: normal;">Cài đặt / Tài khoản</h2>
-                <div style="background: #fff; padding: 24px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); text-align: center;">
-                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">Tính năng dành riêng cho thành viên gia đình.</p>
-                    <p style="font-size: 0.95rem; color: var(--text-subtle); line-height: 1.6; margin-bottom: 24px;">Tại đây bạn sẽ có thể đăng nhập để quản lý thông tin cá nhân, cập nhật gia phả và tùy chỉnh hiển thị giao diện theo tài khoản của mình.</p>
-                    <button class="nav-item-btn" style="background: var(--primary); color: #fff; padding: 10px 24px; font-size: 1rem; cursor: not-allowed; opacity: 0.8; border: none;">Đăng nhập (Sắp ra mắt)</button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FLOATING CHATBOT WIDGET DEMO -->
-    <button id="chatbotWidgetBtn" class="chatbot-floating-btn" onclick="toggleChatbotDrawer()" aria-label="Hỏi đáp gia phả AI">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-    </button>
-    <div id="chatbotDrawer" class="chatbot-drawer">
-        <div class="chatbot-drawer-header">
-            <div style="display:flex; align-items:center; gap: 8px;">
-                <span style="font-size: 1.1rem; font-weight: bold; font-family: var(--font-serif);">AI Gia Phả (Demo)</span>
-            </div>
-            <button onclick="toggleChatbotDrawer()" style="background:transparent; border:none; color:white; font-size:1.5rem; cursor:pointer; line-height:1;">&times;</button>
+      </article>
+      <article class="path path-member">
+        <p class="section-label">Hướng 2 · Dành cho người trong họ</p>
+        <h2>Tôi là Thành viên</h2>
+        <p>Bước qua cánh cửa <strong>Tư cách thành viên</strong> để kết nối, xem lịch giỗ chạp,
+           tương tác với gia phả chi tiết và đóng góp tư liệu.</p>
+        <a class="path-cta" href="#/tu-cach-thanh-vien">Tư cách thành viên →</a>
+      </article>
+    </section>
+
+    <!-- 4. CURATED CONTENT (không dump database) -->
+    <!-- 4a. Tuyển chọn MẠCH -->
+    <section class="ed-section" aria-label="MẠCH nổi bật">
+      <div class="ed-section-head">
+        <h2>MẠCH · Tuyển chọn</h2>
+        <p>Những bài viết chọn lọc — nội dung thật từ mach.json, trình bày theo nhịp tòa soạn.</p>
+      </div>
+      <div id="machCuratedGrid" class="curated-grid"></div>
+      <div class="ed-more"><a href="#/mach" data-route="/mach">Toàn bộ MẠCH →</a></div>
+    </section>
+
+    <!-- 4b. Ký ức (một câu chuyện, không danh sách) -->
+    <section class="ed-section" aria-label="Ký ức và ghi chép">
+      <div class="ed-section-head">
+        <h2>Ký ức &amp; Ghi chép</h2>
+        <p>Một lời kể được chọn — trích nguyên văn từ genealogy.json → memories.</p>
+      </div>
+      <article class="memory">
+        <h3 class="memory-title" id="memTitle">…</h3>
+        <p class="memory-byline" id="memByline">…</p>
+        <p class="memory-text" id="memText">…</p>
+        <div class="ed-more"><a href="#/gia-pha/ky-uc">Đọc tiếp → <small>(route ký ức của Gia Phả)</small></a></div>
+      </article>
+    </section>
+
+    <!-- 4c. Tư liệu nổi bật: featured document (honest) -->
+    <section class="ed-section" aria-label="Tư liệu nổi bật">
+      <div class="ed-section-head">
+        <h2>Tư liệu nổi bật</h2>
+        <p>Vật chứng còn lại của dòng họ — kho đang số hóa.</p>
+      </div>
+      <div class="archive-note">
+        <p><strong>KHO TƯ LIỆU ĐANG ĐƯỢC XÂY DỰNG &amp; SỐ HÓA</strong></p>
+        <p>media.json hiện chỉ có assetId / sha256 / mimeType / file — chưa đủ
+           semantic metadata (tên, mô tả, ngày tháng, bối cảnh) để dựng gallery thật.
+           Module này giữ trạng thái trung thực; cấu trúc tương lai:
+           Tài liệu → Ảnh → Hiện vật → Ghi âm.</p>
+        <div class="ed-more"><a href="#/tu-lieu" data-route="/tu-lieu">Tìm hiểu kho tư liệu →</a></div>
+      </div>
+    </section>
+
+    <!-- 5. DEEPER EXPLORATION -->
+    <section class="deep" aria-label="Khám phá sâu hơn">
+      <div class="section-label">Khám phá sâu hơn</div>
+      <p>Đi sâu vào các phân hệ của ấn phẩm và kho lưu trữ.</p>
+      <div class="deep-links">
+        <a href="#/mach" data-route="/mach">Toàn bộ MẠCH →</a>
+        <a href="#/tu-lieu" data-route="/tu-lieu">Kho tư liệu →</a>
+        <a href="#/gia-pha" data-route="/gia-pha">Gia phả →</a>
+        <a href="#/lich" data-route="/lich">Lịch của dòng họ →</a>
+        <a href="#/tim-kiem" data-route="/tim-kiem">Tìm kiếm →</a>
+      </div>
+    </section>
+
+  </div><!-- /HOME VIEW -->
+<!-- ============ GIA PHA (public direction, không dump) ============ -->
+  <div data-view="gia-pha" hidden>
+    <section class="ed-section" aria-label="Gia phả">
+      <div class="ed-section-head">
+        <h2>Gia phả</h2>
+        <p>Hướng khám phá huyết thống — công khai chỉ trình bày tổng quan;
+           cây phả chi tiết nằm trong không gian thành viên.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="gpStatInd">—</b><span>Nhân vật</span></div>
+        <div class="stat"><b id="gpStatFam">—</b><span>Gia đình</span></div>
+        <div class="stat"><b id="gpStatMem">—</b><span>Ghi chép ký ức</span></div>
+      </div>
+      <div class="archive-note">
+        <p><strong>ĐỊNH HƯỚNG KHÁM PHÁ</strong></p>
+        <p>Nhân vật → Gia đình → Thế hệ → Quan hệ. Chi tiết phả đồ và danh bạ đầy đủ
+           dành cho thành viên dòng họ.</p>
+        <div class="ed-more">
+          <a href="#/tu-cach-thanh-vien">Tư cách thành viên →</a>&nbsp;·&nbsp;
+          <a href="#/" data-route="/">← Về trang nhất</a>
         </div>
-        <div class="chatbot-drawer-body">
-            <iframe src="chatbot-demo.html" frameborder="0" style="width:100%; height:100%;" allow="microphone"></iframe>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ MACH (listing) ============ -->
+  <div data-view="mach" hidden>
+    <section class="ed-section" aria-label="MẠCH">
+      <div class="ed-section-head">
+        <h2>MẠCH</h2>
+        <p>Tập san di sản — toàn bộ bài Số 01 từ mach.json (snapshot thật).</p>
+      </div>
+      <div class="mach-list" id="machFullList"></div>
+      <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+    </section>
+  </div>
+
+  <!-- ============ STORY DETAIL + READING TOOLS ============ -->
+  <div data-view="story" hidden>
+    <article class="story-wrap">
+      <p class="lead-kicker" id="storyKicker">MẠCH · Số 01</p>
+      <h1 class="lead-title" id="storyTitle">…</h1>
+      <p class="lead-meta" id="storyMeta">…</p>
+
+      <!-- READING TOOLS (article detail only, not primary nav) -->
+      <div class="reading-tools" role="toolbar" aria-label="Công cụ đọc">
+        <button type="button" id="fontMinus" aria-label="Giảm cỡ chữ" title="Giảm cỡ chữ">A−</button>
+        <button type="button" id="fontPlus"  aria-label="Tăng cỡ chữ" title="Tăng cỡ chữ">A+</button>
+        <span class="tool-sep"></span>
+        <button type="button" id="shareBtn" aria-label="Chia sẻ" title="Chia sẻ (prototype)">Share</button>
+        <button type="button" id="bookmarkBtn" aria-label="Đánh dấu" title="Đánh dấu (prototype)">Bookmark</button>
+        <button type="button" id="commentBtn" aria-label="Bình luận" title="Bình luận (prototype)">Comment</button>
+        <button type="button" id="printBtn" aria-label="In bài" title="In bài">Print</button>
+      </div>
+
+      <div class="story-body" id="storyBodyBox">
+        <p class="memory-text" id="storyBody">…</p>
+        <p class="note-caps">Prototype: nội dung bài đọc đầy đủ sẽ đấu nối renderArticleDetail khi triển khai.</p>
+      </div>
+
+      <div id="toast" class="toast" hidden></div>
+
+      <div class="ed-more">
+        <a href="#/mach" data-route="/mach">← Tất cả bài viết</a>
+        &nbsp;·&nbsp;
+        <a href="#/" data-route="/">Trang nhất</a>
+      </div>
+    </article>
+  </div>
+
+  <!-- ============ TU LIEU (honest archive) ============ -->
+  <div data-view="tu-lieu" hidden>
+    <section class="ed-section" aria-label="Tư liệu gốc">
+      <div class="ed-section-head">
+        <h2>Tư liệu gốc</h2>
+        <p>Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
+      </div>
+      <div class="archive-note">
+        <p><strong>KHO TƯ LIỆU ĐANG ĐƯỢC XÂY DỰNG &amp; SỐ HÓA</strong></p>
+        <p>media.json hiện chỉ có assetId / sha256 / mimeType / file — chưa đủ
+           semantic metadata (tên, mô tả, ngày tháng, bối cảnh) để dựng gallery thật.
+           Cấu trúc tương lai: Tài liệu → Ảnh → Hiện vật → Ghi âm, mỗi mục có
+           tiêu đề, mô tả, ngày tháng và bối cảnh rõ ràng.</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ LICH (public calendar, cultural) ============ -->
+  <div data-view="lich" hidden>
+    <section class="ed-section" aria-label="Lịch gia đình">
+      <div class="ed-section-head">
+        <h2>Lịch gia đình</h2>
+        <p>Sự kiện sắp tới của dòng họ — ngày giỗ, sinh nhật, mốc kỷ niệm.
+           (snapshot thật từ CAL_*.ics)</p>
+      </div>
+      <div id="calFullList"></div>
+      <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+    </section>
+  </div>
+<!-- ============ TIM KIEM (search) ============ -->
+  <div data-view="tim-kiem" hidden>
+    <section class="ed-section" aria-label="Tìm kiếm">
+      <div class="ed-section-head">
+        <h2>Tìm kiếm</h2>
+        <p>Tra cứu prototype trên snapshot MẠCH + Ký ức (không gọi backend).</p>
+      </div>
+      <div class="archive-note">
+        <form id="protoSearch" action="#/tim-kiem" onsubmit="return false;">
+          <input id="protoQ" type="search" placeholder="Nhập tên bài viết hoặc ký ức…"
+                 aria-label="Từ khóa tìm kiếm"
+                 style="width:min(420px,90%);padding:10px 12px;font-size:16px;">
+          <button type="submit" style="padding:10px 18px;font-size:15px;cursor:pointer;">Tìm</button>
+        </form>
+        <div id="protoResults" style="margin-top:18px;text-align:left;"></div>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ TU CACH THANH VIEN (Member Entry — product entry point) ============ -->
+  <div data-view="tu-cach-thanh-vien" hidden>
+    <section class="ed-section member-page" aria-label="Tư cách thành viên">
+      <div class="ed-section-head">
+        <p class="section-label">Dành cho người trong họ</p>
+        <h2>Tư cách thành viên</h2>
+        <p>Đây là một entry point sản phẩm — không phải chỉ là nút đăng nhập kỹ thuật.</p>
+      </div>
+      <div class="member-panel">
+        <p>Trở thành thành viên để:</p>
+        <ul>
+          <li>Kết nối và giao tiếp trong không gian riêng của dòng họ;</li>
+          <li>Xem lịch giỗ chạp, sinh nhật và các mốc kỷ niệm chi tiết;</li>
+          <li>Tương tác với cây gia phả và danh bạ đầy đủ;</li>
+          <li>Đóng góp tư liệu, ký ức và câu chuyện.</li>
+        </ul>
+        <p class="note-caps">PROTOTYPE — xác thực (auth) và backend chưa được triển khai trong DESIGN-001.
+           Nút dưới đây mô phỏng luồng vào Member Space.</p>
+        <a class="path-cta" href="#/thanh-vien">Vào Member Space (prototype) →</a>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ MEMBER SPACE (placeholder) ============ -->
+  <div data-view="thanh-vien" hidden>
+    <section class="ed-section member-page" aria-label="Không gian thành viên">
+      <div class="ed-section-head">
+        <p class="section-label">Không gian riêng của dòng họ</p>
+        <h2>Member Space</h2>
+        <p>Prototype placeholder — không gian sẽ chứa các phân hệ dành riêng cho người trong họ.</p>
+      </div>
+      <div class="member-panel">
+        <ul>
+          <li><strong>Thông báo gia tộc</strong> — tin tức nội bộ, (sẽ) có;</li>
+          <li><strong>Lịch giỗ chạp chi tiết</strong> — theo từng gia đình, (sẽ) có;</li>
+          <li><strong>Gia phả tương tác</strong> — cây phả đồ đầy đủ, (sẽ) có;</li>
+          <li><strong>Đóng góp tư liệu</strong> — thêm ảnh, câu chuyện, ký ức, (sẽ) có.</li>
+        </ul>
+        <p class="note-caps">PROTOTYPE — auth/authorization/backend chưa hiện diện;
+           đây là mô phỏng kiến trúc, không phải hệ thống thật.</p>
+        <div class="ed-more">
+          <a href="#/tu-cach-thanh-vien">← Tư cách thành viên</a>&nbsp;·&nbsp;
+          <a href="#/" data-route="/">Về trang nhất</a>
         </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ CAI DAT (settings placeholder) ============ -->
+  <div data-view="cai-dat" hidden>
+    <section class="ed-section" aria-label="Cài đặt">
+      <div class="ed-section-head">
+        <h2>Cài đặt</h2>
+        <p>Utility — prototype placeholder.</p>
+      </div>
+      <div class="archive-note">
+        <p>Sẽ chứa: ngôn ngữ, cỡ chữ mặc định, thông báo, quản lý tài khoản (khi auth triển khai).</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ FOOTER / COLOPHON (real, archival) ============ -->
+  <footer class="colophon">
+    <div class="col-grid">
+      <div class="col-block">
+        <div class="c-name">Gia Tộc Trần Trọng Thu</div>
+        <p>Ấn phẩm số · kho lưu trữ sống của dòng họ — prototype DESIGN-001.</p>
+      </div>
+      <nav class="col-block col-links" aria-label="Chân trang — phân hệ">
+        <a href="#/mach" data-route="/mach">MẠCH</a>
+        <a href="#/tu-lieu" data-route="/tu-lieu">Tư liệu</a>
+        <a href="#/gia-pha" data-route="/gia-pha">Gia phả</a>
+        <a href="#/lich" data-route="/lich">Lịch</a>
+      </nav>
+      <div class="col-block col-members">
+        <p class="col-heading">Thành viên</p>
+        <a href="#/tu-cach-thanh-vien">Tư cách thành viên →</a>
+        <a href="#/thanh-vien">Member Space →</a>
+      </div>
+      <div class="col-block col-contact">
+        <p class="col-heading">Liên hệ / Ban liên lạc</p>
+        <p class="note-caps">Thông tin liên hệ chính thức sẽ được cập nhật từ nguồn được xác minh (chưa có source).</p>
+      </div>
     </div>
-
-
-    <!-- FLOATING FONT CONTROLS (utility, not in nav) -->
-    <div class="font-floating-control" aria-label="Điều chỉnh cỡ chữ">
-        <button class="font-float-btn" onclick="changeArticleFontSize(-1)" aria-label="Thu nhỏ chữ" title="Thu nhỏ chữ">A−</button>
-        <button class="font-float-btn font-float-reset" onclick="resetArticleFontSize()" aria-label="Cỡ chữ mặc định" title="Cỡ chữ mặc định">A</button>
-        <button class="font-float-btn" onclick="changeArticleFontSize(1)" aria-label="Phóng to chữ" title="Phóng to chữ">A+</button>
+    <div class="col-legal">
+      <small>© 2026 Gia Tộc Trần Trọng Thu.</small>
+      <small class="admin-note">Owner Control Plane — không nằm trong navigation công khai (phân tách theo thiết kế).</small>
     </div>
+  </footer>
 
-    <!-- FOOTER -->
-    <footer>
-        <div style="font-size: 12.5px; line-height: 1.6;">
-            © 2026 Gia tộc Trần Trọng Thu<br>
-            Lưu giữ, cập nhật và phát triển qua các thế hệ.
-        </div>
-    </footer>
+</div><!-- /.page -->
 
-    <!-- DAY DETAIL DRAWER -->
-    <div id="dayDrawer" class="drawer-backdrop" onclick="closeDrawer(event)">
-        <div class="drawer-panel" onclick="event.stopPropagation()">
-            <div class="drawer-header">
-                <div>
-                    <div class="drawer-title" id="drawerDateTitle">Chi tiết ngày</div>
-                    <div style="font-size: 12.5px; font-weight: 600; color: var(--lunar-color); margin-top: 2px;" id="drawerLunarSub">Âm lịch</div>
-                </div>
-                <button class="close-btn" onclick="closeDrawerDirect()">&times;</button>
-            </div>
-            <div class="drawer-body" id="drawerEventsList"></div>
-        </div>
-    </div>
+<script src="src/js/app-v2.js"></script>
 
-    <!-- EVENT DETAIL MODAL -->
-    <div id="eventModal" class="modal-bg" onclick="closeModal(event, 'eventModal')">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <div class="modal-head">
-                <div id="evModalTitle" style="font-weight: 800; font-size: 17px; color: var(--primary-dark);">Chi tiết sự kiện</div>
-                <button class="close-btn" onclick="closeModalDirect('eventModal')">&times;</button>
-            </div>
-            <div class="modal-body-content">
-                <div id="evModalDates" style="background: var(--bg); padding: 10px 14px;  margin-bottom: 12px; font-size: 13.5px; border: 1px solid var(--border);"></div>
-                <div id="evModalPersonLink" style="margin-bottom: 12px; display: none;"></div>
-                <div id="evModalDesc" style="font-size: 14px; white-space: pre-line; line-height: 1.6; border-top: 1px dashed var(--border); padding-top: 10px;"></div>
-            </div>
-        </div>
-    </div>
 
-    <!-- CALENDAR SUBSCRIBE MODAL (CALENDAR_02) -->
-    <div id="calendarSubscribeModal" class="modal-bg" onclick="closeModal(event, 'calendarSubscribeModal')">
-        <div class="modal-box subscribe-modal-box" onclick="event.stopPropagation()">
-            <div class="modal-head">
-                <div>
-                    <div class="subscribe-modal-title">
-                        Đăng ký Lịch Gia Đình
-                    </div>
-                    <p class="subscribe-modal-sub">
-                        Đăng ký một lần. Lịch trên điện thoại sẽ tự động cập nhật khi có ngày giỗ, sinh nhật, bổn mạng hoặc sự kiện gia đình mới.
-                    </p>
-                </div>
-                <button class="close-btn" onclick="closeModalDirect('calendarSubscribeModal')">&times;</button>
-            </div>
-            <div class="modal-body-content">
-                <!-- PLATFORM SELECTOR TABS -->
-                <div class="subscribe-platform-selector">
-                    <button class="cal-plat-btn active" id="tab_plat_apple" onclick="selectCalendarPlatform('apple')">
-                        iPhone / Mac (Apple)
-                    </button>
-                    <button class="cal-plat-btn" id="tab_plat_google" onclick="selectCalendarPlatform('google')">
-                        Google Calendar
-                    </button>
-                    <button class="cal-plat-btn" id="tab_plat_other" onclick="selectCalendarPlatform('other')">
-                        Ứng dụng khác
-                    </button>
-                </div>
 
-                <!-- DYNAMIC PLATFORM NOTICE -->
-                <div class="subscribe-plat-banner" id="platBanner"></div>
-
-                <!-- DYNAMIC FEED LIST -->
-                <div class="subscribe-feed-list" id="calendarFeedList"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPT APPLICATION CORE & CONTROLLER -->
-    <script src="src/js/core/lunar-engine.js?v=20260906_0105"></script>
-    <script src="src/js/core/ics-parser.js?v=20260906_0105"></script>
-    <script src="src/js/app.js?v=20260914_0102"></script>
 </body>
 </html>
