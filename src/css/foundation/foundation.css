@@ -1,0 +1,27 @@
+/* GIATOC - UI FOUNDATION v0.2 (entry point)
+
+   Load order is meaningful:
+     1. tokens.css     - design tokens (variables only)
+     2. layout.css     - application shell regions, containers, responsive
+     3. components.css - structure components
+     4. states.css     - loading / empty / error / notice
+
+   Consumer contract:
+     <link rel="stylesheet" href="/src/css/foundation/foundation.css">
+
+   v0.2 changes vs v0.1 (rationale: docs/design/GIATOC_UI_SYSTEM_v0.2.md)
+     - Brand/palette corrected to the values the live site actually uses
+       (src/css/prototype.css). #8B0000 / #D4AF37 from the unapproved
+       proposal are retired.
+     - Typography moved behind a single token pair. Playfair Display + Inter are
+       demoted to [PROPOSAL]; ACTIVE stacks are the live site stacks.
+     - Colour split into brand / surface / text / border / semantic / state.
+     - Visibility + epistemic palettes declared PRESENTATION-ONLY (no model).
+     - Breakpoint contract 375 / 768 / 1024 / 1440 documented and mirrored.
+     - v0.1 pulled Google Fonts over the network; v0.2 loads no external fonts.
+   ========================================================================== */
+
+@import url("tokens.css");
+@import url("layout.css");
+@import url("components.css");
+@import url("states.css");

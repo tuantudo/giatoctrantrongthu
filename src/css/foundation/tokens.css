@@ -1,0 +1,247 @@
+/* =============================================================================
+   GIATỘC — UI SYSTEM v0.2 · DESIGN TOKENS
+   -----------------------------------------------------------------------------
+   Token layer ONLY. No component styles, no layout rules in this file.
+
+   Provenance legend (used throughout v0.2):
+     [FACT]     Value traceable to existing Giatộc source.
+     [INFERENCE] Derived by Cline from existing source, for continuity.
+     [PROPOSAL] New proposal. NOT approved by Human Authority.
+     [OPEN QUESTION] Deliberately undecided.
+
+   TYPOGRAPHY POLICY: active stacks are switched through a single token pair
+   (--font-display-active / --font-text-active) so typography can change
+   without editing any component.
+   ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     1. TYPOGRAPHY
+     [FACT] The live public site ships prototype.css: --serif "Times New Roman";
+     --sans -apple-system/"Segoe UI"/Helvetica/Arial. Those are the ACTIVE stacks.
+     Playfair Display + Inter are [PROPOSAL] only and are NOT approved.
+     ------------------------------------------------------------------------ */
+  --font-display-active: 'Times New Roman', Times, Georgia, serif;
+  --font-text-active: 'Times New Roman', Times, Georgia, serif; /* FIXED: Institutional Serif */
+  --font-sans: var(--font-text-active);
+  --font-mono-active: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --font-display-proposed: 'Playfair Display', Georgia, 'Times New Roman', serif;   /* [PROPOSAL] */
+  --font-text-proposed: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* [PROPOSAL] */
+
+  /* Type scale (1rem = 16px)
+     [GOVERNANCE §3.1 — CANONICAL, applied as written]
+       display 3.5rem / 1.1 / 400   (Tên Gia Tộc)
+       h1      2.5rem / 1.2 / 400   (Tiêu đề trang)
+       h2      1.75rem / 1.3 / 700  (Mục lớn)
+       h3      1.25rem / 1.4 / 700
+       body    1.125rem / 1.6 / 400
+       meta    0.875rem / 1.5 / 400
+
+     Governance §3.1 states fixed sizes, so these are fixed values — no `clamp()`.
+     A fluid scale is a *typographic/responsive decision*, not a brand decision, and
+     making one here would be inventing outside the Visual Authority. If Human
+     wants a fluid scale it belongs as an amendment to BRAND_GOVERNANCE, not as a
+     silent token override.
+
+     `--type-h4-*` and `--type-small-*` are legacy names retained for source
+     compatibility; they DERIVE from the canonical tokens so the system stays one
+     scale rather than two. */
+  --type-display-size: 3.5rem;    --type-display-line: 1.1;  --type-display-weight: 400;
+  --type-h1-size: 2.5rem;         --type-h1-line: 1.2;       --type-h1-weight: 400;
+  --type-h2-size: 1.75rem;        --type-h2-line: 1.3;       --type-h2-weight: 700;
+  --type-h3-size: 1.25rem;        --type-h3-line: 1.4;       --type-h3-weight: 700;
+  --type-body-size: 1.125rem;     --type-body-line: 1.6;     --type-body-weight: 400;
+  --type-meta-size: 0.875rem;     --type-meta-line: 1.5;     --type-meta-weight: 400;
+  --type-h4-size: var(--type-h3-size);   --type-h4-line: var(--type-h3-line);   --type-h4-weight: var(--type-h3-weight);
+  --type-small-size: var(--type-meta-size); --type-small-line: var(--type-meta-line); --type-small-weight: 400;
+  --type-reading-measure: 68ch;
+
+  /* ---------------------------------------------------------------------------
+     2. COLOR — Brand / Heritage
+     [INFERENCE] Sampled from src/css/prototype.css (current public site):
+     #8c1d1d heritage red, #8c6d1d heritage gold, #fdfcf9/#fbf6ef/#f7f3ea paper.
+     CORRECTION: v0.1 foundation used #8B0000/#D4AF37, which are NOT site values —
+     they came from an unapproved proposal and are retired here.
+     ------------------------------------------------------------------------ */
+  --color-brand-heritage: #881337;
+  --color-brand-red: var(--color-brand-heritage);
+  --color-brand-heritage-strong: #701a2b;
+  --color-brand-heritage-subtle: #f7eaee;
+  --color-brand-gold: #b45309;
+  --color-brand-gold-subtle: #fbf0e3;
+
+  /* ---------------------------------------------------------------------------
+     3. COLOR — Surface   [INFERENCE] paper tones from prototype.css
+     ------------------------------------------------------------------------ */
+  --color-surface-page: #f6f4f0;
+  --color-surface-raised: #ffffff;
+  --color-surface-card: var(--color-surface-raised);
+  --color-surface-sunken: #fbf9f6;
+  --color-surface-inverse: #1a1a1a;
+  --color-surface-scrim: rgba(26, 26, 26, 0.55);
+
+  /* ---------------------------------------------------------------------------
+     4. COLOR — Text   [FACT] prototype.css #1a1a1a / #4a4a4a / #7a7a7a
+     ------------------------------------------------------------------------ */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: #7a7a7a;
+  --color-text-on-dark: #f5f2ea;
+  --color-text-link: var(--color-brand-heritage);
+
+  /* ---------------------------------------------------------------------------
+     5. COLOR — Border   [GOVERNANCE §3.2 — CANONICAL: #E3E0D8 "Nét mảnh, tinh tế"]
+     The three legacy beige rules are retired. `--color-border-default` is the
+     Governance value; subtle/strong are tonal steps around it, not new hues.
+     ------------------------------------------------------------------------ */
+  --color-border-subtle: #eceadf;
+  --color-border-default: #e3e0d8;
+  --color-border-hairline: var(--color-border-default);
+  --color-border-strong: #c9c4b6;
+  --color-border-focus: var(--color-brand-heritage);
+
+  /* ---------------------------------------------------------------------------
+     6. COLOR — Semantic (action intent)
+     ------------------------------------------------------------------------ */
+  --color-action-primary-bg: var(--color-brand-heritage);
+  --color-action-primary-fg: #ffffff;
+  --color-action-primary-bg-hover: var(--color-brand-heritage-strong);
+  --color-action-secondary-bg: transparent;
+  --color-action-secondary-fg: var(--color-text-primary);
+  --color-action-secondary-border: var(--color-border-default);
+  --color-action-secondary-bg-hover: var(--color-surface-sunken);
+  --color-action-quiet-fg: var(--color-text-secondary);
+
+  /* ---------------------------------------------------------------------------
+     7. COLOR — State (feedback; always used as bg/fg/border triples)
+     ------------------------------------------------------------------------ */
+  --color-state-info-bg: #eef3fb;    --color-state-info-fg: #1f4b8f;    --color-state-info-border: #c7d9f2;
+  --color-state-success-bg: #eef7f0; --color-state-success-fg: #1f5c34; --color-state-success-border: #c9e4d3;
+  --color-state-warning-bg: #fdf6e3; --color-state-warning-fg: #6f5a10; --color-state-warning-border: #eddfb4;
+  --color-state-danger-bg: #fdeeee;  --color-state-danger-fg: #8a1f1f;  --color-state-danger-border: #f2c9c9;
+
+  /* ---------------------------------------------------------------------------
+     8. VISIBILITY VOCABULARY — [PROPOSAL] PRESENTATION ONLY
+     A neutral visual vocabulary. It does NOT mean an access-control model exists.
+     [FACT] v0.2 reality: no visibility column in schema, no server-side filtering,
+     and /api/people + /api/genealogy.json are public. UI must never claim that
+     content is restricted.
+     ------------------------------------------------------------------------ */
+  --color-visibility-scope-bg: #eef0f3;  --color-visibility-scope-fg: #4b5563;  --color-visibility-scope-border: #d6dae1;
+  --color-visibility-model-bg: #fdf6e3;  --color-visibility-model-fg: #6f5a10;  --color-visibility-model-border: #eddfb4;
+
+  /* ---------------------------------------------------------------------------
+     9. EPISTEMIC VOCABULARY — [PROPOSAL] PRESENTATION ONLY
+     Rendered ONLY when a real data source supplies the underlying value.
+     Never render an epistemic badge from static markup.
+     ------------------------------------------------------------------------ */
+  --color-epistemic-fact-bg: #eef7f0;            --color-epistemic-fact-fg: #1f5c34;            --color-epistemic-fact-border: #c9e4d3;
+  --color-epistemic-inference-bg: #fdf6e3;       --color-epistemic-inference-fg: #6f5a10;       --color-epistemic-inference-border: #eddfb4;
+  --color-epistemic-proposal-bg: #f0f2f7;         --color-epistemic-proposal-fg: #3d4a63;         --color-epistemic-proposal-border: #d6dced;
+  --color-epistemic-evidence-needed-bg: #eef3fb; --color-epistemic-evidence-needed-fg: #1f4b8f; --color-epistemic-evidence-needed-border: #c7d9f2;
+
+  /* ---------------------------------------------------------------------------
+     10. SPACING   [GOVERNANCE §3.3 — base 4px,
+                     scale 8 / 16 / 24 / 32 / 48 / 64 / 96 / 128]
+
+     The existing `--space-<n>` tokens are an INDEX scale (n × 4px) that every
+     component already references. Renaming or re-valuing them would silently
+     resize the entire product, so they are left exactly as they are — and they
+     already cover six of the eight Governance steps:
+
+       8px = --space-2   16px = --space-4   24px = --space-6
+       32px = --space-8  48px = --space-12  64px = --space-16
+
+     The two largest Governance steps did not exist and are ADDED below. Those are
+     the ones that carry the institutional silence both PUBLIC and INNER surfaces
+     depend on; until now they had to be improvised per page.
+
+     `--space-24` / `--space-32` are free indices (the index scale stops at 16), so
+     they can be introduced without colliding with any existing reference.
+     ------------------------------------------------------------------------ */
+  --space-0: 0;      --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem;
+  --space-4: 1rem;   --space-5: 1.25rem; --space-6: 1.5rem;  --space-8: 2rem;
+  --space-10: 2.5rem; --space-12: 3rem;  --space-16: 4rem;
+
+  /* Governance §3.3 — the two largest steps, previously undeclared. */
+  --space-24: 6rem;   /* 96px  */
+  --space-32: 8rem;   /* 128px */
+
+  /* ---------------------------------------------------------------------------
+     11. RADIUS   [GOVERNANCE §3.4 — CANONICAL]
+     "Border-radius: 0px (Flat & Sharp). Cấm dùng bo góc."
+     All four legacy radii are retired. They are kept as declarations (not deleted)
+     so that any surviving `var(--radius-*)` reference resolves to flat instead of
+     silently falling back to the initial value of an undefined token.
+     ------------------------------------------------------------------------ */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-pill: 0;
+
+  /* ---------------------------------------------------------------------------
+     12. ELEVATION   [GOVERNANCE §3.4 — CANONICAL]
+     "Cấm dùng box-shadow đổ bóng nổi khối (SaaS style).
+      Có thể dùng Elevation bằng border mảnh 1px."
+
+     Every elevation level is therefore `none`. Depth is expressed with 1px rules,
+     never with a shadow. `--elevation-focus-ring` becomes `none` too: focus must
+     be expressed with `outline` (see components.css `.gi-btn:focus-visible`),
+     because a ring made of box-shadow is still a shadow.
+     ------------------------------------------------------------------------ */
+  --elevation-0: none;
+  --elevation-1: none;
+  --elevation-2: none;
+  --elevation-focus-ring: none;
+
+  /* ---------------------------------------------------------------------------
+     13. LAYOUT WIDTHS   [INFERENCE] foundation v0.1 used 1200px; legacy V1 used
+     narrower editorial columns. Both retained.
+     ------------------------------------------------------------------------ */
+  --layout-max: 1200px;
+  --layout-wide: 1440px;
+  --layout-content: 1040px;
+  --layout-narrow: 760px;
+  --layout-sidebar: 260px;
+  --layout-gutter: var(--space-4);
+
+  /* ---------------------------------------------------------------------------
+     14. Z-INDEX / MOTION
+     ------------------------------------------------------------------------ */
+  --z-base: 1;  --z-sticky: 100; --z-header: 200; --z-overlay: 800; --z-toast: 900;
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+  /* ---------------------------------------------------------------------------
+     15. BREAKPOINTS — documentation only.
+     Custom properties cannot be referenced inside @media, so these values are
+     mirrored as literals in media queries and in src/js/ui/tokens.js.
+     [PROPOSAL] Verification widths for v0.2: 375 / 768 / 1024 / 1440.
+     ------------------------------------------------------------------------ */
+  --bp-xs: 375px;
+  --bp-sm: 768px;
+  --bp-md: 1024px;
+  --bp-lg: 1440px;
+}
+/* =============================================================================
+   16. TYPOGRAPHY SWITCH — vNEXT FIX
+   -----------------------------------------------------------------------------
+   v0.2 shipped setTypographyStack() in src/js/ui/tokens.js, which only set
+   data-typography="proposed" on <html>. No CSS rule read that attribute, so
+   the switch was inert while looking real. vNEXT makes the mapping REAL.
+
+   [FACT] ACTIVE = the live site stacks, unchanged: Times New Roman (display) +
+   system sans (text). Nothing below changes the active appearance.
+
+   [PROPOSAL] "proposed" maps to locally-available alternates
+   (Georgia / Segoe UI). Playfair Display + Inter remain [PROPOSAL] and are NOT
+   activated here: they are not shipped in the repo, and v0.2 policy is to load
+   no external font over the network. Shipping a font claim we cannot render
+   would be exactly the kind of unverified assertion this system avoids.
+   ========================================================================== */
+[data-typography="proposed"] {
+  --font-display-active: var(--font-display-proposed);
+  --font-text-active: var(--font-text-proposed);
+}

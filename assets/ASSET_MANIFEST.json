@@ -1,0 +1,33 @@
+{
+  "manifestVersion": "0.2",
+  "description": "GIATOC asset manifest - single source of truth for asset filenames used by the UI. Pattern learned from VINHDANHBUTPHA (method only, no content copied). Agents and UI code must reference assets through this manifest instead of hardcoding filenames.",
+  "policy": [
+    "Only real, existing files may be listed. No placeholder assets.",
+    "Provenance tags: [FACT] verified to exist on disk at authoring time; [PROPOSAL] planned usage not yet shipped.",
+    "Adding a new asset = add it to disk first, then add it here."
+  ],
+  "assets": {
+    "brand.logoHorizontal": {
+      "path": "/assets/images/logoGiaToc_ngang.svg",
+      "role": "Default horizontal nameplate for header/nav at all widths",
+      "verified": "[FACT] file exists",
+      "note": "Primary masthead asset of the legacy V1 site; reused to preserve visual continuity."
+    },
+    "brand.logoVertical": {
+      "path": "/assets/images/logoGiaToc_original.svg",
+      "role": "Vertical nameplate, used >= 1024px where space allows",
+      "verified": "[FACT] file exists",
+      "note": "Must be referenced with an absolute path (a relative path breaks under /me/* routes)."
+    },
+    "brand.logoIcon": {
+      "path": "/assets/images/logoGiaToc.svg",
+      "role": "Compact mark / favicon",
+      "verified": "[FACT] file exists"
+    },
+    "brand.favicon": {
+      "path": "/assets/images/logoGiaToc_favicon.svg",
+      "role": "Browser favicon",
+      "verified": "[FACT] file exists"
+    }
+  }
+}

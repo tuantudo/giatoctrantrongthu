@@ -1,0 +1,100 @@
+/* =============================================================================
+   GIATỘC — UI SYSTEM v0.2 · STATE COMPONENTS
+   Every async region on every page must declare all three: loading, empty, error.
+   ============================================================================= */
+
+/* --- LoadingState ----------------------------------------------------------- */
+.gi-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--type-small-size);
+}
+.gi-loading__bar {
+  height: 2px;
+  width: min(320px, 60vw);
+  background-color: var(--color-border-default);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+.gi-loading__bar::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  width: 40%;
+  background-color: var(--color-brand-heritage);
+  animation: gi-loading-slide 1.1s var(--motion-ease) infinite;
+}
+@keyframes gi-loading-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+/* --- EmptyState ------------------------------------------------------------- */
+/* Used whenever a data-backed zone has no data. Never fill layout with fake data. */
+.gi-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.gi-empty__title { font-weight: var(--type-h4-weight); margin: 0; }
+.gi-empty__body { margin: 0; color: var(--color-text-secondary); font-size: var(--type-small-size); max-width: var(--type-reading-measure); }
+.gi-empty__meta { margin: 0; color: var(--color-text-muted); font-size: var(--type-meta-size); }
+
+/* --- ErrorState ------------------------------------------------------------- */
+.gi-error {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background-color: var(--color-state-danger-bg);
+  color: var(--color-state-danger-fg);
+  border: 1px solid var(--color-state-danger-border);
+}
+.gi-error__title { font-weight: var(--type-h4-weight); margin: 0; }
+.gi-error__body { margin: 0; font-size: var(--type-small-size); }
+.gi-error__actions { display: flex; gap: var(--space-2); margin-top: var(--space-1); }
+
+/* --- Notice (inline informational, neutral) ---------------------------------- */
+.gi-notice {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-state-warning-bg);
+  color: var(--color-state-warning-fg);
+  border: 1px solid var(--color-state-warning-border);
+  font-size: var(--type-small-size);
+}
+/* --- NotAvailableState (vNEXT) ----------------------------------------------
+   Reads as a quiet, honest capability notice — NOT as an error and NOT as
+   content. Never decorated like a card grid entry. */
+.gi-notavail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  max-width: var(--type-reading-measure);
+}
+.gi-notavail__title { margin: 0; font-weight: var(--type-h4-weight); color: var(--color-text-primary); }
+.gi-notavail__body { margin: 0; font-size: var(--type-small-size); color: var(--color-text-secondary); }
+.gi-notavail__dependency {
+  margin: 0;
+  font-size: var(--type-meta-size);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono-active);
+}
+.gi-notavail__meta { margin: 0; font-size: var(--type-meta-size); color: var(--color-text-muted); }
+
+/* --- Reduced motion --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .gi-loading__bar::after { animation: none; width: 100%; opacity: 0.35; }
+  * { transition-duration: 0.01ms !important; }
+}
