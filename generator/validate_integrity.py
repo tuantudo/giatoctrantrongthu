@@ -6,8 +6,23 @@ Validates genealogy.json schema, entities, references, and all 4 canonical ICS f
 import os, sys, json, re
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_JSON = os.path.join(REPO_DIR, "data", "genealogy.json")
-CAL_DIR = os.path.join(REPO_DIR, "calendars")
+
+# Candidate paths for data contract and canonical calendars (supporting server/ reorganization)
+def resolve_existing_path(candidates, default_path):
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return default_path
+
+DATA_JSON = resolve_existing_path([
+    os.path.join(REPO_DIR, "server", "data", "genealogy.json"),
+    os.path.join(REPO_DIR, "data", "genealogy.json")
+], os.path.join(REPO_DIR, "server", "data", "genealogy.json"))
+
+CAL_DIR = resolve_existing_path([
+    os.path.join(REPO_DIR, "server", "calendars"),
+    os.path.join(REPO_DIR, "calendars")
+], os.path.join(REPO_DIR, "server", "calendars"))
 
 REQUIRED_ICS = [
     "CAL_01_BIRTHDAYS.ics",

@@ -25,4 +25,30 @@ local_secrets.*
 .vercel
 .env*
 server/family_archive.db
+server/family_archive.db.bak
+server/backups/
+*.bak
+*.raw_copy
+*.db
+*.sql.sha256
+/archive/database_backups/
 node_modules/
+
+# Runtime artifacts & credentials
+cookies*.txt
+cookie.txt
+cookies.txt
+*.log
+api_res.json
+test_login.js
+
+# Private discourse & family assets (P0 Clara Containment)
+/content/private/
+/assets/private/
+/data/private/
+/server/data/private/
+/archive/clara_pre_containment_backup/
+
+# Test artifacts and scratch directories
+shots/
+~/
