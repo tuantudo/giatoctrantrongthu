@@ -220,6 +220,112 @@ export function renderDashboard(content, context) {
   });
 
   // =========================================================================
+  // MEMBER INTERACTION & QUICK ACCESS HUB
+  // =========================================================================
+  const hubSection = Section({
+    id: 'member-hub',
+    title: 'Tương tác & Quản lý Không gian',
+    lead: 'Lối tắt quản lý tài khoản, gửi đóng góp tư liệu và theo dõi yêu cầu của bạn.'
+  });
+  content.appendChild(hubSection);
+
+  const hubGrid = el('div', {
+    class: 'gi-grid',
+    style: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+      gap: '16px',
+      marginBottom: '32px'
+    }
+  }, [
+    el('a', {
+      href: '/me/account',
+      class: 'gi-card',
+      style: {
+        padding: '18px 20px',
+        border: '1px solid var(--color-border-subtle, #e7e5e4)',
+        background: 'var(--color-surface-raised, #fff)',
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        transition: 'border-color 0.2s'
+      }
+    }, [
+      el('div', {}, [
+        el('p', { style: { fontSize: '24px', margin: '0 0 8px' }, text: '👤' }),
+        el('h4', { style: { margin: '0 0 6px', fontSize: '16px', color: 'var(--color-brand-heritage, #8b261e)', fontFamily: 'var(--font-display-active, serif)' }, text: 'Tài khoản của tôi' }),
+        el('p', { style: { margin: 0, fontSize: '13px', color: 'var(--color-text-secondary, #57534e)', lineHeight: '1.5' }, text: 'Xem hồ sơ phả hệ gắn kết, đổi mật khẩu và bảo mật.' })
+      ]),
+      el('span', { style: { marginTop: '12px', fontSize: '12.5px', color: 'var(--color-brand-heritage, #8b261e)', fontWeight: '600' }, text: 'Quản lý tài khoản →' })
+    ]),
+
+    el('a', {
+      href: '/me/contribute',
+      class: 'gi-card',
+      style: {
+        padding: '18px 20px',
+        border: '1px solid var(--color-border-subtle, #e7e5e4)',
+        background: 'var(--color-surface-raised, #fff)',
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }
+    }, [
+      el('div', {}, [
+        el('p', { style: { fontSize: '24px', margin: '0 0 8px' }, text: '✍️' }),
+        el('h4', { style: { margin: '0 0 6px', fontSize: '16px', color: 'var(--color-brand-heritage, #8b261e)', fontFamily: 'var(--font-display-active, serif)' }, text: 'Đóng góp tư liệu' }),
+        el('p', { style: { margin: 0, fontSize: '13px', color: 'var(--color-text-secondary, #57534e)', lineHeight: '1.5' }, text: 'Gửi tặng di ảnh, mẩu chuyện ký ức hoặc gợi ý đính chính.' })
+      ]),
+      el('span', { style: { marginTop: '12px', fontSize: '12.5px', color: 'var(--color-brand-heritage, #8b261e)', fontWeight: '600' }, text: 'Gửi đóng góp mới →' })
+    ]),
+
+    el('a', {
+      href: '/me/requests',
+      class: 'gi-card',
+      style: {
+        padding: '18px 20px',
+        border: '1px solid var(--color-border-subtle, #e7e5e4)',
+        background: 'var(--color-surface-raised, #fff)',
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }
+    }, [
+      el('div', {}, [
+        el('p', { style: { fontSize: '24px', margin: '0 0 8px' }, text: '📋' }),
+        el('h4', { style: { margin: '0 0 6px', fontSize: '16px', color: 'var(--color-brand-heritage, #8b261e)', fontFamily: 'var(--font-display-active, serif)' }, text: 'Đóng góp & Yêu cầu' }),
+        el('p', { style: { margin: 0, fontSize: '13px', color: 'var(--color-text-secondary, #57534e)', lineHeight: '1.5' }, text: 'Theo dõi tiến trình tiếp nhận và phản hồi từ gia đình.' })
+      ]),
+      el('span', { style: { marginTop: '12px', fontSize: '12.5px', color: 'var(--color-brand-heritage, #8b261e)', fontWeight: '600' }, text: 'Xem danh sách yêu cầu →' })
+    ]),
+
+    el('a', {
+      href: '/help',
+      class: 'gi-card',
+      style: {
+        padding: '18px 20px',
+        border: '1px solid var(--color-border-subtle, #e7e5e4)',
+        background: 'var(--color-surface-raised, #fff)',
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }
+    }, [
+      el('div', {}, [
+        el('p', { style: { fontSize: '24px', margin: '0 0 8px' }, text: '❓' }),
+        el('h4', { style: { margin: '0 0 6px', fontSize: '16px', color: 'var(--color-brand-heritage, #8b261e)', fontFamily: 'var(--font-display-active, serif)' }, text: 'Trợ giúp & Hướng dẫn' }),
+        el('p', { style: { margin: 0, fontSize: '13px', color: 'var(--color-text-secondary, #57534e)', lineHeight: '1.5' }, text: 'Hướng dẫn sử dụng cho người thân và hỗ trợ kỹ thuật.' })
+      ]),
+      el('span', { style: { marginTop: '12px', fontSize: '12.5px', color: 'var(--color-brand-heritage, #8b261e)', fontWeight: '600' }, text: 'Xem hướng dẫn →' })
+    ])
+  ]);
+  hubSection.appendChild(hubGrid);
+
+  // =========================================================================
   // SLICE 2: FAMILY CALENDAR (UPCOMING MEMORIALS & ANNIVERSARIES)
   // =========================================================================
   const calSection = Section({
@@ -577,6 +683,13 @@ export function renderDashboard(content, context) {
       href: '/me/mach',
       line: 'Những suy nghĩ, bài khảo cứu và câu chuyện mà gia tộc cùng nhau gìn giữ.',
       register: 'Diễn ngôn nội bộ'
+    },
+    {
+      key: 'letters',
+      label: 'Thư gửi nhau',
+      href: '/me/letters',
+      line: 'Lưu giữ những lời nhắn nhủ, tâm tư và di sản tinh thần truyền trao giữa các thế hệ.',
+      register: 'Di sản thư tín'
     }
   ];
 

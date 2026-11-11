@@ -2,10 +2,10 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const fs = require('fs');
-const { recordAuditLog } = require('./governance');
+const { recordAuditLog, withTransaction } = require('./governance');
 
 function createMemberRouter(dbAccessor, options = {}) {
-    const { loginLimiter, proposalIpLimiter } = options;
+    const { loginLimiter, proposalIpLimiter, passwordChangeLimiter } = options;
     const router = express.Router();
     let proposalSeq = 0;
 
@@ -47,6 +47,9 @@ function createMemberRouter(dbAccessor, options = {}) {
     // Middleware to check if user is logged in as an account
     async function requireAccount(req, res, next) {
         if (!req.session || !req.session.accountId) {
+            if (req.path.startsWith('/api/')) {
+                return res.status(401).json({ error: 'Chưa đăng nhập' });
+            }
             return res.redirect('/login');
         }
         try {
@@ -56,9 +59,17 @@ function createMemberRouter(dbAccessor, options = {}) {
             );
             if (!acc || acc.status === 'DISABLED') {
                 if (typeof req.session.destroy === 'function') {
-                    return req.session.destroy(() => res.redirect('/login'));
+                    return req.session.destroy(() => {
+                        if (req.path.startsWith('/api/')) {
+                            return res.status(403).json({ error: 'Tài khoản đã bị tạm khóa.' });
+                        }
+                        return res.redirect('/login');
+                    });
                 }
                 req.session = null;
+                if (req.path.startsWith('/api/')) {
+                    return res.status(403).json({ error: 'Tài khoản đã bị tạm khóa.' });
+                }
                 return res.redirect('/login');
             }
             const mapping = await dbAccessor.getQuery(
@@ -157,12 +168,27 @@ function createMemberRouter(dbAccessor, options = {}) {
                     <input class="gi-login-input" type="text" id="username" name="username" required autocomplete="username" autofocus>
                     <label class="gi-login-label" for="password">Mật khẩu</label>
                     <input class="gi-login-input" type="password" id="password" name="password" required autocomplete="current-password">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin: 10px 0 16px;">
+                      <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:var(--color-text-secondary, #57534e); cursor:pointer;">
+                        <input type="checkbox" id="showPwd"> Hiện mật khẩu
+                      </label>
+                      <a href="/help/recovery" style="font-size:13px; color:var(--color-brand-heritage, #8b261e); text-decoration:none;">Quên mật khẩu?</a>
+                    </div>
                     <button class="gi-btn gi-btn--primary gi-login-submit" type="submit">Đăng nhập</button>
                 </form>
-                <a href="/" class="gi-login-back">← Trở về trang công khai</a>
+                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--color-border-subtle, #e7e5e4); text-align: center;">
+                  <p style="font-size: 13.5px; color: var(--color-text-secondary, #57534e); margin-bottom: 6px;">Bạn là người thân nhưng chưa có tài khoản?</p>
+                  <a href="/help" style="font-size: 13.5px; font-weight: 600; color: var(--color-brand-heritage, #8b261e); text-decoration: underline;">Hướng dẫn tham gia & Liên hệ gia đình →</a>
+                </div>
+                <div style="text-align: center; margin-top: 16px;">
+                  <a href="/" class="gi-login-back" style="font-size: 13px; color: var(--color-text-muted, #78716c); text-decoration: none;">← Trở về trang công khai</a>
+                </div>
               </div>
             </main>
             <script>
+                document.getElementById('showPwd').addEventListener('change', function() {
+                    document.getElementById('password').type = this.checked ? 'text' : 'password';
+                });
                 document.getElementById('loginForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const username = document.getElementById('username').value;
@@ -320,12 +346,23 @@ function createMemberRouter(dbAccessor, options = {}) {
                     <input class="gi-login-input" type="password" id="newPassword" name="newPassword" minlength="8" required autocomplete="new-password">
                     <label class="gi-login-label" for="confirmPassword">Xác nhận mật khẩu mới</label>
                     <input class="gi-login-input" type="password" id="confirmPassword" name="confirmPassword" minlength="8" required autocomplete="new-password">
+                    <div style="margin: 10px 0 16px;">
+                      <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:var(--color-text-secondary, #57534e); cursor:pointer;">
+                        <input type="checkbox" id="showChangePwds"> Hiện các mật khẩu
+                      </label>
+                    </div>
                     <button class="gi-btn gi-btn--primary gi-login-submit" type="submit">${submitLabel}</button>
                 </form>
                 ${backLinkHtml}
               </div>
             </main>
             <script>
+                document.getElementById('showChangePwds').addEventListener('change', function() {
+                    const type = this.checked ? 'text' : 'password';
+                    document.getElementById('oldPassword').type = type;
+                    document.getElementById('newPassword').type = type;
+                    document.getElementById('confirmPassword').type = type;
+                });
                 document.getElementById('changeForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const oldPassword = document.getElementById('oldPassword').value;
@@ -358,7 +395,11 @@ function createMemberRouter(dbAccessor, options = {}) {
     });
 
     // API to change password
-    router.post('/api/member/change-password', requireAccount, async (req, res) => {
+    const changePasswordMiddlewares = [
+        requireAccount,
+        ...(passwordChangeLimiter ? [passwordChangeLimiter] : [])
+    ];
+    router.post('/api/member/change-password', ...changePasswordMiddlewares, async (req, res) => {
         const { oldPassword, newPassword } = req.body || {};
         if (!oldPassword || !newPassword || String(newPassword).length < 8) {
             return res.status(400).json({ error: 'Mật khẩu mới phải có ít nhất 8 ký tự.' });
@@ -372,11 +413,28 @@ function createMemberRouter(dbAccessor, options = {}) {
             if (!ok) return res.status(401).json({ error: 'Mật khẩu hiện tại không đúng' });
 
             const newHash = await bcrypt.hash(String(newPassword), 10);
-            await dbAccessor.runQuery("UPDATE accounts SET password_hash = ?, status = 'ACTIVE' WHERE id = ?", [newHash, accountId]);
+
+            // Atomic transaction: update accounts + admin_users + record audit log in a single transaction
+            await withTransaction(dbAccessor, async (tx) => {
+                await tx.runQuery("UPDATE accounts SET password_hash = ?, status = 'ACTIVE' WHERE id = ?", [newHash, accountId]);
+                if (account.username) {
+                    await tx.runQuery("UPDATE admin_users SET password_hash = ? WHERE LOWER(username) = LOWER(?)", [newHash, account.username]);
+                }
+                await recordAuditLog(tx, {
+                    actorId: accountId,
+                    actorRole: account.role || 'member',
+                    action: 'PASSWORD_CHANGE',
+                    entityType: 'ACCOUNT',
+                    entityId: accountId,
+                    reason: 'VOLUNTARY_PASSWORD_UPDATE',
+                    correlationId: req.session.id || require('crypto').randomUUID()
+                });
+            });
 
             req.session.status = 'ACTIVE';
             res.json({ success: true });
         } catch (e) {
+            console.error('Password change error:', e.message);
             res.status(500).json({ error: 'Không thể cập nhật mật khẩu lúc này.' });
         }
     });
@@ -537,12 +595,134 @@ function createMemberRouter(dbAccessor, options = {}) {
         }
     });
 
+    // Member's Own Proposals & Submissions API (IDOR-Protected)
+    router.get('/api/member/proposals/my', requireAccount, async (req, res) => {
+        try {
+            const rows = await dbAccessor.allQuery(`
+                SELECT
+                    pr.id,
+                    pr.person_id,
+                    p.name AS person_name,
+                    pr.field,
+                    pr.suggested_value,
+                    pr.base_value,
+                    pr.source_evidence,
+                    pr.reason,
+                    pr.status,
+                    pr.reviewer_note,
+                    pr.created_at,
+                    pr.reviewed_at
+                FROM proposals pr
+                LEFT JOIN people p ON p.id = pr.person_id
+                WHERE pr.account_id = ?
+                ORDER BY pr.created_at DESC, pr.id DESC
+            `, [req.session.accountId]);
+
+            res.json({ ok: true, proposals: rows });
+        } catch (e) {
+            console.error('Error fetching member proposals:', e.message);
+            res.status(500).json({ ok: false, error: 'Không thể tải danh sách đề xuất của bạn.' });
+        }
+    });
+
+    // Member Support & Contribution Submission API
+    router.post('/api/member/support', ...proposalMiddlewares, async (req, res) => {
+        const hasSession = Boolean(req.session && req.session.accountId);
+        const accountId = hasSession ? req.session.accountId : 'anonymous_guest';
+        const body = req.body || {};
+        const type = String(body.type || 'SUPPORT_REQUEST').trim();
+        const subject = String(body.subject || '').trim();
+        const message = String(body.message || '').trim();
+        const contactInfo = body.contactInfo ? String(body.contactInfo).trim() : null;
+        const targetPersonId = body.personId ? String(body.personId).trim() : '@GENERAL@';
+
+        if (!message || message.length < 5) {
+            return res.status(400).json({ ok: false, error: 'Vui lòng nhập nội dung yêu cầu (tối thiểu 5 ký tự).' });
+        }
+
+        try {
+            proposalSeq = (proposalSeq + 1) % 1000;
+            const proposalId = 'REQ_' + Date.now() + String(proposalSeq).padStart(3, '0');
+            const field = ['SUPPORT_REQUEST', 'MEDIA_CONTRIBUTION', 'STORY_CONTRIBUTION'].includes(type) ? type : 'SUPPORT_REQUEST';
+            const suggestedValue = JSON.stringify({
+                subject: subject || (field === 'SUPPORT_REQUEST' ? 'Yêu cầu trợ giúp' : 'Đóng góp tư liệu'),
+                message,
+                contactInfo: contactInfo || null
+            });
+
+            await dbAccessor.runQuery(
+                "INSERT INTO proposals (id, account_id, person_id, field, suggested_value, base_value, source_evidence, reason, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'PENDING')",
+                [
+                    proposalId,
+                    String(accountId),
+                    targetPersonId,
+                    field,
+                    suggestedValue,
+                    null,
+                    contactInfo,
+                    subject || 'Yêu cầu trợ giúp từ thành viên'
+                ]
+            );
+
+            res.json({
+                ok: true,
+                requestId: proposalId,
+                message: 'Yêu cầu của bạn đã được gửi tới Ban Quản Trị gia tộc thành công.'
+            });
+        } catch (e) {
+            console.error('Support submission error:', e.message);
+            res.status(500).json({ ok: false, error: 'Không thể gửi yêu cầu lúc này. Vui lòng thử lại sau.' });
+        }
+    });
+
     // Member Home (Dashboard)
     router.get('/me', requireAccount, async (req, res) => {
         if (req.session.status === 'PROVISIONED') {
             return res.redirect('/me/change-password');
         }
         res.sendFile(path.join(__dirname, 'member_dashboard.html'));
+    });
+
+    // Member Account Center
+    router.get('/me/account', requireAccount, async (req, res) => {
+        if (req.session.status === 'PROVISIONED') {
+            return res.redirect('/me/change-password');
+        }
+        res.sendFile(path.join(__dirname, 'member_account.html'));
+    });
+
+    // Member Requests & Proposals Tracking
+    router.get('/me/requests', requireAccount, async (req, res) => {
+        if (req.session.status === 'PROVISIONED') {
+            return res.redirect('/me/change-password');
+        }
+        res.sendFile(path.join(__dirname, 'member_requests.html'));
+    });
+
+    // Member Contribution Center
+    router.get('/me/contribute', requireAccount, async (req, res) => {
+        if (req.session.status === 'PROVISIONED') {
+            return res.redirect('/me/change-password');
+        }
+        res.sendFile(path.join(__dirname, 'member_contribute.html'));
+    });
+
+    // Member Letters & Legacy Surface (First-Class Content Domain)
+    router.get('/me/letters', requireAccount, async (req, res) => {
+        if (req.session.status === 'PROVISIONED') {
+            return res.redirect('/me/change-password');
+        }
+        res.sendFile(path.join(__dirname, 'member_letters.html'));
+    });
+
+    // Member Help & FAQ
+    router.get(['/help', '/me/help'], async (req, res) => {
+        res.sendFile(path.join(__dirname, 'help_public.html'));
+    });
+
+    // Account Recovery Guide
+    router.get('/help/recovery', async (req, res) => {
+        res.sendFile(path.join(__dirname, 'help_recovery.html'));
     });
 
     // Member Full Tree (Legacy Baseline)

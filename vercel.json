@@ -65,6 +65,14 @@
       "destination": "https://api.giatoctrantrongthu.com/logout"
     },
     {
+      "source": "/help",
+      "destination": "https://api.giatoctrantrongthu.com/help"
+    },
+    {
+      "source": "/help/:path*",
+      "destination": "https://api.giatoctrantrongthu.com/help/:path*"
+    },
+    {
       "source": "/me",
       "destination": "https://api.giatoctrantrongthu.com/me"
     },
