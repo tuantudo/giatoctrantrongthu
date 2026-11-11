@@ -1,0 +1,1920 @@
+{
+  "generatedAt": "2026-10-04T06:13:18.259Z",
+  "engine": "Google Chrome (headless) via puppeteer",
+  "widths": [
+    375,
+    768,
+    1024,
+    1440
+  ],
+  "screenshotWidths": [
+    375,
+    1440
+  ],
+  "totals": {
+    "VERIFIED": 360,
+    "NOT AVAILABLE": 20
+  },
+  "results": [
+    {
+      "name": "harness / browser launched",
+      "status": "VERIFIED",
+      "detail": "puppeteer bundled Chrome"
+    },
+    {
+      "name": "harness / page recreated",
+      "status": "VERIFIED",
+      "detail": "previous target was unavailable"
+    },
+    {
+      "name": "public / http status @375",
+      "status": "VERIFIED",
+      "detail": "status=200"
+    },
+    {
+      "name": "public / family identity @375",
+      "status": "VERIFIED",
+      "detail": "family name is the page identity"
+    },
+    {
+      "name": "public / threshold line @375",
+      "status": "VERIFIED",
+      "detail": "declares itself as the gate"
+    },
+    {
+      "name": "public / gate question @375",
+      "status": "VERIFIED",
+      "detail": "recognises the member"
+    },
+    {
+      "name": "public / gate door @375",
+      "status": "VERIFIED",
+      "detail": "door is a semantic entrance, not a bare login button"
+    },
+    {
+      "name": "public / gate door explains sign-in @375",
+      "status": "VERIFIED",
+      "detail": "visitor knows the door leads to sign-in"
+    },
+    {
+      "name": "public / family voice zone @375",
+      "status": "VERIFIED",
+      "detail": "external voice zone exists"
+    },
+    {
+      "name": "public / family voice uses semantic state @375",
+      "status": "VERIFIED",
+      "detail": "honest state, not fabricated content"
+    },
+    {
+      "name": "public / voice absence not a dashed box @375",
+      "status": "VERIFIED",
+      "detail": "editorial treatment, not a warning panel"
+    },
+    {
+      "name": "public / family name stated once in main @375",
+      "status": "VERIFIED",
+      "detail": "occurrences=1 in [\"gi-threshold__name\"]"
+    },
+    {
+      "name": "public / no internal discourse names @375",
+      "status": "VERIFIED",
+      "detail": "Public must not name internal scopes"
+    },
+    {
+      "name": "public / no genealogy surface @375",
+      "status": "VERIFIED",
+      "detail": "no genealogy / person records"
+    },
+    {
+      "name": "public / no technical audit prose @375",
+      "status": "VERIFIED",
+      "detail": "no diagnostic prose"
+    },
+    {
+      "name": "public / no admin exposure @375",
+      "status": "VERIFIED",
+      "detail": "no admin surface"
+    },
+    {
+      "name": "public / no fabricated dates @375",
+      "status": "VERIFIED",
+      "detail": "no invented years"
+    },
+    {
+      "name": "public / member door href @375",
+      "status": "VERIFIED",
+      "detail": "door points at /login"
+    },
+    {
+      "name": "public / context bar removed @375",
+      "status": "VERIFIED",
+      "detail": "application chrome off the front door"
+    },
+    {
+      "name": "public / exactly one h1 @375",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "public / h1 is the family name @375",
+      "status": "VERIFIED",
+      "detail": "h1=\"Gia Tộc Trần Trọng Thu\""
+    },
+    {
+      "name": "public / section rhythm markers @375",
+      "status": "VERIFIED",
+      "detail": "markers=3"
+    },
+    {
+      "name": "public / real assets load @375",
+      "status": "VERIFIED",
+      "detail": "images=0"
+    },
+    {
+      "name": "public / no horizontal overflow @375",
+      "status": "VERIFIED",
+      "detail": "scrollW=375 innerW=375"
+    },
+    {
+      "name": "evidence / screenshot public_375.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "public / http status @768",
+      "status": "VERIFIED",
+      "detail": "status=304"
+    },
+    {
+      "name": "public / family identity @768",
+      "status": "VERIFIED",
+      "detail": "family name is the page identity"
+    },
+    {
+      "name": "public / threshold line @768",
+      "status": "VERIFIED",
+      "detail": "declares itself as the gate"
+    },
+    {
+      "name": "public / gate question @768",
+      "status": "VERIFIED",
+      "detail": "recognises the member"
+    },
+    {
+      "name": "public / gate door @768",
+      "status": "VERIFIED",
+      "detail": "door is a semantic entrance, not a bare login button"
+    },
+    {
+      "name": "public / gate door explains sign-in @768",
+      "status": "VERIFIED",
+      "detail": "visitor knows the door leads to sign-in"
+    },
+    {
+      "name": "public / family voice zone @768",
+      "status": "VERIFIED",
+      "detail": "external voice zone exists"
+    },
+    {
+      "name": "public / family voice uses semantic state @768",
+      "status": "VERIFIED",
+      "detail": "honest state, not fabricated content"
+    },
+    {
+      "name": "public / voice absence not a dashed box @768",
+      "status": "VERIFIED",
+      "detail": "editorial treatment, not a warning panel"
+    },
+    {
+      "name": "public / family name stated once in main @768",
+      "status": "VERIFIED",
+      "detail": "occurrences=1 in [\"gi-threshold__name\"]"
+    },
+    {
+      "name": "public / no internal discourse names @768",
+      "status": "VERIFIED",
+      "detail": "Public must not name internal scopes"
+    },
+    {
+      "name": "public / no genealogy surface @768",
+      "status": "VERIFIED",
+      "detail": "no genealogy / person records"
+    },
+    {
+      "name": "public / no technical audit prose @768",
+      "status": "VERIFIED",
+      "detail": "no diagnostic prose"
+    },
+    {
+      "name": "public / no admin exposure @768",
+      "status": "VERIFIED",
+      "detail": "no admin surface"
+    },
+    {
+      "name": "public / no fabricated dates @768",
+      "status": "VERIFIED",
+      "detail": "no invented years"
+    },
+    {
+      "name": "public / member door href @768",
+      "status": "VERIFIED",
+      "detail": "door points at /login"
+    },
+    {
+      "name": "public / context bar removed @768",
+      "status": "VERIFIED",
+      "detail": "application chrome off the front door"
+    },
+    {
+      "name": "public / exactly one h1 @768",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "public / h1 is the family name @768",
+      "status": "VERIFIED",
+      "detail": "h1=\"Gia Tộc Trần Trọng Thu\""
+    },
+    {
+      "name": "public / section rhythm markers @768",
+      "status": "VERIFIED",
+      "detail": "markers=3"
+    },
+    {
+      "name": "public / real assets load @768",
+      "status": "VERIFIED",
+      "detail": "images=0"
+    },
+    {
+      "name": "public / no horizontal overflow @768",
+      "status": "VERIFIED",
+      "detail": "scrollW=768 innerW=768"
+    },
+    {
+      "name": "public / http status @1024",
+      "status": "VERIFIED",
+      "detail": "status=304"
+    },
+    {
+      "name": "public / family identity @1024",
+      "status": "VERIFIED",
+      "detail": "family name is the page identity"
+    },
+    {
+      "name": "public / threshold line @1024",
+      "status": "VERIFIED",
+      "detail": "declares itself as the gate"
+    },
+    {
+      "name": "public / gate question @1024",
+      "status": "VERIFIED",
+      "detail": "recognises the member"
+    },
+    {
+      "name": "public / gate door @1024",
+      "status": "VERIFIED",
+      "detail": "door is a semantic entrance, not a bare login button"
+    },
+    {
+      "name": "public / gate door explains sign-in @1024",
+      "status": "VERIFIED",
+      "detail": "visitor knows the door leads to sign-in"
+    },
+    {
+      "name": "public / family voice zone @1024",
+      "status": "VERIFIED",
+      "detail": "external voice zone exists"
+    },
+    {
+      "name": "public / family voice uses semantic state @1024",
+      "status": "VERIFIED",
+      "detail": "honest state, not fabricated content"
+    },
+    {
+      "name": "public / voice absence not a dashed box @1024",
+      "status": "VERIFIED",
+      "detail": "editorial treatment, not a warning panel"
+    },
+    {
+      "name": "public / family name stated once in main @1024",
+      "status": "VERIFIED",
+      "detail": "occurrences=1 in [\"gi-threshold__name\"]"
+    },
+    {
+      "name": "public / no internal discourse names @1024",
+      "status": "VERIFIED",
+      "detail": "Public must not name internal scopes"
+    },
+    {
+      "name": "public / no genealogy surface @1024",
+      "status": "VERIFIED",
+      "detail": "no genealogy / person records"
+    },
+    {
+      "name": "public / no technical audit prose @1024",
+      "status": "VERIFIED",
+      "detail": "no diagnostic prose"
+    },
+    {
+      "name": "public / no admin exposure @1024",
+      "status": "VERIFIED",
+      "detail": "no admin surface"
+    },
+    {
+      "name": "public / no fabricated dates @1024",
+      "status": "VERIFIED",
+      "detail": "no invented years"
+    },
+    {
+      "name": "public / member door href @1024",
+      "status": "VERIFIED",
+      "detail": "door points at /login"
+    },
+    {
+      "name": "public / context bar removed @1024",
+      "status": "VERIFIED",
+      "detail": "application chrome off the front door"
+    },
+    {
+      "name": "public / exactly one h1 @1024",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "public / h1 is the family name @1024",
+      "status": "VERIFIED",
+      "detail": "h1=\"Gia Tộc Trần Trọng Thu\""
+    },
+    {
+      "name": "public / section rhythm markers @1024",
+      "status": "VERIFIED",
+      "detail": "markers=3"
+    },
+    {
+      "name": "public / real assets load @1024",
+      "status": "VERIFIED",
+      "detail": "images=0"
+    },
+    {
+      "name": "public / no horizontal overflow @1024",
+      "status": "VERIFIED",
+      "detail": "scrollW=1024 innerW=1024"
+    },
+    {
+      "name": "public / http status @1440",
+      "status": "VERIFIED",
+      "detail": "status=304"
+    },
+    {
+      "name": "public / family identity @1440",
+      "status": "VERIFIED",
+      "detail": "family name is the page identity"
+    },
+    {
+      "name": "public / threshold line @1440",
+      "status": "VERIFIED",
+      "detail": "declares itself as the gate"
+    },
+    {
+      "name": "public / gate question @1440",
+      "status": "VERIFIED",
+      "detail": "recognises the member"
+    },
+    {
+      "name": "public / gate door @1440",
+      "status": "VERIFIED",
+      "detail": "door is a semantic entrance, not a bare login button"
+    },
+    {
+      "name": "public / gate door explains sign-in @1440",
+      "status": "VERIFIED",
+      "detail": "visitor knows the door leads to sign-in"
+    },
+    {
+      "name": "public / family voice zone @1440",
+      "status": "VERIFIED",
+      "detail": "external voice zone exists"
+    },
+    {
+      "name": "public / family voice uses semantic state @1440",
+      "status": "VERIFIED",
+      "detail": "honest state, not fabricated content"
+    },
+    {
+      "name": "public / voice absence not a dashed box @1440",
+      "status": "VERIFIED",
+      "detail": "editorial treatment, not a warning panel"
+    },
+    {
+      "name": "public / family name stated once in main @1440",
+      "status": "VERIFIED",
+      "detail": "occurrences=1 in [\"gi-threshold__name\"]"
+    },
+    {
+      "name": "public / no internal discourse names @1440",
+      "status": "VERIFIED",
+      "detail": "Public must not name internal scopes"
+    },
+    {
+      "name": "public / no genealogy surface @1440",
+      "status": "VERIFIED",
+      "detail": "no genealogy / person records"
+    },
+    {
+      "name": "public / no technical audit prose @1440",
+      "status": "VERIFIED",
+      "detail": "no diagnostic prose"
+    },
+    {
+      "name": "public / no admin exposure @1440",
+      "status": "VERIFIED",
+      "detail": "no admin surface"
+    },
+    {
+      "name": "public / no fabricated dates @1440",
+      "status": "VERIFIED",
+      "detail": "no invented years"
+    },
+    {
+      "name": "public / member door href @1440",
+      "status": "VERIFIED",
+      "detail": "door points at /login"
+    },
+    {
+      "name": "public / context bar removed @1440",
+      "status": "VERIFIED",
+      "detail": "application chrome off the front door"
+    },
+    {
+      "name": "public / exactly one h1 @1440",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "public / h1 is the family name @1440",
+      "status": "VERIFIED",
+      "detail": "h1=\"Gia Tộc Trần Trọng Thu\""
+    },
+    {
+      "name": "public / section rhythm markers @1440",
+      "status": "VERIFIED",
+      "detail": "markers=3"
+    },
+    {
+      "name": "public / real assets load @1440",
+      "status": "VERIFIED",
+      "detail": "images=0"
+    },
+    {
+      "name": "public / no horizontal overflow @1440",
+      "status": "VERIFIED",
+      "detail": "scrollW=1440 innerW=1440"
+    },
+    {
+      "name": "evidence / screenshot public_1440.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "auth / session established",
+      "status": "VERIFIED",
+      "detail": "landed=http://127.0.0.1:3100/me"
+    },
+    {
+      "name": "member dashboard / http status @375",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me"
+    },
+    {
+      "name": "member dashboard / contains \"tài khoản\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nhân vật\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"cây phả đồ\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nguồn gốc dữ liệu\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nas\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / does not match /bảng điều khiển/i @375",
+      "status": "VERIFIED",
+      "detail": "terminology guard"
+    },
+    {
+      "name": "member dashboard / has context bar @375",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "member dashboard / context context == member @375",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "member dashboard / context level == space @375",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "member dashboard / context dataType == identity @375",
+      "status": "VERIFIED",
+      "detail": "got=identity"
+    },
+    {
+      "name": "member dashboard / exactly one h1 @375",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "member dashboard / no horizontal overflow @375",
+      "status": "VERIFIED",
+      "detail": "scrollW=375 innerW=375"
+    },
+    {
+      "name": "member dashboard / no failed request @375",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "member dashboard / no script error @375",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "member dashboard / favicon @375",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot me_375.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "member dashboard / http status @768",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me"
+    },
+    {
+      "name": "member dashboard / contains \"tài khoản\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nhân vật\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"cây phả đồ\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nguồn gốc dữ liệu\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nas\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / does not match /bảng điều khiển/i @768",
+      "status": "VERIFIED",
+      "detail": "terminology guard"
+    },
+    {
+      "name": "member dashboard / has context bar @768",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "member dashboard / context context == member @768",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "member dashboard / context level == space @768",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "member dashboard / context dataType == identity @768",
+      "status": "VERIFIED",
+      "detail": "got=identity"
+    },
+    {
+      "name": "member dashboard / exactly one h1 @768",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "member dashboard / no horizontal overflow @768",
+      "status": "VERIFIED",
+      "detail": "scrollW=768 innerW=768"
+    },
+    {
+      "name": "member dashboard / no failed request @768",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "member dashboard / no script error @768",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "member dashboard / favicon @768",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "member dashboard / http status @1024",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me"
+    },
+    {
+      "name": "member dashboard / contains \"tài khoản\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nhân vật\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"cây phả đồ\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nguồn gốc dữ liệu\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nas\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / does not match /bảng điều khiển/i @1024",
+      "status": "VERIFIED",
+      "detail": "terminology guard"
+    },
+    {
+      "name": "member dashboard / has context bar @1024",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "member dashboard / context context == member @1024",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "member dashboard / context level == space @1024",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "member dashboard / context dataType == identity @1024",
+      "status": "VERIFIED",
+      "detail": "got=identity"
+    },
+    {
+      "name": "member dashboard / exactly one h1 @1024",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "member dashboard / no horizontal overflow @1024",
+      "status": "VERIFIED",
+      "detail": "scrollW=1024 innerW=1024"
+    },
+    {
+      "name": "member dashboard / no failed request @1024",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "member dashboard / no script error @1024",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "member dashboard / favicon @1024",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "member dashboard / http status @1440",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me"
+    },
+    {
+      "name": "member dashboard / contains \"tài khoản\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nhân vật\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"cây phả đồ\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nguồn gốc dữ liệu\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / contains \"nas\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "member dashboard / does not match /bảng điều khiển/i @1440",
+      "status": "VERIFIED",
+      "detail": "terminology guard"
+    },
+    {
+      "name": "member dashboard / has context bar @1440",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "member dashboard / context context == member @1440",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "member dashboard / context level == space @1440",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "member dashboard / context dataType == identity @1440",
+      "status": "VERIFIED",
+      "detail": "got=identity"
+    },
+    {
+      "name": "member dashboard / exactly one h1 @1440",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "member dashboard / no horizontal overflow @1440",
+      "status": "VERIFIED",
+      "detail": "scrollW=1440 innerW=1440"
+    },
+    {
+      "name": "member dashboard / no failed request @1440",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "member dashboard / no script error @1440",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "member dashboard / favicon @1440",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot me_1440.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "MACH surface / http status @375",
+      "status": "VERIFIED",
+      "detail": "status=200 url=http://127.0.0.1:3100/me/mach"
+    },
+    {
+      "name": "MACH surface / contains \"mạch\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"nội bộ\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"backend dependency\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"không phải tạp chí công khai\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / has context bar @375",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "MACH surface / context context == editorial @375",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "MACH surface / context discourse == mach @375",
+      "status": "VERIFIED",
+      "detail": "got=mach"
+    },
+    {
+      "name": "MACH surface / context discourseKind == internal @375",
+      "status": "VERIFIED",
+      "detail": "got=internal"
+    },
+    {
+      "name": "MACH surface / context dataType == content @375",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "MACH surface / exactly one h1 @375",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "MACH surface / no horizontal overflow @375",
+      "status": "VERIFIED",
+      "detail": "scrollW=375 innerW=375"
+    },
+    {
+      "name": "MACH surface / no failed request @375",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "MACH surface / no script error @375",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "MACH surface / favicon @375",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot memach_375.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "MACH surface / http status @768",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/mach"
+    },
+    {
+      "name": "MACH surface / contains \"mạch\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"nội bộ\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"backend dependency\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"không phải tạp chí công khai\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / has context bar @768",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "MACH surface / context context == editorial @768",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "MACH surface / context discourse == mach @768",
+      "status": "VERIFIED",
+      "detail": "got=mach"
+    },
+    {
+      "name": "MACH surface / context discourseKind == internal @768",
+      "status": "VERIFIED",
+      "detail": "got=internal"
+    },
+    {
+      "name": "MACH surface / context dataType == content @768",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "MACH surface / exactly one h1 @768",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "MACH surface / no horizontal overflow @768",
+      "status": "VERIFIED",
+      "detail": "scrollW=768 innerW=768"
+    },
+    {
+      "name": "MACH surface / no failed request @768",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "MACH surface / no script error @768",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "MACH surface / favicon @768",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "MACH surface / http status @1024",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/mach"
+    },
+    {
+      "name": "MACH surface / contains \"mạch\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"nội bộ\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"backend dependency\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"không phải tạp chí công khai\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / has context bar @1024",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "MACH surface / context context == editorial @1024",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "MACH surface / context discourse == mach @1024",
+      "status": "VERIFIED",
+      "detail": "got=mach"
+    },
+    {
+      "name": "MACH surface / context discourseKind == internal @1024",
+      "status": "VERIFIED",
+      "detail": "got=internal"
+    },
+    {
+      "name": "MACH surface / context dataType == content @1024",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "MACH surface / exactly one h1 @1024",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "MACH surface / no horizontal overflow @1024",
+      "status": "VERIFIED",
+      "detail": "scrollW=1024 innerW=1024"
+    },
+    {
+      "name": "MACH surface / no failed request @1024",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "MACH surface / no script error @1024",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "MACH surface / favicon @1024",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "MACH surface / http status @1440",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/mach"
+    },
+    {
+      "name": "MACH surface / contains \"mạch\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"nội bộ\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"backend dependency\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / contains \"không phải tạp chí công khai\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "MACH surface / has context bar @1440",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "MACH surface / context context == editorial @1440",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "MACH surface / context discourse == mach @1440",
+      "status": "VERIFIED",
+      "detail": "got=mach"
+    },
+    {
+      "name": "MACH surface / context discourseKind == internal @1440",
+      "status": "VERIFIED",
+      "detail": "got=internal"
+    },
+    {
+      "name": "MACH surface / context dataType == content @1440",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "MACH surface / exactly one h1 @1440",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "MACH surface / no horizontal overflow @1440",
+      "status": "VERIFIED",
+      "detail": "scrollW=1440 innerW=1440"
+    },
+    {
+      "name": "MACH surface / no failed request @1440",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "MACH surface / no script error @1440",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "MACH surface / favicon @1440",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot memach_1440.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "Clara surface / http status @375",
+      "status": "VERIFIED",
+      "detail": "status=200 url=http://127.0.0.1:3100/me/clara"
+    },
+    {
+      "name": "Clara surface / contains \"thư gửi clara\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"không phải một chuyên mục của mạch\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"backend dependency\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / has context bar @375",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "Clara surface / context context == editorial @375",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "Clara surface / context discourse == clara @375",
+      "status": "VERIFIED",
+      "detail": "got=clara"
+    },
+    {
+      "name": "Clara surface / context discourseKind == intimate @375",
+      "status": "VERIFIED",
+      "detail": "got=intimate"
+    },
+    {
+      "name": "Clara surface / context dataType == content @375",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "Clara surface / exactly one h1 @375",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "Clara surface / no horizontal overflow @375",
+      "status": "VERIFIED",
+      "detail": "scrollW=375 innerW=375"
+    },
+    {
+      "name": "Clara surface / no failed request @375",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "Clara surface / no script error @375",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "Clara surface / favicon @375",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot meclara_375.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "Clara surface / http status @768",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/clara"
+    },
+    {
+      "name": "Clara surface / contains \"thư gửi clara\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"không phải một chuyên mục của mạch\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"backend dependency\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / has context bar @768",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "Clara surface / context context == editorial @768",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "Clara surface / context discourse == clara @768",
+      "status": "VERIFIED",
+      "detail": "got=clara"
+    },
+    {
+      "name": "Clara surface / context discourseKind == intimate @768",
+      "status": "VERIFIED",
+      "detail": "got=intimate"
+    },
+    {
+      "name": "Clara surface / context dataType == content @768",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "Clara surface / exactly one h1 @768",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "Clara surface / no horizontal overflow @768",
+      "status": "VERIFIED",
+      "detail": "scrollW=768 innerW=768"
+    },
+    {
+      "name": "Clara surface / no failed request @768",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "Clara surface / no script error @768",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "Clara surface / favicon @768",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "Clara surface / http status @1024",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/clara"
+    },
+    {
+      "name": "Clara surface / contains \"thư gửi clara\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"không phải một chuyên mục của mạch\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"backend dependency\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / has context bar @1024",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "Clara surface / context context == editorial @1024",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "Clara surface / context discourse == clara @1024",
+      "status": "VERIFIED",
+      "detail": "got=clara"
+    },
+    {
+      "name": "Clara surface / context discourseKind == intimate @1024",
+      "status": "VERIFIED",
+      "detail": "got=intimate"
+    },
+    {
+      "name": "Clara surface / context dataType == content @1024",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "Clara surface / exactly one h1 @1024",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "Clara surface / no horizontal overflow @1024",
+      "status": "VERIFIED",
+      "detail": "scrollW=1024 innerW=1024"
+    },
+    {
+      "name": "Clara surface / no failed request @1024",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "Clara surface / no script error @1024",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "Clara surface / favicon @1024",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "Clara surface / http status @1440",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/clara"
+    },
+    {
+      "name": "Clara surface / contains \"thư gửi clara\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"không phải một chuyên mục của mạch\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / contains \"backend dependency\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "Clara surface / has context bar @1440",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "Clara surface / context context == editorial @1440",
+      "status": "VERIFIED",
+      "detail": "got=editorial"
+    },
+    {
+      "name": "Clara surface / context discourse == clara @1440",
+      "status": "VERIFIED",
+      "detail": "got=clara"
+    },
+    {
+      "name": "Clara surface / context discourseKind == intimate @1440",
+      "status": "VERIFIED",
+      "detail": "got=intimate"
+    },
+    {
+      "name": "Clara surface / context dataType == content @1440",
+      "status": "VERIFIED",
+      "detail": "got=content"
+    },
+    {
+      "name": "Clara surface / exactly one h1 @1440",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "Clara surface / no horizontal overflow @1440",
+      "status": "VERIFIED",
+      "detail": "scrollW=1440 innerW=1440"
+    },
+    {
+      "name": "Clara surface / no failed request @1440",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "Clara surface / no script error @1440",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "Clara surface / favicon @1440",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot meclara_1440.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "family space / http status @375",
+      "status": "VERIFIED",
+      "detail": "status=200 url=http://127.0.0.1:3100/me/family-spaces"
+    },
+    {
+      "name": "family space / contains \"không gian gia đình\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / contains \"backend dependency\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / has context bar @375",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "family space / context context == member @375",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "family space / context level == space @375",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "family space / exactly one h1 @375",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "family space / no horizontal overflow @375",
+      "status": "VERIFIED",
+      "detail": "scrollW=375 innerW=375"
+    },
+    {
+      "name": "family space / no failed request @375",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "family space / no script error @375",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "family space / favicon @375",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot mefamily-space_375.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "family space / http status @768",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/family-spaces"
+    },
+    {
+      "name": "family space / contains \"không gian gia đình\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / contains \"backend dependency\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / has context bar @768",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "family space / context context == member @768",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "family space / context level == space @768",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "family space / exactly one h1 @768",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "family space / no horizontal overflow @768",
+      "status": "VERIFIED",
+      "detail": "scrollW=768 innerW=768"
+    },
+    {
+      "name": "family space / no failed request @768",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "family space / no script error @768",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "family space / favicon @768",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "family space / http status @1024",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/family-spaces"
+    },
+    {
+      "name": "family space / contains \"không gian gia đình\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / contains \"backend dependency\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / has context bar @1024",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "family space / context context == member @1024",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "family space / context level == space @1024",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "family space / exactly one h1 @1024",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "family space / no horizontal overflow @1024",
+      "status": "VERIFIED",
+      "detail": "scrollW=1024 innerW=1024"
+    },
+    {
+      "name": "family space / no failed request @1024",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "family space / no script error @1024",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "family space / favicon @1024",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "family space / http status @1440",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/family-spaces"
+    },
+    {
+      "name": "family space / contains \"không gian gia đình\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / contains \"backend dependency\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "family space / has context bar @1440",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "family space / context context == member @1440",
+      "status": "VERIFIED",
+      "detail": "got=member"
+    },
+    {
+      "name": "family space / context level == space @1440",
+      "status": "VERIFIED",
+      "detail": "got=space"
+    },
+    {
+      "name": "family space / exactly one h1 @1440",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "family space / no horizontal overflow @1440",
+      "status": "VERIFIED",
+      "detail": "scrollW=1440 innerW=1440"
+    },
+    {
+      "name": "family space / no failed request @1440",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "family space / no script error @1440",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "family space / favicon @1440",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot mefamily-space_1440.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "person detail / http status @375",
+      "status": "VERIFIED",
+      "detail": "status=200 url=http://127.0.0.1:3100/me/tree/person/p1"
+    },
+    {
+      "name": "person detail / contains \"cây phả đồ\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / contains \"chuyển tiếp\" @375",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / has context bar @375",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "person detail / context context == genealogy @375",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context level == genealogy @375",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context dataType == canonical-genealogy @375",
+      "status": "VERIFIED",
+      "detail": "got=canonical-genealogy"
+    },
+    {
+      "name": "person detail / exactly one h1 @375",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "person detail / no horizontal overflow @375",
+      "status": "VERIFIED",
+      "detail": "scrollW=375 innerW=375"
+    },
+    {
+      "name": "person detail / no failed request @375",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "person detail / no script error @375",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "person detail / favicon @375",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot metreepersonp1_375.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "person detail / http status @768",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/tree/person/p1"
+    },
+    {
+      "name": "person detail / contains \"cây phả đồ\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / contains \"chuyển tiếp\" @768",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / has context bar @768",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "person detail / context context == genealogy @768",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context level == genealogy @768",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context dataType == canonical-genealogy @768",
+      "status": "VERIFIED",
+      "detail": "got=canonical-genealogy"
+    },
+    {
+      "name": "person detail / exactly one h1 @768",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "person detail / no horizontal overflow @768",
+      "status": "VERIFIED",
+      "detail": "scrollW=768 innerW=768"
+    },
+    {
+      "name": "person detail / no failed request @768",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "person detail / no script error @768",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "person detail / favicon @768",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "person detail / http status @1024",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/tree/person/p1"
+    },
+    {
+      "name": "person detail / contains \"cây phả đồ\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / contains \"chuyển tiếp\" @1024",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / has context bar @1024",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "person detail / context context == genealogy @1024",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context level == genealogy @1024",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context dataType == canonical-genealogy @1024",
+      "status": "VERIFIED",
+      "detail": "got=canonical-genealogy"
+    },
+    {
+      "name": "person detail / exactly one h1 @1024",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "person detail / no horizontal overflow @1024",
+      "status": "VERIFIED",
+      "detail": "scrollW=1024 innerW=1024"
+    },
+    {
+      "name": "person detail / no failed request @1024",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "person detail / no script error @1024",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "person detail / favicon @1024",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "person detail / http status @1440",
+      "status": "VERIFIED",
+      "detail": "status=304 url=http://127.0.0.1:3100/me/tree/person/p1"
+    },
+    {
+      "name": "person detail / contains \"cây phả đồ\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / contains \"chuyển tiếp\" @1440",
+      "status": "VERIFIED",
+      "detail": "semantic assertion"
+    },
+    {
+      "name": "person detail / has context bar @1440",
+      "status": "VERIFIED",
+      "detail": "context identity must be present"
+    },
+    {
+      "name": "person detail / context context == genealogy @1440",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context level == genealogy @1440",
+      "status": "VERIFIED",
+      "detail": "got=genealogy"
+    },
+    {
+      "name": "person detail / context dataType == canonical-genealogy @1440",
+      "status": "VERIFIED",
+      "detail": "got=canonical-genealogy"
+    },
+    {
+      "name": "person detail / exactly one h1 @1440",
+      "status": "VERIFIED",
+      "detail": "h1 count=1"
+    },
+    {
+      "name": "person detail / no horizontal overflow @1440",
+      "status": "VERIFIED",
+      "detail": "scrollW=1440 innerW=1440"
+    },
+    {
+      "name": "person detail / no failed request @1440",
+      "status": "VERIFIED",
+      "detail": "no non-favicon 404 responses"
+    },
+    {
+      "name": "person detail / no script error @1440",
+      "status": "VERIFIED",
+      "detail": "no console/page errors"
+    },
+    {
+      "name": "person detail / favicon @1440",
+      "status": "NOT AVAILABLE",
+      "detail": "browser default /favicon.ico is 404 — pre-existing, no placeholder asset shipped"
+    },
+    {
+      "name": "evidence / screenshot metreepersonp1_1440.png",
+      "status": "VERIFIED",
+      "detail": "captured"
+    },
+    {
+      "name": "legacy /me/tree still reachable",
+      "status": "VERIFIED",
+      "detail": "status=200"
+    },
+    {
+      "name": "coverage / width 375 exercised",
+      "status": "VERIFIED",
+      "detail": "assertions recorded at this width"
+    },
+    {
+      "name": "coverage / width 768 exercised",
+      "status": "VERIFIED",
+      "detail": "assertions recorded at this width"
+    },
+    {
+      "name": "coverage / width 1024 exercised",
+      "status": "VERIFIED",
+      "detail": "assertions recorded at this width"
+    },
+    {
+      "name": "coverage / width 1440 exercised",
+      "status": "VERIFIED",
+      "detail": "assertions recorded at this width"
+    }
+  ]
+}

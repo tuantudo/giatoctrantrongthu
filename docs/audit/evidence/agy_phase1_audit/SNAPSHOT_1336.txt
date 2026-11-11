@@ -1,0 +1,58 @@
+AUDIT SNAPSHOT 2026-10-04 13:36:45
+
+--- FILE MTIMES ---
+15:21:25 2971 brand/manifest.json
+13:52:46 1173 brand/generated/brand.css
+13:39:29 1486 brand/README.md
+13:35:54 11089 src/css/foundation/tokens.css
+13:32:56 6235 src/js/ui/public-home.js
+13:32:47 6096 src/js/ui/shell.js
+13:32:40 12453 src/js/ui/components.js
+13:29:18 2766 src/js/ui/dom.js
+13:17:26 7867 brand/BRAND_GOVERNANCE_v0.1.md
+13:11:29 29525 src/css/foundation/components.css
+12:12:49 9231 src/js/ui/contexts.js
+12:12:42 7539 src/js/ui/navigation.js
+12:09:00 1216 src/js/ui/boot-public.js
+11:57:13 7083 src/js/ui/states.js
+11:54:56 5070 src/js/ui/discourse.js
+11:54:14 1185 src/js/ui/boot-person.js
+11:54:05 6303 src/js/ui/person.js
+11:53:53 13364 src/js/ui/dashboard.js
+11:52:14 3222 src/js/ui/spaces.js
+11:51:24 5634 src/js/ui/editorial.js
+11:50:42 4526 src/js/ui/visibility.js
+11:22:39 5563 src/css/foundation/layout.css
+02:27:53 1813 src/js/ui/tokens.js
+02:27:23 4001 src/css/foundation/states.css
+02:24:18 1068 src/js/ui/boot-spaces.js
+02:21:03 1331 src/js/ui/boot-discourse.js
+01:25:54 1260 src/js/ui/boot-dashboard.js
+01:23:51 1462 src/js/ui/assets.js
+01:23:28 2731 src/js/ui/epistemic.js
+01:23:05 2518 src/js/ui/data.js
+01:20:38 1307 src/css/foundation/foundation.css
+
+--- GEOMETRY TOKENS ---
+131:  --radius-sm: 2px;
+132:  --radius-md: 4px;
+133:  --radius-lg: 8px;
+134:  --radius-pill: 999px;
+139:  --elevation-0: none;
+140:  --elevation-1: 0 1px 2px rgba(26, 26, 26, 0.06);
+141:  --elevation-2: 0 2px 6px rgba(26, 26, 26, 0.08);
+142:  --elevation-focus-ring: 0 0 0 3px rgba(140, 29, 29, 0.22);
+
+--- DASHED ---
+src/css/foundation/components.css:197:  border-top: 1px dashed var(--color-border-subtle);
+src/css/foundation/components.css:521:.gi-state--backend-dependency { border-style: dashed; background: var(--color-surface-page); }
+src/css/foundation/components.css:526:.gi-state--open-question    { border-style: dashed; border-left: 3px solid var(--color-brand-gold); }
+src/css/foundation/states.css:46:  border: 1px dashed var(--color-border-default);
+src/css/foundation/states.css:86:  border: 1px dashed var(--color-border-strong);
+
+--- BRAND PALETTE IN TOKENS ---
+49:  --color-brand-heritage: #8c1d1d;
+52:  --color-brand-gold: #8c6d1d;
+
+--- brand.css imported by foundation? ---
+1

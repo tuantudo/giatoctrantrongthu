@@ -17,5 +17,9 @@ jobs:
       - name: Call Google Apps Script Webhook
         run: |
           echo "Triggering instant Google Calendar sync..."
-          RESPONSE=$(curl -L -s -w "\nHTTP_STATUS:%{http_code}" "${{ secrets.GAS_SYNC_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbzpP_RWa-kwE9OJrAQkBafFhN2jxZiTiIYNA-vsGQZsgo_l-0i2aPl9iQWQ8x0qBMEEgA/exec' }}")
+          if [ -z "${{ secrets.GAS_SYNC_WEBHOOK_URL }}" ]; then
+            echo "GAS_SYNC_WEBHOOK_URL secret not configured. Skipping webhook trigger."
+            exit 0
+          fi
+          RESPONSE=$(curl -L -s -w "\nHTTP_STATUS:%{http_code}" "${{ secrets.GAS_SYNC_WEBHOOK_URL }}")
           echo "Response: $RESPONSE"

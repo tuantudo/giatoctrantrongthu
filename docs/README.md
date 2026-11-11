@@ -7,6 +7,11 @@
 
 ---
 
+## 0. TRỢ GIÚP & HỎI ĐÁP (START HERE)
+Nếu bạn (Human hoặc Agent) có bất kỳ câu hỏi nào về hệ thống, vui lòng tra cứu tại **[PROJECT HELP / KNOWLEDGE SYSTEM](HELP.md)** trước khi đọc mã nguồn hoặc các tài liệu kiến trúc bên dưới.
+
+---
+
 ## 1. TỔNG QUAN DỰ ÁN & TRIẾT LÝ NỀN TẢNG
 
 Dự án **Cây Gia Phả / Gia tộc Trần Trọng Thu** là một hệ sinh thái tri thức số hoá, phụng sự việc sưu tầm, bảo tồn, hệ thống hoá và trao truyền di sản của một dòng họ thực tế bắt đầu từ con số không — nơi tư liệu phân mảnh, ký ức mai một dần theo thời gian, và động lực xuất phát từ một cá nhân khởi xướng mong muốn lưu giữ cội nguồn cho các thế hệ tương lai.

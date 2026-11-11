@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gia Tộc Trần Trọng Thu — Production Baseline Local Mirror</title>
+<link rel="icon" type="image/svg+xml" href="assets/images/logoGiaToc.svg">
+<link rel="stylesheet" href="src/css/prototype.css">
+<style>
+  /* Local Mirror Banner & Gateway Enhancements */
+  .mirror-banner {
+    background: #1a1a1a;
+    color: #fdfcf9;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    font-size: 13px;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #8c1d1d;
+  }
+  .mirror-banner-left { display: flex; align-items: center; gap: 10px; }
+  .mirror-tag {
+    background: #8c1d1d;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  .mirror-link-btn {
+    background: transparent;
+    color: #e2d9c8;
+    border: 1px solid #7a7a7a;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    transition: all 0.2s ease;
+  }
+  .mirror-link-btn:hover {
+    background: #8c1d1d;
+    color: #fff;
+    border-color: #8c1d1d;
+  }
+  .status-badge {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .status-badge.guest { background: #efe9da; color: #7a7a7a; }
+  .status-badge.member { background: #dcfce7; color: #166534; font-weight: 600; }
+  .btn-toggle-auth {
+    background: #efe9da;
+    border: 1px solid #d8d2c4;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    cursor: pointer;
+    margin-left: 6px;
+  }
+  .btn-toggle-auth:hover { background: #d8d2c4; }
+
+  /* Gateway Box Styles */
+  .gateway-box {
+    background: #fff;
+    border: 2px solid #8c1d1d;
+    padding: 40px 32px;
+    margin: 40px auto;
+    max-width: 720px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .gateway-icon { font-size: 40px; margin-bottom: 12px; }
+  .gateway-title {
+    font-size: 28px;
+    margin: 8px 0 16px;
+    color: #8c1d1d;
+    font-weight: 700;
+  }
+  .gateway-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 24px;
+  }
+  .gateway-rule-box {
+    background: #fdfcf9;
+    border: 1px dashed #d8d2c4;
+    padding: 16px 20px;
+    margin: 0 auto 28px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    text-align: left;
+    color: #1a1a1a;
+  }
+  .gateway-rule-box p { margin: 4px 0; }
+  .gateway-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-gateway-primary {
+    background: #8c1d1d;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 3px;
+  }
+  .btn-gateway-primary:hover { background: #6e1515; }
+  .btn-gateway-secondary {
+    background: #efe9da;
+    color: #1a1a1a;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-family: -apple-system, sans-serif;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #d8d2c4;
+  }
+  .btn-gateway-secondary:hover { background: #e2d9c8; }
+  .btn-gateway-link {
+    color: #7a7a7a;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+  .btn-gateway-link:hover { color: #8c1d1d; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- TOP REVIEW STRIP: Dedicated for Tuấn's Review Workflow -->
+<div class="mirror-banner">
+  <div class="mirror-banner-left">
+    <span class="mirror-tag">LOCAL MIRROR</span>
+    <span>Bản sao Production Baseline (`https://giatoctrantrongthu.com`)</span>
+    <span id="mirrorMemberStatus"></span>
+  </div>
+  <div>
+    <a href="/lab.html" class="mirror-link-btn">🧪 Mở Vibecode Lab Review →</a>
+  </div>
+</div>
+
+<!-- A. UTILITY / META strip -->
+<div class="util-strip">
+  <div class="util-strip-inner">
+    <span id="utilDate">Chủ nhật, 02/11/2026 · Ấn phẩm của dòng họ</span>
+    <span class="util-right">
+      <a href="#/" class="icon-link" title="Trang chủ" aria-label="Trang chủ">⌂</a>
+      <a href="#/tim-kiem" class="icon-link" title="Tìm kiếm" aria-label="Tìm kiếm">⌕</a>
+      <a href="#/cai-dat" class="icon-link" title="Cài đặt" aria-label="Cài đặt">⚙</a>
+      <a href="#/tu-cach-thanh-vien" class="member-entry" title="Tư cách thành viên">Tư cách thành viên →</a>
+    </span>
+  </div>
+</div>
+
+<!-- B. MASTHEAD: SINGLE ngang asset, tagline in artwork -->
+<header class="masthead">
+  <img class="masthead-logo"
+       src="assets/images/logoGiaToc_ngang.svg"
+       alt="Gia Tộc Trần Trọng Thu">
+</header>
+
+<!-- C. STICKY PUBLICATION NAVIGATION (6 tabs) -->
+<nav class="pub-nav" id="pubNav" aria-label="Mục lục ấn phẩm">
+  <ul>
+    <li><a href="#/" data-route="/" aria-current="page">Trang chủ</a></li>
+    <li><a href="#/mach" data-route="/mach">MẠCH</a></li>
+    <li><a href="#/tu-lieu" data-route="/tu-lieu">Tư Liệu</a></li>
+    <li><a href="#/gia-pha" data-route="/gia-pha">Gia Phả</a></li>
+    <li><a href="#/lich" data-route="/lich">Lịch</a></li>
+    <li><a href="#/tim-kiem" data-route="/tim-kiem">Tìm kiếm</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- ============ DYNAMIC GATEWAY NOTICE CONTAINER ============ -->
+  <div id="gatewayContainer" hidden></div>
+
+  <!-- ============ HOME VIEW (The Outward Public Interface) ============ -->
+  <div data-view="home">
+
+    <!-- 2. INTRODUCTION: ai là dòng họ này? -->
+    <section class="intro" aria-label="Giới thiệu về gia tộc">
+      <p class="section-label">Giới thiệu · LỜI TỰA ẤN PHẨM</p>
+      <h1 class="intro-title">Gia Tộc Trần Trọng Thu là ai?</h1>
+      <p class="intro-copy">
+        Một dòng họ giữ nếp nhà, ký ức và câu chuyện qua nhiều thế hệ —
+        từ những năm đầu định hình cho đến hôm nay. Ấn phẩm số này là nơi lưu giữ
+        và kể lại hành trình ấy: từ MẠCH, ký ức tiền nhân, tư liệu còn lại, đến con người
+        và nếp sống của dòng họ. Bản thảo số này được xác lập để phục vụ sự truyền thừa thế hệ.
+      </p>
+      <p class="intro-meta">
+        Gia phả hiện lưu giữ <span id="statInd">228</span> nhân vật ·
+        <span id="statFam">0</span> gia đình ·
+        <span id="statMem">2</span> ghi chép ký ức.
+        <span class="note-caps">(số liệu tổng quan — chi tiết phả hệ dành riêng cho thành viên)</span>
+      </p>
+    </section>
+
+    <!-- 3. ORIENTATION / CHOOSE YOUR PATH -->
+    <section class="paths" aria-label="Chọn hướng đi">
+      <article class="path path-public">
+        <p class="section-label">Hướng 1 · Giới thiệu</p>
+        <h2>Khám phá Dòng Họ</h2>
+        <p>Tìm hiểu các phân hệ di sản: Khảo cứu MẠCH, Ký ức tiền nhân, Tư liệu lịch sử và Lịch giỗ chạp.</p>
+        <div class="path-links">
+          <a href="#/mach" data-route="/mach">MẠCH (Điểm mời) →</a>
+          <a href="#/tu-lieu" data-route="/tu-lieu">Tư liệu →</a>
+          <a href="#/gia-pha" data-route="/gia-pha">Gia phả (Điểm mời) →</a>
+          <a href="#/lich" data-route="/lich">Lịch (Điểm mời) →</a>
+        </div>
+      </article>
+      <article class="path path-member">
+        <p class="section-label">Hướng 2 · Dành cho người trong họ</p>
+        <h2>Tôi là Thành viên</h2>
+        <p>Bước qua cánh cửa <strong>Tư cách thành viên</strong> để xác thực, kết nối, xem lịch giỗ chạp chi tiết
+           và tương tác với cây phả hệ đầy đủ.</p>
+        <a class="path-cta" href="#/tu-cach-thanh-vien">Tư cách thành viên →</a>
+      </article>
+    </section>
+
+    <!-- 4. KÝ ỨC TIỀN NHÂN -->
+    <section class="ed-section" aria-label="Ký ức và ghi chép">
+      <div class="ed-section-head">
+        <h2>Ký ức &amp; Ghi chép</h2>
+        <p>Một lời kể được chọn — trích nguyên văn từ kho lưu trữ ký ức.</p>
+      </div>
+      <article class="memory">
+        <h3 class="memory-title" id="memTitle">Lời tiền nhân truyền lại</h3>
+        <p class="memory-byline" id="memByline">Ghi chép về: Cụ Khởi Tổ</p>
+        <p class="memory-text" id="memText">Giữ lấy nếp nhà, lấy chữ hiếu thuận làm đầu, con cháu các đời đoàn kết đùm bọc lẫn nhau...</p>
+        <div class="ed-more"><a href="#/gia-pha">Tìm hiểu thêm trong Gia Phả →</a></div>
+      </article>
+    </section>
+
+    <!-- 5. TƯ LIỆU NỔI BẬT -->
+    <section class="ed-section" aria-label="Tư liệu nổi bật">
+      <div class="ed-section-head">
+        <h2>Tư liệu nổi bật</h2>
+        <p>Vật chứng còn lại của dòng họ — kho đang số hóa.</p>
+      </div>
+      <div class="archive-note">
+        <p><strong>KHO TƯ LIỆU ĐANG ĐƯỢC XÂY DỰNG &amp; SỐ HÓA</strong></p>
+        <p>Các tài liệu lưu trữ, hình ảnh di sản và kỷ vật đang được đối soát và số hóa an toàn.
+           Hệ thống tư liệu đầy đủ sẽ được mở cho thành viên sau khi hoàn tất quy trình giám định.</p>
+        <div class="ed-more"><a href="#/tu-lieu" data-route="/tu-lieu">Tìm hiểu kho tư liệu →</a></div>
+      </div>
+    </section>
+
+    <!-- 6. DEEPER EXPLORATION -->
+    <section class="deep" aria-label="Khám phá sâu hơn">
+      <div class="section-label">Khám phá sâu hơn</div>
+      <p>Cửa ngõ đi vào các phân hệ của ấn phẩm và kho lưu trữ di sản.</p>
+      <div class="deep-links">
+        <a href="#/mach" data-route="/mach">MẠCH →</a>
+        <a href="#/tu-lieu" data-route="/tu-lieu">Kho tư liệu →</a>
+        <a href="#/gia-pha" data-route="/gia-pha">Gia phả →</a>
+        <a href="#/lich" data-route="/lich">Lịch giỗ chạp →</a>
+        <a href="#/tim-kiem" data-route="/tim-kiem">Tìm kiếm →</a>
+      </div>
+    </section>
+
+  </div><!-- /HOME VIEW -->
+
+  <!-- ============ GIA PHA (NỘI BỘ KHI ĐÃ ĐĂNG NHẬP) ============ -->
+  <div data-view="gia-pha" hidden>
+    <section class="ed-section" aria-label="Gia phả">
+      <div class="ed-section-head">
+        <h2>Gia Phả Dòng Họ</h2>
+        <p>Hệ thống phả hệ dòng họ Trần Trọng Thu — Không gian thành viên đã xác thực.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="gpStatInd">228</b><span>Nhân vật</span></div>
+        <div class="stat"><b id="gpStatFam">0</b><span>Gia đình</span></div>
+        <div class="stat"><b id="gpStatMem">2</b><span>Ghi chép ký ức</span></div>
+      </div>
+      <div class="archive-note">
+        <p><strong>PHÂN HỆ CÂY PHẢ ĐỒ MỚI (/me/tree)</strong></p>
+        <p>Thành viên có thể trải nghiệm Cây phả đồ tương tác đa thế hệ mới nhất tại phân hệ `/me/tree`.</p>
+        <div class="ed-more">
+          <a href="/lab.html#view=tree">Trải nghiệm Cây Phả Đồ (/me/tree) tại Lab →</a>&nbsp;·&nbsp;
+          <a href="#/" data-route="/">← Về trang nhất</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ MACH (NỘI BỘ KHI ĐÃ ĐĂNG NHẬP) ============ -->
+  <div data-view="mach" hidden>
+    <section class="ed-section" aria-label="MẠCH">
+      <div class="ed-section-head">
+        <h2>Không Gian Tư Tưởng MẠCH</h2>
+        <p>12 bài khảo cứu văn hóa, lịch sử và đối thoại của toàn dòng họ (Không phải tập san định kỳ).</p>
+      </div>
+      <div class="archive-note">
+        <p>Toàn bộ 12 bài nghiên cứu lịch sử MẠCH đã được cô lập an toàn, loại trừ 100% Thư Clara khỏi bề mặt chung.</p>
+        <div class="ed-more">
+          <a href="/lab.html#view=mach">Đọc 12 bài MẠCH tại Lab Review →</a>&nbsp;·&nbsp;
+          <a href="#/" data-route="/">← Về trang nhất</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ LICH (NỘI BỘ KHI ĐÃ ĐĂNG NHẬP) ============ -->
+  <div data-view="lich" hidden>
+    <section class="ed-section" aria-label="Lịch gia đình">
+      <div class="ed-section-head">
+        <h2>Lịch Giỗ Chạp Gia Tộc</h2>
+        <p>Các mốc sự kiện ngày giỗ, ngày sinh và tưởng niệm theo âm lịch.</p>
+      </div>
+      <div class="archive-note">
+        <p>Dữ liệu lịch giỗ chạp nội bộ được tính toán tự động qua Lunar Engine phục vụ con cháu tưởng nhớ tổ tiên.</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ TIM KIEM (NỘI BỘ KHI ĐÃ ĐĂNG NHẬP) ============ -->
+  <div data-view="tim-kiem" hidden>
+    <section class="ed-section" aria-label="Tìm kiếm">
+      <div class="ed-section-head">
+        <h2>Tra Cứu Nội Bộ</h2>
+        <p>Tìm kiếm thông tin nhân vật, bài viết và ký ức theo quyền thành viên được cấp.</p>
+      </div>
+      <div class="archive-note">
+        <p>Công cụ tra cứu nội bộ đang được hoàn thiện logic phân quyền ReBAC.</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ TU LIEU (KHO TƯ LIỆU) ============ -->
+  <div data-view="tu-lieu" hidden>
+    <section class="ed-section" aria-label="Tư liệu gốc">
+      <div class="ed-section-head">
+        <h2>Tư Liệu Gốc</h2>
+        <p>Kho bảo tồn những vật chứng còn lại của dòng họ.</p>
+      </div>
+      <div class="archive-note">
+        <p><strong>KHO TƯ LIỆU ĐANG ĐƯỢC XÂY DỰNG &amp; SỐ HÓA</strong></p>
+        <p>media.json hiện có 173 tư liệu media độc lập (đã bảo vệ bằng 3 bản sao lưu CSDL vật lý).</p>
+        <div class="ed-more"><a href="#/" data-route="/">← Về trang nhất</a></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ TU CACH THANH VIEN ============ -->
+  <div data-view="tu-cach-thanh-vien" hidden>
+    <section class="ed-section" aria-label="Tư cách thành viên">
+      <div class="ed-section-head">
+        <p class="section-label">Dành cho người trong họ</p>
+        <h2>Tư Cách Thành Viên</h2>
+        <p>Cổng vào không gian gắn kết và truyền thừa của gia tộc.</p>
+      </div>
+      <div class="member-panel">
+        <p>Trở thành thành viên để:</p>
+        <ul>
+          <li>Kết nối và giao tiếp trong không gian riêng của dòng họ;</li>
+          <li>Xem lịch giỗ chạp, ngày kỵ và các mốc kỷ niệm chi tiết;</li>
+          <li>Tương tác với cây phả hệ đầy đủ (/me/tree) và danh bạ thân tộc;</li>
+          <li>Đóng góp tư liệu, ký ức và câu chuyện gia đình.</li>
+        </ul>
+        <div class="gateway-actions" style="margin-top: 24px;">
+          <a class="btn-gateway-primary" href="/lab.html#view=dashboard">Vào Không Gian Thành Viên (Vibecode Lab) →</a>
+          <a class="btn-gateway-link" href="#/" data-route="/">← Về trang nhất</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ FOOTER / COLOPHON ============ -->
+  <footer class="colophon">
+    <div class="col-grid">
+      <div class="col-block">
+        <div class="c-name">Gia Tộc Trần Trọng Thu</div>
+        <p>Ấn phẩm số · kho lưu trữ sống của dòng họ — Production Baseline Local Mirror.</p>
+      </div>
+      <nav class="col-block col-links" aria-label="Chân trang — phân hệ">
+        <a href="#/mach" data-route="/mach">MẠCH</a>
+        <a href="#/tu-lieu" data-route="/tu-lieu">Tư liệu</a>
+        <a href="#/gia-pha" data-route="/gia-pha">Gia phả</a>
+        <a href="#/lich" data-route="/lich">Lịch</a>
+      </nav>
+      <div class="col-block col-members">
+        <p class="col-heading">Thành viên</p>
+        <a href="#/tu-cach-thanh-vien">Tư cách thành viên →</a>
+        <a href="/lab.html">Vibecode Lab Review →</a>
+      </div>
+      <div class="col-block col-contact">
+        <p class="col-heading">Liên hệ Ban Liên Lạc</p>
+        <p class="note-caps">Hệ thống di sản số phi lợi nhuận lưu giữ cho các thế hệ mai sau.</p>
+      </div>
+    </div>
+    <div class="col-legal">
+      <small>© 2026 Gia Tộc Trần Trọng Thu. Bảo tồn di sản văn hóa phi vật thể theo tinh thần UNESCO 2003.</small>
+      <small class="admin-note">Owner Control Plane — không nằm trong navigation công khai.</small>
+    </div>
+  </footer>
+
+</div><!-- /.page -->
+
+<script src="src/js/mirror.js"></script>
+</body>
+</html>
+

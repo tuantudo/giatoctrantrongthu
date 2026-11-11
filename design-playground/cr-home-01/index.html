@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gia Tộc Trần Trọng Thu — Năm Thế Hệ Tiếp Nối, Một Cội Nguồn Chung</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logoGiaToc_favicon.svg">
+  <link rel="stylesheet" href="/src/css/foundation/foundation.css">
+  <style>
+    /* CR-HOME-01 COMPACT VISUAL REDESIGN — HERITAGE RESTRAINT & EDITORIAL DIGNITY */
+    :root {
+      --bg-hero: #f7f3ea;
+      --bg-warm: #fcfaf6;
+      --bg-card: #ffffff;
+      --crimson-accent: #8b261e;
+      --crimson-deep: #701c15;
+      --ink-primary: #1c1917;
+      --ink-muted: #57534e;
+      --rule-soft: #e7dfcf;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-warm);
+      color: var(--ink-primary);
+      font-family: var(--font-body, "Noto Serif", "Times New Roman", Georgia, serif);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container */
+    .cr-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Strip / Header */
+    .cr-header {
+      background: var(--bg-hero);
+      border-bottom: 1px solid var(--rule-soft);
+      padding: 14px 0;
+    }
+    .cr-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cr-brand {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .cr-logo {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+    .cr-nav-btn {
+      color: var(--crimson-accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border: 1px solid var(--crimson-accent);
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+    .cr-nav-btn:hover {
+      background: var(--crimson-accent);
+      color: #ffffff;
+    }
+
+    /* =========================================================================
+       SECTION 01 — HERO (LỜI HIỆU TRIỆU & GỐC RỄ)
+       ========================================================================= */
+    .cr-hero {
+      background: var(--bg-hero);
+      border-bottom: 1px solid var(--rule-soft);
+      padding: 56px 0 64px;
+    }
+    .cr-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: center;
+    }
+    .cr-hero-headline {
+      font-family: var(--font-display, "Playfair Display", "Times New Roman", Georgia, serif);
+      font-size: 40px;
+      line-height: 1.2;
+      color: var(--ink-primary);
+      margin: 0 0 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .cr-hero-subhead {
+      font-size: 19px;
+      line-height: 1.4;
+      color: var(--crimson-accent);
+      font-weight: 600;
+      margin: 0 0 20px;
+      font-style: italic;
+    }
+    .cr-hero-copy {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--ink-muted);
+      margin: 0 0 32px;
+      max-width: 560px;
+    }
+    .cr-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cr-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--crimson-accent);
+      color: #ffffff;
+      padding: 13px 26px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--crimson-accent);
+      box-shadow: 0 2px 6px rgba(139, 38, 30, 0.15);
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+    .cr-btn-primary:hover {
+      background: var(--crimson-deep);
+      border-color: var(--crimson-deep);
+      transform: translateY(-1px);
+    }
+    .cr-anchor-link {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--ink-muted);
+      padding-bottom: 2px;
+    }
+    .cr-anchor-link:hover {
+      color: var(--crimson-accent);
+      border-bottom-color: var(--crimson-accent);
+    }
+
+    /* Hero Monument Card */
+    .cr-hero-monument {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-soft);
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+    .cr-monument-img-wrap {
+      border: 1px solid var(--rule-soft);
+      padding: 4px;
+      background: #faf8f3;
+      margin-bottom: 10px;
+    }
+    .cr-monument-img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.04);
+    }
+    .cr-monument-caption {
+      font-size: 12px;
+      color: var(--ink-primary);
+      margin: 0 0 2px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .cr-monument-provenance {
+      font-size: 11px;
+      color: var(--crimson-accent);
+      font-style: italic;
+    }
+
+    /* =========================================================================
+       SECTION 02 — CỘI NGUỒN (NHỮNG NGƯỜI ĐẶT NỀN MÓNG)
+       ========================================================================= */
+    .cr-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .cr-section-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .cr-section-title {
+      font-family: var(--font-display, "Playfair Display", Georgia, serif);
+      font-size: 28px;
+      color: var(--ink-primary);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .cr-ancestors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .cr-ancestor-card {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-soft);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .cr-ancestor-avatar {
+      width: 80px;
+      height: 100px;
+      object-fit: cover;
+      border: 1px solid var(--rule-soft);
+      flex-shrink: 0;
+      background: #eee8dc;
+    }
+    .cr-ancestor-meta {
+      flex: 1;
+    }
+    .cr-ancestor-tag {
+      font-size: 11px;
+      color: var(--crimson-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 2px;
+      display: block;
+    }
+    .cr-ancestor-name {
+      font-family: var(--font-display, Georgia, serif);
+      font-size: 18px;
+      color: var(--ink-primary);
+      margin: 0 0 4px;
+      font-weight: 700;
+    }
+    .cr-ancestor-years {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin: 0 0 6px;
+      font-family: var(--font-mono, monospace);
+    }
+    .cr-ancestor-detail {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* =========================================================================
+       SECTION 03 — DÒNG CHẢY GIA TỘC (NĂM THẾ HỆ NỐI DÒNG)
+       ========================================================================= */
+    .cr-flow-lead {
+      font-size: 15px;
+      color: var(--ink-muted);
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .cr-stats-strip {
+      background: var(--bg-hero);
+      border: 1px solid var(--rule-soft);
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .cr-stat-box {
+      position: relative;
+    }
+    .cr-stat-box:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--rule-soft);
+    }
+    .cr-stat-val {
+      font-family: var(--font-display, Georgia, serif);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--crimson-accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .cr-stat-lbl {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+    .cr-stat-sub {
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    /* Compact Generations Ribbon */
+    .cr-generations-ribbon {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-soft);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .cr-ribbon-desc {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      margin: 0;
+    }
+    .cr-ribbon-desc strong {
+      color: var(--ink-primary);
+    }
+    .cr-ribbon-portraits {
+      display: flex;
+      align-items: center;
+    }
+    .cr-ribbon-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      object-fit: cover;
+      margin-left: -10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      background: #eaddc7;
+    }
+    .cr-ribbon-avatar:first-child {
+      margin-left: 0;
+    }
+
+    /* =========================================================================
+       SECTION 04 — KHÔNG GIAN GIA TỘC (NHỮNG CÁNH CỬA TRỞ VỀ)
+       ========================================================================= */
+    .cr-doors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cr-door-card {
+      background: var(--bg-card);
+      border: 1px solid var(--rule-soft);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, transform 0.15s ease;
+      position: relative;
+    }
+    .cr-door-card:hover {
+      border-color: var(--crimson-accent);
+      transform: translateY(-2px);
+    }
+    .cr-door-num {
+      font-size: 11px;
+      color: var(--crimson-accent);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .cr-door-title {
+      font-family: var(--font-display, Georgia, serif);
+      font-size: 19px;
+      color: var(--ink-primary);
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+    .cr-door-copy {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin: 0 0 16px;
+      flex-grow: 1;
+    }
+    .cr-door-cta {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--crimson-accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* =========================================================================
+       SECTION 05 — FOOTER
+       ========================================================================= */
+    .cr-footer {
+      background: #1c1917;
+      color: #a8a29e;
+      padding: 40px 0 28px;
+      font-size: 13px;
+      border-top: 2px solid var(--crimson-accent);
+    }
+    .cr-footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 200px 200px;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+    .cr-footer-brand h4 {
+      color: #ffffff;
+      font-family: var(--font-display, Georgia, serif);
+      font-size: 17px;
+      margin: 0 0 6px;
+    }
+    .cr-footer-brand p {
+      margin: 0;
+      max-width: 380px;
+      color: #78716c;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+    .cr-footer-col h5 {
+      color: #ffffff;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 10px;
+    }
+    .cr-footer-col a {
+      color: #a8a29e;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+    }
+    .cr-footer-col a:hover {
+      color: #ffffff;
+    }
+    .cr-footer-bottom {
+      border-top: 1px solid #292524;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: #78716c;
+    }
+
+    /* Prototype Notice */
+    .cr-proto-tag {
+      background: #2b6cb0;
+      color: #ffffff;
+      padding: 6px 12px;
+      font-size: 11px;
+      text-align: center;
+      font-family: var(--font-mono, monospace);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 768px) {
+      .cr-hero {
+        padding: 36px 0 44px;
+      }
+      .cr-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .cr-hero-headline {
+        font-size: 28px;
+      }
+      .cr-hero-subhead {
+        font-size: 17px;
+      }
+      .cr-hero-copy {
+        font-size: 14.5px;
+      }
+      .cr-monument-img {
+        height: 240px;
+      }
+      .cr-ancestors-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .cr-ancestor-card {
+        padding: 16px;
+      }
+      .cr-ancestor-avatar {
+        width: 70px;
+        height: 90px;
+      }
+      .cr-stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 12px;
+      }
+      .cr-stat-box:nth-child(2)::after {
+        display: none;
+      }
+      .cr-stat-val {
+        font-size: 30px;
+      }
+      .cr-generations-ribbon {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px;
+      }
+      .cr-doors-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .cr-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .cr-footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Prototype Notice Bar -->
+  <aside class="cr-proto-tag">
+    🛠 CR-HOME-01 PROTOTYPE · ĐỘC LẬP VỚI PRODUCTION · 100% DỮ LIỆU & TƯ LIỆU GỐC
+  </aside>
+
+  <!-- Top Navigation Header -->
+  <header class="cr-header">
+    <div class="cr-container cr-header-inner">
+      <a href="/design-playground/cr-home-01/index.html" class="cr-brand" aria-label="Gia Tộc Trần Trọng Thu">
+        <img src="/assets/images/logoGiaToc_ngang.svg" alt="Gia Tộc Trần Trọng Thu" class="cr-logo">
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="/login" class="cr-nav-btn">Đăng nhập Không gian Gia Tộc →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =======================================================================
+       SECTION 01 — HERO (LỜI HIỆU TRIỆU)
+       ======================================================================= -->
+  <section class="cr-hero" aria-label="Lời hiệu triệu cội nguồn">
+    <div class="cr-container">
+      <div class="cr-hero-grid">
+        
+        <!-- Cột thông điệp trung tâm -->
+        <div class="cr-hero-text">
+          <h1 class="cr-hero-headline">
+            NĂM THẾ HỆ TIẾP NỐI.<br>
+            MỘT CỘI NGUỒN CHUNG.
+          </h1>
+          <p class="cr-hero-subhead">
+            Lịch sử của gia tộc vẫn đang được viết tiếp — bởi chính chúng ta.
+          </p>
+          <p class="cr-hero-copy">
+            Dù ở quê nhà hay nơi xa xứ, dù thuộc thế hệ nào hay nhánh họ nào, mỗi người con cháu đều có một nơi để tìm về. Nơi lưu giữ tên tuổi, ký ức và những mối dây thân thuộc làm nên gia tộc chúng ta.
+          </p>
+          <div class="cr-hero-actions">
+            <a href="/login" class="cr-btn-primary">
+              BƯỚC VÀO KHÔNG GIAN GIA TỘC
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#coi-nguon" class="cr-anchor-link">Tìm về cội nguồn ↓</a>
+          </div>
+        </div>
+
+        <!-- Cột tư liệu gốc: Tấm bia đá -->
+        <aside class="cr-hero-monument" aria-label="Tư liệu bia mộ cội nguồn">
+          <div class="cr-monument-img-wrap">
+            <img 
+              src="/assets/images/avatars/FS_AVATAR_G5X4-48S.jpg" 
+              alt="Bia mộ phần Cụ Giuse Trần Trọng Thu và Cụ Bà Nguyễn Thị Xuân (Út)" 
+              class="cr-monument-img"
+            >
+          </div>
+          <p class="cr-monument-caption">
+            Bia mộ phần Cụ Giuse Trần Trọng Thu và Cụ Bà Nguyễn Thị Xuân (Út)
+          </p>
+          <span class="cr-monument-provenance">Tư liệu gốc · Nghĩa trang Phong Ý, Thanh Hóa</span>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 02 — CỘI NGUỒN (NHỮNG NGƯỜI ĐẶT NỀN MÓNG)
+       ======================================================================= -->
+  <section class="cr-section" id="coi-nguon" aria-label="Cội nguồn tiền nhân">
+    <div class="cr-container">
+      <header class="cr-section-header">
+        <h2 class="cr-section-title">Những Người Đặt Nền Móng</h2>
+      </header>
+
+      <div class="cr-ancestors-grid">
+        
+        <!-- Cụ Giuse Trần Trọng Thu -->
+        <article class="cr-ancestor-card">
+          <img src="/assets/images/avatars/FS_AVATAR_G5X4-48S.jpg" alt="Cụ Giuse Trần Trọng Thu" class="cr-ancestor-avatar">
+          <div class="cr-ancestor-meta">
+            <span class="cr-ancestor-tag">Gốc phả hệ F0</span>
+            <h3 class="cr-ancestor-name">Cụ Giuse Trần Trọng Thu</h3>
+            <p class="cr-ancestor-years">1872 – 1969</p>
+            <p class="cr-ancestor-detail">
+              Sinh quán và an táng tại Thanh Hóa.
+            </p>
+          </div>
+        </article>
+
+        <!-- Cụ Bà Nguyễn Thị Xuân (Út) -->
+        <article class="cr-ancestor-card">
+          <img src="/assets/images/avatars/FS_AVATAR_G5X4-NQX.jpg" alt="Cụ bà Nguyễn Thị Xuân (Út)" class="cr-ancestor-avatar">
+          <div class="cr-ancestor-meta">
+            <span class="cr-ancestor-tag">Hôn phối chính thất</span>
+            <h3 class="cr-ancestor-name">Cụ bà Nguyễn Thị Xuân (Út)</h3>
+            <p class="cr-ancestor-years">1888 – 1929</p>
+            <p class="cr-ancestor-detail">
+              Hôn phối chính thất của Cụ Giuse Trần Trọng Thu.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 03 — DÒNG CHẢY GIA TỘC (NĂM THẾ HỆ NỐI DÒNG)
+       ======================================================================= -->
+  <section class="cr-section" aria-label="Dòng chảy gia tộc">
+    <div class="cr-container">
+      <header class="cr-section-header" style="margin-bottom: 16px;">
+        <h2 class="cr-section-title">Năm Thế Hệ Nối Dòng</h2>
+      </header>
+      <p class="cr-flow-lead">
+        Từ đôi tiền nhân thuở ban đầu, gia tộc đã tiếp nối qua năm thế hệ, với những con người và ký ức được lưu giữ trong hồ sơ phả hệ.
+      </p>
+
+      <!-- 4 Con số thực chứng (Compact Statistics) -->
+      <div class="cr-stats-strip">
+        <div class="cr-stat-box">
+          <div class="cr-stat-val">5</div>
+          <div class="cr-stat-lbl">Thế hệ</div>
+          <div class="cr-stat-sub">Từ 1872 đến nay</div>
+        </div>
+        <div class="cr-stat-box">
+          <div class="cr-stat-val">223</div>
+          <div class="cr-stat-lbl">Thành viên ghi nhận</div>
+          <div class="cr-stat-sub">Hồ sơ phả hệ chuẩn</div>
+        </div>
+        <div class="cr-stat-box">
+          <div class="cr-stat-val">68</div>
+          <div class="cr-stat-lbl">Mái ấm gia đình</div>
+          <div class="cr-stat-sub">Gắn kết qua các nhánh</div>
+        </div>
+        <div class="cr-stat-box">
+          <div class="cr-stat-val">185</div>
+          <div class="cr-stat-lbl">Di ảnh & tư liệu</div>
+          <div class="cr-stat-sub">Bảo tồn số hóa</div>
+        </div>
+      </div>
+
+      <!-- Dải chân dung đại diện cho các thế hệ tiền nhân đã qua đời (bảo vệ quyền riêng tư người sống) -->
+      <div class="cr-generations-ribbon">
+        <p class="cr-ribbon-desc">
+          <strong>Sự trao truyền thế hệ:</strong> Ký ức và dấu tích của các bậc tiền nhân qua các giai đoạn lịch sử luôn được các thế hệ con cháu trân trọng gìn giữ.
+        </p>
+        <div class="cr-ribbon-portraits" title="Tư liệu di ảnh các bậc tiền bối qua các thế hệ">
+          <img src="/assets/images/avatars/FS_AVATAR_G5X4-48S.jpg" alt="F0 Cụ Thu" class="cr-ribbon-avatar">
+          <img src="/assets/images/avatars/FS_AVATAR_G5X4-ZNG.jpg" alt="F1 An-tôn Thư" class="cr-ribbon-avatar">
+          <img src="/assets/images/avatars/FS_AVATAR_G5XX-2HY.jpg" alt="Tiền bối Micae Thìn" class="cr-ribbon-avatar">
+          <img src="/assets/images/avatars/FS_AVATAR_G5XX-KTZ.jpg" alt="Tiền bối Phaolo Hữu" class="cr-ribbon-avatar">
+          <img src="/assets/images/avatars/FS_AVATAR_G5XX-XTR.jpg" alt="Tiền bối Giuse Trường" class="cr-ribbon-avatar">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 04 — KHÔNG GIAN GIA TỘC (NHỮNG CÁNH CỬA TRỞ VỀ)
+       ======================================================================= -->
+  <section class="cr-section" aria-label="Những cánh cửa trở về">
+    <div class="cr-container">
+      <header class="cr-section-header">
+        <h2 class="cr-section-title">Những Cánh Cửa Trở Về</h2>
+      </header>
+
+      <div class="cr-doors-grid">
+        
+        <!-- Card 1: Cây phả đồ -->
+        <a href="/login?next=/me/tree" class="cr-door-card">
+          <div>
+            <span class="cr-door-num">01. CỘI NGUỒN & QUAN HỆ</span>
+            <h3 class="cr-door-title">Cây Phả Đồ</h3>
+            <p class="cr-door-copy">
+              Tra cứu cội nguồn và mối quan hệ giữa các thế hệ.
+            </p>
+          </div>
+          <span class="cr-door-cta">Mở Cây Phả Đồ →</span>
+        </a>
+
+        <!-- Card 2: Lịch giỗ & Niên biểu -->
+        <a href="/login?next=/me/events" class="cr-door-card">
+          <div>
+            <span class="cr-door-num">02. TƯỞNG NIỆM & HIẾU KÍNH</span>
+            <h3 class="cr-door-title">Lịch Giỗ & Niên Biểu</h3>
+            <p class="cr-door-copy">
+              Gìn giữ ngày tưởng niệm và những dấu mốc lịch sử của gia tộc.
+            </p>
+          </div>
+          <span class="cr-door-cta">Xem Niên Biểu →</span>
+        </a>
+
+        <!-- Card 3: Kho di ảnh & tư liệu -->
+        <a href="/login?next=/me/gallery" class="cr-door-card">
+          <div>
+            <span class="cr-door-num">03. TRAO TRUYỀN & ĐÓNG GÓP</span>
+            <h3 class="cr-door-title">Kho Di Ảnh & Tư Liệu</h3>
+            <p class="cr-door-copy">
+              Khám phá tư liệu và đóng góp những ký ức còn được lưu giữ.
+            </p>
+          </div>
+          <span class="cr-door-cta">Vào Kho Tư Liệu →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SECTION 05 — FOOTER
+       ======================================================================= -->
+  <footer class="cr-footer">
+    <div class="cr-container">
+      <div class="cr-footer-grid">
+        
+        <div class="cr-footer-brand">
+          <h4>Gia Tộc Trần Trọng Thu</h4>
+          <p>
+            Di sản gia đình được gìn giữ bằng sự thật lịch sử, lòng hiếu kính và sự gắn kết qua các thế hệ.
+          </p>
+        </div>
+
+        <nav class="cr-footer-col" aria-label="Lối vào phân hệ">
+          <h5>Liên kết</h5>
+          <a href="/login">Không gian Gia tộc</a>
+          <a href="/login?next=/me/tree">Cây Phả Đồ</a>
+          <a href="/login?next=/me/events">Lịch Giỗ & Niên Biểu</a>
+          <a href="/login?next=/me/gallery">Kho Tư Liệu</a>
+        </nav>
+
+        <nav class="cr-footer-col" aria-label="Ấn phẩm và bảo tồn">
+          <h5>Ấn phẩm & Bảo tồn</h5>
+          <a href="/login?next=/me/mach">Chuyên san MẠCH</a>
+          <a href="/robots.txt">Nguyên tắc bảo tồn</a>
+        </nav>
+
+      </div>
+
+      <div class="cr-footer-bottom">
+        <div>© 2026 Gia Tộc Trần Trọng Thu. Bảo tồn và lưu truyền qua các thế hệ.</div>
+        <div>Cội nguồn Thanh Hóa · Phát triển bền vững</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

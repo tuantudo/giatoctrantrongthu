@@ -1,212 +1,144 @@
-# GIA TỘC TRẦN TRỌNG THU — Project AGENTS.md
+# GIATỘC AGENT OPERATING SYSTEM (AIOS) — CANONICAL GOVERNANCE
 
-Project-local instruction layer for the `giatoctrantrongthu.com` web project (`giatoctrantrongthu`).
-Complements (does not replace) `~/.config/opencode/AGENTS.md`. This is a working doc for code, not a governance document.
-
----
-
-## 1. Project Purpose
-
-Vietnamese family heritage publishing system for the **Trần Trọng Thu** lineage (est. 1872). A static-first SPA that preserves, connects, and transmits family memory across generations. Core ethos: **"Giữ lại trước khi diễn giải"** (preserve before interpreting) — never fabricate history; label certainty honestly.
-
-Canonical identity (never rewrite wording without Owner decision):
-- Family name: `GIA TỘC TRẦN TRỌNG THU`
-- Motto/narrative: `TỪ 1872 ĐẾN CHÚNG TA`
-
-Three publication territories: **GIA PHẢ** (structured genealogy), **MẠCH** (essays/memories), **TƯ LIỆU** (archival records). System capabilities (Calendar, Search, Family Graph) are functions, never separate brands.
+*Tài liệu quản trị tối cao của Repository `giatoctrantrongthu`.*  
+*Mọi Agent khi tương tác với dự án đều BẮT BUỘC tuân thủ tài liệu này.*
 
 ---
 
-## 2. Tech Stack (actual, verified 2026-09-10)
+## 1. HỆ THỐNG THẨM QUYỀN & MÔ HÌNH TỔ CHỨC (AUTHORITY & OPERATING MODEL)
 
-- **Frontend:** Vanilla HTML/CSS/JS single-page app — no bundler, no framework. Entry `index.html` → `src/js/app.js` (hash-routing), stylesheet `src/css/main.css` (CSS variables design tokens).
-- **Data layer:** JSON datasets served at `https://api.giatoctrantrongthu.com/api/*`. Local source: `server/data/genealogy.json`, `server/data/mach.json`, `server/data/media.json`, `server/data/person_media.json`, plus 4 iCalendar feeds in `server/calendars/`.
-- **Data generation (Python):** `generator/export_genealogy_json.py` (GEDCOM→JSON, GED sourcing via `GEDCOM_FILE_PATH`), `generator/generate_calendar_feeds.py` (4 ICS feeds, RFC 5545), `generator/validate_integrity.py` (integrity gate).
-- **MẠCH publication engine:** `scripts/build_mach.py` — compiles `content/mach/**` Markdown into `mach.json` / rendered HTML (custom Markdown extension: strikethrough, safe inlines).
-- **Admin/API backend (Node/Express):** `server/index.js` — Express API with MariaDB (production) or SQLite fallback (`server/family_archive.db`). Seed `database/migrations/*.sql`. Auth not yet implemented (V1).
-- **Languages:** Python 3.11+ (CI) / 3.14 (local), Node v26.7.0.
+Dự án áp dụng mô hình tổ chức **Primary Agent & Specialized Execution Resource** do Tuấn phê duyệt:
 
----
-
-## 3. Repository Structure (key paths)
-
-```
-index.html                  # SPA shell (routes, sections)
-src/js/app.js               # App controller: routing, graph engine, calendar, MẠCH
-src/js/core/ics-parser.js   # RFC 5545 ICS parser
-src/js/core/lunar-engine.js # Lunar (âm lịch) converter (Hồ Ngọc Đức algorithm)
-src/css/main.css            # All styles, canonical design tokens (CSS variables)
-admin/                      # Admin control room (no auth yet)
-  index.html / css/admin.css / js/admin.js / js/api.js / js/mockData.js
-server/                     # Node API (Express + MariaDB/SQLite) + datasets + feeds
-  index.js  data/*.json  calendars/*.ics  create_schema.js  migrate_events_schema.js
-generator/                  # Python data pipeline + integrity validator
-content/mach/               # Markdown source for MẠCH articles/series (issues, thư gửi Clara)
-scripts/                    # build_mach.py + migration/QA helper scripts
-database/migrations/        # MariaDB schema + seed SQL
-docs/                       # Architecture, design system, ontology, audits (Vietnamese)
-  README.md (doc index)  architecture/  design/  ontology/  ux/  product/  publication/
-tests/                      # Python acceptance tests (MẠCH), no wired test runner
-prototype/                  # Old prototype (superseded by main app)
+```text
+                           TUẤN (Human Final Authority)
+                                       │
+                   ┌───────────────────┴───────────────────┐
+                   ▼                                       ▼
+                EMARALD                                 ORCHESTRATION
+    (Analysis / Architecture Review / QC)   (Task Alignment & Gate Check)
+                   │                                       │
+                   └───────────────────┬───────────────────┘
+                                       │
+                                       ▼
+                             AGY (Primary Agent)
+                   (Chịu trách nhiệm thực thi xuyên suốt)
+                                       │
+                 [Đánh giá cơ hội huy động: Token/Thời gian/Chất lượng/Rủi ro]
+                                       │
+                                       ▼
+                       CLINE (Specialized Execution Resource)
+                    (Huy động chuyên biệt cho Visual/Browser QA/CSS)
 ```
 
----
-
-## 4. Important Application Architecture
-
-- **Static-first SPA:** `index.html` loads app, fetches JSON from `api.giatoctrantrongthu.com`, renders all views client-side. Hash-routing (`#/...`), routes + context defined in `ROUTE_CONTEXTS` in `app.js`.
-- **Data-driven, zero hard-code:** app does not hardcode family data. People/families/timeline/memories come from `genealogy.json`; MẠCH from `mach.json`; media from `media.json` + `person_media.json`.
-- **BFS graph engine** (`deriveFamilyGraphGenerations`): derives generation levels (F0–F4) and lineage paths from relationship edges at runtime.
-- **Calendar:** 4 ICS feeds parsed by `IcsParser` (`src/js/core/ics-parser.js`), plus `LunarCal` (`lunar-engine.js`) for âm lịch rendering.
-- **Media resolver:** `getPersonMedia` / `resolvePersonAvatar` — media IDs link people to NAS-hosted asset URLs. Presentation never infers filenames from FSID.
-- **Admin→API→DB loop:** admin optionally updates MariaDB; public API reads DB tables and merges `payload` JSON with structured columns. (Known issue: People/Stories payload merge is partially broken — see PROJECT_STATE.md.)
-
----
-
-## 5. Database / Data Model
-
-- **Canonical contract:** `docs/architecture/DATA_CONTRACT.md` (genealogy.json shape: `people`, `families`, `timeline`, `memories`, `stats`, `rootAnchor`).
-- **Source of truth:** private GEDCOM `GIADINHONGTHU.ged` (never committed; loaded from `GEDCOM_FILE_PATH` or env).
-- **MariaDB tables** (admin/production, see `server/create_schema.js` + `database/migrations`): `people`, `stories`, `edges`, `events`→`calendar_events`, `families`, `memories`, `timeline`, `authors`, `series`, `media`, `person_media`. Structured columns + `payload` JSON column coexist.
-- **SQLite fallback** (`server/family_archive.db`): local dev without MariaDB.
-- **Media:** binaries live on NAS (`/volume1/web/family-api/assets/images/`); DB stores metadata + relative path; API maps to absolute `https://api.giatoctrantrongthu.com/...`.
+### Phân vai & Thẩm quyền:
+1. **Tuấn — Human Final Authority & Product Decision Maker:**
+   - Nắm toàn quyền quyết định về: Tầm nhìn sản phẩm (Product Intent), Mô hình thực thể (Core Meaning & MẠCH/Clara Ontology), Ranh giới Nhận diện vs Tiết lộ (Recognition vs Disclosure), Phê duyệt các cổng chốt chặn (**Human Gates**), và Quyết định triển khai Production.
+   - **Bất khả xâm phạm:** Không agent nào có quyền tự ý thay đổi quyết định hoặc giả định quyết định của Tuấn khi chưa được phê duyệt.
+2. **Emarald — Analysis Authority, Architecture Review, Coordination & QC:**
+   - Chịu trách nhiệm thẩm định kiến trúc, phân tích độc lập, giám sát tuân thủ Brand Governance và AIOS, đánh giá chất lượng bàn giao (QC), và giám sát rủi ro phối hợp giữa các tài nguyên.
+   - Đưa ra khuyến nghị kỹ thuật độc lập cho Tuấn; không trực tiếp viết mã tính năng.
+3. **AGY — Primary Agent (Thực thi Xuyên suốt Toàn diện):**
+   - Chịu trách nhiệm thực thi chính xuyên suốt toàn bộ dự án từ Backend (Node/Express, SQLite, MariaDB, API, ReBAC) đến Tích hợp hệ thống và Frontend khi phù hợp.
+   - **Quyền chủ động:** Tự chủ đánh giá phạm vi thực thi, tự triển khai các luồng công việc liên hoàn để đảm bảo tính liên tục của ngữ cảnh, và chủ động đề xuất huy động Cline khi có lợi thế rõ rệt.
+   - **Ranh giới bị cấm:** Tuyệt đối KHÔNG tự ý thay đổi Product Scope, KHÔNG tự quyết định kiến trúc thuộc thẩm quyền Tuấn/Emarald, KHÔNG tự đổi Data Policy/Ontology, và KHÔNG tự ý triển khai Production.
+4. **Cline — Specialized Execution Resource (Tài nguyên Thực thi Chuyên biệt):**
+   - Không độc quyền Frontend; là tài nguyên chuyên biệt được huy động khi có lợi thế vượt trội về: Visual QA, CSS pixel-perfect, Playwright Browser Testing đa độ phân giải, hoặc giảm tải tác vụ UI lặp lại.
+   - Khi được giao việc, Cline tuân thủ Plan Mode và báo cáo bàn giao chuẩn 10 mục.
 
 ---
 
-## 6. Content / Data Conventions
+## 2. MA TRẬN ĐÁNH GIÁ HUY ĐỘNG CLINE (CLINE MOBILIZATION TRADE-OFF MATRIX)
 
-- **Epistemic certainty (7 levels)** from `docs/ontology/ONTOLOGY_AND_RULES.md`: `CONFIRMED`, `ORAL_TRADITION`, `MEMORY`, `INTERPRETATION`, `UNVERIFIED`, `DISPUTED`, `UNKNOWN`. Label data honestly; **never invent** names/dates/lineages to "fill gaps."
-- **Never** fabricate history, upgrade hypotheses to fact, or "beautify" genealogy to make the family look grand.
-- **Retain historical IDs/slugs/URLs** — do not break deep links (compatibility preservation rule).
-- **MẠCH content:** Markdown in `content/mach/<issue>/NN — SLUG.md`; compiled by `scripts/build_mach.py`. Articles can carry editorial voice but must stay distinct from historical fact.
-- **Calendar UIDs:** stable — `memorial-{FSID}-{YEAR}` pattern per ontology rules.
+AGY sẽ tự thực thi trừ khi việc huy động Cline thỏa mãn đánh giá đa chiều sau:
 
----
-
-## 7. Design / UI Conventions
-
-- **Canonical tokens** live in `src/css/main.css` `:root` (authoritative runtime) and `docs/design/family-site-design-system-v1.md`.
-- **Typography:** EB Garamond (serif, display/story) + Inter (sans, utility/UI). System font scale via `--global-text-scale` (`calc()`), never smaller than 14px on mobile.
-- **Colors:** archival paper (`--bg #FAF9F5`), seal/lacquer red `#881337`, imperial gold `#B45309`, ink black `#1A1A1A`/`#1A1A1B`. Avoid `#000`; use `#1A1A1A`.
-- **No emoji as system icon** (iconography = functional monochrome, currentColor, no rainbow). Gia Phả/Mạch/Tư Liệu are territories, NOT separate color themes.
-- **JS must not inject inline styles**; CSS variables manage color/typography/spacing. Flat 2D (radius 0, no shadows) is intentional.
-- **Vietnam-grade fonts:** use Vietnamese diacritics fully; ensure EB Garamond/Inter render diacritics correctly.
+| Tiêu chí Đánh giá | Tự AGY Thực Thi (Mặc định) | Đề Xuất Huy Động Cline (Chuyên biệt) |
+| :--- | :--- | :--- |
+| **Token Cost & Hiệu quả mô hình** | Tác vụ phức tạp cần tư duy kiến trúc sâu, liên quan nhiều tầng dữ liệu. | Tác vụ CSS/UI lặp lại, sửa lỗi responsive cục bộ, format markup. |
+| **Thời gian & Song song hóa** | Tác vụ nằm trên chuỗi phụ thuộc tuần tự (Critical Path). | Tác vụ UI độc lập có thể chạy song song trong Vibecode Lab (Phase 3). |
+| **Chất lượng & Năng lực đặc thù** | Tích hợp full-stack, backend logic, ReBAC, API Contract. | Kiểm thử tự động trên trình duyệt thực qua Playwright (Browser QA 4 độ phân giải). |
+| **Chi phí Phối hợp (Overhead)** | Chi phí bàn giao ngữ cảnh (context handoff) lớn hơn khối lượng code. | Tác vụ có ranh giới đầu vào/đầu ra cực kỳ rõ ràng, không phụ thuộc state động. |
+| **Rủi ro Tích hợp (Integration Risk)**| Nguy cơ lệch API Contract nếu tách riêng Frontend/Backend. | Đã có Mock Fixtures sạch và chữ ký Adapter đóng băng vững chắc. |
 
 ---
 
-## 8. Development Commands
+## 3. PHÂN VÙNG BỀ MẶT THỰC THI (SURFACE GOVERNANCE)
 
-| Action | Command |
-|--------|---------|
-| Serve static site locally | `python3 -m http.server 8080` → http://localhost:8080 |
-| Serve/run Node API locally (SQLite) | `cd server && node index.js` (needs `server/.env`, falls back SQLite) |
-| Regenerate genealogy JSON | `python3 generator/export_genealogy_json.py` (GED source required) |
-| Generate 4 ICS feeds | `python3 generator/generate_calendar_feeds.py` |
-| Compile MẠCH content | `python3 scripts/build_mach.py` |
-| **Data integrity gate** | `python3 generator/validate_integrity.py` |
-| MẠCH render QA | `python3 tests/test_markdown_acceptance.py`, `python3 tests/verify_mach_blocks.py` |
-
-**NOTE (verified 2026-09-10):** the integrity gate currently FAILS because `validate_integrity.py` expects root `data/genealogy.json` + root `calendars/`, but the live datasets are at `server/data/*.json` + `server/calendars/*.ics`. Treat the gate's "missing data" result as an environment/consistency issue until resolved — do not treat it as proof the data is corrupt.
+| Bề Mặt / Thư Mục | Quyền Hạn Của AGY (Primary Agent) | Quyền Hạn Của Cline (Specialized Resource) |
+| :--- | :--- | :--- |
+| `server/`, `database/`, `tests/` | **Toàn quyền thực thi** | **CẤM CAN THIỆP (DENIED)** |
+| `scripts/`, `AUDIT/` | **Toàn quyền thực thi & báo cáo** | Chỉ ghi các file QA được giao (`ui_vnext_qa.mjs`) |
+| `src/css/`, `src/js/ui/`, `design-playground/` | **Được phép thực thi** khi tối ưu ngữ cảnh hoặc khi không huy động Cline | **Được phép thực thi** khi được huy động chuyên trách |
+| `fixtures/`, `index.html` | **Được phép thực thi** | **Được phép thực thi** khi được huy động |
+| `GIADINHONGTHU.ged`, `brand/`, `docs/`, `.aios/` | **CHỈ ĐỌC (READ-ONLY)** | **CHỈ ĐỌC (READ-ONLY)** |
+| Production Deployment / Live DB | **CẦN HUMAN GATE TỪ TUẤN** | **CẤM CAN THIỆP (DENIED)** |
 
 ---
 
-## 9. Build Commands
+## 4. LỘ TRÌNH DỰ ÁN & SINGLE SOURCE OF TRUTH (SoT)
 
-There is **no bundler/server build step** — the frontend is static (Vercel serves `index.html` + static assets directly). The only "builds" are data/content generation:
-- `python3 generator/export_genealogy_json.py` (genealogy JSON)
-- `python3 generator/generate_calendar_feeds.py` (ICS feeds)
-- `python3 scripts/build_mach.py` (MẠCH compiled output)
+Lộ trình hoàn thành dự án được chuẩn hóa duy nhất tại:  
+👉 [`AUDIT/MASTER_COMPLETION_PLAN.md`](file:///Users/tuantq/Projects/Personal/giatoctrantrongthu/AUDIT/MASTER_COMPLETION_PLAN.md)
 
-Vercel itself just serves the static repo; `.vercel` project + `vercel.json` handle routing/headers/cache. Deploy via git push (Vercel auto-builds the branch).
-
----
-
-## 10. Test / Lint / Typecheck Commands
-
-- **Test:** no formal JS test runner or lint/typecheck is wired. `npm test` is a stub.
-- **Available checks:** `python3 tests/test_markdown_acceptance.py`, `python3 tests/verify_mach_blocks.py`, and `python3 generator/validate_integrity.py`.
-- **Manual QA:** open `index.html` in browser / `python3 -m http.server 8080`; verify JS console has no errors, all sections render, calendar grid, genealogy graph, MẠCH article rendering (semantic HTML, not raw markdown), and mobile layout.
+Lộ trình gồm 6 Phase tuần tự có kiểm soát:
+1. `PHASE-01`: Security Containment & Hygiene (TASK-01 → TASK-06)
+2. `PHASE-02`: Database & Data Contract Hardening (TASK-07 → TASK-10)
+3. `PHASE-03`: Vibecode Lab & Frontend Finalization (TASK-11 → TASK-13)
+4. `PHASE-04`: Relational Identity & Privacy Engine (TASK-14 → TASK-17)
+5. `PHASE-05`: System Integration & E2E Verification (TASK-18 → TASK-19)
+6. `PHASE-06`: Production Deployment & V1 Closure (TASK-20 → TASK-23)
 
 ---
 
-## 11. Local Development Workflow
+## 5. CHỐT CHẶN PHÊ DUYỆT (HUMAN APPROVAL GATES)
 
-1. Serve static preview: `python3 -m http.server 8080` (or open `index.html`).
-2. To use the API locally: `cd server && node index.js` (SQLite fallback if no MariaDB env), then point app to `http://localhost:3000` where relevant.
-3. Iterate: edit `src/js/app.js`, `src/css/main.css`, `index.html`. No build step — refresh browser.
-4. After data/content changes, regenerate + run integrity gate; keep datasets in `server/data/` + `server/calendars/`.
-5. Open the app in a browser (or automated browser MCP) to verify visuals & behavior.
-
----
-
-## 12. Deployment Workflow
-
-- **Production:** pushes to `main` auto-deploy to `https://giatoctrantrongthu.vercel.app` via Vercel; domain `giatoctrantrongthu.com` (Cloudflare proxy) serves it. `vercel.json` defines routes, headers, security headers, and the `admin.` subdomain → `/admin` redirect.
-- **Admin/API:** Node API + MariaDB live on NAS behind Cloudflare Tunnel (route `/api/*`, `/assets/images/*`); deploy Node/DB changes via ssh/rsync to NAS (manual, documented in `docs/infrastructure/`).
-- **CI:** `.github/workflows/validate-data.yml` runs `validate_integrity.py` on push (currently red for the same root-`data/` mismatch); `instant-sync.yml` triggers Google Calendar sync webhook after `calendars/**` change.
-- **Local preview before deploy:** `python3 generator/validate_integrity.py` + browser QA.
+Mọi thao tác thuộc các nhóm sau đây **BẮT BUỘC DỪNG LẠI** và xin phê duyệt rõ ràng từ Tuấn:
+- **GATE-01:** Phê duyệt diff mã nguồn vá an ninh trước khi merge.
+- **GATE-02:** Phê duyệt kết quả backup vật lý và phục hồi dữ liệu liên kết ảnh SQLite.
+- **GATE-03:** Phê duyệt nghiệm thu UI System vNEXT và kết quả kiểm thử Browser QA.
+- **GATE-04:** Phê duyệt chính sách ReBAC và ma trận phân định Nhận diện vs Tiết lộ.
+- **GATE-05:** Phê duyệt kết quả kiểm thử tích hợp E2E trên môi trường Staging.
+- **GATE-06:** Quyết định kích hoạt phiên bản chính thức V1.0, đồng bộ NAS và triển khai Production.
+- **Bất kỳ lúc nào:** Xoay vòng mật khẩu / secrets, sửa đổi lịch sử Git (`git push --force`, `git reset --hard`), hoặc các lệnh xóa hủy dữ liệu (`rm -rf`, `DROP TABLE`).
 
 ---
 
-## 13. Important Environment / Configuration Constraints
+## 6. KỸ NĂNG TÁI SỬ DỤNG (REUSABLE SKILLS)
 
-- **Do NOT commit**: `.env`, `local_secrets.*`, `*.ged`/`*.gedcom`, `server/family_archive.db`, node_modules, `.vercel` (see `.gitignore`).
-- **Domains/endpoints:** prod `https://giatoctrantrongthu.vercel.app`; API `https://api.giatoctrantrongthu.com`; admin `admin.giatoctrantrongthu.com`. In code, `CAL_FEEDS` and fetch URLs use the API origin directly.
-- **Admin V1 has no authentication** — treat admin UI as a public-but-obscure endpoint; never add credentials/secrets to repo.
-- **Python version drift:** CI uses Python 3.11; local is 3.14 — keep scripts compatible with 3.11.
-- **Node backend expects `server/.env`** (DB_CLIENT, DB_HOST, DB_USER, DB_PASSWORD, etc.) — do not commit.
+Hệ thống cung cấp 8 bộ kỹ năng chuẩn hóa phục vụ các luồng công việc lặp lại tại thư mục `.agents/skills/`:
 
----
-
-## 14. Things That Must Not Be Broken
-
-- **Canonical brand wording** `GIA TỘC TRẦN TRỌNG THU / TỪ 1872 ĐẾN CHÚNG TA` — no alternate phrasings, no `CÂY GIA PHẢ` as a brand line.
-- **Historical facts & epistemic labels** — never fabricate or "beautify" lineage; preserve 7-level certainty labels.
-- **Deep links / slugs / IDs** — person/family/story routes (`#/person/...`, slug-based MẠCH) must keep working.
-- **Calendar feeds & UID stability** — 4 ICS feeds and stable UIDs (`memorial-{FSID}-{YEAR}`) are canonical.
-- **100% data-driven rendering** — avoid hardcoding people/family data in JS/HTML.
-- **Design-system invariants** — canonical typography/color/iconography; no emoji-as-icon, no inline styles from JS, no color-coding territories.
-- **Vietnamese diacritics** in all user-facing UI and MẠCH content.
-- **Repository hygiene** — no secrets, no GED/DB/`.vercel` artifacts committed.
+| Tên Skill | Phụ Trách Chính | Khả Năng Kế Thừa | Mục Đích & Điều Kiện Kích Hoạt |
+| :--- | :--- | :--- | :--- |
+| [`repository-audit`](file:///.agents/skills/repository-audit/SKILL.md) | `AGY` | Cả hai | Khảo sát pháp y trạng thái repo, git working tree, files nhạy cảm ở chế độ READ-ONLY. |
+| [`backend-implementation`](file:///.agents/skills/backend-implementation/SKILL.md) | `AGY` | AGY | Triển khai mã backend Node/Express, rate limiter, API routes tuân thủ ranh giới an ninh. |
+| [`database-migration`](file:///.agents/skills/database-migration/SKILL.md) | `AGY` | AGY | Quy trình sao lưu vật lý CSDL, chuẩn hóa DDL, chạy reseed phục hồi, đối soát tính toàn vẹn. |
+| [`api-contract-validation`](file:///.agents/skills/api-contract-validation/SKILL.md) | `AGY` | Cả hai | Đối soát chữ ký dữ liệu giữa Mock Adapter (Frontend) và API Routes (Backend). |
+| [`frontend-implementation`](file:///.agents/skills/frontend-implementation/SKILL.md) | `AGY` / `Cline` | Cả hai | Xây dựng UI vNEXT, tuân thủ nghiêm ngặt Brand Governance, typography, layout foundation. |
+| [`browser-qa`](file:///.agents/skills/browser-qa/SKILL.md) | `Cline` / `AGY` | Cả hai | Chạy kiểm thử tự động trên trình duyệt Playwright qua 4 độ phân giải (375, 768, 1024, 1440px). |
+| [`security-verification`](file:///.agents/skills/security-verification/SKILL.md) | `AGY` | AGY | Chạy kịch bản tự động quét 8 lỗ hổng an ninh đã xác minh (CF-01 → CF-08). |
+| [`handoff-reporting`](file:///.agents/skills/handoff-reporting/SKILL.md) | Cả hai | Cả hai | Lập biên bản bàn giao chuẩn 10 mục kèm bằng chứng định lượng trước khi dừng lại. |
 
 ---
 
-## 15. Verification Expectations
+## 7. QUY TRÌNH BÀN GIAO CHUẨN 10 MỤC (HANDOFF PROTOCOL)
 
-After any change, verify what you touched:
-- JS/CSS/HTML edits → reload in browser (or browser MCP), check console for errors, confirm affected sections render.
-- Data/content changes → regenerate + run `validate_integrity.py` (note §8 current gate mismatch) → confirm the app displays correct counts/facts.
-- MẠCH edits → run `scripts/build_mach.py` + `tests/verify_mach_blocks.py` / `test_markdown_acceptance.py`, and view a rendered article.
-- API/server changes → run Node server locally (SQLite) and smoke-test affected endpoints (`/api/*`).
-- Deployment → rely on CI gate + preview before pushing to main.
-
-Report verification status honestly (VERIFY OK / PARTIAL / UNKNOWN). If a check cannot run (e.g., no GED source available), say so.
-
----
-
-## 16. Vibe-Coding Behavior
-
-- **Intent clear + low-risk/reversible** → proceed directly. Do the edit, run the relevant check, report. No ceremony.
-- **Read enough context first** — understand the file/route/module before touching it; use Grep/Glob to locate exactly rather than reading the whole repo.
-- **Parallelize independent reads/checks** when safe.
-- **Precise search over bulk reads** — e.g., find a CSS token before editing it.
-- **Do not stop to ask permission for each small file edit** — batch small, clear changes and verify.
-- **Do not expand scope** because you noticed something else — record it, don't make it a new mission.
-- **If something is architectural / destructive / high-risk** (delete, restructure, migration, brand-wording change, real data change) → pause and ask Human first.
-- **Verify after change** with the appropriate check (§15). Fix failures within scope.
-- **Report short on completion:** what changed, what was verified, what remains.
+Khi hoàn thành bất kỳ nhiệm vụ nào, Agent **tuyệt đối không tự gán việc tiếp theo cho Agent khác**. Agent phải dừng lại và cung cấp Báo cáo Bàn giao gồm đúng 10 mục:
+1. **Objective:** Mục tiêu nhiệm vụ được giao.
+2. **Work performed:** Các đầu việc cụ thể đã triển khai.
+3. **Files changed:** Danh sách chính xác các tệp đã tạo mới hoặc chỉnh sửa.
+4. **Evidence:** Bằng chứng định lượng (kết quả lệnh, log, ảnh chụp màn hình).
+5. **Verification:** Phương pháp và kết quả kiểm thử độc lập.
+6. **Current state:** Trạng thái hệ thống sau khi hoàn tất (Git status, DB state).
+7. **Open questions:** Các câu hỏi cần làm rõ.
+8. **Blockers:** Các rào cản ngăn tiến độ.
+9. **Risks:** Đánh giá rủi ro tiềm ẩn.
+10. **Recommended next action:** Đề xuất bước tiếp theo cho Tuấn và Emarald xem xét.
 
 ---
 
-## 17. Key Reference Docs (read on demand, not upfront)
+## 8. CÁC QUY TẮC CẤM KỴ (ANTI-PATTERNS & STRICT PROHIBITIONS)
 
-- `docs/README.md` — documentation pipeline & reading guide by persona
-- `docs/architecture/ARCHITECTURE.md` — canonical architecture (3 tiers, brand, iconography/color principles)
-- `docs/architecture/DATA_CONTRACT.md` — genealogy.json schema
-- `docs/architecture/SITEMAP_01_INFORMATION_ARCHITECTURE.md` — IA/routing
-- `docs/ontology/ONTOLOGY_AND_RULES.md` — epistemic certainty + entity model
-- `docs/publication/PUBLICATION_MODEL_01.md` — 3 territories, page types
-- `docs/design/family-site-design-system-v1.md` — visual language/design tokens
-- `docs/design/family-site-art-direction-v1.md` — art direction (Living Chronicle)
-- `PROJECT_STATE.md` — live E2E status (events PASS; people/stories PARTIAL-FAIL)
-- `PROJECT_ROADMAP.md`, `PROJECT_DECISIONS.md` — direction + decisions
+- ❌ **CẤM TỰ Ý ĐỊNH NGHĨA YÊU CẦU:** Không được suy diễn tính năng khi chưa có trong tài liệu quy chuẩn hoặc chưa có chỉ thị từ Tuấn.
+- ❌ **CẤM BÁO CÁO HOÀN THÀNH KHÔNG BẰNG CHỨNG:** Không được khẳng định task "DONE" nếu chỉ mới viết mã mà chưa chạy kiểm thử thực tế.
+- ❌ **CẤM TỰ Ý THAY ĐỔI KIẾN TRÚC & PHẠM VI:** AGY là Primary Agent nhưng không được tự quyết định Product Scope, Privacy Boundaries, hoặc sửa đổi Ontology.
+- ❌ **CẤM LÀM LỘ BÍ MẬT & DỮ LIỆU THẬT:** Không in mật khẩu, URL webhook, token, hoặc dữ liệu gia phả PII vào log/báo cáo. Không dùng dữ liệu gia phả thật để làm mock fixtures.
+- ❌ **CẤM THAO TÁC PHÁ HỦY:** Không chạy drop table, xóa file hàng loạt, hoặc reset git mà không có phê duyệt bằng văn bản từ Tuấn.

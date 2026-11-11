@@ -1,5 +1,5 @@
 /**
- * lunar-engine.js — Vietnamese Lunar Calendar Computation Engine (Ho Ngoc Duc)
+ * lunar-engine.js — Vietnamese Lunar Calendar Computation Engine (Hồ Ngọc Đức)
  * Astronomical calculations for Solar <-> Lunar conversion in GMT+7 (Asia/Ho_Chi_Minh).
  */
 const LunarCal = {

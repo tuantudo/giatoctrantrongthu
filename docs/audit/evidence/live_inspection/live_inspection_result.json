@@ -1,0 +1,673 @@
+{
+  "timestamp": "2026-11-01T04:20:00.151Z",
+  "liveUrl": "https://giatoctrantrongthu.com",
+  "routes": [
+    {
+      "name": "home",
+      "targetUrl": "https://giatoctrantrongthu.com/#/",
+      "httpStatus": 200,
+      "screenshot": "docs/audit/evidence/live_inspection/live_home.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM GIỚI THIỆU · DRAFT COPY Gia Tộc Trần Trọng Thu là ai? [DRAFT] Một dòng họ giữ nếp nhà, ký ức và câu chuyện qua nhiều thế hệ — từ những năm đầu định hình cho đến hôm nay. Ấn phẩm số này là ",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": false
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "—",
+          "statFam": "—",
+          "statMem": "—"
+        }
+      }
+    },
+    {
+      "name": "mach",
+      "targetUrl": "https://giatoctrantrongthu.com/#/mach",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_mach.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM MẠCH Tập san di sản — toàn bộ bài Số 01 từ mach.json (snapshot thật). ← VỀ TRANG NHẤT GIA TỘC TRẦN TRỌNG THU Ấn phẩm số · kho lưu trữ sống của dòng họ — prototype DESIGN-001. MẠCH Tư liệu",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": false
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "—",
+          "statFam": "—",
+          "statMem": "—"
+        }
+      }
+    },
+    {
+      "name": "tu_lieu",
+      "targetUrl": "https://giatoctrantrongthu.com/#/tu-lieu",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_tu_lieu.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM TƯ LIỆU GỐC Kho bảo tồn những vật chứng còn lại của dòng họ. KHO TƯ LIỆU ĐANG ĐƯỢC XÂY DỰNG & SỐ HÓA media.json hiện chỉ có assetId / sha256 / mimeType / file — chưa đủ semantic metadata (",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": false
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "—",
+          "statFam": "—",
+          "statMem": "—"
+        }
+      }
+    },
+    {
+      "name": "gia_pha",
+      "targetUrl": "https://giatoctrantrongthu.com/#/gia-pha",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_gia_pha.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM GIA PHẢ Hướng khám phá huyết thống — công khai chỉ trình bày tổng quan; cây phả chi tiết nằm trong không gian thành viên. 228 NHÂN VẬT 0 GIA ĐÌNH 2 GHI CHÉP KÝ ỨC ĐỊNH HƯỚNG KHÁM PHÁ Nhân",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": false
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "228",
+          "statFam": "0",
+          "statMem": "2"
+        }
+      }
+    },
+    {
+      "name": "lich",
+      "targetUrl": "https://giatoctrantrongthu.com/#/lich",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_lich.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM LỊCH GIA ĐÌNH Sự kiện sắp tới của dòng họ — ngày giỗ, sinh nhật, mốc kỷ niệm. (snapshot thật từ CAL_*.ics) ← VỀ TRANG NHẤT GIA TỘC TRẦN TRỌNG THU Ấn phẩm số · kho lưu trữ sống của dòng họ ",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": false
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "228",
+          "statFam": "0",
+          "statMem": "2"
+        }
+      }
+    },
+    {
+      "name": "tim_kiem",
+      "targetUrl": "https://giatoctrantrongthu.com/#/tim-kiem",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_tim_kiem.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM TÌM KIẾM Tra cứu prototype trên snapshot MẠCH + Ký ức (không gọi backend). Tìm ← VỀ TRANG NHẤT GIA TỘC TRẦN TRỌNG THU Ấn phẩm số · kho lưu trữ sống của dòng họ — prototype DESIGN-001. MẠ",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": false
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "228",
+          "statFam": "0",
+          "statMem": "2"
+        }
+      }
+    },
+    {
+      "name": "tu_cach_thanh_vien",
+      "targetUrl": "https://giatoctrantrongthu.com/#/tu-cach-thanh-vien",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_tu_cach_thanh_vien.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM DÀNH CHO NGƯỜI TRONG HỌ TƯ CÁCH THÀNH VIÊN Đây là một entry point sản phẩm — không phải chỉ là nút đăng nhập kỹ thuật. Trở thành thành viên để: Kết nối và giao tiếp trong không gian riên",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": false
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "228",
+          "statFam": "0",
+          "statMem": "2"
+        }
+      }
+    },
+    {
+      "name": "member_space_placeholder",
+      "targetUrl": "https://giatoctrantrongthu.com/#/thanh-vien",
+      "httpStatus": "client-routed",
+      "screenshot": "docs/audit/evidence/live_inspection/live_member_space_placeholder.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu — DESIGN-001 Revision Prototype",
+        "visibleHeading": "Gia Tộc Trần Trọng Thu là ai?",
+        "bodySnippet": "↑ ? 01/11/2026 · Ấn phẩm của dòng họ ⌂ ⌕ ⚙ TƯ CÁCH THÀNH VIÊN → TRANG CHỦ MẠCH TƯ LIỆU GIA PHẢ LỊCH TÌM KIẾM KHÔNG GIAN RIÊNG CỦA DÒNG HỌ MEMBER SPACE Prototype placeholder — không gian sẽ chứa các phân hệ dành riêng cho người trong họ. Thông báo gia tộc — tin tức nội bộ, (sẽ) có; Lịch giỗ chạp ",
+        "activeNav": "TRANG CHỦ",
+        "views": [
+          {
+            "view": "home",
+            "hidden": true
+          },
+          {
+            "view": "gia-pha",
+            "hidden": true
+          },
+          {
+            "view": "mach",
+            "hidden": true
+          },
+          {
+            "view": "story",
+            "hidden": true
+          },
+          {
+            "view": "tu-lieu",
+            "hidden": true
+          },
+          {
+            "view": "lich",
+            "hidden": true
+          },
+          {
+            "view": "tim-kiem",
+            "hidden": true
+          },
+          {
+            "view": "tu-cach-thanh-vien",
+            "hidden": true
+          },
+          {
+            "view": "thanh-vien",
+            "hidden": false
+          },
+          {
+            "view": "cai-dat",
+            "hidden": true
+          }
+        ],
+        "stats": {
+          "statInd": "228",
+          "statFam": "0",
+          "statMem": "2"
+        }
+      }
+    },
+    {
+      "name": "login_direct",
+      "targetUrl": "https://giatoctrantrongthu.com/login",
+      "httpStatus": 404,
+      "screenshot": "docs/audit/evidence/live_inspection/live_login_direct.png",
+      "pageState": {
+        "title": "404: NOT_FOUND",
+        "visibleHeading": "This page doesn’t exist",
+        "bodySnippet": "This page doesn’t exist It may have been moved, removed, or never existed. Go back 404 NOT_FOUND sin1::5wshj-1793506814413-0f53a98e32e5 VIEW DOCUMENTATION COPY DEBUG PROMPT",
+        "activeNav": "",
+        "views": [],
+        "stats": {}
+      }
+    },
+    {
+      "name": "admin_direct",
+      "targetUrl": "https://giatoctrantrongthu.com/admin",
+      "httpStatus": 200,
+      "screenshot": "docs/audit/evidence/live_inspection/live_admin_direct.png",
+      "pageState": {
+        "title": "Gia Tộc Trần Trọng Thu | Admin Control Room",
+        "visibleHeading": "TRẦN TRỌNG THU",
+        "bodySnippet": "TRẦN TRỌNG THU CONTROL ROOM Dashboard HỘP THƯ Inbox KHO TRI THỨC Nhân sự (People) Mạch (Stories) Di sản (Archive) Sự kiện (Events) Vai trò: Ban Biên Tập",
+        "activeNav": "",
+        "views": [],
+        "stats": {}
+      }
+    },
+    {
+      "name": "admin_login_direct",
+      "targetUrl": "https://giatoctrantrongthu.com/admin/login.html",
+      "httpStatus": 404,
+      "screenshot": "docs/audit/evidence/live_inspection/live_admin_login_direct.png",
+      "pageState": {
+        "title": "404: NOT_FOUND",
+        "visibleHeading": "This page doesn’t exist",
+        "bodySnippet": "This page doesn’t exist It may have been moved, removed, or never existed. Go back 404 NOT_FOUND sin1::w688t-1793506820125-ffed900a17a4 VIEW DOCUMENTATION COPY DEBUG PROMPT",
+        "activeNav": "",
+        "views": [],
+        "stats": {}
+      }
+    },
+    {
+      "name": "me_direct",
+      "targetUrl": "https://giatoctrantrongthu.com/me",
+      "httpStatus": 404,
+      "screenshot": "docs/audit/evidence/live_inspection/live_me_direct.png",
+      "pageState": {
+        "title": "404: NOT_FOUND",
+        "visibleHeading": "This page doesn’t exist",
+        "bodySnippet": "This page doesn’t exist It may have been moved, removed, or never existed. Go back 404 NOT_FOUND sin1::mtcs2-1793506822794-24ae6a9fbac1 VIEW DOCUMENTATION COPY DEBUG PROMPT",
+        "activeNav": "",
+        "views": [],
+        "stats": {}
+      }
+    },
+    {
+      "name": "me_tree_direct",
+      "targetUrl": "https://giatoctrantrongthu.com/me/tree",
+      "httpStatus": 404,
+      "screenshot": "docs/audit/evidence/live_inspection/live_me_tree_direct.png",
+      "pageState": {
+        "title": "404: NOT_FOUND",
+        "visibleHeading": "This page doesn’t exist",
+        "bodySnippet": "This page doesn’t exist It may have been moved, removed, or never existed. Go back 404 NOT_FOUND sin1::4mlks-1793506824457-51e7f7b25550 VIEW DOCUMENTATION COPY DEBUG PROMPT",
+        "activeNav": "",
+        "views": [],
+        "stats": {}
+      }
+    }
+  ],
+  "apis": [
+    {
+      "endpoint": "/api/genealogy.json",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/api/mach.json",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/api/media.json",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/api/person_media.json",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/api/member/profile",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/api/auth/status",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/data/family_tree_snapshot.json",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    },
+    {
+      "endpoint": "/data/mach_snapshot.json",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "isJson": false,
+      "length": 7837,
+      "sampleKeys": null
+    }
+  ],
+  "consoleErrors": [
+    {
+      "url": "https://giatoctrantrongthu.com/api/genealogy.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/api/genealogy.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/api/mach.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/api/media.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/api/person_media.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/api/member/profile",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/api/auth/status",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/data/family_tree_snapshot.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/data/mach_snapshot.json",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/login",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/admin/login",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/me",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://giatoctrantrongthu.com/me/tree",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ],
+  "failedRequests": [],
+  "overallObservations": {
+    "chatPanelInteractive": false,
+    "searchResultsCount": 0
+  }
+}

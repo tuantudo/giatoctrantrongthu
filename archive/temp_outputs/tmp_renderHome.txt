@@ -1,0 +1,101 @@
+1926:function renderHomePublicationLanding() {
+1927-    if (!appData) return;
+1928-
+1929-    const people = appData.people || {};
+1930-    const stats = appData.stats || { individuals: Object.keys(people).length, families: Object.keys(appData.families || {}).length, memories: (appData.memories || []).length };
+1931-
+1932-    // 1. Lead Story — Featured article from MẠCH
+1933-    const leadStory = document.getElementById("homeLeadStory");
+1934-    if (leadStory && machData && (machData.articles || machData.stories)) {
+1935-        const allArticles = machData.articles || machData.stories;
+1936-        const featured = allArticles.find(a => a.featured === true) || allArticles[0];
+1937-
+1938-        if (featured) {
+1939-            const heroMedia = machData.media && machData.media[featured.heroMediaId];
+1940-            const imageUrl = heroMedia ? heroMedia.src : (featured.heroImage || featured.coverImage || featured.hero || '');
+1941-
+1942-            const imgEl = document.getElementById("leadStoryImage");
+1943-            if (imgEl) {
+1944-                imgEl.style.backgroundImage = imageUrl ? `url('${imageUrl}')` : '';
+1945-            }
+1946-
+1947-            const tagEl = document.getElementById("leadStoryTag");
+1948-            if (tagEl) tagEl.textContent = 'MẠCH';
+1949-
+1950-            const titleEl = document.getElementById("leadStoryTitle");
+1951-            if (titleEl) titleEl.textContent = featured.title || '';
+1952-
+1953-            const deckEl = document.getElementById("leadStoryDeck");
+1954-            if (deckEl) deckEl.textContent = featured.deckLead || featured.excerpt || featured.subtitle || '';
+1955-
+1956-            const metaEl = document.getElementById("leadStoryMeta");
+1957-            if (metaEl) {
+1958-                const dateStr = featured.publishedAt ? new Date(featured.publishedAt).toLocaleDateString('vi-VN') : '';
+1959-                metaEl.innerHTML = dateStr ? `<span>${dateStr}</span>` : '';
+1960-            }
+1961-
+1962-            leadStory.onclick = () => navigateRoute(`/mach/bai-viet/${featured.slug}`);
+1963-        }
+1964-    }
+1965-
+1966-    // 2. MẠCH Section Grid — first 3 articles
+1967-    const machGrid = document.getElementById("machSectionGrid");
+1968-    if (machGrid && machData && (machData.articles || machData.stories)) {
+1969-        const articles = (machData.articles || machData.stories || []).slice(0, 3);
+1970-        machGrid.innerHTML = articles.map(a => {
+1971-            const heroMedia = machData.media && machData.media[a.heroMediaId];
+1972-            const imgUrl = heroMedia ? heroMedia.src : (a.heroImage || a.coverImage || a.hero || '');
+1973-            const imgStyle = imgUrl ? `background-image:url('${imgUrl}')` : '';
+1974-            const deck = (a.deckLead || a.excerpt || '').slice(0, 100);
+1975-
+1976-            return `
+1977-                <article class="mach-card" onclick="navigateRoute('/mach/bai-viet/${a.slug}')">
+1978-                    <div class="mach-card-image" style="${imgStyle}"></div>
+1979-                    <h3 class="mach-card-title">${escapeHtml(a.title || '')}</h3>
+1980-                    <p class="mach-card-deck">${escapeHtml(deck)}${deck.length >= 100 ? '...' : ''}</p>
+1981-                </article>
+1982-            `;
+1983-        }).join('');
+1984-    }
+1985-
+1986-    // 3. Sidebar Calendar — reuse calEvents from existing calendar pipeline
+1987-    renderSidebarCalendar();
+1988-
+1989-    // 4. Gia Phả Stats — from appData.stats (individuals, families only)
+1990-    const indEl = document.getElementById("statIndividuals");
+1991-    const famEl = document.getElementById("statFamilies");
+1992-    if (indEl) indEl.textContent = stats.individuals || Object.keys(people).length || '—';
+1993-    if (famEl) famEl.textContent = stats.families || Object.keys(appData.families || {}).length || '—';
+1994-}
+1995-
+1996-    const machMeta = document.getElementById("homeMachMeta");
+1997-    if (machMeta && machData) {
+1998-        const articleCount = (machData.articles || machData.stories || []).length;
+1999-        const seriesCount = Object.keys(machData.series || {}).length;
+2000-        machMeta.innerText = `${articleCount} bài viết & tự sự · ${seriesCount} tuyển tập`;
+2001-    }
+2002-
+2003-    const archiveMeta = document.getElementById("homeArchiveMeta");
+2004-    if (archiveMeta) {
+2005-        // Honest empty/in-progress state - do not claim unindexed items or display "0 hiện vật"
+2006-        archiveMeta.innerText = "Đang sưu tầm & số hóa tư liệu";
+2007-    }
+2008-
+2009-}
+2010-
+2011-/**
+2012- * Sidebar calendar widget — reuses the same calEvents[] array
+2013- * populated by loadCalendarFeeds() from ICS feeds.
+2014- * No new calendar engine; no duplicated lunar logic.
+2015- */
+2016-function renderSidebarCalendar() {
+2017-    const container = document.getElementById("sidebarCalendar");
+2018-    if (!container) return;
+2019-
+2020-    // calEvents is async-populated by loadCalendarFeeds()
+2021-    if (!calEvents || calEvents.length === 0) {
+2022-        container.innerHTML = '<p class="sidebar-empty">Đang tải lịch...</p>';
+2023-        // Retry once after a short delay in case ICS feeds haven't completed
+2024-        setTimeout(() => {
+2025-            if (calEvents && calEvents.length > 0) {
+2026-                renderSidebarCalendar();

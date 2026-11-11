@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gia Tộc Trần Trọng Thu | Admin Control Room</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logoGiaToc_favicon.svg">
     <link rel="stylesheet" href="/admin/css/admin.css">
 </head>
 <body>
@@ -20,18 +21,29 @@
                 </div>
                 <div class="nav-section">
                     <div class="section-title">HỘP THƯ</div>
-                    <a href="#/inbox" class="nav-item">Inbox <span class="badge" id="badge-inbox">0</span></a>
+                    <a href="#/inbox" class="nav-item">Đề xuất <span class="badge" id="badge-inbox">0</span></a>
                 </div>
                 <div class="nav-section">
                     <div class="section-title">KHO TRI THỨC</div>
                     <a href="#/people" class="nav-item">Nhân sự (People)</a>
                     <a href="#/stories" class="nav-item">Mạch (Stories)</a>
-                    <a href="#/archive" class="nav-item">Di sản (Archive)</a>
+                    <a href="/me/gallery" class="nav-item">Kho Di Ảnh ↗</a>
                     <a href="#/events" class="nav-item">Sự kiện (Events)</a>
+                </div>
+                <div class="nav-section hidden" id="nav-section-admin">
+                    <div class="section-title">QUẢN TRỊ</div>
+                    <a href="#/members" class="nav-item">Tài khoản Thành viên</a>
+                    <a href="#/users" class="nav-item">Người dùng Admin</a>
+                    <a href="#/database" class="nav-item">Database</a>
                 </div>
             </nav>
             <div class="sidebar-footer">
-                <div class="user-info">Vai trò: Ban Biên Tập</div>
+                <a href="/me" style="display:block;font-size:12px;margin-bottom:6px;color:#94a3b8;text-decoration:none;">← Không gian Thành viên (/me)</a>
+                <a href="/" style="display:block;font-size:12px;margin-bottom:10px;color:#94a3b8;text-decoration:none;">← Trang công khai (/)</a>
+                <div class="user-info-block">
+                    <div class="user-info" id="user-info">Đang tải...</div>
+                    <button class="btn-logout" id="btn-logout">Đăng xuất</button>
+                </div>
             </div>
         </aside>
         

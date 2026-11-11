@@ -69,16 +69,24 @@ ISSUE_01_DIR = os.path.join(OBSIDIAN_PROJECTS, "ISSUE_01", "CANONICAL")
 CLARA_DIR = os.path.join(OBSIDIAN_ROOT, "Thư gửi Clara")
 
 REPO_ROOT = "/Users/tuantq/Projects/Personal/giatoctrantrongthu"
-CONTENT_DIR = os.path.join(REPO_ROOT, "content", "mach")
-DATA_FILE = os.path.join(REPO_ROOT, "data", "mach.json")
-ASSETS_DIR = os.path.join(REPO_ROOT, "assets", "images", "mach")
+CONTENT_MACH_DIR = os.path.join(REPO_ROOT, "content", "mach")
+CONTENT_CLARA_DIR = os.path.join(REPO_ROOT, "content", "private", "clara")
+
+DATA_MACH_FILE = os.path.join(REPO_ROOT, "data", "mach.json")
+SERVER_MACH_FILE = os.path.join(REPO_ROOT, "server", "data", "mach.json")
+
+DATA_CLARA_FILE = os.path.join(REPO_ROOT, "data", "private", "clara.json")
+SERVER_CLARA_FILE = os.path.join(REPO_ROOT, "server", "data", "private", "clara.json")
+
+ASSETS_MACH_DIR = os.path.join(REPO_ROOT, "assets", "images", "mach")
+ASSETS_CLARA_DIR = os.path.join(REPO_ROOT, "assets", "private", "images", "clara")
 
 # --- 1. MEDIA REGISTRY SEED ---
-BASE_MEDIA = {
+CLARA_MEDIA = {
     "med_clara_001": {
         "id": "med_clara_001",
-        "src": "assets/images/mach/thu-gui-clara/001.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/001.png",
+        "src": "assets/private/images/clara/001.png",
+        "rawSrc": "assets/private/images/clara/001.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 01: Điểm Tựa Cuộc Đời",
@@ -91,15 +99,15 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/001.png",
-            "medium": "assets/images/mach/thu-gui-clara/001.png",
-            "large": "assets/images/mach/thu-gui-clara/001.png"
+            "thumb": "assets/private/images/clara/001.png",
+            "medium": "assets/private/images/clara/001.png",
+            "large": "assets/private/images/clara/001.png"
         }
     },
     "med_clara_002": {
         "id": "med_clara_002",
-        "src": "assets/images/mach/thu-gui-clara/002.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/002.png",
+        "src": "assets/private/images/clara/002.png",
+        "rawSrc": "assets/private/images/clara/002.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 02: Quyết Định Chuyển Dời",
@@ -112,15 +120,15 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/002.png",
-            "medium": "assets/images/mach/thu-gui-clara/002.png",
-            "large": "assets/images/mach/thu-gui-clara/002.png"
+            "thumb": "assets/private/images/clara/002.png",
+            "medium": "assets/private/images/clara/002.png",
+            "large": "assets/private/images/clara/002.png"
         }
     },
     "med_clara_003": {
         "id": "med_clara_003",
-        "src": "assets/images/mach/thu-gui-clara/003.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/003.png",
+        "src": "assets/private/images/clara/003.png",
+        "rawSrc": "assets/private/images/clara/003.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 03: Cảm Thức Cộng Đồng",
@@ -133,15 +141,15 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/003.png",
-            "medium": "assets/images/mach/thu-gui-clara/003.png",
-            "large": "assets/images/mach/thu-gui-clara/003.png"
+            "thumb": "assets/private/images/clara/003.png",
+            "medium": "assets/private/images/clara/003.png",
+            "large": "assets/private/images/clara/003.png"
         }
     },
     "med_clara_004": {
         "id": "med_clara_004",
-        "src": "assets/images/mach/thu-gui-clara/004.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/004.png",
+        "src": "assets/private/images/clara/004.png",
+        "rawSrc": "assets/private/images/clara/004.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 04: Cái Tôi Khái Niệm Hóa",
@@ -154,15 +162,15 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/004.png",
-            "medium": "assets/images/mach/thu-gui-clara/004.png",
-            "large": "assets/images/mach/thu-gui-clara/004.png"
+            "thumb": "assets/private/images/clara/004.png",
+            "medium": "assets/private/images/clara/004.png",
+            "large": "assets/private/images/clara/004.png"
         }
     },
     "med_clara_005": {
         "id": "med_clara_005",
-        "src": "assets/images/mach/thu-gui-clara/005.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/005.png",
+        "src": "assets/private/images/clara/005.png",
+        "rawSrc": "assets/private/images/clara/005.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 05: Vai Trò Nội Tâm Hóa",
@@ -175,15 +183,15 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/005.png",
-            "medium": "assets/images/mach/thu-gui-clara/005.png",
-            "large": "assets/images/mach/thu-gui-clara/005.png"
+            "thumb": "assets/private/images/clara/005.png",
+            "medium": "assets/private/images/clara/005.png",
+            "large": "assets/private/images/clara/005.png"
         }
     },
     "med_clara_006": {
         "id": "med_clara_006",
-        "src": "assets/images/mach/thu-gui-clara/006.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/006.png",
+        "src": "assets/private/images/clara/006.png",
+        "rawSrc": "assets/private/images/clara/006.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 06: Tự Do Trước Quá Khứ",
@@ -196,15 +204,15 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/006.png",
-            "medium": "assets/images/mach/thu-gui-clara/006.png",
-            "large": "assets/images/mach/thu-gui-clara/006.png"
+            "thumb": "assets/private/images/clara/006.png",
+            "medium": "assets/private/images/clara/006.png",
+            "large": "assets/private/images/clara/006.png"
         }
     },
     "med_clara_007": {
         "id": "med_clara_007",
-        "src": "assets/images/mach/thu-gui-clara/007.png",
-        "rawSrc": "assets/images/mach/thu-gui-clara/007.png",
+        "src": "assets/private/images/clara/007.png",
+        "rawSrc": "assets/private/images/clara/007.png",
         "type": "editorial",
         "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
         "alt": "Bìa Thư gửi Clara — Số 07: Thể Diện, Sĩ Diện & Tự Do",
@@ -217,11 +225,30 @@ BASE_MEDIA = {
         "peopleIds": ["@I170@"],
         "rights": "Bản quyền thuộc gia đình Trần Trọng",
         "variants": {
-            "thumb": "assets/images/mach/thu-gui-clara/007.png",
-            "medium": "assets/images/mach/thu-gui-clara/007.png",
-            "large": "assets/images/mach/thu-gui-clara/007.png"
+            "thumb": "assets/private/images/clara/007.png",
+            "medium": "assets/private/images/clara/007.png",
+            "large": "assets/private/images/clara/007.png"
         }
     },
+    "med_clara-008_04": {
+        "id": "med_clara-008_04",
+        "src": "assets/private/images/clara/008.jpg",
+        "rawSrc": "assets/private/images/clara/008.jpg",
+        "type": "editorial",
+        "dimensions": {"width": 1200, "height": 800, "aspectRatio": "3/2"},
+        "alt": "Thư gửi Clara — Số 08: Entropy và Di Sản",
+        "caption": "Ký ức của những người đi trước rồi sẽ nhạt nhoà theo định luật entropy, nếu không được gọi tên và hệ thống hoá, chúng sẽ mãi mãi trôi tuột vào dĩ vãng.",
+        "credit": "Tư liệu MẠCH",
+        "provenance": "Trích lục bài viết",
+        "variants": {
+            "thumb": "assets/private/images/clara/008.jpg",
+            "medium": "assets/private/images/clara/008.jpg",
+            "large": "assets/private/images/clara/008.jpg"
+        }
+    }
+}
+
+MACH_MEDIA = {
     "med_issue01_cover": {
         "id": "med_issue01_cover",
         "src": "assets/images/mach/issue-01/mach_01.jpg",
@@ -682,6 +709,25 @@ CLARA_REGISTRY = [
         "date": "03/09/2026",
         "topics": ["thu-tu", "gia-phong", "the-he"],
         "relatedPeople": ["@I170@"]
+    },
+    {
+        "id": "art_clara_008",
+        "file": "Thư gửi Clara - 008.md",
+        "slug": "clara-008",
+        "order": 8,
+        "title": "Thư gửi Clara — Số 08: Entropy và Di Sản",
+        "shortTitle": "Thư 08: Entropy & Di sản",
+        "subtitle": "Ký ức nhạt nhoà theo định luật entropy và hành trình hệ thống hoá thành di sản.",
+        "deckLead": "Ký ức của những người đi trước rồi sẽ nhạt nhoà theo định luật entropy, nếu không được gọi tên và hệ thống hoá.",
+        "section": "Thư từ",
+        "authorId": "tuan",
+        "articleType": "letter",
+        "editorialVoice": "personal",
+        "presentationVariant": "letter",
+        "heroMediaId": "med_clara_008",
+        "date": "15/09/2026",
+        "topics": ["thu-tu", "ky-uc", "the-he"],
+        "relatedPeople": ["@I170@"]
     }
 ]
 
@@ -706,7 +752,8 @@ WIKILINK_MAP = {
     "Thư gửi Clara - 004": "clara-004",
     "Thư gửi Clara - 005": "clara-005",
     "Thư gửi Clara - 006": "clara-006",
-    "Thư gửi Clara, Rina, Tina, Tin và Tito - 007": "clara-007"
+    "Thư gửi Clara, Rina, Tina, Tin và Tito - 007": "clara-007",
+    "Thư gửi Clara - 008": "clara-008"
 }
 
 def resolve_wikilinks_in_text(text):
@@ -1009,33 +1056,35 @@ def parse_markdown_to_blocks(raw_content, article_meta, media_registry):
     return blocks, footnotes
 
 # --- 4. MAIN BUILD PROCESS ---
-def build():
-    # 1. Ensure target mirror directories exist
-    target_issue01_dir = os.path.join(CONTENT_DIR, "issue-01")
-    target_clara_dir = os.path.join(CONTENT_DIR, "thu-gui-clara")
+def build_mach():
+    target_issue01_dir = os.path.join(CONTENT_MACH_DIR, "issue-01")
     os.makedirs(target_issue01_dir, exist_ok=True)
-    os.makedirs(target_clara_dir, exist_ok=True)
+    os.makedirs(os.path.dirname(DATA_MACH_FILE), exist_ok=True)
+    os.makedirs(os.path.dirname(SERVER_MACH_FILE), exist_ok=True)
 
-    media_registry = dict(BASE_MEDIA)
-    all_articles = []
+    media_registry = dict(MACH_MEDIA)
+    mach_articles = []
 
-    # 2. Process ISSUE 01
     for item in ISSUE_01_REGISTRY:
         src_file = os.path.join(ISSUE_01_DIR, item["file"])
-        if not os.path.exists(src_file):
-            src_file = os.path.join(target_issue01_dir, item["file"])
-        
         raw_content = ""
-        if os.path.exists(src_file):
-            with open(src_file, "r", encoding="utf-8") as fh:
-                raw_content = fh.read()
-            # Copy to repo mirror
-            dst_file = os.path.join(target_issue01_dir, item["file"])
-            with open(dst_file, "w", encoding="utf-8") as fh:
-                fh.write(raw_content)
+        try:
+            if os.path.exists(src_file):
+                with open(src_file, "r", encoding="utf-8") as fh:
+                    raw_content = fh.read()
+                dst_file = os.path.join(target_issue01_dir, item["file"])
+                with open(dst_file, "w", encoding="utf-8") as fh:
+                    fh.write(raw_content)
+        except (PermissionError, OSError):
+            pass
+
+        if not raw_content:
+            mirror_file = os.path.join(target_issue01_dir, item["file"])
+            if os.path.exists(mirror_file):
+                with open(mirror_file, "r", encoding="utf-8") as fh:
+                    raw_content = fh.read()
 
         blocks, footnotes = parse_markdown_to_blocks(raw_content, item, media_registry)
-
         checksum = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()[:16]
 
         article_obj = {
@@ -1063,7 +1112,7 @@ def build():
             "footnotes": footnotes,
             "relatedContent": {
                 "articleIds": [],
-                "seriesIds": ["issue-01", "thu-gui-clara"]
+                "seriesIds": ["issue-01"]
             },
             "relatedEntities": {
                 "peopleIds": item.get("relatedPeople", []),
@@ -1089,23 +1138,114 @@ def build():
             "mentions": [],
             "contentMarkdown": raw_content
         }
-        all_articles.append(article_obj)
+        mach_articles.append(article_obj)
 
-    # 3. Process THƯ GỬI CLARA
+    series_map = {
+        "issue-01": {
+            "id": "issue-01",
+            "slug": "issue-01",
+            "title": "Tập san MẠCH — Số 01: Dòng Họ Trong Đời Sống Đương Đại",
+            "shortTitle": "Tập san MẠCH (Số 01)",
+            "subtitle": "Giữ mạch hay chấp nhận tan rã?",
+            "description": "Ấn phẩm tập san khảo cứu về sự chuyển dịch của dòng họ trong xã hội hiện đại: từ sự gần gũi tự nhiên thuở trước đến những khế ước vô hình, ngày giỗ, mộ tổ, đám cưới, ngày Tết và những người không còn quay về nữa.",
+            "seriesType": "publication",
+            "audience": "family",
+            "editorialVoice": "collective-editorial",
+            "authorIds": ["nguoi-giu-mach"],
+            "coverMediaId": "med_issue01_cover",
+            "articleIds": [s["slug"] for s in mach_articles if "issue-01" in s["seriesIds"]],
+            "authorId": "nguoi-giu-mach",
+            "coverImage": "assets/images/mach/issue-01/mach_01.jpg",
+            "stories": [s["slug"] for s in mach_articles if "issue-01" in s["seriesIds"]]
+        }
+    }
+
+    authors_map = {
+        "nguoi-giu-mach": {
+            "id": "nguoi-giu-mach",
+            "slug": "nguoi-giu-mach",
+            "name": "Người giữ mạch",
+            "role": "Chấp bút & Khảo cứu MẠCH",
+            "bio": "Người khởi xướng hành trình ghi chép và khảo cứu những chuyển dịch của dòng họ trong đời sống đương đại.",
+            "avatarEmoji": "✍️",
+            "avatar": "✍️",
+            "location": "Sài Gòn"
+        },
+        "mach-editorial": {
+            "id": "mach-editorial",
+            "slug": "mach-editorial",
+            "name": "Ban Biên Tập MẠCH",
+            "role": "Cơ quan Xuất bản Di sản",
+            "bio": "Lưu giữ, bảo tồn và xuất bản các ấn phẩm chuyên đề về văn hóa dòng tộc và ký ức gia đình.",
+            "avatarEmoji": "🌿",
+            "avatar": "🌿",
+            "location": "Sài Gòn"
+        }
+    }
+
+    topics_map = {
+        "loi-mo": { "id": "loi-mo", "slug": "loi-mo", "name": "Lời Mở & Định Vị", "title": "Lời Mở & Định Vị", "count": 2, "icon": "📖" },
+        "luan": { "id": "luan", "slug": "luan", "name": "Luận Đề & Biến Chuyển", "title": "Luận Đề & Biến Chuyển", "count": 9, "icon": "🔍" },
+        "nghi-le": { "id": "nghi-le", "slug": "nghi-le", "name": "Nghi Lễ & Gặp Gỡ", "title": "Nghi Lễ & Gặp Gỡ", "count": 4, "icon": "🕯️" },
+        "ky-uc": { "id": "ky-uc", "slug": "ky-uc", "name": "Ký Ức & Sự Tiếp Nối", "title": "Ký Ức & Sự Tiếp Nối", "count": 6, "icon": "🎞️" },
+        "the-he": { "id": "the-he", "slug": "the-he", "name": "Thế Hệ & Tiếp Nối", "title": "Thế Hệ & Tiếp Nối", "count": 8, "icon": "🌱" },
+        "gia-phong": { "id": "gia-phong", "slug": "gia-phong", "name": "Gia Phong & Đạo Lý", "title": "Gia Phong & Đạo Lý", "count": 4, "icon": "🏛️" },
+        "duc-tin": { "id": "duc-tin", "slug": "duc-tin", "name": "Đức Tin & Tôn Giáo", "title": "Đức Tin & Tôn Giáo", "count": 1, "icon": "⛪" },
+        "tu-lieu": { "id": "tu-lieu", "slug": "tu-lieu", "name": "Tư Liệu & Ghi Chú", "title": "Tư Liệu & Ghi Chú", "count": 1, "icon": "📜" }
+    }
+
+    db = {
+        "version": "3.0",
+        "engine": "MachPublicationEngine",
+        "discourseScope": "mach",
+        "generatedAt": "2026-09-05T19:40:00+07:00",
+        "description": "MẠCH — Digital Magazine & Editorial Platform Dòng họ Trần Trọng Thu (Nội bộ gia tộc)",
+        "authors": authors_map,
+        "series": series_map,
+        "topics": topics_map,
+        "media": media_registry,
+        "articles": mach_articles,
+        "stories": mach_articles
+    }
+
+    with open(DATA_MACH_FILE, "w", encoding="utf-8") as fh:
+        json.dump(db, fh, ensure_ascii=False, indent=2)
+    with open(SERVER_MACH_FILE, "w", encoding="utf-8") as fh:
+        json.dump(db, fh, ensure_ascii=False, indent=2)
+
+    print(f"MẠCH Engine compiled successfully: {len(mach_articles)} articles, {len(media_registry)} media -> {DATA_MACH_FILE}")
+    return db
+
+def build_clara():
+    target_clara_dir = CONTENT_CLARA_DIR
+    os.makedirs(target_clara_dir, exist_ok=True)
+    os.makedirs(os.path.dirname(DATA_CLARA_FILE), exist_ok=True)
+    os.makedirs(os.path.dirname(SERVER_CLARA_FILE), exist_ok=True)
+
+    media_registry = dict(CLARA_MEDIA)
+    clara_articles = []
+
     for item in CLARA_REGISTRY:
         src_file = os.path.join(CLARA_DIR, item["file"])
-        if not os.path.exists(src_file):
-            src_file = os.path.join(target_clara_dir, item["file"])
-
         raw_content = ""
-        if os.path.exists(src_file):
-            with open(src_file, "r", encoding="utf-8") as fh:
-                raw_content = fh.read()
-            dst_file = os.path.join(target_clara_dir, item["file"])
-            with open(dst_file, "w", encoding="utf-8") as fh:
-                fh.write(raw_content)
+        try:
+            if os.path.exists(src_file):
+                with open(src_file, "r", encoding="utf-8") as fh:
+                    raw_content = fh.read()
+                dst_file = os.path.join(target_clara_dir, item["file"])
+                with open(dst_file, "w", encoding="utf-8") as fh:
+                    fh.write(raw_content)
+        except (PermissionError, OSError):
+            pass
 
-        formatted_content = re.sub(r"!\[(.*?)\]\(Images/(.*?)\)", r"![\1](assets/images/mach/thu-gui-clara/\2)", raw_content)
+        if not raw_content:
+            mirror_file = os.path.join(target_clara_dir, item["file"])
+            if os.path.exists(mirror_file):
+                with open(mirror_file, "r", encoding="utf-8") as fh:
+                    raw_content = fh.read()
+
+        formatted_content = re.sub(r"!\[(.*?)\]\(Images/(.*?)\)", r"![\1](assets/private/images/clara/\2)", raw_content)
+        formatted_content = formatted_content.replace("assets/images/mach/thu-gui-clara/", "assets/private/images/clara/")
 
         blocks, footnotes = parse_markdown_to_blocks(formatted_content, item, media_registry)
         checksum = hashlib.sha256(raw_content.encode("utf-8")).hexdigest()[:16]
@@ -1135,7 +1275,7 @@ def build():
             "footnotes": footnotes,
             "relatedContent": {
                 "articleIds": [],
-                "seriesIds": ["thu-gui-clara", "issue-01"]
+                "seriesIds": ["thu-gui-clara"]
             },
             "relatedEntities": {
                 "peopleIds": item.get("relatedPeople", []),
@@ -1143,11 +1283,11 @@ def build():
                 "documentIds": []
             },
             "source": {
-                "vaultPath": f"Thư gửi Clara/{item['file']}",
+                "vaultPath": f"content/private/clara/{item['file']}",
                 "checksum": checksum
             },
             "seo": {
-                "metaTitle": f"{item['title']} — MẠCH",
+                "metaTitle": f"{item['title']} — Gia Đình",
                 "metaDescription": item["deckLead"],
                 "ogImageMediaId": item["heroMediaId"]
             },
@@ -1161,28 +1301,9 @@ def build():
             "mentions": [],
             "contentMarkdown": formatted_content
         }
-        all_articles.append(article_obj)
+        clara_articles.append(article_obj)
 
-    # 4. Normalized Series Definitions
     series_map = {
-        "issue-01": {
-            "id": "issue-01",
-            "slug": "issue-01",
-            "title": "Tập san MẠCH — Số 01: Dòng Họ Trong Đời Sống Đương Đại",
-            "shortTitle": "Tập san MẠCH (Số 01)",
-            "subtitle": "Giữ mạch hay chấp nhận tan rã?",
-            "description": "Ấn phẩm tập san khảo cứu về sự chuyển dịch của dòng họ trong xã hội hiện đại: từ sự gần gũi tự nhiên thuở trước đến những khế ước vô hình, ngày giỗ, mộ tổ, đám cưới, ngày Tết và những người không còn quay về nữa.",
-            "seriesType": "publication",
-            "audience": "family",
-            "editorialVoice": "collective-editorial",
-            "authorIds": ["nguoi-giu-mach"],
-            "coverMediaId": "med_issue01_cover",
-            "articleIds": [s["slug"] for s in all_articles if "issue-01" in s["seriesIds"]],
-            # Legacy compatibility
-            "authorId": "nguoi-giu-mach",
-            "coverImage": "assets/images/mach/issue-01/mach_01.jpg",
-            "stories": [s["slug"] for s in all_articles if "issue-01" in s["seriesIds"]]
-        },
         "thu-gui-clara": {
             "id": "thu-gui-clara",
             "slug": "thu-gui-clara",
@@ -1195,26 +1316,14 @@ def build():
             "editorialVoice": "personal",
             "authorIds": ["tuan"],
             "coverMediaId": "med_clara_001",
-            "articleIds": [s["slug"] for s in all_articles if "thu-gui-clara" in s["seriesIds"]],
-            # Legacy compatibility
+            "articleIds": [s["slug"] for s in clara_articles if "thu-gui-clara" in s["seriesIds"]],
             "authorId": "tuan",
-            "coverImage": "assets/images/mach/thu-gui-clara/001.png",
-            "stories": [s["slug"] for s in all_articles if "thu-gui-clara" in s["seriesIds"]]
+            "coverImage": "assets/private/images/clara/001.png",
+            "stories": [s["slug"] for s in clara_articles if "thu-gui-clara" in s["seriesIds"]]
         }
     }
 
-    # 5. Normalized Authors Definitions
     authors_map = {
-        "nguoi-giu-mach": {
-            "id": "nguoi-giu-mach",
-            "slug": "nguoi-giu-mach",
-            "name": "Người giữ mạch",
-            "role": "Chấp bút & Khảo cứu MẠCH",
-            "bio": "Người khởi xướng hành trình ghi chép và khảo cứu những chuyển dịch của dòng họ trong đời sống đương đại.",
-            "avatarEmoji": "✍️",
-            "avatar": "✍️",
-            "location": "Sài Gòn"
-        },
         "tuan": {
             "id": "tuan",
             "slug": "tuan",
@@ -1225,59 +1334,54 @@ def build():
             "avatar": "✉️",
             "personId": "@I18@",
             "location": "Sài Gòn"
-        },
-        "mach-editorial": {
-            "id": "mach-editorial",
-            "slug": "mach-editorial",
-            "name": "Ban Biên Tập MẠCH",
-            "role": "Cơ quan Xuất bản Di sản",
-            "bio": "Lưu giữ, bảo tồn và xuất bản các ấn phẩm chuyên đề về văn hóa dòng tộc và ký ức gia đình.",
-            "avatarEmoji": "🌿",
-            "avatar": "🌿",
-            "location": "Sài Gòn"
         }
     }
 
-    # 6. Normalized Topics Definitions
     topics_map = {
-        "loi-mo": { "id": "loi-mo", "slug": "loi-mo", "name": "Lời Mở & Định Vị", "title": "Lời Mở & Định Vị", "count": 2, "icon": "📖" },
-        "luan": { "id": "luan", "slug": "luan", "name": "Luận Đề & Biến Chuyển", "title": "Luận Đề & Biến Chuyển", "count": 9, "icon": "🔍" },
-        "nghi-le": { "id": "nghi-le", "slug": "nghi-le", "name": "Nghi Lễ & Gặp Gỡ", "title": "Nghi Lễ & Gặp Gỡ", "count": 4, "icon": "🕯️" },
-        "ky-uc": { "id": "ky-uc", "slug": "ky-uc", "name": "Ký Ức & Sự Tiếp Nối", "title": "Ký Ức & Sự Tiếp Nối", "count": 6, "icon": "🎞️" },
+        "thu-tu": { "id": "thu-tu", "slug": "thu-tu", "name": "Thư Từ & Tâm Tình", "title": "Thư Từ & Tâm Tình", "count": 7, "icon": "✉️" },
         "the-he": { "id": "the-he", "slug": "the-he", "name": "Thế Hệ & Tiếp Nối", "title": "Thế Hệ & Tiếp Nối", "count": 8, "icon": "🌱" },
         "gia-phong": { "id": "gia-phong", "slug": "gia-phong", "name": "Gia Phong & Đạo Lý", "title": "Gia Phong & Đạo Lý", "count": 4, "icon": "🏛️" },
-        "thu-tu": { "id": "thu-tu", "slug": "thu-tu", "name": "Thư Từ & Tâm Tình", "title": "Thư Từ & Tâm Tình", "count": 7, "icon": "✉️" },
         "duc-tin": { "id": "duc-tin", "slug": "duc-tin", "name": "Đức Tin & Tôn Giáo", "title": "Đức Tin & Tôn Giáo", "count": 1, "icon": "⛪" },
-        "tu-lieu": { "id": "tu-lieu", "slug": "tu-lieu", "name": "Tư Liệu & Ghi Chú", "title": "Tư Liệu & Ghi Chú", "count": 1, "icon": "📜" }
+        "luan": { "id": "luan", "slug": "luan", "name": "Luận Đề & Biến Chuyển", "title": "Luận Đề & Biến Chuyển", "count": 9, "icon": "🔍" }
     }
 
-    # 7. Final Database Payload (v3.0)
     db = {
         "version": "3.0",
         "engine": "MachPublicationEngine",
+        "discourseScope": "clara",
+        "confidentiality": "RESTRICTED_BRANCH_ONLY",
         "generatedAt": "2026-09-05T19:40:00+07:00",
-        "description": "MẠCH — Digital Magazine & Editorial Platform Dòng họ Trần Trọng Thu",
+        "description": "Thư gửi Clara — Di ngôn và chiêm nghiệm tinh thần riêng tư dành riêng cho con cháu nhánh Trưởng",
         "authors": authors_map,
         "series": series_map,
         "topics": topics_map,
         "media": media_registry,
-        "articles": all_articles,
-        "stories": all_articles  # Backwards compatibility alias
+        "articles": clara_articles,
+        "stories": clara_articles
     }
 
-    with open(DATA_FILE, "w", encoding="utf-8") as fh:
+    with open(DATA_CLARA_FILE, "w", encoding="utf-8") as fh:
+        json.dump(db, fh, ensure_ascii=False, indent=2)
+    with open(SERVER_CLARA_FILE, "w", encoding="utf-8") as fh:
         json.dump(db, fh, ensure_ascii=False, indent=2)
 
+    print(f"CLARA Private Engine compiled successfully: {len(clara_articles)} letters, {len(media_registry)} media -> {DATA_CLARA_FILE}")
+    return db
+
+def build():
     print(f"==================================================")
-    print(f"MACH PUBLICATION ENGINE (v3.0) — COMPILED SUCCESSFULLY")
-    print(f"Target: {DATA_FILE}")
-    print(f"Total Articles: {len(all_articles)}")
-    print(f" - Issue 01: {len([s for s in all_articles if 'issue-01' in s['seriesIds']])} articles")
-    print(f" - Thư gửi Clara: {len([s for s in all_articles if 'thu-gui-clara' in s['seriesIds']])} letters")
-    print(f"Total Media Assets: {len(media_registry)}")
-    total_blocks = sum(len(a['blocks']) for a in all_articles)
-    print(f"Total Content Blocks: {total_blocks} (avg {total_blocks/len(all_articles):.1f} blocks/article)")
+    print(f"MACH PUBLICATION ENGINE — DUAL-SCOPE DECOUPLED COMPILER")
     print(f"==================================================")
+    m = build_mach()
+    c = build_clara()
+    print(f"--------------------------------------------------")
+    print(f"COMPILATION COMPLETE:")
+    print(f" - Public MẠCH Stories: {len(m['stories'])} (0 Clara letters)")
+    print(f" - Private Clara Letters: {len(c['stories'])} (0 MẠCH stories)")
+    print(f"==================================================")
+
+if __name__ == "__main__":
+    build()
 
 if __name__ == "__main__":
     build()

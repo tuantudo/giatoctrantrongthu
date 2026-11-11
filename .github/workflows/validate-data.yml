@@ -4,16 +4,20 @@ on:
   push:
     branches:
       - main
+      - 'release/**'
       - 'architecture/**'
     paths:
       - 'data/**'
+      - 'server/data/**'
       - 'calendars/**'
+      - 'server/calendars/**'
       - 'generator/**'
       - 'src/**'
       - 'index.html'
   pull_request:
     branches:
       - main
+      - 'release/**'
 
 jobs:
   validate:
@@ -30,3 +34,16 @@ jobs:
       - name: Run Data Integrity & Invariant Gate
         run: |
           python3 generator/validate_integrity.py
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run Core Domain & Architecture Security Verification
+        run: |
+          node tests/test_shared_layer.mjs
+          node tests/test_platform_data.mjs
+          node tests/test_domain_genealogy.mjs
+          node tests/test_domain_kinship.mjs
+          node tests/test_gateway_hardening.mjs

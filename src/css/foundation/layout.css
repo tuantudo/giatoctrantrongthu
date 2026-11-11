@@ -1,0 +1,181 @@
+/* =============================================================================
+   GIATỘC — UI SYSTEM v0.2 · LAYOUT & APPLICATION SHELL
+   Regions only. Colours/typography come from tokens.css.
+   Breakpoint literals mirror tokens.css section 15.
+   ============================================================================= */
+
+/* --- Box model reset ---------------------------------------------------------
+   vNEXT FIX (browser QA, 375/768/1024): the foundation had NO box-sizing rule
+   anywhere. `.gi-container { width: 100%; padding-inline: gutter }` therefore
+   rendered at 100% + 2 x gutter, pushing document.scrollWidth past the viewport
+   on every surface (375 -> 383, 768 -> 784, 1024 -> 1048).
+
+   This is a document-level contract, not a component style: without it every
+   future component inherits the same overflow.
+
+   [vNEXT FIX — browser QA 2026-10-04] The same reasoning applies to the
+   DOCUMENT MARGIN. The reset below was scoped to `*, *::before, *::after`
+   only, so it never reached <body> itself. `shell.js` renders a `.gi-body`
+   DIV inside <body>, which carries `margin: 0`, but the UA default 8px margin
+   stayed on the real <body> element. Measured: every shell region started at
+   x=8 / y=8 on all surfaces, so the entire layout sat inside a stray 8px frame
+   — a defect with no design intent behind it.
+
+   Governance §3.3 states mobile padding 16px and the container gutter owns
+   page-edge spacing, so the UA body margin is duplicated spacing that the
+   layout system never asked for. Reset it at the document level. */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body { margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas { max-width: 100%; height: auto; display: block; }
+
+/* --- Document ---------------------------------------------------------------- */
+.gi-body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-text-active);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Regions (shared by Public and Member shell) -----------------------------
+   [vNEXT — brand/05_DESIGN_LANGUAGE.md §1 "The Double Rule" — [APPROVED]]
+   "Sử dụng đường kẻ đôi (3px double) để phân tách các khu vực cấu trúc lớn
+    (Architecture Boundaries) như Header, Footer, hoặc Masthead."
+
+   Header and Footer are exactly those architecture boundaries, and both were
+   carrying a single hairline (or, on the footer, no rule at all). The approved
+   grammar specifies the DOUBLE rule there, and the single 1px rule for content
+   separation inside the page. This is applied from the source, not invented:
+   it is the one rule in the Design Language that the code never implemented. */
+.gi-region-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-surface-raised);
+  border-bottom: 3px double var(--color-border-strong);
+}
+.gi-region-context {
+  background-color: var(--color-surface-sunken);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+.gi-region-main {
+  flex: 1 0 auto;
+  padding-block: var(--space-6) var(--space-12);
+}
+.gi-region-footer {
+  margin-top: auto;
+  background-color: var(--color-surface-inverse);
+  color: var(--color-text-on-dark);
+  padding-block: var(--space-8);
+  /* Double rule is the closing architecture boundary, matching the header. */
+  border-top: 3px double var(--color-border-strong);
+}
+.gi-region-footer a { color: var(--color-text-on-dark); }
+
+/* --- Containers ------------------------------------------------------------- */
+.gi-container {
+  width: 100%;
+  max-width: var(--layout-max);
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+}
+.gi-container--wide { max-width: var(--layout-wide); }
+.gi-container--content { max-width: var(--layout-content); }
+.gi-container--narrow { max-width: var(--layout-narrow); }
+.gi-container--flush { padding-inline: 0; }
+
+/* --- Stacks & clusters (vertical rhythm helpers) ----------------------------- */
+.gi-stack { display: flex; flex-direction: column; gap: var(--space-4); }
+.gi-stack--tight { gap: var(--space-2); }
+.gi-stack--loose { gap: var(--space-8); }
+.gi-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+.gi-cluster--between { justify-content: space-between; }
+.gi-divider {
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  border: 0;
+  margin-block: var(--space-4);
+}
+
+/* --- Grid ------------------------------------------------------------------- */
+.gi-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+.gi-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gi-grid--sidebar { grid-template-columns: var(--layout-sidebar) minmax(0, 1fr); }
+.gi-grid--cards { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+/* --- Reading ----------------------------------------------------------------- */
+.gi-prose { max-width: var(--type-reading-measure); }
+.gi-prose p { margin-block: 0 var(--space-4); }
+
+/* =============================================================================
+   RESPONSIVE — [PROPOSAL] target widths: 375 / 768 / 1024 / 1440
+   Verification status: see docs/audit/REPORT_UI_SYSTEM_V0.2.md
+   ============================================================================= */
+
+/* <= 1024px : collapse the two-column dashboard/sidebar layouts first. */
+@media (max-width: 1024px) {
+  .gi-grid--sidebar { grid-template-columns: 1fr; }
+  .gi-grid--cards { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+/* <= 768px : single column, larger tap targets, wrap navigation. */
+@media (max-width: 768px) {
+  :root { --layout-gutter: var(--space-3); }
+  .gi-grid--two { grid-template-columns: 1fr; }
+  .gi-region-main { padding-block: var(--space-4) var(--space-8); }
+
+  /* Navigation collapses to a single horizontally scrollable strip at tablet and
+     below, so the member hierarchy never wraps into an unreadable block.
+     vNEXT: `min-width:0` is required for the scroll container to actually clip —
+     without it the flex item expands and the page overflows horizontally. */
+  .gi-nav { min-width: 0; max-width: 100%; }
+  .gi-nav__list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .gi-header__actions { width: 100%; min-width: 0; }
+}
+
+/* <= 375px : compact type and spacing so nothing overflows. */
+@media (max-width: 375px) {
+  :root { --layout-gutter: var(--space-2); }
+  .gi-header__inner { flex-direction: column; align-items: flex-start; }
+  .gi-breadcrumb { font-size: var(--type-meta-size); }
+  .gi-breadcrumb__item:not(:last-child)::after { display: none; }
+}
+
+/* >= 1440px : cap growth so line lengths stay readable. */
+@media (min-width: 1440px) {
+  .gi-container--content { max-width: 1120px; }
+}

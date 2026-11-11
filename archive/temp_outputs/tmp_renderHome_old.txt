@@ -1,0 +1,51 @@
+1926:function renderHomePublicationLanding() {
+1927-    if (!appData) return;
+1928-
+1929-    const people = appData.people || {};
+1930-    const stats = appData.stats || { individuals: Object.keys(people).length, families: Object.keys(appData.families || {}).length, memories: (appData.memories || []).length };
+1931-    const rootId = appData.rootAnchor || Object.keys(people)[0];
+1932-    const rootPerson = people[rootId];
+1933-
+1934-    // 1. BLOCK 01: Dynamic Hero Lede & Subject Anchor
+1935-    const heroAnchorEl = document.getElementById("homeHeroAnchor");
+1936-    if (heroAnchorEl) {
+1937-        if (rootPerson) {
+1938-            const rootName = rootPerson.name || "cụ Giuse Trần Trọng Thu";
+1939-            const bYear = rootPerson.birth && rootPerson.birth.date ? rootPerson.birth.date.replace(/[^0-9]/g, '').slice(0, 4) : "1872";
+1940-            const dYear = rootPerson.death && rootPerson.death.date ? rootPerson.death.date.slice(-4) : "1969";
+1941-            const bPlace = (rootPerson.birth && rootPerson.birth.place) ? rootPerson.birth.place.split(',')[0].trim() : "Thanh Hóa";
+1942-            const genLevels = window.maxDerivedGenLevel ? (window.maxDerivedGenLevel + 1) : 5;
+1943-            
+1944-            heroAnchorEl.innerHTML = `Bắt đầu từ cụ <strong>${escapeHtml(rootName)}</strong> (${bYear}–${dYear}) tại ${escapeHtml(bPlace)}, trải qua hơn 150 năm với ${genLevels} thế hệ tiếp nối.`;
+1945-        } else {
+1946-            heroAnchorEl.innerText = "Bắt đầu từ cụ Giuse Trần Trọng Thu (1872–1969) tại Thanh Hóa, trải qua hơn 150 năm với 5 thế hệ tiếp nối.";
+1947-        }
+1948-    }
+1949-
+1950-    // 2. BLOCK 02: Dynamic Human Memory Spotlight (Bà Sa / Cụ Thư)
+1951-    const spotlightContent = document.getElementById("homeSpotlightContent");
+1952-    if (spotlightContent) {
+1953-        const memories = appData.memories || [];
+1954-        if (memories.length > 0) {
+1955-            // Default to memory 0 (Bà Sa) as recommended in brief, easily configurable
+1956-            const mem = memories[0];
+1957-            const title = mem.title ? mem.title.replace(/^[📖🕯️]\s*/u, '') : "Ký ức tiền nhân";
+1958-            const personName = mem.personName ? ` — ${mem.personName.split('@')[0].trim()}` : '';
+1959-            const fullTitle = `${title}${personName}`;
+1960-            // Clean passage from memory story without altering facts
+1961-            const passage = mem.story ? (mem.story.length > 290 ? mem.story.slice(0, 290).trim() + '...' : mem.story) : '';
+1962-            
+1963-            spotlightContent.innerHTML = `
+1964-                <h3 class="box-title">${escapeHtml(fullTitle)}</h3>
+1965-                <p class="box-passage">${escapeHtml(passage)}</p>
+1966-                <div class="box-footer">
+1967-                    <span>Ghi chép truyền khẩu · ${memories.length} mẩu ký ức</span>
+1968-                    <a class="box-link" href="#/gia-pha/ky-uc" onclick="navigateRoute('/gia-pha/ky-uc')">Đọc toàn bộ ký ức này →</a>
+1969-                </div>
+1970-            `;
+1971-        } else {
+1972-            const spotlightSec = document.getElementById("homeHumanSpotlight");
+1973-            if (spotlightSec) spotlightSec.style.display = "none";
+1974-        }
+1975-    }
+1976-
