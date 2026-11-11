@@ -1,41 +1,41 @@
 # .vercelignore — GIATOC V2.0.0 REPRODUCIBLE RELEASE PACKAGING
 
-# 1. Tests, Scripts & Dev Tools
-tests/
-scripts/
-fixtures/
-generator/
+# 1. Tests, Scripts & Dev Tools (Root only)
+/tests/
+/scripts/
+/fixtures/
+/generator/
 __pycache__/
 
 # 2. Internal Documentation & Audits (Preserved in Git, Excluded from CDN)
-docs/
-AUDIT/
+/docs/
+/AUDIT/
 *.md
 !README.md
 
-# 3. Agent Frameworks & Internal Metadata
-.agents/
-.aios/
-.cline/
-.clinerules
-.opencode/
-.serena/
-.playwright-mcp/
-.tmp-cg/
-shots/
-design-playground/
-prototype/
-chatbot-app/
-archive/
+# 3. Agent Frameworks & Internal Metadata (Root only)
+/.agents/
+/.aios/
+/.cline/
+/.clinerules
+/.opencode/
+/.serena/
+/.playwright-mcp/
+/.tmp-cg/
+/shots/
+/design-playground/
+/prototype/
+/chatbot-app/
+/archive/
 
 # 4. Design Raw Binaries
-assets/XD/
-assets/private/
+/assets/XD/
+/assets/private/
 
 # 5. Backend Services & Secrets (Executed on NAS Synology, Excluded from Vercel CDN)
-server/
-data/private/
-content/private/
+/server/
+/data/private/
+/content/private/
 GIADINHONGTHU.ged
 *.db
 *.bak
@@ -43,3 +43,5 @@ GIADINHONGTHU.ged
 *.log
 cookies*.txt
 local_secrets.*
+
+
