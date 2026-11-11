@@ -247,6 +247,15 @@ const proposalIpLimiter = rateLimit({
     message: { ok: false, error: 'RATE_LIMIT_EXCEEDED_IP', message: 'Địa chỉ IP của bạn đã gửi quá nhiều đề xuất trong 1 giờ. Vui lòng thử lại sau.' }
 });
 
+const passwordChangeLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // max 5 password change attempts per IP per 15 minutes
+    standardHeaders: true,
+    legacyHeaders: false,
+    statusCode: 429,
+    message: { error: 'Quá nhiều lần thử đổi mật khẩu. Vui lòng thử lại sau 15 phút.' }
+});
+
 const useMariaDB = process.env.DB_CLIENT === 'mysql';
 let db, runQuery, allQuery, getQuery;
 
@@ -411,7 +420,7 @@ app.get('/api/admin/database/schema', adminCors, requireAuth, requireOwner, asyn
 
 // ------------------- MEMBER ROUTES (P0.1) -------------------
 const { createMemberRouter } = require('./member');
-app.use('/', createMemberRouter(dbAccessor, { loginLimiter, proposalIpLimiter }));
+app.use('/', createMemberRouter(dbAccessor, { loginLimiter, proposalIpLimiter, passwordChangeLimiter }));
 
 // ------------------- P0 SECURITY: GATEWAY HARDENING -------------------
 async function requireMemberOrAdmin(req, res, next) {

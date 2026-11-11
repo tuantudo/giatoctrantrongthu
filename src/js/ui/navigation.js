@@ -43,6 +43,9 @@ export const routes = Object.freeze([
   { id: 'member.mach', path: '/me/mach', label: 'MẠCH', audience: AUDIENCE.MEMBER,
     context: UX_CONTEXT.EDITORIAL, discourse: DISCOURSE.MACH, parent: '/me', status: 'new' },
 
+  { id: 'member.letters', path: '/me/letters', label: 'Thư gửi nhau', audience: AUDIENCE.MEMBER,
+    context: UX_CONTEXT.EDITORIAL, discourse: DISCOURSE.MACH, parent: '/me', status: 'new' },
+
   { id: 'member.clara', path: '/me/clara', label: 'Thư gửi Clara', audience: AUDIENCE.MEMBER,
     context: UX_CONTEXT.EDITORIAL, discourse: DISCOURSE.CLARA, parent: '/me', status: 'new' },
 
@@ -68,20 +71,45 @@ export const routes = Object.freeze([
     audience: AUDIENCE.MEMBER, context: UX_CONTEXT.MEMBER, discourse: null,
     parent: '/me', status: 'existing' },
 
+  { id: 'member.account', path: '/me/account', label: 'Tài khoản của tôi',
+    audience: AUDIENCE.MEMBER, context: UX_CONTEXT.MEMBER, discourse: null,
+    parent: '/me', status: 'new' },
+
+  { id: 'member.requests', path: '/me/requests', label: 'Đóng góp & Yêu cầu',
+    audience: AUDIENCE.MEMBER, context: UX_CONTEXT.MEMBER, discourse: null,
+    parent: '/me', status: 'new' },
+
+  { id: 'member.contribute', path: '/me/contribute', label: 'Đóng góp tư liệu',
+    audience: AUDIENCE.MEMBER, context: UX_CONTEXT.MEMBER, discourse: null,
+    parent: '/me/requests', status: 'new' },
+
+  { id: 'public.help', path: '/help', label: 'Trợ giúp & Hướng dẫn',
+    audience: AUDIENCE.PUBLIC, context: UX_CONTEXT.PUBLIC, discourse: DISCOURSE.PUBLIC,
+    parent: '/', status: 'new' },
+
+  { id: 'public.recovery', path: '/help/recovery', label: 'Khôi phục tài khoản',
+    audience: AUDIENCE.PUBLIC, context: UX_CONTEXT.PUBLIC, discourse: DISCOURSE.PUBLIC,
+    parent: '/help', status: 'new' },
+
   { id: 'member.logout', path: '/logout', label: 'Đăng xuất', audience: AUDIENCE.MEMBER,
     context: UX_CONTEXT.MEMBER, discourse: null, parent: '/me', status: 'existing' }
 ]);
 
 /** Sibling destinations offered as "next" on each page (ordered, IA-aware). */
 export const nextByRoute = Object.freeze({
-  'member.dashboard': ['member.mach', 'member.clara', 'member.genealogy', 'member.gallery', 'member.events'],
+  'member.dashboard': ['member.mach', 'member.clara', 'member.genealogy', 'member.gallery', 'member.events', 'member.account', 'member.requests'],
+  'member.account': ['member.dashboard', 'member.requests', 'member.changePassword'],
+  'member.requests': ['member.contribute', 'member.dashboard', 'member.account'],
+  'member.contribute': ['member.requests', 'member.dashboard'],
+  'public.help': ['public.recovery', 'public.login', 'public.home'],
+  'public.recovery': ['public.login', 'public.help'],
   'member.mach': ['member.clara', 'member.dashboard'],
   'member.clara': ['member.mach', 'member.dashboard'],
   'member.genealogy': ['member.gallery', 'member.events', 'member.dashboard'],
   'member.gallery': ['member.events', 'member.genealogy', 'member.dashboard'],
   'member.events': ['member.gallery', 'member.genealogy', 'member.dashboard'],
   'member.person': ['member.events', 'member.gallery', 'member.genealogy', 'member.dashboard'],
-  'public.home': ['public.login']
+  'public.home': ['public.login', 'public.help']
 });
 
 export function matchRoute(pathname) {

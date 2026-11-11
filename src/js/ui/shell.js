@@ -31,6 +31,7 @@ export const PUBLIC_NAV = [
   { label: 'Cội nguồn', href: '#coi-nguon' },
   { label: 'Dòng chảy', href: '#dong-chay' },
   { label: 'Không gian gia tộc', href: '#khong-gian' },
+  { label: 'Trợ giúp & Kết nối', href: '/help' },
   { label: 'Cổng thành viên →', href: '/login', title: 'Cổng không gian thành viên dòng họ' }
 ];
 
@@ -40,8 +41,11 @@ export const MEMBER_NAV = [
   { label: 'Kho tư liệu ảnh', href: '/me/gallery' },
   { label: 'Lịch giỗ & Niên biểu', href: '/me/events' },
   { label: 'MẠCH', href: '/me/mach' },
+  { label: 'Thư gửi nhau', href: '/me/letters' },
+  { label: 'Tài khoản', href: '/me/account' },
+  { label: 'Đóng góp & Yêu cầu', href: '/me/requests' },
+  { label: 'Trợ giúp', href: '/help' },
   { label: 'Đổi mật khẩu', href: '/me/change-password' },
-  { label: 'Trang công khai', href: '/' },
   { label: 'Đăng xuất', href: '/logout' }
 ];
 
