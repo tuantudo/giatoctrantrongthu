@@ -1,0 +1,34 @@
+[
+  {
+    "w": 375,
+    "f1": "docs/audit/evidence/agy_phase1_audit/public_375.png",
+    "overflow": 0,
+    "bodyH": 1396,
+    "visibleText": 679,
+    "els": 26
+  },
+  {
+    "w": 768,
+    "f1": "docs/audit/evidence/agy_phase1_audit/public_768.png",
+    "overflow": 0,
+    "bodyH": 1161,
+    "visibleText": 679,
+    "els": 26
+  },
+  {
+    "w": 1024,
+    "f1": "docs/audit/evidence/agy_phase1_audit/public_1024.png",
+    "overflow": 0,
+    "bodyH": 1164,
+    "visibleText": 679,
+    "els": 26
+  },
+  {
+    "w": 1440,
+    "f1": "docs/audit/evidence/agy_phase1_audit/public_1440.png",
+    "overflow": 0,
+    "bodyH": 1164,
+    "visibleText": 679,
+    "els": 26
+  }
+]

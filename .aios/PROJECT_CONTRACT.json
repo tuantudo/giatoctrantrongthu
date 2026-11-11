@@ -1,0 +1,92 @@
+{
+  "project_id": "giatoc-tran-trong-thu",
+  "project_identity": "Online Publication / Living Archive of the Tran Trong Thu Family",
+  "version": "1.1.0-primary-agent-aios",
+  "authority": {
+    "human_final_authority": "Tuấn (Owner / Product Decision Maker)",
+    "analysis_architecture_qc": "Emarald (Analysis Authority / Quality Control / Coordination)"
+  },
+  "roles": {
+    "AGY": "Primary Agent (End-to-End Execution: Backend, Database, Security, API, ReBAC, System Integration, and Frontend when appropriate)",
+    "Cline": "Specialized Execution Resource (Visual QA, Playwright Browser Testing, CSS pixel-perfect, UI layout polish)"
+  },
+  "mobilization_policy": {
+    "primary_execution_owner": "AGY",
+    "mobilization_trigger": "Cline is mobilized only when advantageous based on the 5-dimension trade-off matrix",
+    "trade_off_dimensions": [
+      "Token Cost & Model Efficiency",
+      "Time & Parallel Concurrency",
+      "Quality & Specialized Tooling (Playwright QA / Visual inspection)",
+      "Coordination Overhead",
+      "Integration Risk"
+    ]
+  },
+  "execution_surfaces": {
+    "AGY": [
+      "server/",
+      "database/",
+      "tests/",
+      "scripts/",
+      "AUDIT/",
+      "src/css/",
+      "src/js/ui/",
+      "index.html",
+      "design-playground/",
+      "fixtures/"
+    ],
+    "Cline_When_Mobilized": [
+      "src/css/",
+      "src/js/ui/",
+      "index.html",
+      "design-playground/",
+      "fixtures/",
+      "scripts/ui_vnext_qa.mjs"
+    ],
+    "Shared_Read_Only": [
+      "GIADINHONGTHU.ged",
+      "brand/",
+      "docs/",
+      ".aios/",
+      "AUDIT/MASTER_COMPLETION_PLAN.md"
+    ]
+  },
+  "allowed_skills": {
+    "AGY": [
+      "repository-audit",
+      "backend-implementation",
+      "database-migration",
+      "api-contract-validation",
+      "frontend-implementation",
+      "browser-qa",
+      "security-verification",
+      "handoff-reporting"
+    ],
+    "Cline": [
+      "frontend-implementation",
+      "browser-qa",
+      "api-contract-validation",
+      "handoff-reporting"
+    ]
+  },
+  "strict_prohibitions": {
+    "AGY": [
+      "Unilateral alteration of Product Scope or Intent",
+      "Making architecture decisions reserved for Tuấn",
+      "Changing Data Policies, Privacy Boundaries, or Ontology without Human Gate",
+      "Production deployment or destructive operations without Human Gate"
+    ],
+    "Cline": [
+      "Backend and Database code modification (server/, database/)",
+      "Redefining genealogy ontology or IA canonicalization",
+      "Production deployment without Human Gate"
+    ]
+  },
+  "human_approval_gates": {
+    "GATE_01": "Approval of security containment code diffs",
+    "GATE_02": "Approval of database physical backup and person_media restoration",
+    "GATE_03": "Approval of UI System vNEXT and Browser QA test reports",
+    "GATE_04": "Approval of ReBAC policies and Recognition vs Disclosure boundaries",
+    "GATE_05": "Approval of full E2E staging integration test results",
+    "GATE_06": "Approval of V1.0 release tag and live production deployment"
+  }
+}

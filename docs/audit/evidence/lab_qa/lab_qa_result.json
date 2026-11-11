@@ -1,0 +1,298 @@
+{
+  "timestamp": "2026-11-06T18:01:37.302Z",
+  "totalAssertions": 130,
+  "passed": 109,
+  "failed": 21,
+  "surfacesTested": 8,
+  "viewportsTested": 4,
+  "results": [
+    {
+      "surface": "public",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "dashboard",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 3,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "tree",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "person",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "mach",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "clara",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "gallery",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "events",
+      "viewport": 375,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "public",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "dashboard",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 3,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "tree",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "person",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "mach",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "clara",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "gallery",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "events",
+      "viewport": 768,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "public",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "dashboard",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 3,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "tree",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "person",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "mach",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "clara",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "gallery",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "events",
+      "viewport": 1024,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "public",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "dashboard",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 3,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "tree",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "person",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "mach",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "clara",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": false,
+      "brandCompliant": true,
+      "status": "FAILED"
+    },
+    {
+      "surface": "gallery",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    },
+    {
+      "surface": "events",
+      "viewport": 1440,
+      "overflow": true,
+      "errors": 0,
+      "contentVerified": true,
+      "brandCompliant": true,
+      "status": "VERIFIED"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "project_id": "giatoc-tran-trong-thu",
+  "last_updated": "2026-09-17T11:15:00+07:00",
+  "current_direction": {
+    "path": [
+      "PROTOTYPE",
+      "REAL DATA INTEGRATION",
+      "E2E VERIFICATION",
+      "V1 RELEASE",
+      "LIVE",
+      "OBSERVE",
+      "NEXT VERSION"
+    ],
+    "current_stage": "REAL DATA INTEGRATION"
+  },
+  "states": {
+    "CURRENT_STATE": {
+      "status": "DEGRADED_PRODUCTION_WITH_VALID_PROTOTYPE",
+      "description": "Prototype UI is visually complete in design-playground but uses static data. Production app.js is broken. Real backend/DB exists but integration is incomplete/disconnected."
+    },
+    "TARGET_STATE": {
+      "status": "V1_LIVE_PRODUCT",
+      "description": "A stable V1 closure where the frontend successfully communicates with the live backend/database, ending the prototype phase and beginning real life."
+    }
+  },
+  "evidence": {
+    "PROTOTYPE_COMPLETED": {
+      "status": "VERIFIED",
+      "ref": "docs/architecture/DESIGN_001_POST_CLINE_FORENSIC_AUDIT.md",
+      "note": "HTML/CSS/IA verified. Fake data logic obsoleted."
+    },
+    "REAL_DATA_INTEGRATION": {
+      "status": "PENDING",
+      "ref": null,
+      "note": "Awaiting OpenCode API connection and Cline UI binding."
+    },
+    "E2E_VERIFICATION": {
+      "status": "PENDING",
+      "ref": null
+    },
+    "V1_RELEASE": {
+      "status": "PENDING",
+      "ref": null
+    },
+    "LIVE": {
+      "status": "PENDING",
+      "ref": null
+    }
+  }
+}
