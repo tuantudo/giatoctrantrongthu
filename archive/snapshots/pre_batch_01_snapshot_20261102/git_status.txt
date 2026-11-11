@@ -1,0 +1,334 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .github/workflows/instant-sync.yml
+	modified:   .gitignore
+	deleted:    .opencode/agents/data-reviewer.json
+	deleted:    .opencode/agents/visual-reviewer.json
+	modified:   AGENTS.md
+	modified:   README.md
+	modified:   admin/css/admin.css
+	modified:   admin/index.html
+	modified:   admin/js/admin.js
+	modified:   admin/js/api.js
+	modified:   assets/images/logoGiaToc_ngang.svg
+	deleted:    assets/images/mach/thu-gui-clara/001.png
+	deleted:    assets/images/mach/thu-gui-clara/002.png
+	deleted:    assets/images/mach/thu-gui-clara/003.png
+	deleted:    assets/images/mach/thu-gui-clara/004.png
+	deleted:    assets/images/mach/thu-gui-clara/005.png
+	deleted:    assets/images/mach/thu-gui-clara/006.png
+	deleted:    assets/images/mach/thu-gui-clara/007.jpg
+	deleted:    assets/images/mach/thu-gui-clara/007.png
+	modified:   brand/README.md
+	deleted:    check_js.py
+	deleted:    check_prod.py
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara - 001.md"
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara - 002.md"
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara - 003.md"
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara - 004.md"
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara - 005.md"
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara - 006.md"
+	deleted:    "content/mach/thu-gui-clara/Th\306\260 g\341\273\255i Clara, Rina, Tina, Tin v\303\240 Tito - 007.md"
+	deleted:    database/migrations/001_baseline_schema.sql
+	deleted:    database/migrations/002_seed_test_data.sql
+	modified:   docs/README.md
+	deleted:    docs/architecture/ARCHITECTURE.md
+	deleted:    docs/architecture/CHANGE_001_EXECUTION_REPORT.md
+	deleted:    docs/architecture/DATA_CONTRACT.md
+	deleted:    docs/architecture/DESIGN_001_POST_CLINE_FORENSIC_AUDIT.md
+	deleted:    docs/architecture/DESIGN_001_PROTOTYPE_REPORT.md
+	deleted:    docs/architecture/EDITORIAL_MASTHEAD_DESIGN_BRIEF.md
+	deleted:    docs/architecture/GIATOC_ARCHITECTURE_DECISIONS_AND_IMPLEMENTATION_MASTER_PLAN_v1.md
+	deleted:    docs/architecture/IMPLEMENTATION_ACCEPTANCE_REVIEW.md
+	deleted:    docs/architecture/MASTHEAD_RESPONSIVE_SYSTEM_REPORT.md
+	deleted:    docs/architecture/OWNER_DECISION_BRIEF.md
+	deleted:    docs/architecture/OWNER_DECISION_BRIEF_STATUS_AUDIT.md
+	deleted:    docs/architecture/PROJECT_RENAME_AUDIT.md
+	deleted:    docs/architecture/PUBLIC_MEMBER_CONTROL_PLANE_BRIEF.md
+	deleted:    docs/architecture/ROUTE_01_ROUTE_ENTITY_MODEL.md
+	deleted:    docs/architecture/SITEMAP_01_INFORMATION_ARCHITECTURE.md
+	deleted:    docs/architecture/SITEMAP_REORGANIZATION_01.md
+	deleted:    docs/architecture/SITEMAP_vNEXT_PROPOSED_02.md
+	deleted:    docs/architecture/VERCEL_DEPLOYMENT.md
+	deleted:    docs/architecture/access-control-data-visibility-audit-v1.md
+	deleted:    docs/architecture/credential-exposure-audit-v1.md
+	deleted:    docs/architecture/email-infrastructure-v1.md
+	deleted:    docs/architecture/family-site-application-architecture-v2.md
+	deleted:    docs/architecture/family-site-architecture-decision-matrix-v2.md
+	deleted:    docs/architecture/family-site-domain-model-v1.md
+	deleted:    docs/architecture/future-dynamic-web-architecture.md
+	deleted:    docs/architecture/owner-password-organization-guide-v1.md
+	deleted:    docs/architecture/secret-management-model-v1.md
+	deleted:    docs/architecture/web-deployment-infrastructure-principles-v1.md
+	deleted:    docs/design/family-site-art-direction-page-matrix-v1.md
+	deleted:    docs/design/family-site-art-direction-v1.md
+	deleted:    docs/design/family-site-design-system-v1.md
+	deleted:    docs/design/family-site-interaction-architecture-v1.md
+	deleted:    docs/design/family-site-page-model-matrix-v1.md
+	deleted:    docs/design/family-site-ui-reference-library-v1.md
+	deleted:    docs/design/family-site-ux-architecture-v1.md
+	deleted:    docs/design/family-site-visual-consistency-audit-v1.md
+	deleted:    docs/design/family-site-visual-language-v1.md
+	deleted:    docs/infrastructure/family-site-deployment-topology-v1.md
+	deleted:    docs/infrastructure/nas-family-genealogy-inventory-v1.md
+	deleted:    docs/infrastructure/nas-runtime-readiness-v1.md
+	deleted:    docs/missions/PROJECT_CONTEXT_CONSOLIDATION_V1.md
+	deleted:    docs/product/CAY_GIA_PHA_STRATEGIC_PLAN_V1.md
+	deleted:    docs/product/family-site-editorial-admin-model-v1.md
+	deleted:    fix_html.py
+	deleted:    fix_html_styles.py
+	deleted:    generate_audit_plan.py
+	deleted:    generate_audit_report.py
+	modified:   index.html
+	modified:   package.json
+	deleted:    parse_docs.py
+	deleted:    patch_css.sh
+	deleted:    patch_global_font.py
+	deleted:    prod_qa.py
+	deleted:    refactor_archival.py
+	deleted:    refactor_visual.py
+	deleted:    replace_person_view.py
+	deleted:    rewrite_js.py
+	modified:   scripts/build_mach.py
+	modified:   server/.env.example
+	modified:   server/index.js
+	modified:   server/package-lock.json
+	modified:   server/package.json
+	deleted:    server/server.log
+	modified:   src/css/prototype.css
+	modified:   src/js/app-v2.js
+	deleted:    src/js/app.js
+	modified:   src/js/core/lunar-engine.js
+	deleted:    update_html.py
+	deleted:    update_js.py
+	modified:   vercel.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.agents/
+	.aios/
+	.clinerules
+	.opencode/agents/architecture-auditor.md
+	.opencode/agents/data-reviewer.md
+	.opencode/agents/forensic-researcher.md
+	.opencode/agents/governance-auditor.md
+	.opencode/agents/implementer.md
+	.opencode/agents/ontology-auditor.md
+	.opencode/agents/qa.md
+	.opencode/agents/source-brief-builder.md
+	.opencode/agents/visual-reviewer.md
+	.opencode/skills/governance-audit/
+	.opencode/skills/ia-sitemap-audit/
+	.opencode/skills/mach-forensic-audit/
+	.opencode/skills/ontology-audit/
+	.opencode/skills/source-brief/
+	.opencode/skills/source-trace/
+	.playwright-mcp/
+	.tmp-cg/
+	ARCHITECTURE_CONFLICTS.md
+	AUDIT/
+	CURRENT_SCHEMA_MAP.md
+	GIATOC_ARCHAEOLOGY_EVIDENCE_INDEX.md
+	GIATOC_DATA_ARCHAEOLOGY.md
+	IDENTITY.md
+	MEDIA_DEPENDENCY_MAP.md
+	SOUL.md
+	USER.md
+	add_dec006.py
+	admin/js/login.js
+	admin/login.html
+	archive/
+	assets/ASSET_MANIFEST.json
+	assets/logoGiaToc_ ngang.svg
+	assets/logoGiaToc_icon.svg
+	assets/logoGiaToc_original.svg
+	brand/01_BRAND_CONSTITUTION.md
+	brand/02_BRAND_NARRATIVE.md
+	brand/03_CREATIVE_STRATEGY.md
+	brand/04_VISUAL_STRATEGY.md
+	brand/05_DESIGN_LANGUAGE.md
+	brand/BRAND_GOVERNANCE_v0.1.md
+	brand/briefs/
+	chatbot-app/
+	create_grammar_audit.py
+	create_m05.py
+	create_m08.py
+	data/
+	docs/AGENT_OS.md
+	docs/AIOS_PROJECT_RUNTIME_CONTEXT.md
+	docs/FINAL_REPORT_MEMBER_BASELINE.md
+	docs/FINAL_REPORT_MVP.md
+	docs/FINAL_REPORT_UI_FOUNDATION.md
+	docs/HELP.md
+	docs/LOCAL_DATABASE_MVP.md
+	docs/OPENCODE_RUNTIME_PROFILE.md
+	docs/REPORT_LOGIN_FIX.md
+	docs/SOURCE_MAP.md
+	docs/architecture/CAPABILITY_MODEL.md
+	docs/architecture/COMMUNITY_OPERATING_MODEL_AND_SUCCESS_CRITERIA.md
+	docs/architecture/CURRENT_ARCHITECTURE.md
+	docs/architecture/CURRENT_STATE.md
+	docs/architecture/DECISION_LOG.md
+	docs/architecture/DOMAIN_MODEL.md
+	docs/architecture/ERD_v0.1.md
+	docs/architecture/IMPLEMENTATION_BASELINE.md
+	docs/architecture/MEMBER_SYSTEM_SPECIFICATION.md
+	docs/architecture/MISSION_REGISTRY.md
+	docs/architecture/NAVIGATION_MODEL_v0.1.md
+	docs/architecture/SITEMAP_v0.1.md
+	docs/architecture/SYNOLOGY_CAPABILITY_INVENTORY.md
+	docs/architecture/SYNOLOGY_CAPABILITY_MATRIX_V1.md
+	docs/architecture/USER_FLOWS_v0.1.md
+	docs/archive/
+	docs/audit/
+	docs/database/
+	docs/design/CONTENT_PUBLIC_HOME_v0.5.md
+	docs/design/DESIGN_SPEC_PUBLIC_HOME_v0.3.md
+	docs/design/DESIGN_SPEC_PUBLIC_HOME_v0.4.md
+	docs/design/FLEET_INVENTORY.md
+	docs/design/GIATOC_APPLICATION_SHELL_v0.2.md
+	docs/design/GIATOC_APPLICATION_SHELL_vNEXT.md
+	docs/design/GIATOC_COMPONENT_INVENTORY_v0.2.md
+	docs/design/GIATOC_COMPONENT_INVENTORY_vNEXT.md
+	docs/design/GIATOC_INNER_SITE_UX_IA_SPEC_v0.1.md
+	docs/design/GIATOC_UI_SYSTEM_v0.2.md
+	docs/design/GIATOC_UI_SYSTEM_vNEXT.md
+	docs/design/GIATOC_UX_STABILITY_CONTRACT_v0.4.md
+	docs/research/GENEALOGY_ARCHITECTURE_SURVEY.md
+	docs/research/MISSION_TALAWAS_INFORMATION_ARCHITECTURE/
+	docs/research/TALAWAS_GIATOC_MORPHOLOGICAL_TRANSFER.md
+	docs/research/VINHDANHBUTPHA_TO_GIATOCT_DESIGN_RESEARCH.md
+	docs/security/
+	edit_index.py
+	edit_m01.py
+	edit_m02.py
+	edit_m03.py
+	edit_m04.py
+	edit_m06.py
+	enforce_gate.js
+	final_check.py
+	final_status.py
+	final_verify.py
+	fix_footer.js
+	fix_member.js
+	fix_website.py
+	fixtures/
+	integrated_compiler.js
+	lab.html
+	opencode.jsonc
+	patch_admin_js.js
+	patch_agents.js
+	patch_api_fetch.js
+	patch_app.js
+	patch_comments.py
+	patch_components.js
+	patch_components_v0.8.js
+	patch_contract.js
+	patch_css_v02.js
+	patch_db_route.js
+	patch_dom.js
+	patch_footer.js
+	patch_footer_v0.8.js
+	patch_global_mcp.js
+	patch_login.js
+	patch_logout.js
+	patch_public_css.js
+	patch_public_home.js
+	patch_public_home_content.js
+	patch_public_home_v02.js
+	patch_shell.js
+	patch_shell_footer.js
+	patch_shell_nav.js
+	patch_states.js
+	patch_threshold.py
+	patch_tokens.js
+	patch_v06.js
+	patch_v0_3_research_impl.js
+	patch_vscode_mcp.js
+	prototype/design-001-public/
+	remove_threshold.js
+	restore_hero.js
+	scripts/archive/audit_hr.py
+	scripts/archive/check_api.py
+	scripts/archive/check_js.py
+	scripts/archive/check_prod.py
+	scripts/archive/dsm_auth.py
+	scripts/archive/fast_profile.py
+	scripts/archive/final-preflight.js
+	scripts/archive/fix_html.py
+	scripts/archive/fix_html_styles.py
+	scripts/archive/generate_audit_plan.py
+	scripts/archive/generate_audit_report.py
+	scripts/archive/nas_migrate.py
+	scripts/archive/parse_discovery.py
+	scripts/archive/parse_docs.py
+	scripts/archive/parse_health.py
+	scripts/archive/patch2.py
+	scripts/archive/patch_build.py
+	scripts/archive/patch_css.py
+	scripts/archive/patch_global_font.py
+	scripts/archive/patch_people.js
+	scripts/archive/preflight.js
+	scripts/archive/print_table.py
+	scripts/archive/prod_qa.py
+	scripts/archive/profile_zones.py
+	scripts/archive/refactor_archival.py
+	scripts/archive/refactor_visual.py
+	scripts/archive/replace_person_view.py
+	scripts/archive/rewrite_js.py
+	scripts/archive/run_benchmark.py
+	scripts/archive/temp_render.js
+	scripts/archive/test-data.js
+	scripts/archive/test-page.mjs
+	scripts/archive/update_html.py
+	scripts/archive/update_js.py
+	scripts/archive/verify-gate6.js
+	scripts/inspect_live_site.mjs
+	scripts/lab_browser_qa.mjs
+	scripts/nas_audit.py
+	scripts/phase2_cartography.py
+	scripts/serve_lab.mjs
+	scripts/test_governance_scenarios.py
+	scripts/test_p01_onboarding.js
+	scripts/test_security_verification.mjs
+	scripts/ui_vnext_qa.mjs
+	scripts/verify_clara_containment.mjs
+	scripts/verify_governance.py
+	server/README-admin.md
+	server/auth.js
+	server/calendars/
+	server/create_admin_user.js
+	server/data/
+	server/db_reset.js
+	server/db_seed.js
+	server/dev_setup_onboarding.js
+	server/foundation.js
+	server/member.js
+	server/member_baseline.html
+	server/member_clara.html
+	server/member_dashboard.html
+	server/member_mach.html
+	server/member_person.html
+	server/member_spaces.html
+	server/member_tree.html
+	server/nas_migrate.js
+	server/schema_update.sql
+	server/setup_db.js
+	server/test_mariadb.js
+	server/verify_mvp.js
+	shots/
+	src/css/foundation/
+	src/js/member-app.js
+	src/js/ui/
+	test_media_assoc.py
+	test_relationships.py
+	update_public_home.js
+	update_report.py
+	verify_all.py
+	~/
+
+no changes added to commit (use "git add" and/or "git commit -a")

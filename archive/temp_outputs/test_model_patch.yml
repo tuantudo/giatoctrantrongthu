@@ -1,0 +1,4 @@
+- id: agent-default-model
+  config:
+    provider: google
+    model: gemini-3.5-flash

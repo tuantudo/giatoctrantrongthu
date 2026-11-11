@@ -1,0 +1,53 @@
+{
+  "nvidia/nemotron-3-ultra-550b-a55b": {
+    "Simple Instruction": {
+      "time": 21.14964485168457,
+      "success": true,
+      "output": "READY"
+    },
+    "File Read & Summarize": {
+      "time": 5.371110200881958,
+      "success": true,
+      "output": "1. **CURRENT DSH STATE**\n2. **REQUIRED CAPABILITY SET (MINIMUM SAFE CAPABILITY)**"
+    },
+    "Structured Output": {
+      "time": 2.053269147872925,
+      "success": true,
+      "output": "{\"worker_count\": 3, \"strategy\": \"parallel\"}"
+    }
+  },
+  "gemini-3.5-flash": {
+    "Simple Instruction": {
+      "time": 2.520169973373413,
+      "success": true,
+      "output": "READY"
+    },
+    "File Read & Summarize": {
+      "time": 4.5909740924835205,
+      "success": true,
+      "output": "## 1. CURRENT DSH STATE\n## 2. REQUIRED CAPABILITY SET (MINIMUM SAFE CAPABILITY)"
+    },
+    "Structured Output": {
+      "time": 2.4313406944274902,
+      "success": true,
+      "output": "{\"worker_count\": 3, \"strategy\": \"parallel\"}"
+    }
+  },
+  "qwen3:30b": {
+    "Simple Instruction": {
+      "time": 2.2728068828582764,
+      "success": true,
+      "output": "READY"
+    },
+    "File Read & Summarize": {
+      "time": 20.47652816772461,
+      "success": true,
+      "output": "1. **1. CURRENT DSH STATE**\n2. **2. REQUIRED CAPABILITY SET (MINIMUM SAFE CAPABILITY)**"
+    },
+    "Structured Output": {
+      "time": 6.28505802154541,
+      "success": true,
+      "output": "{\n  \"worker_count\": 3,\n  \"strategy\": \"parallel\"\n}"
+    }
+  }
+}

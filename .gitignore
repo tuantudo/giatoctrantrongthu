@@ -52,3 +52,5 @@ test_login.js
 # Test artifacts and scratch directories
 shots/
 ~/
+.serena/
+.tmp-cg/
