@@ -135,23 +135,48 @@ class TestMarkdownAcceptance(unittest.TestCase):
 
     def test_criterion_30_and_35_real_content_regression(self):
         """
-        Criterion 30 & 35: Real content regression test against all 19 MẠCH articles.
-        Ensures NO raw markdown syntax leaks in compiled HTML.
+        Criterion 30 & 35: Real content regression test against compiled MẠCH and Clara.
+        Ensures P0 Clara Containment (12 public MẠCH, 0 Clara leaks in public JSON)
+        and verifies NO raw markdown syntax leaks in compiled HTML.
         """
         with open(os.path.join(REPO_ROOT, "data", "mach.json"), "r", encoding="utf-8") as fh:
             mach_data = json.load(fh)
             
         articles = mach_data.get("articles", [])
-        self.assertEqual(len(articles), 19, "Expected 19 compiled MẠCH articles")
-        
-        # Check clara-001 specifically
-        clara_001 = [a for a in articles if a["slug"] == "clara-001"][0]
-        self.assertTrue(any(b["type"] == "signature" and "Bác Tuấn" in b["authorName"] for b in clara_001["blocks"]))
-        
-        # Check every single block across all articles
+        self.assertEqual(len(articles), 12, "Expected 12 compiled public MẠCH articles")
+
+        # P0 Containment assertion: Zero Clara letters in public mach.json
         for art in articles:
+            slug = art.get("slug", "")
+            series = art.get("seriesSlug", "")
+            self.assertFalse(
+                slug.startswith("clara") or series == "thu-gui-clara",
+                f"P0 Containment Violation: Clara article [{slug}] leaked into public mach.json"
+            )
+
+        # Check private Clara letters if present in environment
+        clara_path = os.path.join(REPO_ROOT, "data", "private", "clara.json")
+        all_articles_to_check = list(articles)
+        if os.path.exists(clara_path):
+            with open(clara_path, "r", encoding="utf-8") as cfh:
+                clara_data = json.load(cfh)
+            clara_articles = clara_data.get("articles", [])
+            self.assertEqual(len(clara_articles), 8, "Expected 8 compiled private Clara letters")
+            
+            # Check clara-001 specifically
+            clara_001_list = [a for a in clara_articles if a["slug"] == "clara-001"]
+            self.assertTrue(len(clara_001_list) == 1, "Expected clara-001 to exist in private clara.json")
+            clara_001 = clara_001_list[0]
+            self.assertTrue(
+                any(b.get("type") == "signature" and "Bác Tuấn" in b.get("authorName", "") for b in clara_001.get("blocks", [])),
+                "Expected signature block with 'Bác Tuấn' in clara-001"
+            )
+            all_articles_to_check.extend(clara_articles)
+        
+        # Check every single block across all articles (MẠCH + Clara)
+        for art in all_articles_to_check:
             slug = art["slug"]
-            for b in art["blocks"]:
+            for b in art.get("blocks", []):
                 html = b.get("html", "")
                 self.assertFalse(bool(re.search(r"\*\*[^*]+\*\*", html)), f"Raw bold syntax found in [{slug}]: {html}")
                 self.assertFalse(bool(re.search(r"__[^_]+__", html)), f"Raw underscore bold found in [{slug}]: {html}")
