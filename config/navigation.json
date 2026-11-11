@@ -1,0 +1,22 @@
+{
+  "public": [
+    { "id": "home", "label": "Trang chủ", "href": "/" },
+    { "id": "van-de", "label": "Vấn đề quan tâm", "href": "#van-de" },
+    { "id": "noi-dung", "label": "Nội dung công bố", "href": "#noi-dung" },
+    { "id": "mach", "label": "MẠCH", "href": "#khong-gian-mach" },
+    { "id": "nguon-goc", "label": "Phương pháp", "href": "#nguon-goc" },
+    { "id": "doi-thoai", "label": "Đối thoại", "href": "#doi-thoai" },
+    { "id": "login", "label": "Cổng thành viên →", "href": "/login", "title": "Cổng không gian thành viên dòng họ" }
+  ],
+  "member": [
+    { "id": "me", "label": "Không gian của tôi", "href": "/me" },
+    { "id": "me-tree", "label": "Cây phả đồ", "href": "/me/tree" },
+    { "id": "me-gallery", "label": "Kho tư liệu ảnh", "href": "/me/gallery" },
+    { "id": "me-events", "label": "Lịch giỗ & Niên biểu", "href": "/me/events" },
+    { "id": "me-mach", "label": "MẠCH", "href": "/me/mach" },
+    { "id": "change-password", "label": "Đổi mật khẩu", "href": "/me/change-password" },
+    { "id": "public-home", "label": "Trang công khai", "href": "/" },
+    { "id": "logout", "label": "Đăng xuất", "href": "/logout" }
+  ]
+}
+
