@@ -1,0 +1,121 @@
+{
+  "activePersona": "A-HD",
+  "personas": {
+    "A-HD": {
+      "key": "A-HD",
+      "description": "Thành viên Nhánh Trưởng (Tuấn & Hạnh Đào) — Có thẩm quyền tiếp cận Thư gửi Clara",
+      "account": {
+        "id": "acc_hd_01",
+        "username": "tuantq",
+        "role": "admin",
+        "status": "ACTIVE",
+        "branch": "hanh-dao"
+      },
+      "person": {
+        "id": "@I18@",
+        "name": "An-tôn Trần Trọng Thư",
+        "sex": "M",
+        "branch": "Cụ Thư (Nhánh Trưởng)",
+        "birth": {
+          "date": "1918",
+          "place": "Thanh Hóa, Việt Nam"
+        },
+        "death": {
+          "date": "17/05/1991",
+          "place": "Thanh Hóa, Việt Nam"
+        }
+      }
+    },
+    "A-OB": {
+      "key": "A-OB",
+      "description": "Thành viên Nhánh Khác (Con cháu chi thứ) — Không có quyền tiếp cận Thư gửi Clara",
+      "account": {
+        "id": "acc_ob_02",
+        "username": "thanhvien_chinhanh",
+        "role": "member",
+        "status": "ACTIVE",
+        "branch": "chi-thu"
+      },
+      "person": {
+        "id": "@I7@",
+        "name": "Catarina Trần Thị Vị",
+        "sex": "F",
+        "branch": "Bà Vị (Chi Thứ)",
+        "birth": {
+          "date": "1929",
+          "place": "Thanh Hóa, Việt Nam"
+        },
+        "death": {
+          "date": "02/05/2009",
+          "place": "Thanh Hóa, Việt Nam"
+        }
+      }
+    },
+    "ACTIVE": {
+      "key": "ACTIVE",
+      "description": "Thành viên chính thức, đã gắn với hồ sơ phả hệ (Đời 2 - Trưởng)",
+      "account": {
+        "id": "acc_active_01",
+        "username": "thanhvien_truong",
+        "role": "member",
+        "status": "ACTIVE",
+        "branch": "hanh-dao"
+      },
+      "person": {
+        "id": "@I1@",
+        "name": "Giuse Trần Trọng Thu",
+        "sex": "M",
+        "branch": "Gốc Cụ Tổ (Root Anchor)",
+        "birth": {
+          "date": "1872",
+          "place": "Thanh Hóa, Việt Nam"
+        },
+        "death": {
+          "date": "15/08/1969",
+          "place": "Thanh Hóa, Việt Nam"
+        }
+      }
+    },
+    "PROVISIONED": {
+      "key": "PROVISIONED",
+      "description": "Thành viên mới cấp tài khoản tạm (Chưa đổi mật khẩu)",
+      "account": {
+        "id": "acc_prov_02",
+        "username": "thanhvien_moi",
+        "role": "member",
+        "status": "PROVISIONED"
+      },
+      "person": {
+        "id": "@I6@",
+        "name": "Trần Thị Thi",
+        "sex": "F",
+        "branch": "Bà Thi",
+        "birth": {
+          "date": "1917",
+          "place": "Thanh Hóa, Việt Nam"
+        },
+        "death": {
+          "date": "1989",
+          "place": "Thanh Hóa, Việt Nam"
+        }
+      }
+    },
+    "UNMAPPED": {
+      "key": "UNMAPPED",
+      "description": "Thành viên đăng nhập hợp lệ nhưng chưa gắn với nhân vật phả hệ",
+      "account": {
+        "id": "acc_unmapped_03",
+        "username": "thanhvien_chuagan",
+        "role": "member",
+        "status": "ACTIVE"
+      },
+      "person": null
+    },
+    "ANONYMOUS": {
+      "key": "ANONYMOUS",
+      "description": "Khách vãng lai chưa đăng nhập (Public Visitor)",
+      "account": null,
+      "person": null
+    }
+  }
+}
