@@ -62,7 +62,7 @@
     },
     {
       "source": "/help/recovery",
-      "destination": "/help-recovery.html"
+      "destination": "/help-recovery"
     },
     {
       "source": "/login",
