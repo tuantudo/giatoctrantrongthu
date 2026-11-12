@@ -67,7 +67,7 @@ export function renderHelp(content, context) {
     },
     {
       q: '3. Tôi thấy năm sinh hoặc thông tin của người thân trong họ chưa chính xác, tôi sửa thế nào?',
-      a: 'Bạn có thể vào trang hồ sơ của nhân vật đó trên Cây phả đồ và bấm nút [Gợi ý đính chính thông tin], hoặc vào mục [Đóng góp tư liệu & ký ức] (/me/contribute). Điền thông tin chuẩn xác kèm nguồn gốc (ví dụ: theo bia mộ, sổ thờ). Ban Quản Trị sẽ đối chiếu và cập nhật vào gia phả chung.'
+      a: 'Nếu bạn đã có tài khoản thành viên: sau khi đăng nhập, mở hồ sơ của nhân vật đó trên Cây phả đồ và bấm nút [Gợi ý đính chính thông tin], hoặc vào mục [Đóng góp & Yêu cầu]. Nếu bạn chưa có tài khoản: hãy dùng biểu mẫu "Gửi yêu cầu hoặc câu hỏi tới Ban Quản Trị" ngay bên dưới trang này. Xin ghi rõ thông tin cần đính chính kèm nguồn gốc (ví dụ: theo bia mộ, sổ thờ). Ban Quản Trị sẽ đối chiếu và cập nhật vào gia phả chung.'
     },
     {
       q: '4. Xem ngày kỵ giỗ của ông bà ở đâu?',
@@ -197,7 +197,7 @@ export function renderHelp(content, context) {
       if (res.ok) {
         helpForm.style.display = 'none';
         succBox.innerHTML = `
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; text-align: center; border-radius: 2px;">
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; text-align: center; border-radius: 0;">
             <p style="font-size: 28px; margin: 0 0 8px;">📬</p>
             <h4 style="margin: 0 0 6px; color: #166534; font-size: 17px;">Yêu cầu đã được gửi thành công!</h4>
             <p style="margin: 0; font-size: 14px; color: #15803d; line-height: 1.6;">

@@ -15,6 +15,7 @@ import {
 } from './components.js';
 import { ContextBar } from './visibility.js';
 import { applyFavicon } from './assets.js';
+import { initServerScheduleMonitoring } from './server-schedule.js';
 
 /**
  * Public nav — the gate's own frontage.
@@ -103,10 +104,19 @@ export function navItemsFor(audience, pathname, customItems = null) {
   });
   const items = customItems || (audience === 'member' ? defaultMemberItems : PUBLIC_NAV);
   const current = pathname || '/';
+  // Only the single most specific matching item is marked current, so `/me`
+  // is not highlighted alongside `/me/tree` (double active highlight fix).
+  const matches = (href) => href === current
+    || (href !== '/' && current.startsWith(`${href}/`));
+  let best = null;
+  for (const item of items) {
+    if (item.href && matches(item.href) && (!best || item.href.length > best.length)) {
+      best = item.href;
+    }
+  }
   return items.map(item => ({
     ...item,
-    current: item.href === current
-      || (current.startsWith(`${item.href}/`) && item.href !== '/')
+    current: best !== null && item.href === best
   }));
 }
 
@@ -179,9 +189,14 @@ export function renderShell(host, { context, assets = null, title, customNavItem
   const shell = el('div', { class: 'gi-body' }, [header, main, footer]);
   mount(container, shell);
 
+  const content = main.querySelector('#gi-main-content');
+  if (content) {
+    initServerScheduleMonitoring(content);
+  }
+
   return {
     main,
-    content: main.querySelector('#gi-main-content')
+    content
   };
 }
 

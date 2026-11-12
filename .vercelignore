@@ -3,7 +3,8 @@
 # 1. Tests, Scripts & Dev Tools (Root only)
 /tests/
 /scripts/
-/fixtures/
+# /fixtures/ is intentionally deployed: synthetic, PII-free mock datasets used by
+# /lab.html and the preview mock fallback (DEF-P1-03).
 /generator/
 __pycache__/
 

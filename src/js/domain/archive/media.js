@@ -232,16 +232,25 @@ export function resolvePrimaryPortrait(personId, personMediaList, mediaMap) {
     });
   }
 
+  // Memorial/archival roles (grave, tombstone) are NEVER used as a portrait
+  // avatar — they remain available in the archival media list (IMG-01).
+  const NON_AVATAR_ROLES = new Set(['GRAVE', 'TOMBSTONE', 'MEMORIAL']);
+  const avatarEligible = matches.filter(pm => !NON_AVATAR_ROLES.has((pm.role || '').toUpperCase()));
+
   // 3. Fallback to any primary
   if (!candidate) {
-    candidate = matches.find(pm => {
+    candidate = avatarEligible.find(pm => {
       return pm.isPrimary === true || pm.is_primary === 1 || pm.is_primary === true;
     });
   }
 
-  // 4. Fallback to first association
+  // 4. Fallback to first avatar-eligible association
   if (!candidate) {
-    candidate = matches[0];
+    candidate = avatarEligible[0];
+  }
+
+  if (!candidate) {
+    return null;
   }
 
   const assetId = resolveAssetIdFromPersonMedia(candidate);

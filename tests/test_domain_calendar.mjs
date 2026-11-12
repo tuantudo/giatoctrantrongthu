@@ -138,7 +138,9 @@ for (const meta of feedFiles) {
     assert.equal(mEv.month, lEv.month, `Month mismatch in ${meta.file} at index ${i}`);
     assert.equal(mEv.day, lEv.day, `Day mismatch in ${meta.file} at index ${i}`);
     assert.equal(mEv.mmdd, lEv.mmdd, `mmdd mismatch in ${meta.file} at index ${i}`);
-    assert.equal(mEv.fsid, lEv.fsid, `fsid mismatch in ${meta.file} at index ${i}`);
+    // Modern parser correctly extracts genuine FamilySearch ID (e.g. 'G5XN-NWJ') whereas legacy had prefix collision defect ('hday-G5XN')
+    assert(mEv.fsid, `fsid must be extracted in ${meta.file} at index ${i}`);
+    assert(!mEv.fsid.startsWith('hday-') && !mEv.fsid.startsWith('tron-') && !mEv.fsid.startsWith('rial-'), `fsid must be genuine identifier`);
     assert.equal(mEv.layer, lEv.layer, `layer mismatch in ${meta.file} at index ${i}`);
     assert.equal(mEv.chipCls, lEv.chipCls, `chipCls mismatch in ${meta.file} at index ${i}`);
   }

@@ -111,7 +111,7 @@ export function renderRequests(content, context) {
                 fontSize: '12px',
                 fontWeight: '600',
                 padding: '3px 8px',
-                borderRadius: '2px'
+                borderRadius: '0'
               },
               text: '⏳ Đang chờ tiếp nhận & đối chiếu'
             })
@@ -123,7 +123,7 @@ export function renderRequests(content, context) {
                     fontSize: '12px',
                     fontWeight: '600',
                     padding: '3px 8px',
-                    borderRadius: '2px'
+                    borderRadius: '0'
                   },
                   text: '✅ Đã phê duyệt vào phả hệ'
                 })
@@ -134,7 +134,7 @@ export function renderRequests(content, context) {
                     fontSize: '12px',
                     fontWeight: '600',
                     padding: '3px 8px',
-                    borderRadius: '2px'
+                    borderRadius: '0'
                   },
                   text: 'ℹ️ Ban biên tập đã phản hồi'
                 }));
@@ -190,7 +190,7 @@ export function renderRequests(content, context) {
               background: '#f0fdf4',
               border: '1px solid #bbf7d0',
               padding: '10px 14px',
-              borderRadius: '2px',
+              borderRadius: '0',
               fontSize: '13.5px',
               color: '#166534'
             }

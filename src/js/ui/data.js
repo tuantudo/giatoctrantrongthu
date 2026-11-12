@@ -36,12 +36,28 @@ const legacyCache = new Map();
  */
 export async function fetchJSON(url, { cacheKey = null, signal = null } = {}) {
   if (cacheKey && legacyCache.has(cacheKey)) return legacyCache.get(cacheKey);
-  const res = await fetch(url, { credentials: 'same-origin', signal });
+  let res;
+  try {
+    res = await fetch(url, { credentials: 'same-origin', signal });
+  } catch (netErr) {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('giatoc:server-offline', { detail: { error: netErr } }));
+    }
+    throw netErr;
+  }
   if (res.status === 401) {
     if (typeof window !== 'undefined' && window.location) {
-      window.location.href = '/login';
+      const publicPaths = ['/', '/login', '/help', '/help/recovery'];
+      if (!publicPaths.includes(window.location.pathname)) {
+        window.location.href = '/login';
+      }
     }
     throw new Error('Phiên đăng nhập đã hết hạn.');
+  }
+  if (res.status === 502 || res.status === 503 || res.status === 504 || res.status === 1033) {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('giatoc:server-offline', { detail: { status: res.status } }));
+    }
   }
   if (!res.ok) throw new Error(`Tải dữ liệu thất bại (HTTP ${res.status}).`);
   const data = await res.json();

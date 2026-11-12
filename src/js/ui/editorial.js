@@ -123,10 +123,11 @@ export function EditorialItem({
         marginTop: '16px',
         paddingTop: '16px',
         borderTop: '1px solid var(--color-border-subtle, #e5e5e5)',
-        fontFamily: 'var(--font-serif, Georgia, serif)',
-        fontSize: '1.05em',
-        lineHeight: '1.75',
-        color: 'var(--color-text-body, #1c1917)'
+        fontFamily: 'var(--font-text-active, serif)',
+        fontSize: 'var(--type-body-size, 1.125rem)',
+        lineHeight: 'var(--type-body-line, 1.6)',
+        color: 'var(--color-text-primary, #1c1917)',
+        maxWidth: 'var(--type-reading-measure, 68ch)'
       }
     });
 
@@ -135,19 +136,26 @@ export function EditorialItem({
         if (!b) return;
         if (b.type === 'heading') {
           bodyContainer.appendChild(el('h4', {
-            style: { margin: '24px 0 10px', fontSize: '1.15em', fontWeight: '700', color: '#881337' },
+            style: { margin: '24px 0 10px', fontSize: 'var(--type-h3-size, 1.25rem)', fontWeight: '700', color: 'var(--color-brand-heritage, #881337)', fontFamily: 'var(--font-display-active, serif)' },
             text: b.text || b.html
           }));
         } else if (b.type === 'paragraph') {
           bodyContainer.appendChild(el('p', {
-            style: { marginBottom: '14px', textAlign: 'justify' },
+            style: { marginBottom: '14px', textAlign: 'left', lineHeight: 'var(--type-body-line, 1.6)' },
             text: b.text || b.html
           }));
         } else if (b.type === 'divider') {
-          bodyContainer.appendChild(el('hr', { style: { margin: '20px 0', border: '0', borderTop: '1px solid #d6d3d1' } }));
+          bodyContainer.appendChild(el('hr', { style: { margin: '20px 0', border: '0', borderTop: '1px solid var(--color-border-default, #e3e0d8)' } }));
         } else if (b.type === 'quote' || b.type === 'callout') {
           bodyContainer.appendChild(el('blockquote', {
-            style: { borderLeft: '3px solid #b45309', margin: '16px 0', padding: '8px 16px', fontStyle: 'italic', background: 'rgba(0,0,0,0.02)' },
+            style: {
+              borderLeft: '3px solid var(--color-brand-gold, #b45309)',
+              background: 'var(--color-brand-gold-subtle, #fbf0e3)',
+              margin: '16px 0',
+              padding: '10px 18px',
+              fontStyle: 'italic',
+              color: 'var(--color-text-primary, #1a1a1a)'
+            },
             text: b.text || b.html
           }));
         }
@@ -155,8 +163,25 @@ export function EditorialItem({
     } else if (item.contentMarkdown) {
       const paras = splitMarkdownParagraphs(item.contentMarkdown);
       paras.forEach(p => {
-        if (p.trim()) {
-          bodyContainer.appendChild(el('p', { style: { marginBottom: '14px', textAlign: 'justify' }, text: p.trim() }));
+        const trimmed = p.trim();
+        if (!trimmed) return;
+        if (trimmed.startsWith('>')) {
+          bodyContainer.appendChild(el('blockquote', {
+            style: {
+              borderLeft: '3px solid var(--color-brand-gold, #b45309)',
+              background: 'var(--color-brand-gold-subtle, #fbf0e3)',
+              margin: '16px 0',
+              padding: '10px 18px',
+              fontStyle: 'italic',
+              color: 'var(--color-text-primary, #1a1a1a)'
+            },
+            text: trimmed.replace(/^>\s*/gm, '').trim()
+          }));
+        } else {
+          bodyContainer.appendChild(el('p', {
+            style: { marginBottom: '14px', textAlign: 'left', lineHeight: 'var(--type-body-line, 1.6)' },
+            text: trimmed
+          }));
         }
       });
     }

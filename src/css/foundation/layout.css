@@ -172,7 +172,6 @@ canvas { max-width: 100%; height: auto; display: block; }
   :root { --layout-gutter: var(--space-2); }
   .gi-header__inner { flex-direction: column; align-items: flex-start; }
   .gi-breadcrumb { font-size: var(--type-meta-size); }
-  .gi-breadcrumb__item:not(:last-child)::after { display: none; }
 }
 
 /* >= 1440px : cap growth so line lengths stay readable. */

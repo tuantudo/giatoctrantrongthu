@@ -305,7 +305,7 @@ export function renderLetters(content, context) {
               fontSize: '11px',
               fontWeight: '700',
               padding: '2px 8px',
-              borderRadius: '2px',
+              borderRadius: '0',
               letterSpacing: '0.05em'
             },
             text: l.recipient_type === 'FUTURE' ? '⏳ Gửi thế hệ tương lai' : (l.recipient_type === 'FAMILY' ? '📜 Thư gửi toàn họ' : '✉️ Thư riêng')

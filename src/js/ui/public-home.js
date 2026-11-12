@@ -16,6 +16,23 @@
 
 import { el } from './dom.js';
 
+/**
+ * IMG-01: The only FamilySearch images on record for Cụ Thu and Cụ Bà Út are
+ * photographs of their gravestone, not portraits. A gravestone must never stand
+ * in for a face. Until a genuine portrait exists, an honorific monogram crest is
+ * rendered instead; the gravestone stays in the person archival media section.
+ */
+function HonorificCrest(givenName, fullName) {
+  return el('div', {
+    class: 'gi-cr-ancestor-crest',
+    role: 'img',
+    'aria-label': `${fullName} — chưa có di ảnh chân dung`
+  }, [
+    el('span', { class: 'gi-cr-ancestor-crest__mark', 'aria-hidden': 'true', text: givenName.charAt(0) }),
+    el('span', { class: 'gi-cr-ancestor-crest__name', 'aria-hidden': 'true', text: givenName })
+  ]);
+}
+
 export function renderPublicHome(content, context, assets = null) {
   content.innerHTML = ''; // Ensure clean container
 
@@ -90,11 +107,7 @@ export function renderPublicHome(content, context, assets = null) {
     el('div', { class: 'gi-cr-ancestors-grid' }, [
       // Cụ Giuse Trần Trọng Thu
       el('article', { class: 'gi-cr-ancestor-card' }, [
-        el('img', {
-          src: '/assets/images/avatars/FS_AVATAR_G5X4-48S.jpg',
-          alt: 'Cụ Giuse Trần Trọng Thu',
-          class: 'gi-cr-ancestor-avatar'
-        }),
+        HonorificCrest('Thu', 'Cụ Giuse Trần Trọng Thu'),
         el('div', { class: 'gi-cr-ancestor-meta' }, [
           el('span', { class: 'gi-cr-ancestor-tag', text: 'Gốc phả hệ F0' }),
           el('h3', { class: 'gi-cr-ancestor-name', text: 'Cụ Giuse Trần Trọng Thu' }),
@@ -105,11 +118,7 @@ export function renderPublicHome(content, context, assets = null) {
 
       // Cụ bà Nguyễn Thị Xuân (Út)
       el('article', { class: 'gi-cr-ancestor-card' }, [
-        el('img', {
-          src: '/assets/images/avatars/FS_AVATAR_G5X4-NQX.jpg',
-          alt: 'Cụ bà Nguyễn Thị Xuân (Út)',
-          class: 'gi-cr-ancestor-avatar'
-        }),
+        HonorificCrest('Xuân', 'Cụ bà Nguyễn Thị Xuân (Út)'),
         el('div', { class: 'gi-cr-ancestor-meta' }, [
           el('span', { class: 'gi-cr-ancestor-tag', text: 'Hôn phối chính thất' }),
           el('h3', { class: 'gi-cr-ancestor-name', text: 'Cụ bà Nguyễn Thị Xuân (Út)' }),
@@ -161,7 +170,6 @@ export function renderPublicHome(content, context, assets = null) {
     el('div', { class: 'gi-cr-ribbon' }, [
       el('p', { class: 'gi-cr-ribbon-desc', text: 'Sự trao truyền thế hệ: Ký ức và dấu tích của các bậc tiền nhân qua các giai đoạn lịch sử luôn được các thế hệ con cháu trân trọng gìn giữ.' }),
       el('div', { class: 'gi-cr-ribbon-avatars', title: 'Tư liệu di ảnh các bậc tiền bối qua các thế hệ' }, [
-        el('img', { src: '/assets/images/avatars/FS_AVATAR_G5X4-48S.jpg', alt: 'F0 Cụ Thu', class: 'gi-cr-avatar' }),
         el('img', { src: '/assets/images/avatars/FS_AVATAR_G5X4-ZNG.jpg', alt: 'F1 An-tôn Thư', class: 'gi-cr-avatar' }),
         el('img', { src: '/assets/images/avatars/FS_AVATAR_G5XX-2HY.jpg', alt: 'Tiền bối Micae Thìn', class: 'gi-cr-avatar' }),
         el('img', { src: '/assets/images/avatars/FS_AVATAR_G5XX-KTZ.jpg', alt: 'Tiền bối Phaolo Hữu', class: 'gi-cr-avatar' }),
