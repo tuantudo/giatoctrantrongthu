@@ -138,8 +138,8 @@
     "relationId": "PMR_I1_G5X4-48S",
     "personId": "@I1@",
     "assetId": "MEDIA_FS_G5X4-48S",
-    "role": "PORTRAIT",
-    "isPrimary": true,
+    "role": "GRAVE",
+    "isPrimary": false,
     "status": "MATCHED",
     "matchedBy": "EXACT_FSID"
   },
@@ -219,8 +219,8 @@
     "relationId": "PMR_I8_G5X4-NQX",
     "personId": "@I8@",
     "assetId": "MEDIA_FS_G5X4-NQX",
-    "role": "PORTRAIT",
-    "isPrimary": true,
+    "role": "GRAVE",
+    "isPrimary": false,
     "status": "MATCHED",
     "matchedBy": "EXACT_FSID"
   },

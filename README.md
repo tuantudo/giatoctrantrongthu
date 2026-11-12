@@ -62,3 +62,57 @@ Mọi thay đổi mã nguồn hoặc dữ liệu bắt buộc phải tuân thủ
   - `/me/change-password` — Kích hoạt mật khẩu lần đầu & đổi mật khẩu chủ động.
 - **Quản trị (`/admin` — Owner/Editor):** Tổng quan, Hộp thư Đề xuất (`#/inbox`), Quản lý Tài khoản Thành viên (`#/members`), Nhân sự, MẠCH, Sự kiện và CSDL.
 - **Phòng Lab thẩm định (`lab.html`):** Môi trường thử nghiệm giao diện nội bộ trên dữ liệu giả lập (`Synthetic Fixtures`).
+
+---
+
+## 5. PHIÊN BẢN V2.0.1 (ARCHITECTURE & PRODUCT EVOLUTION)
+
+Phiên bản `v2.0.1` hoàn thiện nền tảng theo chỉ đạo của Tuấn (Product Owner):
+1. **Edge Decoupling cho Trung tâm Trợ giúp (`/help` & `/help/recovery`):**
+   - Được biên dịch tĩnh (`help.html`, `help-recovery.html`) và phục vụ trực tiếp trên Vercel Edge CDN.
+   - Hoàn toàn độc lập với máy chủ NAS nội bộ, loại bỏ triệt để lỗi Cloudflare Tunnel Error 1033.
+2. **Động cơ Quản lý Giờ nghỉ Máy chủ NAS (4-State Engine):**
+   - Hoạt động chính xác theo múi giờ `Asia/Ho_Chi_Minh` trong [`src/js/ui/server-schedule.js`](src/js/ui/server-schedule.js):
+     * `SCHEDULED_REST` (01:00 – 09:00): Nghỉ định kỳ nhằm bảo vệ phần cứng và đĩa từ.
+     * `RECOVERING` (09:00 – 09:05): Đánh thức thiết bị và kiểm tra kết nối.
+     * `AVAILABLE` (09:05 – 01:00): Trực tuyến, sẵn sàng phục vụ đầy đủ.
+     * `OFFLINE`: Gián đoạn bất thường ngoài khung giờ nghỉ.
+3. **Chuẩn mực Thiết kế 2D Planar (Zero-Radius):**
+   - Triệt để tuân thủ Brand Governance v0.1: `border-radius: 0`, không đổ bóng giả 3D, không làm mờ kính.
+   - Đặc tả chuẩn hóa tại [`docs/design/DESIGN_SYSTEM_SPEC.md`](docs/design/DESIGN_SYSTEM_SPEC.md).
+4. **Làm sạch Mã nguồn & Tối ưu Băng thông:**
+   - Di chuyển 5.169 dòng dead CSS (`main.css`) vào `archive/legacy-stylesheets/`.
+
+---
+
+## 6. HỆ THỐNG TÀI LIỆU QUẢN TRỊ NỘI DUNG (CONTENT GOVERNANCE)
+
+Mọi nội dung trên website đều có thể truy vết nguồn gốc và vị trí chỉnh sửa:
+- **Bảng tra cứu nội dung toàn hệ thống:** [`docs/content/CONTENT_REGISTRY.md`](docs/content/CONTENT_REGISTRY.md)
+- **Bảng tra cứu tư liệu hình ảnh & di ảnh:** [`docs/content/MEDIA_REGISTRY.md`](docs/content/MEDIA_REGISTRY.md)
+- **Cẩm nang hướng dẫn chỉnh sửa nội dung dành cho Chủ quản:** [`docs/content/CONTENT_EDITING_GUIDE.md`](docs/content/CONTENT_EDITING_GUIDE.md)
+- **Sơ đồ phụ thuộc dữ liệu & luồng phân phối:** [`docs/content/CONTENT_DEPENDENCY_MAP.md`](docs/content/CONTENT_DEPENDENCY_MAP.md)
+
+---
+
+## 7. CẨM NANG HƯỚNG DẪN DÀNH CHO CÁC ĐỐI TƯỢNG
+
+- **Dành cho Bà con dòng họ (Thành viên sử dụng):** [`docs/product/USER_GUIDE.md`](docs/product/USER_GUIDE.md)
+- **Dành cho Kỹ sư phần mềm (Lập trình viên):** [`docs/architecture/DEVELOPER_GUIDE.md`](docs/architecture/DEVELOPER_GUIDE.md)
+- **Dành cho AI Agents (Quy tắc & Ranh giới):** [`docs/architecture/AGENT_GUIDE.md`](docs/architecture/AGENT_GUIDE.md)
+- **Kiểm toán Sức khỏe Mã nguồn:** [`docs/architecture/CODEBASE_HEALTH.md`](docs/architecture/CODEBASE_HEALTH.md)
+
+---
+
+## 8. LỆNH KIỂM THỬ TỰ ĐỘNG (AUTOMATED TEST SUITES)
+
+```bash
+# Kiểm thử động cơ giờ nghỉ máy chủ NAS
+node tests/test_server_schedule.mjs
+
+# Kiểm thử trải nghiệm thành viên & bảo vệ quyền riêng tư
+node tests/test_member_experience_system.mjs
+
+# Kiểm thử lõi thuật toán phả hệ, niên biểu & tư liệu
+node --test tests/test_domain_*.mjs
+```

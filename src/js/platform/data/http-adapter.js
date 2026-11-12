@@ -18,7 +18,10 @@ export class HttpDataAdapter {
     this.credentials = options.credentials || 'same-origin';
     this.on401 = options.on401 || ((url, res) => {
       if (typeof window !== 'undefined' && window.location) {
-        window.location.href = '/login';
+        const publicPaths = ['/', '/login', '/help', '/help/recovery'];
+        if (!publicPaths.includes(window.location.pathname)) {
+          window.location.href = '/login';
+        }
       }
     });
   }
@@ -30,7 +33,15 @@ export class HttpDataAdapter {
     const url = `${this.baseUrl}${endpoint}`;
     const { signal, headers, credentials = this.credentials } = options;
 
-    const res = await this.fetchFn(url, { credentials, signal, headers });
+    let res;
+    try {
+      res = await this.fetchFn(url, { credentials, signal, headers });
+    } catch (netErr) {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('giatoc:server-offline', { detail: { error: netErr, endpoint } }));
+      }
+      throw netErr;
+    }
 
     if (res.status === 401) {
       if (typeof this.on401 === 'function') {
@@ -39,6 +50,12 @@ export class HttpDataAdapter {
       const err = new Error('Phiên đăng nhập đã hết hạn.');
       err.status = 401;
       throw err;
+    }
+
+    if (res.status === 502 || res.status === 503 || res.status === 504 || res.status === 1033) {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('giatoc:server-offline', { detail: { status: res.status, endpoint } }));
+      }
     }
 
     if (!res.ok) {
@@ -85,13 +102,21 @@ export class HttpDataAdapter {
       ...(options.headers || {})
     };
 
-    const res = await this.fetchFn(url, {
-      method: 'POST',
-      credentials,
-      signal,
-      headers,
-      body: JSON.stringify(proposalData)
-    });
+    let res;
+    try {
+      res = await this.fetchFn(url, {
+        method: 'POST',
+        credentials,
+        signal,
+        headers,
+        body: JSON.stringify(proposalData)
+      });
+    } catch (netErr) {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('giatoc:server-offline', { detail: { error: netErr, endpoint: '/api/member/proposals' } }));
+      }
+      throw netErr;
+    }
 
     if (res.status === 401) {
       if (typeof this.on401 === 'function') {
@@ -100,6 +125,12 @@ export class HttpDataAdapter {
       const err = new Error('Phiên đăng nhập đã hết hạn.');
       err.status = 401;
       throw err;
+    }
+
+    if (res.status === 502 || res.status === 503 || res.status === 504 || res.status === 1033) {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('giatoc:server-offline', { detail: { status: res.status, endpoint: '/api/member/proposals' } }));
+      }
     }
 
     if (!res.ok) {

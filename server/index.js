@@ -162,6 +162,27 @@ app.get('/api/csrf-token', (req, res) => {
     return res.json({ csrfToken: req.session.csrfToken });
 });
 
+// Health check endpoint (Public, resilient, zero-DB-crash)
+app.get('/api/health', publicCors, async (req, res) => {
+    const mode = useMariaDB ? 'mariadb' : 'sqlite3';
+    let dbStatus = 'disconnected';
+    if (getQuery) {
+        try {
+            await getQuery("SELECT 1 AS alive");
+            dbStatus = 'connected';
+        } catch (e) {
+            dbStatus = 'error';
+        }
+    }
+    const isOk = dbStatus === 'connected';
+    return res.status(isOk ? 200 : 503).json({
+        status: isOk ? 'ok' : 'degraded',
+        timestamp: new Date().toISOString(),
+        mode: mode,
+        database: dbStatus
+    });
+});
+
 // P0 CSRF Protection: Guard mutating state actions (POST, PUT, PATCH, DELETE)
 app.use((req, res, next) => {
     const mutatingMethods = ['POST', 'PUT', 'PATCH', 'DELETE'];
@@ -263,7 +284,7 @@ async function initDB() {
     if (useMariaDB) {
         console.log("Using MariaDB connection...");
         const mysql = require('mysql2/promise');
-        db = await mysql.createPool({
+        db = mysql.createPool({
             host: process.env.DB_HOST || '127.0.0.1',
             port: process.env.DB_PORT || 3306,
             user: process.env.DB_USER,
@@ -271,8 +292,28 @@ async function initDB() {
             database: process.env.DB_NAME || 'family_archive',
             waitForConnections: true,
             connectionLimit: 10,
-            queueLimit: 0
+            queueLimit: 0,
+            enableKeepAlive: true,
+            keepAliveInitialDelay: 10000
         });
+
+        // Connection resilience: retry on startup if MariaDB is still booting (NAS schedule 09:05)
+        const maxRetries = 10;
+        const retryDelayMs = 3000;
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+                const conn = await db.getConnection();
+                conn.release();
+                console.log(`MariaDB connection established successfully (attempt ${attempt}/${maxRetries}).`);
+                break;
+            } catch (err) {
+                console.warn(`MariaDB connection attempt ${attempt}/${maxRetries} failed: ${err.message}. Retrying in ${retryDelayMs / 1000}s...`);
+                if (attempt === maxRetries) {
+                    throw err;
+                }
+                await new Promise(resolve => setTimeout(resolve, retryDelayMs));
+            }
+        }
 
         runQuery = async (q, params) => {
             const [result] = await db.execute(q, params);
@@ -698,6 +739,9 @@ app.get('/api/genealogy.json', requireMemberOrAdmin, async (req, res) => {
             if (m.file) m.file = resolveMediaUrl(m.file);
             if (m.path) m.path = resolveMediaUrl(m.path);
             m.id = r.id;
+            m.personId = r.person_id || m.personId || null;
+            m.title = r.title || m.title || '';
+            m.story = r.story || m.story || '';
             return m;
         });
 

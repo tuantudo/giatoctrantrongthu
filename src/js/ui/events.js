@@ -725,7 +725,7 @@ export function renderEvents(content, context = {}) {
 
         // Date Info
         const dateBlock = el('div', {
-          style: { padding: '12px', background: 'var(--color-surface-sunken, #fafaf9)', border: '1px solid #e7e5e4', borderRadius: '4px', marginBottom: '16px', fontSize: '13px' }
+          style: { padding: '12px', background: 'var(--color-surface-sunken, #fafaf9)', border: '1px solid #e7e5e4', borderRadius: '0', marginBottom: '16px', fontSize: '13px' }
         }, [
           el('div', {}, [el('strong', { text: 'Dương lịch: ' }), el('span', { text: `Ngày ${String(ev.day).padStart(2, '0')}/${String(ev.month).padStart(2, '0')}/${yr}` })]),
           el('div', { style: { color: 'var(--color-brand-gold, #c59b27)', marginTop: '4px' } }, [el('strong', { text: 'Âm lịch: ' }), el('span', { text: lunar.fullText })])
@@ -735,7 +735,7 @@ export function renderEvents(content, context = {}) {
         // Person Profile Link Strip
         if (personMatch) {
           const personBox = el('div', {
-            style: { padding: '12px 14px', background: '#fffdf5', border: '1px solid #fde047', borderRadius: '4px', marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }
+            style: { padding: '12px 14px', background: '#fffdf5', border: '1px solid #fde047', borderRadius: '0', marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }
           }, [
             el('div', {}, [
               el('div', { style: { fontSize: '11px', textTransform: 'uppercase', color: '#854d0e', fontWeight: '700' }, text: 'Thành viên liên quan' }),
@@ -755,7 +755,7 @@ export function renderEvents(content, context = {}) {
         // Full Description
         if (ev.description) {
           const descBlock = el('div', {
-            style: { fontSize: '13px', lineHeight: '1.6', color: 'var(--color-text-secondary, #57534e)', whiteSpace: 'pre-line', background: '#ffffff', padding: '12px', border: '1px solid #e7e5e4', borderRadius: '4px' },
+            style: { fontSize: '13px', lineHeight: '1.6', color: 'var(--color-text-secondary, #57534e)', whiteSpace: 'pre-line', background: '#ffffff', padding: '12px', border: '1px solid #e7e5e4', borderRadius: '0' },
             text: ev.description
           });
           box.appendChild(descBlock);
@@ -787,7 +787,7 @@ export function renderEvents(content, context = {}) {
             }),
             el('select', {
               class: 'gi-input',
-              style: { padding: '6px 12px', fontSize: '14px', borderRadius: '4px', cursor: 'pointer' },
+              style: { padding: '6px 12px', fontSize: '14px', borderRadius: '0', cursor: 'pointer' },
               onchange: (e) => {
                 targetYear = parseInt(e.target.value, 10);
                 renderActiveView();
@@ -865,7 +865,7 @@ export function renderEvents(content, context = {}) {
                     fontWeight: '600',
                     background: 'rgba(197, 155, 39, 0.1)',
                     padding: '2px 8px',
-                    borderRadius: '3px'
+                    borderRadius: '0'
                   },
                   text: `Lễ giỗ lần thứ ${calc.anniversaryCount}`
                 }) : null
@@ -881,7 +881,7 @@ export function renderEvents(content, context = {}) {
                 ])
               ]) : null,
               calc ? el('div', {
-                style: { fontSize: '12px', color: 'var(--color-text-secondary, #57534e)', background: 'var(--color-surface-sunken, #fafaf9)', padding: '8px 12px', borderRadius: '3px', border: '1px solid var(--color-border-subtle, #f5f5f4)' }
+                style: { fontSize: '12px', color: 'var(--color-text-secondary, #57534e)', background: 'var(--color-surface-sunken, #fafaf9)', padding: '8px 12px', borderRadius: '0', border: '1px solid var(--color-border-subtle, #f5f5f4)' }
               }, [
                 el('div', { text: `📅 Ngày mất gốc: ${calc.originalDateText} (${calc.originalLunar.fullText})` }),
                 el('div', { style: { marginTop: '2px', color: 'var(--color-text-muted, #a8a29e)', fontSize: '11px' }, text: 'Dữ liệu gốc được bảo toàn, đối soát từ Gia phả gốc và bia ký di sản.' })
@@ -899,12 +899,12 @@ export function renderEvents(content, context = {}) {
         // TIER 2: CẦN KIỂM CHỨNG (6 TIỀN NHÂN)
         if (deceasedGroups.needsVerification.length > 0) {
           const inexactSection = el('div', {
-            style: { marginTop: '40px', padding: '22px', background: '#fffdf5', border: '1px solid #fef08a', borderRadius: '6px' }
+            style: { marginTop: '40px', padding: '22px', background: '#fffdf5', border: '1px solid #fef08a', borderRadius: '0' }
           }, [
             el('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' } }, [
               el('span', { style: { fontSize: '18px' }, text: '⚠️' }),
               el('h4', { style: { margin: 0, fontSize: '16px', fontFamily: 'var(--font-display-active, serif)', color: '#854d0e' }, text: `Tiền nhân chỉ ghi nhận năm mất — Cần kiểm chứng ngày giỗ chính xác (${deceasedGroups.needsVerification.length})` }),
-              el('span', { style: { fontSize: '11px', fontWeight: '600', padding: '2px 8px', background: '#fef9c3', color: '#713f12', border: '1px solid #fde047', borderRadius: '3px' }, text: 'CẦN KIỂM CHỨNG' })
+              el('span', { style: { fontSize: '11px', fontWeight: '600', padding: '2px 8px', background: '#fef9c3', color: '#713f12', border: '1px solid #fde047', borderRadius: '0' }, text: 'CẦN KIỂM CHỨNG' })
             ]),
             el('p', { style: { margin: '0 0 16px', fontSize: '13px', color: '#713f12', lineHeight: '1.55' }, text: 'Dữ liệu gia phả hiện tại chỉ lưu lại năm mất, chưa ghi nhận ngày và tháng âm lịch chính xác. Ban biên tập kính mời quý gia đình cung cấp thêm thông tin.' }),
             el('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '12px' } }, deceasedGroups.needsVerification.map(({ personId, personName, deathDate }) => {
@@ -913,7 +913,7 @@ export function renderEvents(content, context = {}) {
               return el('div', {
                 id: `memorial-${cleanId}`,
                 'data-person-id': personId,
-                style: { padding: '12px 14px', background: '#ffffff', border: '1px solid #fde047', borderRadius: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }
+                style: { padding: '12px 14px', background: '#ffffff', border: '1px solid #fde047', borderRadius: '0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }
               }, [
                 el('div', {}, [
                   el('div', { style: { fontWeight: '600', fontSize: '14px', color: '#1c1917' }, text: personName }),
@@ -929,12 +929,12 @@ export function renderEvents(content, context = {}) {
         // TIER 3: CHƯA XÁC ĐỊNH (10 TIỀN NHÂN)
         if (deceasedGroups.unknown.length > 0) {
           const unknownSection = el('div', {
-            style: { marginTop: '28px', padding: '22px', background: 'var(--color-surface-sunken, #fafaf9)', border: '1px solid var(--color-border-subtle, #e7e5e4)', borderRadius: '6px' }
+            style: { marginTop: '28px', padding: '22px', background: 'var(--color-surface-sunken, #fafaf9)', border: '1px solid var(--color-border-subtle, #e7e5e4)', borderRadius: '0' }
           }, [
             el('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' } }, [
               el('span', { style: { fontSize: '18px' }, text: '🕊️' }),
               el('h4', { style: { margin: 0, fontSize: '16px', fontFamily: 'var(--font-display-active, serif)', color: 'var(--color-text-primary, #1c1917)' }, text: `Tiền nhân chưa rõ ngày kỵ giỗ — Tưởng niệm trang trọng (${deceasedGroups.unknown.length})` }),
-              el('span', { style: { fontSize: '11px', fontWeight: '600', padding: '2px 8px', background: '#f5f5f4', color: '#78716c', border: '1px solid #d6d3d1', borderRadius: '3px' }, text: 'CHƯA XÁC ĐỊNH NGÀY' })
+              el('span', { style: { fontSize: '11px', fontWeight: '600', padding: '2px 8px', background: '#f5f5f4', color: '#78716c', border: '1px solid #d6d3d1', borderRadius: '0' }, text: 'CHƯA XÁC ĐỊNH NGÀY' })
             ]),
             el('p', { style: { margin: '0 0 16px', fontSize: '13px', color: 'var(--color-text-secondary, #57534e)', lineHeight: '1.55' }, text: 'Các bậc tiền nhân đã quy tiên nhưng gia phả chưa lưu truyền lại ngày tháng năm mất. Tuyệt đối không gán ngày giả định (01/01).' }),
             el('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '12px' } }, deceasedGroups.unknown.map(({ personId, personName }) => {
@@ -943,7 +943,7 @@ export function renderEvents(content, context = {}) {
               return el('div', {
                 id: `memorial-${cleanId}`,
                 'data-person-id': personId,
-                style: { padding: '12px 14px', background: '#ffffff', border: '1px solid var(--color-border-subtle, #e7e5e4)', borderRadius: '4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }
+                style: { padding: '12px 14px', background: '#ffffff', border: '1px solid var(--color-border-subtle, #e7e5e4)', borderRadius: '0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }
               }, [
                 el('div', {}, [
                   el('div', { style: { fontWeight: '600', fontSize: '14px', color: 'var(--color-text-primary, #1c1917)' }, text: personName }),

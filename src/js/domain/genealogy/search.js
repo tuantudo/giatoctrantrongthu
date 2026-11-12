@@ -36,6 +36,21 @@ export function indexPeople(genealogy) {
       map.set(id, { id, ...person });
     }
   }
+
+  // F-01: Root-level `genealogy.memories` records (oral-history stories) are
+  // attached to their person by `personId` (or `person_id`), so the person profile can render
+  // them. Existing per-person `memories` are preserved and listed first.
+  const rootMemories = Array.isArray(genealogy && genealogy.memories) ? genealogy.memories : [];
+  for (const memory of rootMemories) {
+    if (!memory || typeof memory !== 'object') continue;
+    const targetPersonId = memory.personId || memory.person_id;
+    if (!targetPersonId) continue;
+    const person = map.get(targetPersonId);
+    if (!person) continue;
+    const existing = Array.isArray(person.memories) ? person.memories : [];
+    if (memory.id && existing.some((m) => m && typeof m === 'object' && m.id === memory.id)) continue;
+    person.memories = [...existing, memory];
+  }
   return map;
 }
 

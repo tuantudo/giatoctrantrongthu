@@ -57,20 +57,20 @@
   ],
   "rewrites": [
     {
+      "source": "/help",
+      "destination": "/help.html"
+    },
+    {
+      "source": "/help/recovery",
+      "destination": "/help-recovery.html"
+    },
+    {
       "source": "/login",
       "destination": "https://api.giatoctrantrongthu.com/login"
     },
     {
       "source": "/logout",
       "destination": "https://api.giatoctrantrongthu.com/logout"
-    },
-    {
-      "source": "/help",
-      "destination": "https://api.giatoctrantrongthu.com/help"
-    },
-    {
-      "source": "/help/:path*",
-      "destination": "https://api.giatoctrantrongthu.com/help/:path*"
     },
     {
       "source": "/me",

@@ -138,6 +138,28 @@ function createMemberRouter(dbAccessor, options = {}) {
         }
         // --- END LOCAL DEV AUTO LOGIN ---
 
+        const isResting = (() => {
+            try {
+                const parts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'Asia/Ho_Chi_Minh',
+                    hourCycle: 'h23',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                }).formatToParts(new Date());
+                let h = 0, m = 0;
+                for (const p of parts) {
+                    if (p.type === 'hour') h = parseInt(p.value, 10);
+                    if (p.type === 'minute') m = parseInt(p.value, 10);
+                }
+                const totalMinutes = h * 60 + m;
+                return totalMinutes >= 60 && totalMinutes < 545;
+            } catch {
+                const d = new Date();
+                const totalMinutes = d.getHours() * 60 + d.getMinutes();
+                return totalMinutes >= 60 && totalMinutes < 545;
+            }
+        })();
+
         res.send(`
         <!DOCTYPE html>
         <html lang="vi">
@@ -162,6 +184,14 @@ function createMemberRouter(dbAccessor, options = {}) {
                   <p class="gi-login-line">Khu vực dành riêng cho những người trong gia tộc.</p>
                 </header>
                 ${devBannerHtml}
+                <aside id="scheduleBanner" class="gi-schedule-banner" role="status" aria-live="polite" style="display: ${isResting ? 'flex' : 'none'}; background: var(--color-brand-gold-subtle, #fbf0e3); border: 1px solid var(--color-brand-gold, #b45309); border-left: 4px solid var(--color-brand-gold, #b45309); padding: 16px 20px; margin-bottom: 24px; gap: 12px; align-items: flex-start; border-radius: 0; box-shadow: none;">
+                    <div id="scheduleBannerIcon" style="font-size: 20px; line-height: 1.2; color: var(--color-brand-gold, #b45309); flex-shrink: 0;" aria-hidden="true">🌙</div>
+                    <div style="flex: 1; min-width: 0;">
+                        <h2 id="scheduleBannerTitle" style="margin: 0 0 4px; font-family: var(--font-display-active, serif); font-size: 16px; font-weight: 700; color: var(--color-brand-gold, #b45309); letter-spacing: 0.02em;">GIỜ NGHỈ CỦA KHO LƯU TRỮ</h2>
+                        <p id="scheduleBannerMsg" style="margin: 0; font-family: var(--font-text-active, serif); font-size: 14px; line-height: 1.6; color: var(--color-text-primary, #1a1a1a);">Để hạn chế thời gian vận hành liên tục và góp phần kéo dài tuổi thọ thiết bị, máy chủ lưu trữ của Gia tộc được tạm ngưng hằng ngày từ 01:00 đến 09:05. Trong thời gian này, những nội dung và chức năng cần kết nối với máy chủ lưu trữ sẽ tạm thời không khả dụng. Hệ thống sẽ hoạt động trở lại sau khi máy chủ được khởi động và kết nối thành công.</p>
+                        <p id="scheduleBannerNote" style="margin: 8px 0 0; font-size: 13px; font-weight: 600; color: var(--color-brand-heritage, #881337);">Khung giờ mở lại dự kiến: Sau 09:05 sáng (Giờ Việt Nam).</p>
+                    </div>
+                </aside>
                 <div id="error" class="gi-login-error" role="alert"></div>
                 <form id="loginForm" class="gi-login-form">
                     <label class="gi-login-label" for="username">Tài khoản</label>
@@ -186,29 +216,124 @@ function createMemberRouter(dbAccessor, options = {}) {
               </div>
             </main>
             <script>
+                function getVNMinutes() {
+                    try {
+                        const parts = new Intl.DateTimeFormat('en-US', {
+                            timeZone: 'Asia/Ho_Chi_Minh',
+                            hourCycle: 'h23',
+                            hour: 'numeric',
+                            minute: 'numeric'
+                        }).formatToParts(new Date());
+                        let h = 0, m = 0;
+                        for (const p of parts) {
+                            if (p.type === 'hour') h = parseInt(p.value, 10);
+                            if (p.type === 'minute') m = parseInt(p.value, 10);
+                        }
+                        return h * 60 + m;
+                    } catch (e) {
+                        const d = new Date();
+                        return d.getHours() * 60 + d.getMinutes();
+                    }
+                }
+
+                function checkResting() {
+                    const m = getVNMinutes();
+                    return m >= 60 && m < 545;
+                }
+
+                function applyScheduleState(isResting, isOffline) {
+                    const banner = document.getElementById('scheduleBanner');
+                    const icon = document.getElementById('scheduleBannerIcon');
+                    const title = document.getElementById('scheduleBannerTitle');
+                    const msg = document.getElementById('scheduleBannerMsg');
+                    const note = document.getElementById('scheduleBannerNote');
+                    const submitBtn = document.querySelector('.gi-login-submit');
+                    const usernameInput = document.getElementById('username');
+                    const passwordInput = document.getElementById('password');
+
+                    if (isResting) {
+                        // STATE A — SCHEDULED REST (01:00 – 09:05)
+                        banner.style.display = 'flex';
+                        if (icon) icon.textContent = '🌙';
+                        if (title) title.textContent = 'GIỜ NGHỈ CỦA KHO LƯU TRỮ';
+                        if (msg) msg.textContent = 'Để hạn chế thời gian vận hành liên tục và góp phần kéo dài tuổi thọ thiết bị, máy chủ lưu trữ của Gia tộc được tạm ngưng hằng ngày từ 01:00 đến 09:05. Trong thời gian này, những nội dung và chức năng cần kết nối với máy chủ lưu trữ sẽ tạm thời không khả dụng. Hệ thống sẽ hoạt động trở lại sau khi máy chủ được khởi động và kết nối thành công.';
+                        if (note) note.textContent = 'Khung giờ mở lại dự kiến: Sau 09:05 sáng (Giờ Việt Nam).';
+                        if (usernameInput) usernameInput.disabled = true;
+                        if (passwordInput) passwordInput.disabled = true;
+                        if (submitBtn) {
+                            submitBtn.disabled = true;
+                            submitBtn.style.opacity = '0.6';
+                            submitBtn.style.cursor = 'not-allowed';
+                            submitBtn.textContent = 'Kho lưu trữ đang tạm nghỉ (Mở lại sau 09:05)';
+                        }
+                    } else if (isOffline) {
+                        // STATE B — UNEXPECTED OUTAGE (Outside schedule)
+                        banner.style.display = 'flex';
+                        if (icon) icon.textContent = '⚙️';
+                        if (title) title.textContent = 'MÁY CHỦ LƯU TRỮ TẠM THỜI GIÁN ĐOẠN';
+                        if (msg) msg.textContent = 'Máy chủ lưu trữ của Gia tộc hiện đang tạm thời gián đoạn kết nối hoặc đang được kiểm tra kỹ thuật. Trong thời gian này, các chức năng cần kết nối máy chủ sẽ tạm thời không khả dụng. Hệ thống sẽ tự động khôi phục ngay khi kết nối được thiết lập lại.';
+                        if (note) note.textContent = 'Hệ thống sẽ tự động kết nối lại khi máy chủ trực tuyến.';
+                        if (usernameInput) usernameInput.disabled = true;
+                        if (passwordInput) passwordInput.disabled = true;
+                        if (submitBtn) {
+                            submitBtn.disabled = true;
+                            submitBtn.style.opacity = '0.6';
+                            submitBtn.style.cursor = 'not-allowed';
+                            submitBtn.textContent = 'Máy chủ tạm gián đoạn (Đang thử kết nối lại...)';
+                        }
+                    } else {
+                        // STATE C — AVAILABLE
+                        banner.style.display = 'none';
+                        if (usernameInput) usernameInput.disabled = false;
+                        if (passwordInput) passwordInput.disabled = false;
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.style.opacity = '1';
+                            submitBtn.style.cursor = 'pointer';
+                            submitBtn.textContent = 'Đăng nhập';
+                        }
+                    }
+                }
+
+                if (checkResting()) {
+                    applyScheduleState(true, false);
+                }
+
                 document.getElementById('showPwd').addEventListener('change', function() {
                     document.getElementById('password').type = this.checked ? 'text' : 'password';
                 });
+
                 document.getElementById('loginForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
+                    if (checkResting()) {
+                        applyScheduleState(true, false);
+                        return;
+                    }
                     const username = document.getElementById('username').value;
                     const password = document.getElementById('password').value;
-                    const res = await fetch('/api/member/login', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, password })
-                    });
-                    const data = await res.json();
-                    if (res.ok) {
-                        // Clear explicit logout cookie upon manual login
-                        document.cookie = "explicit_logout=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        if (data.status === 'PROVISIONED') {
-                            window.location.href = '/me/change-password';
-                        } else {
-                            window.location.href = '/me';
+                    try {
+                        const res = await fetch('/api/member/login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ username, password })
+                        });
+                        if (res.status === 502 || res.status === 503 || res.status === 504 || res.status === 1033) {
+                            applyScheduleState(false, true);
+                            return;
                         }
-                    } else {
-                        document.getElementById('error').innerText = data.error || 'Đăng nhập thất bại.';
+                        const data = await res.json();
+                        if (res.ok) {
+                            document.cookie = "explicit_logout=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                            if (data.status === 'PROVISIONED') {
+                                window.location.href = '/me/change-password';
+                            } else {
+                                window.location.href = '/me';
+                            }
+                        } else {
+                            document.getElementById('error').innerText = data.error || 'Đăng nhập thất bại.';
+                        }
+                    } catch (err) {
+                        applyScheduleState(false, true);
                     }
                 });
             </script>
@@ -217,9 +342,37 @@ function createMemberRouter(dbAccessor, options = {}) {
         `);
     });
 
+    function isRestingWindowNow() {
+        try {
+            const parts = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'Asia/Ho_Chi_Minh',
+                hourCycle: 'h23',
+                hour: 'numeric',
+                minute: 'numeric'
+            }).formatToParts(new Date());
+            let h = 0, m = 0;
+            for (const p of parts) {
+                if (p.type === 'hour') h = parseInt(p.value, 10);
+                if (p.type === 'minute') m = parseInt(p.value, 10);
+            }
+            const total = h * 60 + m;
+            return total >= 60 && total < 545;
+        } catch (e) {
+            const d = new Date();
+            const total = d.getHours() * 60 + d.getMinutes();
+            return total >= 60 && total < 545;
+        }
+    }
+
     // API to login member
     const memberLoginMiddlewares = loginLimiter ? [loginLimiter] : [];
     router.post('/api/member/login', ...memberLoginMiddlewares, async (req, res) => {
+        if (isRestingWindowNow()) {
+            return res.status(503).json({
+                error: 'Kho lưu trữ đang trong khung giờ nghỉ định kỳ (01:00 – 09:05). Cổng đăng nhập sẽ mở lại sau 09:05.',
+                state: 'SCHEDULED_REST'
+            });
+        }
         const { username, password } = req.body || {};
         if (!username || !password) return res.status(400).json({ error: 'Thiếu thông tin' });
         const cleanUsername = String(username).trim();

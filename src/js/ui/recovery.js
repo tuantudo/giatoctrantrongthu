@@ -70,7 +70,7 @@ export function renderRecovery(content, context) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: '50%',
+            borderRadius: '0',
             flexShrink: 0
           },
           text: '1'
@@ -91,7 +91,7 @@ export function renderRecovery(content, context) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: '50%',
+            borderRadius: '0',
             flexShrink: 0
           },
           text: '2'
@@ -112,7 +112,7 @@ export function renderRecovery(content, context) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: '50%',
+            borderRadius: '0',
             flexShrink: 0
           },
           text: '3'
@@ -133,7 +133,7 @@ export function renderRecovery(content, context) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            borderRadius: '50%',
+            borderRadius: '0',
             flexShrink: 0
           },
           text: '4'

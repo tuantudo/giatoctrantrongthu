@@ -42,6 +42,33 @@ function EpistemicBadge(type, text) {
   });
 }
 
+/**
+ * F-01: Render one memory as a dignified story card. Memory records may be a
+ * structured object `{ id, title, story }` (root `genealogy.memories`) or a
+ * legacy plain string. Story text is split on blank lines into paragraphs; a
+ * trailing parenthesised provenance line ("(… ghi lại theo lời kể …)") is set
+ * apart as the credit. Text is rendered via textContent only — never as HTML.
+ */
+function MemoryStory(memory) {
+  if (typeof memory === 'string') {
+    return el('article', { class: 'gi-memory' }, [el('p', { class: 'gi-memory__para', text: memory })]);
+  }
+  const rawTitle = String(memory.title || '').replace(/^[^\p{L}\p{N}]+/u, '').trim();
+  const paras = String(memory.story || memory.text || '')
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  let credit = null;
+  if (paras.length > 1 && /^\(.*\)$/s.test(paras[paras.length - 1])) {
+    credit = paras.pop().slice(1, -1).trim();
+  }
+  return el('article', { class: 'gi-memory', 'data-memory-id': memory.id || null }, [
+    rawTitle ? el('h4', { class: 'gi-memory__title', text: rawTitle }) : null,
+    ...paras.map((p) => el('p', { class: 'gi-memory__para', text: p })),
+    credit ? el('p', { class: 'gi-memory__credit', text: credit }) : null
+  ].filter(Boolean));
+}
+
 function factRow(label, value, badge = null) {
   if (!value) return null;
   return el('p', { class: 'gi-fact' }, [
@@ -335,7 +362,7 @@ export function renderPerson(content, personId, route = null) {
             padding: '12px 14px',
             background: 'var(--color-surface-sunken, #fafaf9)',
             border: '1px solid var(--color-border-subtle, #e7e5e4)',
-            borderRadius: '4px',
+            borderRadius: '0',
             marginBottom: '10px'
           }
         }, [
@@ -359,7 +386,7 @@ export function renderPerson(content, personId, route = null) {
           padding: '12px 14px',
           background: 'var(--color-surface-sunken, #fafaf9)',
           border: '1px solid var(--color-border-subtle, #e7e5e4)',
-          borderRadius: '4px',
+          borderRadius: '0',
           marginBottom: '10px'
         }
       }, [
@@ -386,7 +413,7 @@ export function renderPerson(content, personId, route = null) {
           padding: '12px 14px',
           background: 'var(--color-surface-sunken, #fafaf9)',
           border: '1px solid var(--color-border-subtle, #e7e5e4)',
-          borderRadius: '4px'
+          borderRadius: '0'
         }
       }, [
         el('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' } }, [
@@ -542,7 +569,7 @@ export function renderPerson(content, personId, route = null) {
       rightCol.appendChild(Section({ id: 'person-memories', title: 'Ký ức' }));
       const memories = (person.memories || []).filter(Boolean);
       rightCol.appendChild(memories.length > 0
-        ? el('ul', { class: 'gi-source-list' }, memories.map((m) => el('li', { text: String(m) })))
+        ? el('div', { class: 'gi-memory-list' }, memories.map((m) => MemoryStory(m)))
         : StatePanel({
           state: STATE.EMPTY,
           title: 'Chưa có ký ức gắn với hồ sơ này',

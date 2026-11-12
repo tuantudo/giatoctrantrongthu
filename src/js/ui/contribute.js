@@ -230,7 +230,7 @@ export function renderContribute(content, context) {
         if (res.ok) {
           form.style.display = 'none';
           succBox.innerHTML = `
-            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 24px; text-align: center; border-radius: 2px;">
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 24px; text-align: center; border-radius: 0;">
               <p style="font-size: 32px; margin: 0 0 12px;">❤️</p>
               <h3 style="margin: 0 0 8px; color: #166534; font-family: var(--font-display-active, serif); font-size: 20px;">Cảm ơn tấm lòng của bạn!</h3>
               <p style="margin: 0 0 16px; font-size: 14.5px; color: #15803d; line-height: 1.6;">
