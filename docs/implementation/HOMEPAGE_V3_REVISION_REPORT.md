@@ -115,21 +115,31 @@ Chạy bộ kiểm thử tự động toàn diện trước khi phát hành:
 
 ## 5. DỮ LIỆU PHÁT HÀNH VÀ DEPLOYMENT METADATA
 
-- **Version:** `v2.0.2`
-- **Branch:** `release/v2.0.1` (merged / deployed to `main`)
-- **Commit SHA:** *(Được cập nhật tự động sau lệnh commit)*
-- **Vercel Production Deployment:** *(Được cập nhật tự động sau lệnh vercel deploy)*
-- **Production URL:** `https://giatoctrantrongthu.com`
+- **Phiên bản trước:** `v2.0.1`
+- **Phiên bản mới:** `v2.0.2`
+- **Branch:** `release/v2.0.1` & `main` (Đồng bộ fast-forward tại commit `c94a0b2`)
+- **Commit SHA:** `c94a0b25e79be939ae0ec91f638ce26b1cce8e0e`
+- **Vercel Deployment ID:** `GcufJZXH8izL5GTeRjhLX8XxaaMW`
+- **Vercel Direct URL:** `https://giatoctrantrongthu-37taj954o-tuantqs-projects-74ccf90b.vercel.app`
+- **Production Alias:** `https://giatoctrantrongthu.com`
 
 ---
 
 ## 6. XÁC MINH TRÊN PRODUCTION (POST-DEPLOYMENT EVIDENCE)
 
-Sau khi deploy, Agy tiến hành kiểm tra độc lập các chỉ số kỹ thuật trên môi trường Production:
-- **Trang chủ (`/`):** HTTP 200 OK, HTML single-shell tải đầy đủ, CSS và JavaScript nạp không lỗi.
-- **Ranh giới MẠCH:** Nội dung bài viết MẠCH được bảo vệ an toàn (chỉ thành viên CLAN đăng nhập mới xem được toàn văn).
-- **Ranh giới Cây Phả Hệ:** Khách vãng lai truy cập phả đồ được điều hướng an toàn về trang đăng nhập.
-- **Trải nghiệm Responsive:** Bố cục hiển thị cân đối trên cả Desktop và Mobile.
+Agy đã kiểm chứng độc lập trực tiếp trên môi trường Production live (`giatoctrantrongthu.com`):
+1. **Trang chủ (`/`):**
+   - HTTP/2 200 OK.
+   - Nội dung live phản ánh chính xác headline: `"Từ những tấm ảnh cũ, tôi lần tìm lại những câu chuyện gia đình."`
+   - Eyebrow: `"MỘT NỖ LỰC CÁ NHÂN: TÌM KIẾM VÀ GHI LẠI KÝ ỨC GIA ĐÌNH"`.
+   - Section đóng góp: `"Những Ký Ức Khác Vẫn Còn Chỗ Ở Đây"`.
+2. **Ranh giới bảo mật MẠCH & Cây Phả Hệ:**
+   - Homepage công khai **hoàn toàn không fetch hay render bài viết MẠCH** ra ngoài.
+   - Truy cập trực tiếp CTA `/me/mach` trả về `HTTP/2 302` điều hướng bắt buộc về `/login`.
+   - Truy cập trực tiếp CTA `/me/tree` trả về `HTTP/2 302` điều hướng bắt buộc về `/login`.
+3. **Trải nghiệm Responsive:**
+   - Desktop: Hero chia 2 cột cân đối, Grid đóng góp 2 cột (Dẫn nhập 1.2fr / Kênh tham gia 0.8fr).
+   - Mobile ($\le 768\text{px}$): Grid đóng góp tự động co cụm về 1 cột, headline căn chỉnh tỷ lệ nhịp nhàng (`text-wrap: balance`).
 
 ---
 
