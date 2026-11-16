@@ -4130,6 +4130,127 @@
   }
 }
 
+/* =========================================================================
+   HOMEPAGE V3 — EDITORIAL ARCHIVE ART DIRECTION & OPEN SPACE STYLES
+   ========================================================================= */
+
+.gi-v3-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand-heritage, #881337);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.gi-v3-hero-title {
+  font-family: var(--font-display-active, Georgia, serif);
+  font-size: 34px;
+  line-height: 1.35;
+  color: var(--color-text-primary, #1c1917);
+  margin: 0 0 20px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+.gi-v3-hero-prose {
+  margin: 0 0 28px;
+  max-width: 620px;
+}
+
+.gi-v3-hero-para {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary, #383533);
+  margin: 0 0 14px;
+}
+
+.gi-v3-hero-para:last-child {
+  margin-bottom: 0;
+}
+
+.gi-v3-open-section {
+  background: var(--color-surface-sunken, #fcfbf9);
+  border: 1px solid var(--color-border-subtle, #e7e5e4);
+  padding: 36px 32px;
+  margin-top: 36px;
+  margin-bottom: 24px;
+}
+
+.gi-v3-open-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.gi-v3-open-lead {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--color-text-secondary, #4a4a4a);
+  margin: 0 0 16px;
+}
+
+.gi-v3-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gi-v3-channel-item {
+  background: var(--color-surface-raised, #ffffff);
+  border: 1px solid var(--color-border-subtle, #e7e5e4);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease;
+  display: block;
+}
+
+.gi-v3-channel-item:hover {
+  border-color: var(--color-brand-heritage, #881337);
+}
+
+.gi-v3-channel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-brand-heritage, #881337);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gi-v3-channel-desc {
+  font-size: 12.5px;
+  color: var(--color-text-muted, #78716c);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.gi-v3-stats-note {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #4a4a4a);
+  margin: 0 0 20px;
+  max-width: 680px;
+}
+
+@media (max-width: 768px) {
+  .gi-v3-hero-title {
+    font-size: 26px;
+  }
+  .gi-v3-open-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .gi-v3-open-section {
+    padding: 24px 18px;
+  }
+}
+
 /* Section 04: Doors Grid */
 .gi-cr-doors-grid {
   display: grid;
