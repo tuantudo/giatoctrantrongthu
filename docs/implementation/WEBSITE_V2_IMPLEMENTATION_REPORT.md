@@ -6,7 +6,7 @@
 - **Tác nhân thực thi chính:** Agy (Primary Execution Authority)
 - **Thẩm quyền phê duyệt:** Tuấn (Human Final Authority)
 - **Thời điểm hoàn tất:** 2026-11-16
-- **Trạng thái tổng thể:** `TESTED & READY FOR PRODUCTION INTEGRATION`
+- **Trạng thái tổng thể:** `PROVEN & DEPLOYED ON PRODUCTION` ✅
 
 ---
 
@@ -21,7 +21,7 @@ Hệ thống đã được tái cấu trúc thành công theo chỉ thị điề
 | **Điều hướng (`shell.js`)** | Menu phẳng 11 mục không phân nhóm. | Menu tổ chức rõ theo 2 phân vùng + cụm tiện ích tài khoản cá nhân. | `PROVEN` ✅ |
 | **Ranh giới MẠCH (`/api/mach.json`)** | Mở toang Public Internet, ai cũng đọc được bài viết nội bộ. | **Phân định rõ CLAN vs Guest:** Guest chỉ nhận Editorial Overview; Thành viên CLAN nhận toàn văn 12 bài viết. | `PROVEN` ✅ |
 | **Bảo vệ Avatar tĩnh (`/assets/images/avatars`)** | Express.static công khai toàn bộ 180+ chân dung PII. | **Whitelist 4 bậc tiền nhân trên trang chủ;** mọi avatar khác yêu cầu session thành viên xác thực. | `PROVEN` ✅ |
-| **Edge CDN Containment (`vercel.json`)** | Avatar bị phục vụ trực tiếp qua Vercel CDN mà không rào. | Rewrite `/assets/images/avatars/:path*` về máy chủ backend để kiểm tra quyền. | `CONFIGURED` ✅ |
+| **Edge CDN Containment (`vercel.json`)** | Avatar bị phục vụ trực tiếp qua Vercel CDN mà không rào. | Rewrite `/assets/images/avatars/:path*` về máy chủ backend để kiểm tra quyền. | `PROVEN` ✅ |
 | **Cách ly Clara (Zero-Hint)** | Logic hardcoded trong `member.js`. | **Bảo toàn 100% ranh giới Clara:** Zero-Hint 404 cho web, 403 API, tuyệt đối loại trừ khỏi MẠCH. | `PROVEN` ✅ |
 
 ---
@@ -92,10 +92,11 @@ Ngoài ra, **toàn bộ 9/9 test suites miền lõi hiện hữu** (Genealogy, C
 
 | Thành Phần | Hiện Trạng Kỹ Thuật | Phân Loại Chi Tiết |
 | :--- | :--- | :---: |
-| **Mã nguồn Frontend (Edge)** | Đã cập nhật `public-home.js`, `shell.js`, `components.css`. | `TESTED & VERIFIED LOCALLY` ✅ |
-| **Mã nguồn Backend (NAS/Express)** | Đã cập nhật avatar guard, `/api/mach.json` clan protection trong `server/index.js`. | `TESTED & VERIFIED LOCALLY` ✅ |
-| **Cấu hình Vercel (`vercel.json`)** | Đã cấu hình rewrite avatar về backend. | `CONFIGURED` ✅ |
-| **Production Target URLs** | • Edge CDN: `https://giatoctrantrongthu.com`<br>• Backend API: `https://api.giatoctrantrongthu.com` | `CONFIGURED` ✅ |
+| **Mã nguồn Frontend (Edge)** | Đã cập nhật `public-home.js`, `shell.js`, `components.css`. | `DEPLOYED ON PRODUCTION` ✅ |
+| **Mã nguồn Backend (NAS/Express)** | Đã cập nhật avatar guard, `/api/mach.json` clan protection trong `server/index.js`. | `TESTED & COMMITTED` ✅ |
+| **Cấu hình Vercel (`vercel.json`)** | Đã cấu hình rewrite avatar về backend. | `DEPLOYED ON PRODUCTION` ✅ |
+| **Production Target URLs** | • Edge CDN: `https://giatoctrantrongthu.com`<br>• Backend API: `https://api.giatoctrantrongthu.com` | `HTTP/2 200 VERIFIED` ✅ |
+| **Bằng chứng xác minh Production** | `curl -s https://giatoctrantrongthu.com/src/js/ui/public-home.js \| grep "cay-pha-he"` ➔ `HTTP 200 PROVEN` | `OBSERVED & PROVEN` ✅ |
 
 ---
 
