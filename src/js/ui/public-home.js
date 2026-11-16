@@ -97,7 +97,71 @@ export function renderPublicHome(content, context, assets = null) {
   wrapper.appendChild(secHero);
 
   // =========================================================================
-  // SECTION 02 — CỘI NGUỒN (NHỮNG NGƯỜI ĐẶT NỀN MÓNG)
+  // SECTION 02 — HAI PHÂN VÙNG CỐT LÕI (CÂY PHẢ HỆ & MẠCH)
+  // =========================================================================
+  const secPortals = el('section', { class: 'gi-cr-section gi-v2-portals-section', id: 'hai-phan-vung', 'aria-label': 'Hai phân vùng cấp cao của website' }, [
+    el('header', { class: 'gi-cr-section-header' }, [
+      el('h2', { class: 'gi-cr-section-title', text: 'Hai Cánh Cửa Di Sản Gia Tộc' })
+    ]),
+    el('p', {
+      class: 'gi-cr-flow-lead',
+      text: 'Mọi tư liệu, ký ức và cấu trúc của dòng họ được hội tụ trong hai phân vùng độc lập nhưng gắn kết hữu cơ: Cây Phả Hệ lưu giữ cấu trúc huyết thống và sự tiếp nối; Chuyên san MẠCH lưu giữ ký ức, tâm tình và đời sống gia đình.'
+    }),
+
+    el('div', { class: 'gi-v2-portals-grid' }, [
+      // 01. PHÂN VÙNG CÂY PHẢ HỆ
+      el('article', { class: 'gi-v2-portal-card gi-v2-portal-card--genealogy', id: 'cay-pha-he' }, [
+        el('div', {}, [
+          el('span', { class: 'gi-v2-portal-badge', text: 'PHÂN VÙNG I · CẤU TRÚC & HUYẾT THỐNG' }),
+          el('h3', { class: 'gi-v2-portal-title', text: 'Cây Phả Hệ' }),
+          el('p', { class: 'gi-v2-portal-lead', text: 'Không gian tổ chức và khám phá cấu trúc quan hệ gia tộc: 5 thế hệ nối dòng, 223 thành viên, 68 mái ấm gia đình, phả đồ tương tác me-centric, lịch giỗ và kho di ảnh gắn với từng nhân vật.' }),
+          el('ul', { class: 'gi-v2-portal-features' }, [
+            el('li', { class: 'gi-v2-portal-feature' }, [
+              el('span', { class: 'gi-v2-portal-feature-icon', text: '🌳' }),
+              el('span', { text: 'Cây phả đồ tương tác 3 tầng & Hồ sơ nhân vật 6 tầng nhận thức' })
+            ]),
+            el('li', { class: 'gi-v2-portal-feature' }, [
+              el('span', { class: 'gi-v2-portal-feature-icon', text: '📅' }),
+              el('span', { text: 'Lịch giỗ truyền thống & Niên biểu tưởng niệm các bậc tiền bối' })
+            ]),
+            el('li', { class: 'gi-v2-portal-feature' }, [
+              el('span', { class: 'gi-v2-portal-feature-icon', text: '🖼️' }),
+              el('span', { text: 'Kho tư liệu di ảnh & chứng tích lịch sử bảo tồn theo nhân vật' })
+            ])
+          ])
+        ]),
+        el('a', { class: 'gi-v2-portal-cta', href: '/me/tree', text: 'Khám Phá Cây Phả Hệ →' })
+      ]),
+
+      // 02. PHÂN VÙNG MẠCH
+      el('article', { class: 'gi-v2-portal-card gi-v2-portal-card--mach', id: 'chuyen-san-mach' }, [
+        el('div', {}, [
+          el('span', { class: 'gi-v2-portal-badge', text: 'PHÂN VÙNG II · KÝ ỨC & BIỂU ĐẠT ĐỜI SỐNG' }),
+          el('h3', { class: 'gi-v2-portal-title', text: 'Chuyên San MẠCH' }),
+          el('p', { class: 'gi-v2-portal-lead', text: 'Hệ thống biên tập và biểu đạt ký ức sống động của dòng họ: từ quê cha Thanh Hóa đến xóm đạo Gia Kiệm và các phương trời xa xứ. Lưu giữ những bài viết khảo cứu, chuyện đời thường và tư liệu thô mộc không tô vẽ.' }),
+          el('ul', { class: 'gi-v2-portal-features' }, [
+            el('li', { class: 'gi-v2-portal-feature' }, [
+              el('span', { class: 'gi-v2-portal-feature-icon', text: '📖' }),
+              el('span', { text: 'MẠCH Số 01: Dòng Chảy & Sự Tiếp Nối (12 bài viết ký ức & khảo cứu)' })
+            ]),
+            el('li', { class: 'gi-v2-portal-feature' }, [
+              el('span', { class: 'gi-v2-portal-feature-icon', text: '📜' }),
+              el('span', { text: 'Thư gửi nhau: Ký ức, tâm tình và sự trao truyền giữa các thế hệ' })
+            ]),
+            el('li', { class: 'gi-v2-portal-feature' }, [
+              el('span', { class: 'gi-v2-portal-feature-icon', text: '⚖️' }),
+              el('span', { text: '6 nguyên tắc biên tập: Thô mộc chân thực, không tô vẽ hệ thống' })
+            ])
+          ])
+        ]),
+        el('a', { class: 'gi-v2-portal-cta', href: '/me/mach', text: 'Đọc Chuyên San MẠCH →' })
+      ])
+    ])
+  ]);
+  wrapper.appendChild(secPortals);
+
+  // =========================================================================
+  // SECTION 03 — CỘI NGUỒN (NHỮNG NGƯỜI ĐẶT NỀN MÓNG)
   // =========================================================================
   const secFoundations = el('section', { class: 'gi-cr-section', id: 'coi-nguon', 'aria-label': 'Cội nguồn tiền nhân' }, [
     el('header', { class: 'gi-cr-section-header' }, [
@@ -180,70 +244,30 @@ export function renderPublicHome(content, context, assets = null) {
   wrapper.appendChild(secFlow);
 
   // =========================================================================
-  // SECTION 04 — KHÔNG GIAN GIA TỘC (NHỮNG CÁNH CỬA TRỞ VỀ)
+  // SECTION 05 — FOOTER / LƯU TRUYỀN (HAI PHÂN VÙNG & THÔNG TIN LƯU TRUYỀN)
   // =========================================================================
-  const secDoors = el('section', { class: 'gi-cr-section', id: 'khong-gian', 'aria-label': 'Những cánh cửa trở về' }, [
-    el('header', { class: 'gi-cr-section-header' }, [
-      el('h2', { class: 'gi-cr-section-title', text: 'Những Cánh Cửa Trở Về' })
-    ]),
-
-    el('div', { class: 'gi-cr-doors-grid' }, [
-      // 01. CỘI NGUỒN & QUAN HỆ
-      el('a', { class: 'gi-cr-door-card', href: '/me/tree' }, [
-        el('div', {}, [
-          el('span', { class: 'gi-cr-door-num', text: '01. CỘI NGUỒN & QUAN HỆ' }),
-          el('h3', { class: 'gi-cr-door-title', text: 'Cây Phả Đồ' }),
-          el('p', { class: 'gi-cr-door-copy', text: 'Tra cứu cội nguồn và mối quan hệ giữa các thế hệ.' })
-        ]),
-        el('span', { class: 'gi-cr-door-cta', text: 'Mở Cây Phả Đồ →' })
-      ]),
-
-      // 02. TƯỞNG NIỆM & HIẾU KÍNH
-      el('a', { class: 'gi-cr-door-card', href: '/me/events' }, [
-        el('div', {}, [
-          el('span', { class: 'gi-cr-door-num', text: '02. TƯỞNG NIỆM & HIẾU KÍNH' }),
-          el('h3', { class: 'gi-cr-door-title', text: 'Lịch Giỗ & Niên Biểu' }),
-          el('p', { class: 'gi-cr-door-copy', text: 'Gìn giữ ngày tưởng niệm và những dấu mốc lịch sử của gia tộc.' })
-        ]),
-        el('span', { class: 'gi-cr-door-cta', text: 'Xem Niên Biểu →' })
-      ]),
-
-      // 03. TRAO TRUYỀN & ĐÓNG GÓP
-      el('a', { class: 'gi-cr-door-card', href: '/me/gallery' }, [
-        el('div', {}, [
-          el('span', { class: 'gi-cr-door-num', text: '03. TRAO TRUYỀN & ĐÓNG GÓP' }),
-          el('h3', { class: 'gi-cr-door-title', text: 'Kho Di Ảnh & Tư Liệu' }),
-          el('p', { class: 'gi-cr-door-copy', text: 'Khám phá tư liệu và đóng góp những ký ức còn được lưu giữ.' })
-        ]),
-        el('span', { class: 'gi-cr-door-cta', text: 'Vào Kho Tư Liệu →' })
-      ])
-    ])
-  ]);
-  wrapper.appendChild(secDoors);
-
-  // =========================================================================
-  // SECTION 05 — FOOTER / LƯU TRUYỀN (THÔNG TIN NHẬN DIỆN & LIÊN KẾT CỐT LÕI)
-  // =========================================================================
-  const secFooter = el('footer', { class: 'gi-cr-footer', 'aria-label': 'Thông tin lưu truyền và liên kết cốt lõi' }, [
+  const secFooter = el('footer', { class: 'gi-cr-footer', 'aria-label': 'Thông tin lưu truyền và liên kết hai phân vùng' }, [
     el('div', { class: 'gi-cr-footer-grid' }, [
       el('div', { class: 'gi-cr-footer-brand' }, [
         el('h4', { class: 'gi-cr-footer-title', text: 'Gia Tộc Trần Trọng Thu' }),
-        el('p', { class: 'gi-cr-footer-lead', text: 'Di sản gia đình được gìn giữ bằng sự thật lịch sử, lòng hiếu kính và sự gắn kết qua các thế hệ.' })
+        el('p', { class: 'gi-cr-footer-lead', text: 'Di sản gia đình được gìn giữ bằng sự thật lịch sử, lòng hiếu kính và sự trao truyền qua các thế hệ.' })
       ]),
-      el('nav', { class: 'gi-cr-footer-col', 'aria-label': 'Lối vào phân hệ' }, [
-        el('h5', { text: 'Liên kết' }),
-        el('a', { href: '/me', text: 'Không gian Gia tộc' }),
-        el('a', { href: '/me/tree', text: 'Cây Phả Đồ' }),
+      el('nav', { class: 'gi-cr-footer-col', 'aria-label': 'Phân vùng Cây Phả Hệ' }, [
+        el('h5', { text: 'Cây Phả Hệ' }),
+        el('a', { href: '/me/tree', text: 'Cây Phả Đồ 3 Tầng' }),
         el('a', { href: '/me/events', text: 'Lịch Giỗ & Niên Biểu' }),
-        el('a', { href: '/me/gallery', text: 'Kho Tư Liệu' })
+        el('a', { href: '/me/gallery', text: 'Kho Di Ảnh Tiền Nhân' })
       ]),
-      el('nav', { class: 'gi-cr-footer-col', 'aria-label': 'Ấn phẩm và bảo tồn' }, [
-        el('h5', { text: 'Ấn phẩm & Bảo tồn' }),
-        el('a', { href: '/me/mach', text: 'Chuyên san MẠCH' }),
-        el('span', { class: 'gi-cr-footer-tag-pending', text: 'Nguyên tắc bảo tồn (Đang biên soạn)' })
+      el('nav', { class: 'gi-cr-footer-col', 'aria-label': 'Phân vùng Chuyên San MẠCH' }, [
+        el('h5', { text: 'Chuyên San MẠCH' }),
+        el('a', { href: '/me/mach', text: 'MẠCH Số 01 (12 bài viết)' }),
+        el('a', { href: '/me/letters', text: 'Thư Gửi Nhau' }),
+        el('span', { class: 'gi-cr-footer-tag-pending', text: 'MẠCH Số 02 (Đang biên soạn)' })
       ]),
-      el('nav', { class: 'gi-cr-footer-col gi-cr-footer-col--social', 'aria-label': 'Mạng xã hội và cộng đồng' }, [
-        el('h5', { text: 'Mạng xã hội' }),
+      el('nav', { class: 'gi-cr-footer-col gi-cr-footer-col--social', 'aria-label': 'Tiện ích & Cộng đồng' }, [
+        el('h5', { text: 'Tiện Ích & Kết Nối' }),
+        el('a', { href: '/me/account', text: 'Tài Khoản Thành Viên' }),
+        el('a', { href: '/help', text: 'Trợ Giúp & Hướng Dẫn' }),
         el('a', {
           href: 'https://www.facebook.com/share/g/1J2P3jtGTV/',
           target: '_blank',
@@ -262,7 +286,7 @@ export function renderPublicHome(content, context, assets = null) {
               d: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'
             })
           ]),
-          el('span', { text: 'Cộng đồng Gia tộc Trần Trọng Thu ↗' })
+          el('span', { text: 'Cộng đồng Facebook ↗' })
         ])
       ])
     ]),

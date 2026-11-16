@@ -38,13 +38,6 @@ app.use((req, res, next) => {
 
 // TASK-01: Static Serving Lockdown with strict whitelist
 const repoRoot = path.join(__dirname, '..');
-// Explicitly prevent express.static from serving any private assets
-app.use('/assets', (req, res, next) => {
-    if (req.path.startsWith('/private')) {
-        return next(); // Pass down to authenticated memberRouter; never serve statically
-    }
-    express.static(path.join(repoRoot, 'assets'), { dotfiles: 'deny' })(req, res, next);
-});
 app.use('/src', express.static(path.join(repoRoot, 'src'), { dotfiles: 'deny' }));
 app.use('/data', express.static(path.join(repoRoot, 'data'), { dotfiles: 'deny' }));
 app.use('/fixtures', express.static(path.join(repoRoot, 'fixtures'), { dotfiles: 'deny' }));
@@ -84,6 +77,43 @@ app.use(session({
         maxAge: 24 * 60 * 60 * 1000 // 24h
     }
 }));
+
+// P0 PRIVACY GUARD: Guard direct access to individual avatars (prevent scraping PII portraits)
+// Only public-safe F1 deceased ancestors featured on the homepage ribbon are whitelisted for public access
+const PUBLIC_AVATAR_WHITELIST = new Set([
+    'FS_AVATAR_G5X4-ZNG.jpg',
+    'FS_AVATAR_G5XX-2HY.jpg',
+    'FS_AVATAR_G5XX-KTZ.jpg',
+    'FS_AVATAR_G5XX-XTR.jpg'
+]);
+
+const avatarDir = path.join(repoRoot, 'assets', 'images', 'avatars');
+app.use('/assets/images/avatars', (req, res, next) => {
+    const filename = path.basename(req.path || req.url);
+    const filePath = path.join(avatarDir, filename);
+    if (!fs.existsSync(filePath)) {
+        return res.status(404).json({ error: 'AVATAR_NOT_FOUND' });
+    }
+    if (PUBLIC_AVATAR_WHITELIST.has(filename)) {
+        return res.sendFile(filePath);
+    }
+    // All other avatars require authenticated member or admin
+    if (req.session && (req.session.userId || (req.session.accountId && req.session.status !== 'PROVISIONED'))) {
+        return res.sendFile(filePath);
+    }
+    return res.status(401).json({
+        error: 'UNAUTHORIZED_AVATAR_ACCESS',
+        message: 'Di ảnh thành viên gia tộc chỉ mở cho tài khoản thành viên đã kích hoạt.'
+    });
+});
+
+// Explicitly prevent express.static from serving private assets without auth
+app.use('/assets', (req, res, next) => {
+    if (req.path.startsWith('/private') || req.url.startsWith('/private')) {
+        return next(); // Pass down to authenticated memberRouter; never serve statically
+    }
+    express.static(path.join(repoRoot, 'assets'), { dotfiles: 'deny' })(req, res, next);
+});
 
 const MEDIA_BASE_URL = process.env.MEDIA_BASE_URL
     ? process.env.MEDIA_BASE_URL.replace(/\/+$/, '') + '/'
@@ -824,6 +854,8 @@ app.get('/api/genealogy.json', requireMemberOrAdmin, async (req, res) => {
 
 app.get('/api/mach.json', publicCors, async (req, res) => {
     try {
+        const isClanMember = Boolean(req.session && (req.session.userId || (req.session.accountId && req.session.status !== 'PROVISIONED')));
+
         const machDataFile = path.join(__dirname, 'data', 'mach.json');
         if (fs.existsSync(machDataFile)) {
             const staticPayload = JSON.parse(fs.readFileSync(machDataFile, 'utf8'));
@@ -840,6 +872,43 @@ app.get('/api/mach.json', publicCors, async (req, res) => {
             if (staticPayload.series && staticPayload.series['thu-gui-clara']) {
                 delete staticPayload.series['thu-gui-clara'];
             }
+
+            // P0 PRIVACY & SCOPE: MẠCH belongs to CLAN space.
+            // Unauthenticated Guest: Return safe editorial metadata overview only (no full content / no internal PII)
+            if (!isClanMember) {
+                res.set('Cache-Control', 'public, max-age=60');
+                res.set('X-Content-Type-Options', 'nosniff');
+                return res.json({
+                    publication: "GIA TỘC TRẦN TRỌNG THU",
+                    title: "MẠCH — Chuyên San Ký Ức Gia Tộc",
+                    scope: "CLAN",
+                    access: "GUEST_EDITORIAL_OVERVIEW",
+                    currentIssue: "Số 01: Dòng Chảy & Sự Tiếp Nối",
+                    editorialPrinciples: [
+                        "Anti-System-Ego",
+                        "Visual Rhythm & Silence",
+                        "Rawness > Polish",
+                        "Issue as Movement",
+                        "Caption / Footnote Whisper Layer",
+                        "Honest Uncertainty"
+                    ],
+                    stories: (staticPayload.stories || []).map(s => ({
+                        id: s.id,
+                        slug: s.slug || s.id,
+                        title: s.title,
+                        author: s.author || "Người giữ mạch",
+                        order: s.order || 0,
+                        summary: s.summary || s.excerpt || "Ký ức & suy tư gia tộc Trần Trọng Thu.",
+                        seriesSlug: s.seriesSlug || 'mach-so-01',
+                        accessRequired: "CLAN_MEMBER"
+                    })),
+                    message: "Toàn văn 12 bài viết và tư liệu gia tộc chỉ mở cho thành viên dòng họ (CLAN members). Vui lòng đăng nhập để đọc toàn văn."
+                });
+            }
+
+            // Authenticated CLAN Member: Full content with sensitive no-store headers
+            res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+            res.set('X-Content-Type-Options', 'nosniff');
             return res.json(staticPayload);
         }
 

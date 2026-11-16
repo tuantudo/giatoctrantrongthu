@@ -4003,6 +4003,133 @@
   margin-left: 0;
 }
 
+/* Section 04: Two Primary Portals (Website V2 Architecture) */
+.gi-v2-portals-section {
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+
+.gi-v2-portals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.gi-v2-portal-card {
+  background: var(--color-surface-raised, #ffffff);
+  border: 1px solid var(--color-border-subtle, #e7e5e4);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.gi-v2-portal-card:hover {
+  border-color: var(--color-brand-heritage, #881337);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.gi-v2-portal-card--genealogy {
+  border-top: 4px solid var(--color-brand-heritage, #881337);
+}
+
+.gi-v2-portal-card--mach {
+  border-top: 4px solid var(--color-brand-gold, #b45309);
+  background: var(--color-surface-sunken, #fcfbf9);
+}
+
+.gi-v2-portal-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.gi-v2-portal-card--genealogy .gi-v2-portal-badge {
+  color: var(--color-brand-heritage, #881337);
+}
+
+.gi-v2-portal-card--mach .gi-v2-portal-badge {
+  color: var(--color-brand-gold, #b45309);
+}
+
+.gi-v2-portal-title {
+  font-family: var(--font-display-active, Georgia, serif);
+  font-size: 26px;
+  color: var(--color-text-primary, #1c1917);
+  margin: 0 0 10px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.gi-v2-portal-lead {
+  font-size: 14px;
+  color: var(--color-text-secondary, #4a4a4a);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.gi-v2-portal-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  border-top: 1px solid var(--color-border-subtle, #e7e5e4);
+  padding-top: 16px;
+}
+
+.gi-v2-portal-feature {
+  font-size: 13px;
+  color: var(--color-text-primary, #1c1917);
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gi-v2-portal-feature-icon {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.gi-v2-portal-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-subtle, #e7e5e4);
+}
+
+.gi-v2-portal-card--genealogy .gi-v2-portal-cta {
+  color: var(--color-brand-heritage, #881337);
+}
+
+.gi-v2-portal-card--mach .gi-v2-portal-cta {
+  color: var(--color-brand-gold, #b45309);
+}
+
+@media (max-width: 768px) {
+  .gi-v2-portals-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .gi-v2-portal-card {
+    padding: 24px 20px;
+  }
+  .gi-v2-portal-title {
+    font-size: 22px;
+  }
+}
+
 /* Section 04: Doors Grid */
 .gi-cr-doors-grid {
   display: grid;

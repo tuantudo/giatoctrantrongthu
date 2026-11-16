@@ -29,20 +29,21 @@ import { initServerScheduleMonitoring } from './server-schedule.js';
  */
 export const PUBLIC_NAV = [
   { label: 'Trang chủ', href: '/' },
+  { label: 'Cây Phả Hệ', href: '#cay-pha-he' },
+  { label: 'Chuyên san MẠCH', href: '#chuyen-san-mach' },
   { label: 'Cội nguồn', href: '#coi-nguon' },
   { label: 'Dòng chảy', href: '#dong-chay' },
-  { label: 'Không gian gia tộc', href: '#khong-gian' },
   { label: 'Trợ giúp & Kết nối', href: '/help' },
   { label: 'Cổng thành viên →', href: '/login', title: 'Cổng không gian thành viên dòng họ' }
 ];
 
 export const MEMBER_NAV = [
-  { label: 'Không gian của tôi', href: '/me' },
   { label: 'Cây phả đồ', href: '/me/tree' },
   { label: 'Kho tư liệu ảnh', href: '/me/gallery' },
   { label: 'Lịch giỗ & Niên biểu', href: '/me/events' },
   { label: 'MẠCH', href: '/me/mach' },
   { label: 'Thư gửi nhau', href: '/me/letters' },
+  { label: 'Không gian của tôi', href: '/me' },
   { label: 'Tài khoản', href: '/me/account' },
   { label: 'Đóng góp & Yêu cầu', href: '/me/requests' },
   { label: 'Trợ giúp', href: '/help' },

@@ -87,6 +87,10 @@
     {
       "source": "/assets/private/:path*",
       "destination": "https://api.giatoctrantrongthu.com/assets/private/:path*"
+    },
+    {
+      "source": "/assets/images/avatars/:path*",
+      "destination": "https://api.giatoctrantrongthu.com/assets/images/avatars/:path*"
     }
   ],
   "headers": [
